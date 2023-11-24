@@ -43,7 +43,7 @@ namespace Api_Empopasto.Controllers
         /// <returns>Task<Result></returns>
         [HttpPost]
         [Route("IniciarSesion")]
-        public async Task<IActionResult> InicioSesionAsync([FromBody] LoginModel loginModel)
+        public async Task<IActionResult> InicioSesionAsync([FromBody] UsuarioModel loginModel)
         {
             Result oRespuesta = new();
 

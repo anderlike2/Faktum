@@ -65,3 +65,15 @@ ApiFaktum/ApiFaktum/obj
 ApiFaktum/DependencyInjection/obj
 ApiFaktum/RepositoryLayer/obj
 ApiFaktum/ServiceLayer/obj
+
+ApiFaktum/.vs
+ApiFaktum/ApiFaktum/bin
+ApiFaktum/ApiFaktum/obj
+ApiFaktum/DependencyInjection/bin
+ApiFaktum/DependencyInjection/obj
+ApiFaktum/DomainLayer/bin
+ApiFaktum/DomainLayer/obj
+ApiFaktum/RepositoryLayer/bin
+ApiFaktum/RepositoryLayer/obj
+ApiFaktum/ServiceLayer/bin
+ApiFaktum/ServiceLayer/obj

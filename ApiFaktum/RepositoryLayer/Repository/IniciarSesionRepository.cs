@@ -44,7 +44,7 @@ namespace RepositoryLayer.Repository
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ValidarLogin(LoginModel objModel)
+        public async Task<Result> ValidarLogin(UsuarioModel objModel)
         {
             Result oRespuesta = new Result();
 
@@ -88,7 +88,7 @@ namespace RepositoryLayer.Repository
         /// <param name="objModel"></param>
         /// <param name="vCredIncorrecta"></param>
         /// <returns>Task<Result></returns>
-        private async Task<Result> ActualizarIntentos(LoginModel objModel, bool vCredIncorrecta)
+        private async Task<Result> ActualizarIntentos(UsuarioModel objModel, bool vCredIncorrecta)
         {
             Result oRespuesta = new Result();
 
@@ -117,7 +117,7 @@ namespace RepositoryLayer.Repository
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        private async Task<Result> BloquearUsuario(LoginModel objModel)
+        private async Task<Result> BloquearUsuario(UsuarioModel objModel)
         {
             Result oRespuesta = new Result();
 

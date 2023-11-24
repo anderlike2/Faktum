@@ -35,7 +35,7 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="authModel"></param>
         /// <returns>string</returns>
-        public string GenerarToken(AuthModel authModel)
+        public string GenerarToken(TokenModel authModel)
         {
             string SecretPassword = JwtSettings.Jwt_SecretPassword;
             string Issuer = JwtSettings.Jwt_Issuer;

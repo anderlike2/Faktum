@@ -1,6 +1,6 @@
 ﻿namespace DomainLayer.Models
 {
-    public class TipoDocumento : BaseEntity
+    public class TipoDocumento
     {        
         public string? Nombre { get; set; }
     }
