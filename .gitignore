@@ -28,6 +28,7 @@ bin-release/
 *.lock
 *.rar
 *.zip
+*.suo
 
 node_modules/**/*
 node_modules/
@@ -42,3 +43,15 @@ yarn.lock
 *.key
 *.mobileprovision
 .DS_Store
+
+ApiFaktum/.vs
+ApiFaktum/ApiFaktum/bin
+ApiFaktum/ApiFaktum/obj
+ApiFaktum/DependencyInjection/bin
+ApiFaktum/DependencyInjection/obj
+ApiFaktum/DomainLayer/bin
+ApiFaktum/DomainLayer/obj
+ApiFaktum/RepositoryLayer/bin
+ApiFaktum/RepositoryLayer/obj
+ApiFaktum/ServiceLayer/bin
+ApiFaktum/ServiceLayer/obj

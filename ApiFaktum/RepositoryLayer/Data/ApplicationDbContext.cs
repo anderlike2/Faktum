@@ -23,27 +23,8 @@ namespace RepositoryLayer.Data
             this.SeedUsers(modelBuilder);
             this.SeedRoles(modelBuilder);
             this.SeedUserRoles(modelBuilder);
-
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.HasIndex(e => e.Login).IsUnique(true);
-            });
-
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.HasIndex(e => e.NumeroDocumento).IsUnique(true);
-            });
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.HasIndex(e => e.Codigo).IsUnique(true);
-            });
         }
-
-
-        public DbSet<MensajeModel> MensajeModels { get; set; }
-        public DbSet<Persona> Personas { get; set; }
         public DbSet<TipoDocumento> TipoDocumentos { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
 
         private void SeedUsers(ModelBuilder builder)
         {
