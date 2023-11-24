@@ -48,11 +48,6 @@ namespace RepositoryLayer.Migrations
 
                     b.ToTable("TipoDocumentos");
                 });
-
-            modelBuilder.Entity("DomainLayer.Models.TipoDocumento", b =>
-                {
-                    b.Navigation("Usuarios");
-                });
         }
     }
 }
