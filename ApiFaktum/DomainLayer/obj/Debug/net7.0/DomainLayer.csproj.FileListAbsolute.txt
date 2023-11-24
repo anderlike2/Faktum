@@ -1,0 +1,36 @@
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\bin\Debug\net7.0\DomainLayer.deps.json
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\bin\Debug\net7.0\DomainLayer.dll
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\bin\Debug\net7.0\DomainLayer.pdb
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.AssemblyReference.cache
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfoInputs.cache
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfo.cs
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.CoreCompileInputs.cache
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.dll
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\refint\DomainLayer.dll
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.pdb
+G:\Proyectos\Linea base\Api_LineaBase\DomainLayer\obj\Debug\net7.0\ref\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\bin\Debug\net7.0\DomainLayer.deps.json
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\bin\Debug\net7.0\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\bin\Debug\net7.0\DomainLayer.pdb
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.AssemblyReference.cache
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfoInputs.cache
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfo.cs
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.CoreCompileInputs.cache
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\refint\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\DomainLayer.pdb
+C:\Proyectos\Personales\Faktum\Api_LineaBase\DomainLayer\obj\Debug\net7.0\ref\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\bin\Debug\net7.0\DomainLayer.deps.json
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\bin\Debug\net7.0\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\bin\Debug\net7.0\DomainLayer.pdb
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.AssemblyReference.cache
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfoInputs.cache
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.AssemblyInfo.cs
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.csproj.CoreCompileInputs.cache
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\refint\DomainLayer.dll
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\DomainLayer.pdb
+C:\Proyectos\Personales\Faktum\ApiFaktum\DomainLayer\obj\Debug\net7.0\ref\DomainLayer.dll
