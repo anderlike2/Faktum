@@ -1,0 +1,44 @@
+# Build and Release Folders
+bin-debug/
+bin-release/
+[Oo]bj/
+[Bb]in/
+
+# Other files and folders
+.settings/
+
+# Executables
+*.swf
+*.air
+*.ipa
+*.apk
+*.v2
+*.cache
+*.1
+.vs/
+*.v2
+*.cache
+*.vsidx
+*.vsidx
+*.cache
+*.sentinel
+*.config
+*.v2
+*.vsidx
+*.lock
+*.rar
+*.zip
+
+node_modules/**/*
+node_modules/
+dist/
+.expo
+npm-debug.*
+package-lock.json
+yarn.lock
+*.jks
+*.p12
+*.p8
+*.key
+*.mobileprovision
+.DS_Store
