@@ -28,6 +28,7 @@ bin-release/
 *.lock
 *.rar
 *.zip
+*.suo
 
 node_modules/**/*
 node_modules/
