@@ -9,5 +9,6 @@ namespace RepositoryLayer.Data
             ArgumentNullException.ThrowIfNull(dbContext, nameof(dbContext));
 
             dbContext.Database.EnsureCreated();
+        }
     }
 }

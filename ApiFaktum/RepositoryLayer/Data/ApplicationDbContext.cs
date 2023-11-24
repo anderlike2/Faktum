@@ -38,10 +38,6 @@ namespace RepositoryLayer.Data
                 entity.HasIndex(e => e.Codigo).IsUnique(true);
             });
         }
-
-
-        public DbSet<MensajeModel> MensajeModels { get; set; }
-        public DbSet<Persona> Personas { get; set; }
         public DbSet<TipoDocumento> TipoDocumentos { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
