@@ -43,6 +43,14 @@ yarn.lock
 *.mobileprovision
 .DS_Store
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+ApiFaktum/.vs
+ApiFaktum/ApiFaktum/bin
+ApiFaktum/ApiFaktum/obj
+ApiFaktum/Commun/bin
+ApiFaktum/Commun/obj
+ApiFaktum/DependencyInjection/bin
+ApiFaktum/DependencyInjection/obj
+ApiFaktum/RepositoryLayer/bin
+ApiFaktum/RepositoryLayer/obj
+ApiFaktum/ServiceLayer/bin
+ApiFaktum/ServiceLayer/obj
