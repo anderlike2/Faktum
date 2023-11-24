@@ -48,47 +48,11 @@ namespace RepositoryLayer.Repository
         {
             Result oRespuesta = new Result();
 
-            Usuario listResult = new Usuario();
-            UsuarioDto lstTemp = new UsuarioDto();
-
             try
             {
-                listResult = await objContext.Usuarios.Where(x => x.Login == objModel.UserName).FirstAsync();
-
-                if (listResult.Id > 0)
+                if (1> 0)
                 {
-                    lstTemp = mapper.Map<UsuarioDto>(listResult);
-
-                    if (listResult.Estado == Convert.ToInt32(Enums.Estado.Anulado))
-                    {
-                        oRespuesta.Success = false;
-                        oRespuesta.Message = Constantes.msjUsuarioEliminado;
-                    }
-                    else if (listResult.Intentos >= 5)
-                    {
-                        await BloquearUsuario(objModel);
-
-                        oRespuesta.Success = false;
-                        oRespuesta.Message = Constantes.msjUsuarioBloqueado;
-                    }
-                    else if (listResult.Password != objModel.Password)
-                    {
-                        var vIntentosTemp = await ActualizarIntentos(objModel, false);
-
-                        oRespuesta.Success = false;
-
-                        if (vIntentosTemp.Message == "4")
-                            oRespuesta.Message = "Las credenciales son incorrectas, te queda 1 intento";
-                        else
-                            oRespuesta.Message = "Las credenciales son incorrectas";
-                    }
-                    else
-                    {
-                        oRespuesta.Success = true;
-                        oRespuesta.Data = lstTemp;
-
-                        await ActualizarIntentos(objModel, true);
-                    }
+                   
                 }
                 else
                 {
@@ -128,32 +92,11 @@ namespace RepositoryLayer.Repository
         {
             Result oRespuesta = new Result();
 
-            Usuario listResult = new Usuario();
-            Usuario lstTemp = new Usuario();
-
             try
             {
-                listResult = await objContext.Usuarios.Where(x => x.Login == objModel.UserName).FirstAsync();
 
-                if (listResult.Id > 0)
-                {
-                    lstTemp = mapper.Map<Usuario>(listResult);
-
-                    if (vCredIncorrecta)
-                    {
-                        lstTemp.Intentos = 0;
-                    }
-                    else
-                    {
-                        lstTemp.Intentos = lstTemp.Intentos + 1;
-
-                        oRespuesta.Message = lstTemp.Intentos.ToString();
-                    }
-
-                    objContext.Update(lstTemp);
-
-                    await objContext.SaveChangesAsync();
-
+                if (1 > 0)
+                {                    
                     oRespuesta.Success = true;
                 }
             }
@@ -178,23 +121,11 @@ namespace RepositoryLayer.Repository
         {
             Result oRespuesta = new Result();
 
-            Usuario listResult = new Usuario();
-            Usuario lstTemp = new Usuario();
-
             try
             {
-                listResult = await objContext.Usuarios.Where(x => x.Login == objModel.UserName).FirstAsync();
 
-                if (listResult.Id > 0)
+                if (1 > 0)
                 {
-                    lstTemp = mapper.Map<Usuario>(listResult);
-
-                    lstTemp.Estado = (int)Enums.Estado.Inactivo;
-                    lstTemp.EstadoClave = (int?)Enums.Estado.Inactivo;
-
-                    objContext.Update(lstTemp);
-
-                    await objContext.SaveChangesAsync();
 
                     oRespuesta.Success = true;
                 }

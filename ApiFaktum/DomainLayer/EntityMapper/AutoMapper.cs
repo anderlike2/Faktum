@@ -10,9 +10,6 @@ namespace DomainLayer.EntityMapper
         {
             CreateMap<TipoDocumento, TipoDocumentoDto>().ReverseMap();
             CreateMap<TipoDocumentoDto, TipoDocumento>();
-
-            CreateMap<Usuario, UsuarioDto>().ReverseMap();
-            CreateMap<UsuarioDto, Usuario>();
         }
     }
 }
