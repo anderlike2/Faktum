@@ -20,6 +20,8 @@ namespace RepositoryLayer.Data
 
             base.OnModelCreating(modelBuilder);
         }
-        public DbSet<TipoDocumento> TipoDocumentos { get; set; }
+        public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<RolModel> Rol { get; set; }
+        public DbSet<RolesUsuarioModel> RolesUsuario { get; set; }
     }
 }

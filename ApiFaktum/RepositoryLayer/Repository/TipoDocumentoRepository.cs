@@ -66,7 +66,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                listResult = await objContext.TipoDocumentos.ToListAsync();
+                /*listResult = await objContext.TipoDocumentos.ToListAsync();
 
                 if (listResult.Count > 0)
                 {
@@ -74,7 +74,7 @@ namespace RepositoryLayer.Repository
 
                     oRespuesta.Success = true;
                     oRespuesta.Data = lstTemp;
-                }
+                }*/
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                listResult = await objContext.TipoDocumentos.ToListAsync();
+               /* listResult = await objContext.TipoDocumentos.ToListAsync();
 
                 if (listResult.Count > 0)
                 {
@@ -103,7 +103,7 @@ namespace RepositoryLayer.Repository
 
                     oRespuesta.Success = true;
                     oRespuesta.Data = lstTemp;
-                }
+                }*/
             }
             catch (Exception ex)
             {
