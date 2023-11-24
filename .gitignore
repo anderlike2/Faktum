@@ -28,7 +28,6 @@ bin-release/
 *.lock
 *.rar
 *.zip
-*.suo
 
 node_modules/**/*
 node_modules/
@@ -44,14 +43,25 @@ yarn.lock
 *.mobileprovision
 .DS_Store
 
-ApiFaktum/.vs
-ApiFaktum/ApiFaktum/bin
+.vs/ApiFaktum/v17
+ApiFaktum/.vs/ApiFaktum
+ApiFaktum/ApiFaktum/bin/Debug/net7.0
+ApiFaktum/ApiFaktum/obj/Debug/net7.0
 ApiFaktum/ApiFaktum/obj
-ApiFaktum/DependencyInjection/bin
+ApiFaktum/Commun/bin/Debug/net7.0
+ApiFaktum/Commun/obj/Debug/net7.0
+ApiFaktum/Commun/obj
+ApiFaktum/DependencyInjection/bin/Debug/net7.0
+ApiFaktum/DependencyInjection/obj/Debug/net7.0
 ApiFaktum/DependencyInjection/obj
-ApiFaktum/DomainLayer/bin
-ApiFaktum/DomainLayer/obj
-ApiFaktum/RepositoryLayer/bin
+ApiFaktum/RepositoryLayer/bin/Debug/net7.0
+ApiFaktum/RepositoryLayer/obj/Debug/net7.0
 ApiFaktum/RepositoryLayer/obj
-ApiFaktum/ServiceLayer/bin
+ApiFaktum/ServiceLayer/bin/Debug/net7.0
+ApiFaktum/ServiceLayer/obj/Debug/net7.0
+ApiFaktum/ServiceLayer/obj
+ApiFaktum/.vs
+ApiFaktum/ApiFaktum/obj
+ApiFaktum/DependencyInjection/obj
+ApiFaktum/RepositoryLayer/obj
 ApiFaktum/ServiceLayer/obj
