@@ -2,9 +2,9 @@
 {
     public class RolUsuarioDto
     {
-        public int RoleCodigo { get; set; }
-        public bool? RoleEstado { get; set; }
-        public DateTime? RoleFechaCreacion { get; set; }
-        public DateTime? RoleFechaModificacion { get; set; }
+        public int RousCodigo { get; set; }
+        public bool? RousEstado { get; set; }
+        public DateTime? RousFechaCreacion { get; set; }
+        public DateTime? RousFechaModificacion { get; set; }
     }
 }

@@ -49,5 +49,6 @@ namespace RepositoryLayer.Data
         public DbSet<TipoClienteModel> TipoCliente { get; set; }
         public DbSet<ClaseFacturaModel> ClaseFactura { get; set; }
         public DbSet<NumeracionResolucionModel> numeracionResolucion { get; set; }
+        public DbSet<LocalidadModel> Localidad { get; set; }
     }
 }

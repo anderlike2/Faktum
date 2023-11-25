@@ -100,6 +100,9 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<NumeracionResolucionModel, NumeracionResolucionDto>().ReverseMap();
             CreateMap<NumeracionResolucionDto, NumeracionResolucionModel>();
+
+            CreateMap<LocalidadModel, LocalidadDto>().ReverseMap();
+            CreateMap<LocalidadDto, LocalidadModel>();
         }
     }
 }
