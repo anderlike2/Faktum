@@ -20,6 +20,35 @@ namespace RepositoryLayer.Data
         }
         public DbSet<UsuarioModel> Usuario { get; set; }
         public DbSet<RolModel> Rol { get; set; }
-        public DbSet<RolesUsuarioModel> RolesUsuario { get; set; }
+        public DbSet<RolUsuarioModel> RolUsuario { get; set; }
+        public DbSet<DeptoModel> Depto { get; set; }
+        public DbSet<CiudadModel> Ciudad { get; set; }
+        public DbSet<ClasJuridicaModel> ClasJuridica { get; set; }
+        public DbSet<CoberturaModel> Cobertura { get; set; }
+        public DbSet<ConceptoNotaModel> ConceptoNota { get; set; }
+        public DbSet<CondicionVentaModel> CondicionVenta { get; set; }
+        public DbSet<CumModel> Cum { get; set; }
+        public DbSet<CupModel> Cup { get; set; }
+        public DbSet<EstadoDianFacturaModel> EstadoDianFactura { get; set; }
+        public DbSet<FactSaludTipoModel> FactSaludTipo { get; set; }
+        public DbSet<FormaPagoModel> FormaPago { get; set; }
+        public DbSet<ImpuestoModel> Impuesto { get; set; }
+        public DbSet<IumModel> Ium { get; set; }
+        public DbSet<ModalidadPagoModel> ModalidadPago { get; set; }
+        public DbSet<PaisModel> Pais { get; set; }
+        public DbSet<RegimenModel> Regimen { get; set; }
+        public DbSet<RespFiscalModel> RespFiscal { get; set; }
+        public DbSet<RespTributariaModel> RespTributaria { get; set; }
+        public DbSet<ReteFuenteModel> ReteFuente { get; set; }
+        public DbSet<TipoArchivoRipsModel> TipoArchivoRips { get; set; }
+        public DbSet<TipoDescuentoModel> TipoDescuento { get; set; }
+        public DbSet<TipoIdModel> TipoId { get; set; }
+        public DbSet<MonedaModel> Moneda { get; set; }
+        public DbSet<TipoDocElectrModel> TipoDocElectr { get; set; }
+        public DbSet<TipoCupModel> TipoCup { get; set; }
+        public DbSet<TipoClienteModel> TipoCliente { get; set; }
+        public DbSet<ClaseFacturaModel> ClaseFactura { get; set; }
+        public DbSet<NumeracionResolucionModel> numeracionResolucion { get; set; }
+        public DbSet<LocalidadModel> Localidad { get; set; }
     }
 }

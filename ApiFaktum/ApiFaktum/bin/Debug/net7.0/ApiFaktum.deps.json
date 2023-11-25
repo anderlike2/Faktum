@@ -1959,7 +1959,8 @@
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore": "6.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.10",
-          "Microsoft.Extensions.Configuration": "6.0.1"
+          "Microsoft.Extensions.Configuration": "6.0.1",
+          "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
           "RepositoryLayer.dll": {}

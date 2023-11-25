@@ -53,8 +53,18 @@ namespace DependencyInjection
             services.AddScoped(typeof(ICreateLogger), typeof(CreateLogger));
 
             services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
+            services.AddScoped(typeof(IMaestrasRepository), typeof(MaestrasRepository));
+            services.AddScoped(typeof(IReteFuenteRepository), typeof(ReteFuenteRepository));
+            services.AddScoped(typeof(ICumRepository), typeof(CumRepository));
+            services.AddScoped(typeof(IRegimenRepository), typeof(RegimenRepository));
+            services.AddScoped(typeof(IIumRepository), typeof(IumRepository));
+            services.AddScoped(typeof(IClasJuridicaRepository), typeof(ClasJuridicaRepository));
+            services.AddScoped(typeof(IImpuestoRepository), typeof(ImpuestoRepository));
+            services.AddScoped(typeof(ICiudadRepository), typeof(CiudadRepository));
+            services.AddScoped(typeof(INumeracionResolucionRepository), typeof(NumeracionResolucionRepository));
 
             services.AddScoped(typeof(IIniciarSesionService), typeof(IniciarSesionService));
+            services.AddScoped(typeof(IMaestrasService), typeof(MaestrasService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 

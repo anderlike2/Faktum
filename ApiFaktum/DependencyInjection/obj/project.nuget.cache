@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GGiibK2pUzCFbzZluaSYvsSOW7gl4T8iB4l6GoDYbPufmjUbvjlP2vYsDlIk0r7a8Bt5/pcqD7oBj+YhkFJRlA==",
+  "dgSpecHash": "ebiW1LrEoNYAnYfmp1H6ErJSnz7BdQjh5UGLYuRzzPH1Ki6wOJ8laenv9iayPriVQPexKUBLTR2tCesE90WZTQ==",
   "success": true,
   "projectFilePath": "C:\\Proyectos\\Personales\\Faktum\\ApiFaktum\\DependencyInjection\\DependencyInjection.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",

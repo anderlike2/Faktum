@@ -5,14 +5,21 @@ namespace DomainLayer.Models
 {
     public class UsuarioModel
     {
+        [Required]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UsuaId { get; set; }
+        public int UsuaCodigo { get; set; }
+        [Required]
         public string? UsuaUsuario { get; set; }
+        [Required]
         public string? UsuaPassword { get; set; }
+        [Required]
         public int? UsuaIntentos { get; set; }
+        [Required]
         public bool? UsuaEstado { get; set; }
+        [Required]
         public DateTime? UsuaFechaCreacion { get; set; }
         public DateTime? UsuaFechaModificacion { get; set; }
-        public virtual ICollection<RolesUsuarioModel>? UsuRoles { get; set; }
+        [Required]
+        public virtual ICollection<RolUsuarioModel>? UsuRoles { get; set; }
     }
 }
