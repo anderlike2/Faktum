@@ -37,7 +37,7 @@ namespace Api_Empopasto.Controllers
         /// <param name="authModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        public async Task<IActionResult> GeneraToken(AuthModel authModel)
+        public async Task<IActionResult> GeneraToken(TokenModel authModel)
         {
             string vToken = authToken.GenerarToken(authModel);
 

@@ -31,7 +31,7 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> ValidarLogin(LoginModel objModel)
+        public Task<Result> ValidarLogin(UsuarioModel objModel)
         {
             return objRepository.ValidarLogin(objModel);
         }

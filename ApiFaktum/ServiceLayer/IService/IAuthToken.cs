@@ -15,6 +15,6 @@ namespace ServiceLayer.IService
         /// </summary>
         /// <param name="authModel"></param>
         /// <returns>string</returns>
-        string GenerarToken(AuthModel authModel);
+        string GenerarToken(TokenModel authModel);
     }
 }

@@ -15,6 +15,6 @@ namespace ServiceLayer.IService
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ValidarLogin(LoginModel objModel);
+        Task<Result> ValidarLogin(UsuarioModel objModel);
     }
 }
