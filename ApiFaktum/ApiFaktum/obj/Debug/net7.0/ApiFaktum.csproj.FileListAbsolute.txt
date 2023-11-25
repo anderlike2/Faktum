@@ -315,7 +315,6 @@ C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.Ge
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.AssemblyInfoInputs.cache
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.AssemblyInfo.cs
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.csproj.CoreCompileInputs.cache
-C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.MvcApplicationPartsAssemblyInfo.cs
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\staticwebassets\msbuild.ApiFaktum.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\staticwebassets\msbuild.build.ApiFaktum.props
@@ -331,3 +330,4 @@ C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\refint\ApiFa
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.pdb
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.genruntimeconfig.cache
 C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ref\ApiFaktum.dll
+C:\Proyectos\Personales\Faktum\ApiFaktum\ApiFaktum\obj\Debug\net7.0\ApiFaktum.MvcApplicationPartsAssemblyInfo.cs
