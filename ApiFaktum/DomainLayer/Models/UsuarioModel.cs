@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Models
 {
     public class UsuarioModel
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int UsuaId { get; set; }
         public string? UsuaUsuario { get; set; }
         public string? UsuaPassword { get; set; }

@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Models
 {
     public class RolesUsuarioModel
     {
-        [Key]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleId { get; set; }
         public virtual UsuarioModel? RoleUsuario { get; set; }
         public virtual RolModel? RoleRol { get; set; }

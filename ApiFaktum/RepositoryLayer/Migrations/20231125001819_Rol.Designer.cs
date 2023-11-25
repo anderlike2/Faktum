@@ -12,7 +12,7 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231125000754_Rol")]
+    [Migration("20231125001819_Rol")]
     partial class Rol
     {
         /// <inheritdoc />

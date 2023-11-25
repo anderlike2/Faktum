@@ -12,8 +12,8 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231125000723_Usuario")]
-    partial class Usuario
+    [Migration("20231125001827_RolesUsuario")]
+    partial class RolesUsuario
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
