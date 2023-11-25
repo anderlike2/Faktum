@@ -52,11 +52,9 @@ namespace DependencyInjection
         {
             services.AddScoped(typeof(ICreateLogger), typeof(CreateLogger));
 
-            services.AddScoped(typeof(IIniciarSesionRepository), typeof(IniciarSesionRepository));
-            services.AddScoped(typeof(ITipoDocumentoRepository), typeof(TipoDocumentoRepository));
+            services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
 
             services.AddScoped(typeof(IIniciarSesionService), typeof(IniciarSesionService));
-            services.AddScoped(typeof(ITipoDocumentoService), typeof(TipoDocumentoService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 

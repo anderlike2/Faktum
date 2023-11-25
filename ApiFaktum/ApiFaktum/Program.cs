@@ -36,13 +36,26 @@ builder.Services.InyeccionServicios(builder.Configuration);
 
 #region User Identity
 
-//builder.Services.UserIdentity(builder.Configuration);
+builder.Services.UserIdentity(builder.Configuration);
 
 #endregion
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+
+#region Shows UseCors with CorsPolicyBuilder.
+
+app.UseCors(builder =>
+{
+    builder
+    .WithOrigins("http://170.247.0.104:2180")
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader();
+});
+
+#endregion
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,20 +1,21 @@
-﻿using DomainLayer.Models;
+﻿using DomainLayer.Dtos;
+using DomainLayer.Models;
 
 namespace RepositoryLayer.IRepository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Interfaz para el manejo de la autenticacion
+    /// Interfaz para el manejo de la tabla usuario
     /// </summary>
-    public interface IIniciarSesionRepository
+    public interface IUsuarioRepository
     {
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para validar el login
+        /// Metodo para consultar el usuario
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ValidarLogin(UsuarioModel objModel);
+        Task<Result> ConsultarUsuario(UsuarioFiltroDto objModel);
     }
 }

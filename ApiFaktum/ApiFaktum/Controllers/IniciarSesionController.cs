@@ -1,5 +1,6 @@
 ﻿using Commun;
 using Commun.Logger;
+using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ namespace Api_Empopasto.Controllers
         /// <returns>Task<Result></returns>
         [HttpPost]
         [Route("IniciarSesion")]
-        public async Task<IActionResult> InicioSesionAsync([FromBody] UsuarioModel loginModel)
+        public async Task<IActionResult> InicioSesionAsync([FromBody] UsuarioFiltroDto loginModel)
         {
             Result oRespuesta = new();
 

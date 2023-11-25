@@ -1,4 +1,5 @@
-﻿using DomainLayer.Models;
+﻿using DomainLayer.Dtos;
+using DomainLayer.Models;
 using RepositoryLayer.IRepository;
 using ServiceLayer.IService;
 
@@ -10,18 +11,18 @@ namespace ServiceLayer.Service
     /// </summary>
     public class IniciarSesionService : IIniciarSesionService
     {
-        private readonly IIniciarSesionRepository objRepository;
+        private readonly IUsuarioRepository objUsuarioRepository;
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
         /// Constructor por defecto
         /// </summary>
-        /// <param name="_objRepository"></param>
+        /// <param name="_objUsuarioRepository"></param>
         /// <returns></returns>
-        public IniciarSesionService(IIniciarSesionRepository _objRepository)
+        public IniciarSesionService(IUsuarioRepository _objUsuarioRepository)
         {
-            this.objRepository = _objRepository;
+            this.objUsuarioRepository = _objUsuarioRepository;
         }
 
         /// <summary>
@@ -31,9 +32,9 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> ValidarLogin(UsuarioModel objModel)
+        public Task<Result> ValidarLogin(UsuarioFiltroDto objModel)
         {
-            return objRepository.ValidarLogin(objModel);
+            return objUsuarioRepository.ConsultarUsuario(objModel);
         }
     }
 }

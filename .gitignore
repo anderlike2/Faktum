@@ -171,3 +171,8 @@ ApiFaktum/DependencyInjection/obj/Debug/net7.0/DependencyInjection.dll
 ApiFaktum/DependencyInjection/obj/Debug/net7.0/DependencyInjection.pdb
 ApiFaktum/DomainLayer/bin/Debug/net7.0/DomainLayer.dll
 ApiFaktum/DomainLayer/bin/Debug/net7.0/DomainLayer.pdb
+ApiFaktum/.vs/ApiFaktum/v17/.suo
+ApiFaktum/ApiFaktum/obj/Debug/net7.0/ApiFaktum.csproj.AssemblyReference.cache
+ApiFaktum/DependencyInjection/obj/Debug/net7.0/DependencyInjection.csproj.AssemblyReference.cache
+ApiFaktum/RepositoryLayer/obj/Debug/net7.0/RepositoryLayer.csproj.AssemblyReference.cache
+ApiFaktum/ServiceLayer/obj/Debug/net7.0/ServiceLayer.csproj.AssemblyReference.cache

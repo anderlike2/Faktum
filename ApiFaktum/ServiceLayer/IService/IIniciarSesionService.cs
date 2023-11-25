@@ -1,4 +1,5 @@
-﻿using DomainLayer.Models;
+﻿using DomainLayer.Dtos;
+using DomainLayer.Models;
 
 namespace ServiceLayer.IService
 {
@@ -15,6 +16,6 @@ namespace ServiceLayer.IService
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ValidarLogin(UsuarioModel objModel);
+        Task<Result> ValidarLogin(UsuarioFiltroDto objModel);
     }
 }
