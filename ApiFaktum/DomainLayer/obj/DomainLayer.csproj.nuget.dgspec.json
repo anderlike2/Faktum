@@ -44,9 +44,9 @@
               "target": "Package",
               "version": "[12.0.1, )"
             },
-            "Microsoft.AspNetCore.Http.Features": {
+            "Microsoft.AspNetCore.Http": {
               "target": "Package",
-              "version": "[5.0.17, )"
+              "version": "[2.2.2, )"
             }
           },
           "imports": [
