@@ -5,12 +5,17 @@ namespace DomainLayer.Models
 {
     public class RolModel
     {
+        [Required]
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RolCodigo { get; set; }
+        [Required]
         public string? RolDescripcion { get; set; }
+        [Required]
         public bool? RolEstado { get; set; }
+        [Required]
         public DateTime? RolFechaCreacion { get; set; }
         public DateTime? RolFechaModificacion { get; set; }
+        [Required]
         public virtual ICollection<RolUsuarioModel>? RolUsuario { get; set; }
     }
 }
