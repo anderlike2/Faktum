@@ -27,7 +27,29 @@
         public const string msjUsuarioNroDocumentoYaExiste = "Numero de documento ya existe";
         public const string msjUsuarioBloqueado = "Usuario bloqueado. contáctese con el administrador";
         public const string msjUsuarioEliminado = "Usuario eliminado";
-
         public const string msjLLaveCodigoNombre = "Hay campos que ya existen";
+        public const string msjConsultaExitosa = "Consulta realizada con éxito";
+
+        //TIPOS DE CLASE MAESTRO
+        public const string claseFactura = "claseFactura";
+        public const string tipoCliente = "tipoCliente";
+        public const string tipoCups = "tipoCups";
+        public const string tipoDocElectr = "tipoDocElectr";
+        public const string moneda = "moneda";
+        public const string tipoId = "tipoId";
+        public const string tipoDescuento = "tipoDescuento";
+        public const string tipoArchivoRips = "tipoArchivoRips";
+        public const string respTributaria = "respTributaria";
+        public const string respFiscal = "respFiscal";
+        public const string formaPago = "formaPago";
+        public const string factSaludTipo = "factSaludTipo";
+        public const string estadoDianFactura = "estadoDianFactura";
+        public const string cups = "cups";
+        public const string condicionVenta = "condicionVenta";
+        public const string pais = "pais";
+        public const string modalidadPago = "modalidadPago";
+        public const string conceptoNotas = "conceptoNotas";
+        public const string cobertura = "cobertura";
+        public const string depto = "depto";
     }
 }

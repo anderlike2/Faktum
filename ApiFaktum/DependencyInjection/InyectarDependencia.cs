@@ -53,8 +53,10 @@ namespace DependencyInjection
             services.AddScoped(typeof(ICreateLogger), typeof(CreateLogger));
 
             services.AddScoped(typeof(IUsuarioRepository), typeof(UsuarioRepository));
+            services.AddScoped(typeof(IMaestrasRepository), typeof(MaestrasRepository));
 
             services.AddScoped(typeof(IIniciarSesionService), typeof(IniciarSesionService));
+            services.AddScoped(typeof(IMaestrasService), typeof(MaestrasService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 
