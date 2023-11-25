@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Models
 {
-    public class RolesUsuarioModel
+    public class RolUsuarioModel
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RoleId { get; set; }
+        public int RoleCodigo { get; set; }
         public virtual UsuarioModel? RoleUsuario { get; set; }
         public virtual RolModel? RoleRol { get; set; }
         public bool? RoleEstado { get; set; }
