@@ -12,7 +12,7 @@ namespace Api_Empopasto.Controllers
     /// Anderson Benavides
     /// Controlador para el manejo del inicio de sesion
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IniciarSesionController : ControllerBase
