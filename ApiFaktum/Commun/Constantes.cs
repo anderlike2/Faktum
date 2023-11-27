@@ -50,6 +50,5 @@
         public const string modalidadPago = "modalidadPago";
         public const string conceptoNotas = "conceptoNotas";
         public const string cobertura = "cobertura";
-        public const string depto = "depto";
     }
 }

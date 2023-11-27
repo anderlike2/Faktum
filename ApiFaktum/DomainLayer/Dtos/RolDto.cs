@@ -1,12 +1,8 @@
 ﻿namespace DomainLayer.Dtos
 {
-    public class RolDto
+    public class RolDto : BaseDto
     {
         public int RolCodigo { get; set; }
         public string? RolDescripcion { get; set; }
-        public bool? RolEstado { get; set; }
-        public DateTime? RolFechaCreacion { get; set; }
-        public DateTime? RolFechaModificacion { get; set; }
-        public List<RolUsuarioDto>? RolUsuario { get; set; }
     }
 }

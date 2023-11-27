@@ -46,7 +46,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                result = await objContext.Usuario.FirstOrDefaultAsync(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword) );
+                result = await objContext.Usuario.Include(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword)).FirstAsync();
 
                 if (result != null)
                 {

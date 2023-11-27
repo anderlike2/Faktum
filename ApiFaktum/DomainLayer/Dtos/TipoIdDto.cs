@@ -1,11 +1,8 @@
 ﻿namespace DomainLayer.Dtos
 {
-    public class TipoIdDto
+    public class TipoIdDto : BaseDto
     {
         public int TiidCodigo { get; set; }
         public string? TiidNombre { get; set; }
-        public bool? TiidEstado { get; set; }
-        public DateTime? TiidFechaCreacion { get; set; }
-        public DateTime? TiidFechaModificacion { get; set; }
     }
 }

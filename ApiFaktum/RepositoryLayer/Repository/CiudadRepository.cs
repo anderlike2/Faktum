@@ -42,8 +42,8 @@ namespace RepositoryLayer.Repository
             List<CiudadModel>? lstResult = new List<CiudadModel>();
 
             try
-            {
-                lstResult = await objContext.Ciudad.Where(x => x.CiudEstado != null && (bool)x.CiudEstado).ToListAsync();
+            {                
+                lstResult = await objContext.Ciudad.Where(x => x.Estado == 1).Include(z => z.CiudDepto).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.Ium.Where(x => x.IumEstado != null && (bool)x.IumEstado).ToListAsync();
+                lstResult = await objContext.Ium.Where(x => x.Estado == 1).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

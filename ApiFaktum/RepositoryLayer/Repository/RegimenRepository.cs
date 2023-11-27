@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.Regimen.Where(x => x.RegiEstado != null && (bool)x.RegiEstado).ToListAsync();
+                lstResult = await objContext.Regimen.Include(x => x.Estado == 1).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

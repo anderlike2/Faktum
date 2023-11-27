@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.ClasJuridica.Where(x => x.JuriEstado != null && (bool)x.JuriEstado).ToListAsync();
+                lstResult = await objContext.ClasJuridica.Where(x => x.Estado == 1).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

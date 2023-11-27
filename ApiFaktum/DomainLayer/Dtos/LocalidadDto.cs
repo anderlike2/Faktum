@@ -1,11 +1,10 @@
 ﻿namespace DomainLayer.Dtos
 {
-    public class LocalidadDto
+    public class LocalidadDto : BaseDto
     {
         public int LocaCodigo { get; set; }
         public string? LocaNombre { get; set; }
-        public bool? LocaEstado { get; set; }
-        public DateTime? LocaFechaCreacion { get; set; }
-        public DateTime? LocaFechaModificacion { get; set; }
+        public DeptoDto? LocaDepto { get; set; }
+        public CiudadDto? LocaCiudad { get; set; }
     }
 }

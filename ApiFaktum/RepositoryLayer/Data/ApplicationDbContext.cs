@@ -16,22 +16,6 @@ namespace RepositoryLayer.Data
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
-            //Relaciones de tablas
-            modelBuilder.Entity<CiudadModel>()
-               .HasOne(b => b.Depto)
-               .WithMany(a => a.Ciudades)
-               .HasForeignKey(b => b.CiudDepto);
-
-            modelBuilder.Entity<RolUsuarioModel>()
-               .HasOne(b => b.Usuario)
-               .WithMany(a => a.Roles)
-               .HasForeignKey(b => b.RousUsuario);
-
-            modelBuilder.Entity<RolUsuarioModel>()
-               .HasOne(b => b.Rol)
-               .WithMany(a => a.Roles)
-               .HasForeignKey(b => b.RousRol);
-
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<UsuarioModel> Usuario { get; set; }

@@ -19,6 +19,7 @@ namespace ServiceLayer.Service
         private readonly IImpuestoRepository objImpuestoRepository;
         private readonly ICiudadRepository objCiudadRepository;
         private readonly INumeracionResolucionRepository objNumeracionResolucionRepository;
+        private readonly IDeptoRepository objDeptoRepository;
 
         /// <summary>
         /// Katary
@@ -34,10 +35,12 @@ namespace ServiceLayer.Service
         /// <param name="_objImpuestoRepository"></param>
         /// <param name="_objCiudadRepository"></param>
         /// <param name="_objNumeracionResolucionRepository"></param>
+        /// <param name="_obDeptoRepository"></param>
         /// <returns></returns>
         public MaestrasService(IMaestrasRepository _objMaestrasRepository, IReteFuenteRepository _objReteFuenteRepository, ICumRepository _objCumRepository, 
             IRegimenRepository _objRegimenRepository, IIumRepository _objIumRepository, IClasJuridicaRepository _objClasJuridicaRepository, 
-            IImpuestoRepository _objImpuestoRepository, ICiudadRepository _objCiudadRepository, INumeracionResolucionRepository _objNumeracionResolucionRepository)
+            IImpuestoRepository _objImpuestoRepository, ICiudadRepository _objCiudadRepository, INumeracionResolucionRepository _objNumeracionResolucionRepository,
+            IDeptoRepository _obDeptoRepository)
         {
             this.objMaestrasRepository = _objMaestrasRepository;
             this.objReteFuenteRepository = _objReteFuenteRepository;
@@ -48,6 +51,7 @@ namespace ServiceLayer.Service
             this.objImpuestoRepository = _objImpuestoRepository;
             this.objCiudadRepository = _objCiudadRepository;
             this.objNumeracionResolucionRepository = _objNumeracionResolucionRepository;
+            this.objDeptoRepository = _obDeptoRepository;
         }
 
         /// <summary>
@@ -148,6 +152,17 @@ namespace ServiceLayer.Service
         public Task<Result> ConsultarTablaNumeracionResolucion()
         {
             return objNumeracionResolucionRepository.ConsultarTabla();
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla de Depto
+        /// </summary>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarTablaDepto()
+        {
+            return objDeptoRepository.ConsultarTabla();
         }
     }
 }
