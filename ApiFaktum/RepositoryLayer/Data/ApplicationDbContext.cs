@@ -16,6 +16,7 @@ namespace RepositoryLayer.Data
                 relationship.DeleteBehavior = DeleteBehavior.Restrict;
             }
 
+            //Relaciones de tablas
             modelBuilder.Entity<CiudadModel>()
                .HasOne(b => b.Depto)
                .WithMany(a => a.Ciudades)
