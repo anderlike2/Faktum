@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class RolModel : BaseEntity
     {
         [Required]
-        public int RolCodigo { get; set; }
+        public string? RolCodigo { get; set; }
         [Required]
         public string? RolDescripcion { get; set; }    
     }
