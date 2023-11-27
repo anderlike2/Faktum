@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -10,5 +11,8 @@ namespace DomainLayer.Dtos
         public string? ImpuOperacion { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? ImpuPorcentaje { get; set; }
+
+        //Referencias
+        public List<ProductoDto>? ImpuProductos { get; set; }
     }
 }

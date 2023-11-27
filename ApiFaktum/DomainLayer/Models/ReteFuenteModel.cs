@@ -12,5 +12,9 @@ namespace DomainLayer.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal? RetePorcentaje { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ProductoModel>? ReteProductos { get; set; }
     }
 }

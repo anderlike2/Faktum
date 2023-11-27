@@ -10,5 +10,7 @@ namespace DomainLayer.Models
         public string? UsuaPassword { get; set; }
         [Required]
         public int? UsuaIntentos { get; set; }
+        [Required]
+        public virtual EmpresaModel? UsuEmpresa { get; set; }
     }
 }

@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int TiclCodigo { get; set; }
         [Required]
         public string? TiclNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<EmpresaModel>? TiclEmpresas { get; set; }
     }
 }

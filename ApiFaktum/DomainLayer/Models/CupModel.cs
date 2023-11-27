@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int CupsCodigo { get; set; }
         [Required]
         public string? CupsNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ProductoModel>? CupsProductos { get; set; }
     }
 }

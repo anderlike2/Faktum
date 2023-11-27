@@ -5,5 +5,8 @@
         public int RegiCodigo { get; set; }
         public string? RegiNombre { get; set; }
         public int RegiEstadoOperacion { get; set; }
+
+        //Referencias
+        public List<EmpresaDto>? RegiEmpresas { get; set; }
     }
 }

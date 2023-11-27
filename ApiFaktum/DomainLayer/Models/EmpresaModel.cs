@@ -12,9 +12,7 @@ namespace DomainLayer.Models
         public string? EmprCelular { get; set; }
         [Required]
         public string? EmprCiudad { get; set; }
-        public string? EmprCiuu { get; set; }
-        [Required]
-        public virtual ClasJuridicaModel? EmprClasJuridica { get; set; }
+        public string? EmprCiuu { get; set; }        
         [Required]
         public string? EmprContacto { get; set; }
         [Required]
@@ -24,9 +22,7 @@ namespace DomainLayer.Models
         [Required]
         public string? EmprDireccion { get; set; }
         [Required]
-        public string? EmprDv{ get; set; }
-        [Required]
-        public virtual RespFiscalModel? EmprRespFiscal { get; set; }
+        public string? EmprDv{ get; set; }        
         [Required]
         public string? EmprFormatoImpr { get; set; }
         [Required]
@@ -52,20 +48,35 @@ namespace DomainLayer.Models
         public string? EmprPagWeb { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal EmprPorcReteIca { get; set; }
+        public decimal EmprPorcReteIca { get; set; }        
         [Required]
-        public virtual RegimenModel? EmprRegimen { get; set; }
+        public string? EmprRepLegal { get; set; }        
         [Required]
-        public string? EmprRepLegal { get; set; }
+        public string? EmprTelefono { get; set; }       
         [Required]
-        public virtual RespTributariaModel? EmprRespTribut { get; set; }
-        [Required]
-        public string? EmprTelefono { get; set; }
+        public string? EmprHabilitacion { get; set; }
+
+        //Referencias
         [Required]
         public virtual TipoClienteModel? EmprTipoCliente { get; set; }
         [Required]
         public virtual TipoIdModel? EmprTipoId { get; set; }
         [Required]
-        public string? EmprHabilitacion { get; set; }
+        public virtual RespTributariaModel? EmprRespTribut { get; set; }
+        [Required]
+        public virtual RegimenModel? EmprRegimen { get; set; }
+        [Required]
+        public virtual RespFiscalModel? EmprRespFiscal { get; set; }
+        [Required]
+        public virtual ClasJuridicaModel? EmprClasJuridica { get; set; }
+        [Required]
+        public virtual ICollection<ProductoModel>? EmprProductos { get; set; }
+        [Required]
+        public virtual ICollection<CentroCostoModel>? EmprCentroCostos { get; set; }
+        [Required]
+        public virtual ICollection<FormatoImpresionModel>? EmprFormatosImpresion { get; set; }
+        [Required]
+        public virtual ICollection<FacturaModel>? EmprFacturas { get; set; }
+
     }
 }

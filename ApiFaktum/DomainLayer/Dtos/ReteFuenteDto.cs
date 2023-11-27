@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -8,5 +10,8 @@ namespace DomainLayer.Dtos
         public string? ReteNombre { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal? RetePorcentaje { get; set; }
+
+        //Referencias
+        public List<ProductoDto>? ReteProductos { get; set; }
     }
 }

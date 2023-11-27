@@ -10,5 +10,9 @@ namespace DomainLayer.Models
         public string? JuriNombre { get; set; }
         [Required]
         public int JuriEstadoOperacion { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<EmpresaModel>? JuriEmpresas { get; set; }
     }
 }

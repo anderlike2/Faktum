@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int TideCodigo { get; set; }
         [Required]
         public string? TideNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<FacturaModel>? TideFacturas { get; set; }
     }
 }

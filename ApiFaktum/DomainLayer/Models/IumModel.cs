@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DomainLayer.Dtos;
+using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
@@ -10,5 +11,9 @@ namespace DomainLayer.Models
         public string? IumNombre { get; set; }
         [Required]
         public string? IumUnidad { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ProductoModel>? IumProductos { get; set; }
     }
 }

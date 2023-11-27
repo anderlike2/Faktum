@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -7,14 +8,12 @@ namespace DomainLayer.Dtos
         public int EmprFactContador { get; set; }
         public string? EmprCelular { get; set; }
         public string? EmprCiudad { get; set; }
-        public string? EmprCiuu { get; set; }
-        public virtual ClasJuridicaDto? EmprClasJuridica { get; set; }
+        public string? EmprCiuu { get; set; }        
         public string? EmprContacto { get; set; }
         public string? EmprDepto { get; set; }
         public int EmprDiasPago { get; set; }
         public string? EmprDireccion { get; set; }
-        public string? EmprDv { get; set; }
-        public virtual RespFiscalDto? EmprRespFiscal { get; set; }
+        public string? EmprDv { get; set; }       
         public string? EmprFormatoImpr { get; set; }
         public string? EmprIdRepLegal { get; set; }
         public string? EmprLeyEnFactura { get; set; }
@@ -28,13 +27,22 @@ namespace DomainLayer.Dtos
         public string? EmprObservaciones { get; set; }
         public string? EmprPagWeb { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal EmprPorcReteIca { get; set; }
-        public virtual RegimenDto? EmprRegimen { get; set; }
-        public string? EmprRepLegal { get; set; }
-        public virtual RespTributariaDto? EmprRespTribut { get; set; }
-        public string? EmprTelefono { get; set; }
-        public virtual TipoClienteDto? EmprTipoCliente { get; set; }
-        public virtual TipoIdDto? EmprTipoId { get; set; }
+        public decimal EmprPorcReteIca { get; set; }       
+        public string? EmprRepLegal { get; set; }        
+        public string? EmprTelefono { get; set; }        
         public string? EmprHabilitacion { get; set; }
+
+        //Referencias
+        public TipoClienteDto? EmprTipoCliente { get; set; }
+        public TipoIdDto? EmprTipoId { get; set; }
+        public RespTributariaDto? EmprRespTribut { get; set; }
+        public RegimenDto? EmprRegimen { get; set; }
+        public RespFiscalDto? EmprRespFiscal { get; set; }
+        public ClasJuridicaDto? EmprClasJuridica { get; set; }
+        public List<ProductoDto>? EmprProductos { get; set; }
+        public List<CentroCostoDto>? EmprCentroCostos { get; set; }
+        public List<FormatoImpresionDto>? EmprFormatosImpresion { get; set; }
+        public List<FacturaDto>? EmprFacturas { get; set; }
+
     }
 }

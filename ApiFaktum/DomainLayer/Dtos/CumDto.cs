@@ -6,5 +6,8 @@
         public string? CumsNombre { get; set; }
         public int CumsConsecutivo { get; set; }
         public string? CumsExpediente { get; set; }
+
+        //Referencias
+        public List<ProductoDto>? CumsProductos { get; set; }
     }
 }

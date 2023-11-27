@@ -9,5 +9,9 @@ namespace DomainLayer.Models
         public int RetrCodigo { get; set; }
         [Required]
         public string? RetrNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<EmpresaModel>? RetrEmpresas { get; set; }
     }
 }

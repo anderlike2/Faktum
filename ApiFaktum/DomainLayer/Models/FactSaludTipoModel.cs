@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int FasaCodigo { get; set; }
         [Required]
         public string? FasaNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<FacturaModel>? FasaFacturas { get; set; }
     }
 }

@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int TicuCodigo { get; set; }
         [Required]
         public string? TicuNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ProductoModel>? TicuProductos { get; set; }
     }
 }

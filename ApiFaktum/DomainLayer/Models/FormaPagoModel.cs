@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int FopaCodigo { get; set; }
         [Required]
         public string? FopaNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<FacturaModel>? FopaFacturas { get; set; }
     }
 }

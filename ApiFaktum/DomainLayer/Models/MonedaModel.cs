@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int MoneCodigo { get; set; }
         [Required]
         public string? MoneNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<FacturaModel>? MoneFacturas { get; set; }
     }
 }

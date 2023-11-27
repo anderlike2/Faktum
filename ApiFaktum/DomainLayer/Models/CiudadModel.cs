@@ -8,6 +8,7 @@ namespace DomainLayer.Models
         public int CiudCodigo { get; set; }
         [Required]
         public string? CiudNombre { get; set; }
+        [Required]
         public virtual DeptoModel? CiudDepto { get; set; }
     }
 }

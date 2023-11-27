@@ -16,5 +16,9 @@ namespace DomainLayer.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal? ImpuPorcentaje { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ProductoModel>? ImpuProductos { get; set; }
     }
 }

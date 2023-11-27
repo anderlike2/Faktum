@@ -4,8 +4,9 @@ namespace DomainLayer.Models
 {
     public class RolUsuarioModel : BaseEntity
     {
-        //Navegacion
+        [Required]
         public virtual UsuarioModel? RousUsuario { get; set; }
+        [Required]
         public virtual RolModel? RousRol { get; set; }
     }
 }

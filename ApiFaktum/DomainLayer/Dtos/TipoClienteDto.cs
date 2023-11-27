@@ -4,5 +4,8 @@
     {
         public int TiclCodigo { get; set; }
         public string? TiclNombre { get; set; }
+
+        //Referencias
+        public List<EmpresaDto>? TiclEmpresas { get; set; }
     }
 }

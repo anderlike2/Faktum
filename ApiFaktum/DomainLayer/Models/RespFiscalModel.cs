@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int RefiCodigo { get; set; }
         [Required]
         public string? RefiNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<EmpresaModel>? RefiEmpresas { get; set; }
     }
 }

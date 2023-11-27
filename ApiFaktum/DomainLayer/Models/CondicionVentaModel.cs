@@ -9,5 +9,9 @@ namespace DomainLayer.Models
         public int CoveCodigo { get; set; }
         [Required]
         public string? CoveNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<FacturaModel>? CoveFacturas{ get; set; }
     }
 }

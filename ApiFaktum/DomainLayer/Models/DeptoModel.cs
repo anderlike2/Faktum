@@ -9,8 +9,7 @@ namespace DomainLayer.Models
         public int DeptoCodigo { get; set; }
         [Required]
         public string? DeptoNombre { get; set; }
-
-        //Navegacion
+        [Required]
         public virtual ICollection<CiudadModel>? DeptoCiudades { get; set; }
     }
 }

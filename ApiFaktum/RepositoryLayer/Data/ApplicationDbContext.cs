@@ -48,8 +48,13 @@ namespace RepositoryLayer.Data
         public DbSet<TipoCupModel> TipoCup { get; set; }
         public DbSet<TipoClienteModel> TipoCliente { get; set; }
         public DbSet<ClaseFacturaModel> ClaseFactura { get; set; }
-        public DbSet<NumeracionResolucionModel> numeracionResolucion { get; set; }
+        public DbSet<NumeracionResolucionModel> NumeracionResolucion { get; set; }
         public DbSet<LocalidadModel> Localidad { get; set; }
         public DbSet<EmpresaModel> Empresa { get; set; }
+        public DbSet<FormatoImpresionModel> FormatoImpresion { get; set; }
+        public DbSet<UnidadModel> Unidad { get; set; }
+        public DbSet<CentroCostoModel> CentroCosto { get; set; }
+        public DbSet<ProductoModel> Producto { get; set; }
+        public DbSet<FacturaModel> Factura { get; set; }
     }
 }
