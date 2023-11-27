@@ -16,5 +16,7 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<ProductoModel>? ReteProductos { get; set; }
+        [Required]
+        public virtual ICollection<DetalleFactModel>? ReteDetFacturas { get; set; }
     }
 }

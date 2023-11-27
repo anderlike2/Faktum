@@ -43,6 +43,7 @@ namespace DomainLayer.Dtos
         public List<CentroCostoDto>? EmprCentroCostos { get; set; }
         public List<FormatoImpresionDto>? EmprFormatosImpresion { get; set; }
         public List<FacturaDto>? EmprFacturas { get; set; }
+        public List<DetalleFactDto>? EmprDetFacturas { get; set; }
 
     }
 }

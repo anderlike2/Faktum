@@ -121,6 +121,9 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<FacturaModel, FacturaDto>().ReverseMap();
             CreateMap<FacturaDto, FacturaModel>();
+
+            CreateMap<DetalleFactModel, DetalleFactDto>().ReverseMap();
+            CreateMap<DetalleFactDto, DetalleFactModel>();
         }
     }
 }

@@ -16,5 +16,7 @@ namespace DomainLayer.Models
         public virtual EmpresaModel? UnidEmpresa { get; set; }
         [Required]
         public virtual ICollection<ProductoModel>? UnidProductos { get; set; }
+        [Required]
+        public virtual ICollection<DetalleFactModel>? UnidDetFacturas { get; set; }
     }
 }

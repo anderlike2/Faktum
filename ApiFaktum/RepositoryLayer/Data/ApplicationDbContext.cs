@@ -56,5 +56,6 @@ namespace RepositoryLayer.Data
         public DbSet<CentroCostoModel> CentroCosto { get; set; }
         public DbSet<ProductoModel> Producto { get; set; }
         public DbSet<FacturaModel> Factura { get; set; }
+        public DbSet<DetalleFactModel> DetalleFact { get; set; }
     }
 }

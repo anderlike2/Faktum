@@ -11,5 +11,6 @@ namespace DomainLayer.Dtos
         //Referencias
         public EmpresaDto? UnidEmpresa { get; set; }
         public List<ProductoDto>? UnidProductos { get; set; }
+        public List<DetalleFactDto>? UnidDetFacturas { get; set; }
     }
 }

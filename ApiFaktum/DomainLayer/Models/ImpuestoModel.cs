@@ -20,5 +20,7 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<ProductoModel>? ImpuProductos { get; set; }
+        [Required]
+        public virtual ICollection<DetalleFactModel>? ImpuDetFacturas { get; set; }
     }
 }

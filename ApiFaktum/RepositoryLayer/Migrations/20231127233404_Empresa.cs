@@ -977,6 +977,74 @@ namespace RepositoryLayer.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "DetalleFact",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DetaCantidad = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaCentroCostos = table.Column<long>(type: "bigint", nullable: false),
+                    DetaDescripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DetaFactCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DetaFechaDespacho = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DetaIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaLinea = table.Column<int>(type: "int", nullable: false),
+                    DetaListaPrecio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DetaOrdenCompra = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DetaPorDescuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaPorcIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaPorcCrf = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaProducto = table.Column<long>(type: "bigint", nullable: false),
+                    DetaRemision = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DetaValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaValorUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaValReteIca = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaValRf = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    DetaFacturaId = table.Column<int>(type: "int", nullable: false),
+                    DetaRetefuenteId = table.Column<int>(type: "int", nullable: false),
+                    DetaTipoImpuestoId = table.Column<int>(type: "int", nullable: false),
+                    DetaUnidadId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DetalleFact", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_DetalleFact_Empresa_DetaEmpresaId",
+                        column: x => x.DetaEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DetalleFact_Factura_DetaFacturaId",
+                        column: x => x.DetaFacturaId,
+                        principalTable: "Factura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DetalleFact_Impuesto_DetaTipoImpuestoId",
+                        column: x => x.DetaTipoImpuestoId,
+                        principalTable: "Impuesto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DetalleFact_ReteFuente_DetaRetefuenteId",
+                        column: x => x.DetaRetefuenteId,
+                        principalTable: "ReteFuente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_DetalleFact_Unidad_DetaUnidadId",
+                        column: x => x.DetaUnidadId,
+                        principalTable: "Unidad",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_CentroCosto_CcosEmpresaId",
                 table: "CentroCosto",
@@ -986,6 +1054,31 @@ namespace RepositoryLayer.Migrations
                 name: "IX_Ciudad_CiudDeptoId",
                 table: "Ciudad",
                 column: "CiudDeptoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFact_DetaEmpresaId",
+                table: "DetalleFact",
+                column: "DetaEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFact_DetaFacturaId",
+                table: "DetalleFact",
+                column: "DetaFacturaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFact_DetaRetefuenteId",
+                table: "DetalleFact",
+                column: "DetaRetefuenteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFact_DetaTipoImpuestoId",
+                table: "DetalleFact",
+                column: "DetaTipoImpuestoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DetalleFact_DetaUnidadId",
+                table: "DetalleFact",
+                column: "DetaUnidadId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Empresa_EmprClasJuridicaId",
@@ -1164,7 +1257,7 @@ namespace RepositoryLayer.Migrations
                 name: "ConceptoNota");
 
             migrationBuilder.DropTable(
-                name: "Factura");
+                name: "DetalleFact");
 
             migrationBuilder.DropTable(
                 name: "Localidad");
@@ -1185,34 +1278,7 @@ namespace RepositoryLayer.Migrations
                 name: "RolUsuario");
 
             migrationBuilder.DropTable(
-                name: "ClaseFactura");
-
-            migrationBuilder.DropTable(
-                name: "Cobertura");
-
-            migrationBuilder.DropTable(
-                name: "CondicionVenta");
-
-            migrationBuilder.DropTable(
-                name: "EstadoDianFactura");
-
-            migrationBuilder.DropTable(
-                name: "FactSaludTipo");
-
-            migrationBuilder.DropTable(
-                name: "FormaPago");
-
-            migrationBuilder.DropTable(
-                name: "FormatoImpresion");
-
-            migrationBuilder.DropTable(
-                name: "Moneda");
-
-            migrationBuilder.DropTable(
-                name: "TipoDescuento");
-
-            migrationBuilder.DropTable(
-                name: "TipoDocElectr");
+                name: "Factura");
 
             migrationBuilder.DropTable(
                 name: "Ciudad");
@@ -1249,6 +1315,36 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Usuario");
+
+            migrationBuilder.DropTable(
+                name: "ClaseFactura");
+
+            migrationBuilder.DropTable(
+                name: "Cobertura");
+
+            migrationBuilder.DropTable(
+                name: "CondicionVenta");
+
+            migrationBuilder.DropTable(
+                name: "EstadoDianFactura");
+
+            migrationBuilder.DropTable(
+                name: "FactSaludTipo");
+
+            migrationBuilder.DropTable(
+                name: "FormaPago");
+
+            migrationBuilder.DropTable(
+                name: "FormatoImpresion");
+
+            migrationBuilder.DropTable(
+                name: "Moneda");
+
+            migrationBuilder.DropTable(
+                name: "TipoDescuento");
+
+            migrationBuilder.DropTable(
+                name: "TipoDocElectr");
 
             migrationBuilder.DropTable(
                 name: "Depto");

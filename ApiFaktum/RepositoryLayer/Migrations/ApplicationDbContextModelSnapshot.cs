@@ -333,6 +333,112 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Depto");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.DetalleFactModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<decimal>("DetaCantidad")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("DetaCentroCostos")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("DetaDescripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DetaEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DetaFactCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DetaFacturaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DetaFechaDespacho")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("DetaIva")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("DetaLinea")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DetaListaPrecio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DetaOrdenCompra")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("DetaPorDescuento")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DetaPorcCrf")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DetaPorcIva")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<long>("DetaProducto")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("DetaRemision")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DetaRetefuenteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DetaTipoImpuestoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DetaUnidadId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("DetaValReteIca")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DetaValRf")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DetaValor")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("DetaValorUnitario")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DetaEmpresaId");
+
+                    b.HasIndex("DetaFacturaId");
+
+                    b.HasIndex("DetaRetefuenteId");
+
+                    b.HasIndex("DetaTipoImpuestoId");
+
+                    b.HasIndex("DetaUnidadId");
+
+                    b.ToTable("DetalleFact");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.EmpresaModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1591,6 +1697,49 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("CiudDepto");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.DetalleFactModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "DetaEmpresa")
+                        .WithMany("EmprDetFacturas")
+                        .HasForeignKey("DetaEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.FacturaModel", "DetaFactura")
+                        .WithMany("FactDetFacturas")
+                        .HasForeignKey("DetaFacturaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.ReteFuenteModel", "DetaRetefuente")
+                        .WithMany("ReteDetFacturas")
+                        .HasForeignKey("DetaRetefuenteId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.ImpuestoModel", "DetaTipoImpuesto")
+                        .WithMany("ImpuDetFacturas")
+                        .HasForeignKey("DetaTipoImpuestoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.UnidadModel", "DetaUnidad")
+                        .WithMany("UnidDetFacturas")
+                        .HasForeignKey("DetaUnidadId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("DetaEmpresa");
+
+                    b.Navigation("DetaFactura");
+
+                    b.Navigation("DetaRetefuente");
+
+                    b.Navigation("DetaTipoImpuesto");
+
+                    b.Navigation("DetaUnidad");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.EmpresaModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.ClasJuridicaModel", "EmprClasJuridica")
@@ -1931,6 +2080,8 @@ namespace RepositoryLayer.Migrations
                 {
                     b.Navigation("EmprCentroCostos");
 
+                    b.Navigation("EmprDetFacturas");
+
                     b.Navigation("EmprFacturas");
 
                     b.Navigation("EmprFormatosImpresion");
@@ -1948,6 +2099,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("FasaFacturas");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.FacturaModel", b =>
+                {
+                    b.Navigation("FactDetFacturas");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.FormaPagoModel", b =>
                 {
                     b.Navigation("FopaFacturas");
@@ -1960,6 +2116,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ImpuestoModel", b =>
                 {
+                    b.Navigation("ImpuDetFacturas");
+
                     b.Navigation("ImpuProductos");
                 });
 
@@ -1990,6 +2148,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ReteFuenteModel", b =>
                 {
+                    b.Navigation("ReteDetFacturas");
+
                     b.Navigation("ReteProductos");
                 });
 
@@ -2025,6 +2185,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.UnidadModel", b =>
                 {
+                    b.Navigation("UnidDetFacturas");
+
                     b.Navigation("UnidProductos");
                 });
 #pragma warning restore 612, 618

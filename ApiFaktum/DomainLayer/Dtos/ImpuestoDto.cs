@@ -14,5 +14,6 @@ namespace DomainLayer.Dtos
 
         //Referencias
         public List<ProductoDto>? ImpuProductos { get; set; }
+        public List<DetalleFactDto>? ImpuDetFacturas { get; set; }
     }
 }
