@@ -15,7 +15,9 @@ namespace DomainLayer.Models
         [Required]
         public DateTime? RolFechaCreacion { get; set; }
         public DateTime? RolFechaModificacion { get; set; }
-        [Required]
-        public virtual ICollection<RolUsuarioModel>? RolUsuario { get; set; }
+        
+
+        //Navegacion
+        public virtual ICollection<RolUsuarioModel>? Roles { get; set; }
     }
 }

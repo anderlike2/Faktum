@@ -491,7 +491,7 @@ namespace RepositoryLayer.Migrations
                     CiudCodigo = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CiudNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CiudDeptoDeptoCodigo = table.Column<int>(type: "int", nullable: false),
+                    CiudDepto = table.Column<int>(type: "int", nullable: false),
                     CiudEstado = table.Column<bool>(type: "bit", nullable: false),
                     CiudFechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     CiudFechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -500,8 +500,8 @@ namespace RepositoryLayer.Migrations
                 {
                     table.PrimaryKey("PK_Ciudad", x => x.CiudCodigo);
                     table.ForeignKey(
-                        name: "FK_Ciudad_Depto_CiudDeptoDeptoCodigo",
-                        column: x => x.CiudDeptoDeptoCodigo,
+                        name: "FK_Ciudad_Depto_CiudDepto",
+                        column: x => x.CiudDepto,
                         principalTable: "Depto",
                         principalColumn: "DeptoCodigo",
                         onDelete: ReferentialAction.Restrict);
@@ -513,8 +513,8 @@ namespace RepositoryLayer.Migrations
                 {
                     RousCodigo = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RousUsuarioUsuaCodigo = table.Column<int>(type: "int", nullable: false),
-                    RousRolRolCodigo = table.Column<int>(type: "int", nullable: false),
+                    RousUsuario = table.Column<int>(type: "int", nullable: false),
+                    RousRol = table.Column<int>(type: "int", nullable: false),
                     RousEstado = table.Column<bool>(type: "bit", nullable: false),
                     RousFechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     RousFechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -523,14 +523,14 @@ namespace RepositoryLayer.Migrations
                 {
                     table.PrimaryKey("PK_RolUsuario", x => x.RousCodigo);
                     table.ForeignKey(
-                        name: "FK_RolUsuario_Rol_RousRolRolCodigo",
-                        column: x => x.RousRolRolCodigo,
+                        name: "FK_RolUsuario_Rol_RousRol",
+                        column: x => x.RousRol,
                         principalTable: "Rol",
                         principalColumn: "RolCodigo",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_RolUsuario_Usuario_RousUsuarioUsuaCodigo",
-                        column: x => x.RousUsuarioUsuaCodigo,
+                        name: "FK_RolUsuario_Usuario_RousUsuario",
+                        column: x => x.RousUsuario,
                         principalTable: "Usuario",
                         principalColumn: "UsuaCodigo",
                         onDelete: ReferentialAction.Restrict);
@@ -567,9 +567,9 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ciudad_CiudDeptoDeptoCodigo",
+                name: "IX_Ciudad_CiudDepto",
                 table: "Ciudad",
-                column: "CiudDeptoDeptoCodigo");
+                column: "CiudDepto");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Localidad_LocaCiudadCiudCodigo",
@@ -582,14 +582,14 @@ namespace RepositoryLayer.Migrations
                 column: "LocaDeptoDeptoCodigo");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolUsuario_RousRolRolCodigo",
+                name: "IX_RolUsuario_RousRol",
                 table: "RolUsuario",
-                column: "RousRolRolCodigo");
+                column: "RousRol");
 
             migrationBuilder.CreateIndex(
-                name: "IX_RolUsuario_RousUsuarioUsuaCodigo",
+                name: "IX_RolUsuario_RousUsuario",
                 table: "RolUsuario",
-                column: "RousUsuarioUsuaCodigo");
+                column: "RousUsuario");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

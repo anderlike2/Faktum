@@ -9,13 +9,17 @@ namespace DomainLayer.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RousCodigo { get; set; }
         [Required]
-        public virtual UsuarioModel? RousUsuario { get; set; }
+        public int RousUsuario { get; set; }
         [Required]
-        public virtual RolModel? RousRol { get; set; }
+        public int RousRol { get; set; }
         [Required]
         public bool? RousEstado { get; set; }
         [Required]
         public DateTime? RousFechaCreacion { get; set; }
         public DateTime? RousFechaModificacion { get; set; }
+
+        //Navegacion
+        public virtual UsuarioModel? Usuario { get; set; }
+        public virtual RolModel? Rol { get; set; }
     }
 }

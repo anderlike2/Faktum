@@ -16,5 +16,8 @@ namespace DomainLayer.Models
         [Required]
         public DateTime? DeptoFechaCreacion { get; set; }
         public DateTime? DeptoFechaModificacion { get; set; }
+
+        //Navegacion
+        public virtual ICollection<CiudadModel>? Ciudades { get; set; }
     }
 }

@@ -11,11 +11,14 @@ namespace DomainLayer.Models
         [Required]
         public string? CiudNombre { get; set; }
         [Required]
-        public virtual DeptoModel? CiudDepto { get; set; }
+        public int CiudDepto { get; set; }
         [Required]
         public bool? CiudEstado { get; set; }
         [Required]
         public DateTime? CiudFechaCreacion { get; set; }
         public DateTime? CiudFechaModificacion { get; set; }
+        
+        //Navegacion
+        public virtual DeptoModel? Depto { get; set; }
     }
 }

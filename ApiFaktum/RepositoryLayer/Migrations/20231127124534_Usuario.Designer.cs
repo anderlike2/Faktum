@@ -12,7 +12,7 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231125165820_Usuario")]
+    [Migration("20231127124534_Usuario")]
     partial class Usuario
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,7 +32,7 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CiudCodigo"), 1L, 1);
 
-                    b.Property<int>("CiudDeptoDeptoCodigo")
+                    b.Property<int>("CiudDepto")
                         .HasColumnType("int");
 
                     b.Property<bool?>("CiudEstado")
@@ -52,7 +52,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("CiudCodigo");
 
-                    b.HasIndex("CiudDeptoDeptoCodigo");
+                    b.HasIndex("CiudDepto");
 
                     b.ToTable("Ciudad");
                 });
@@ -764,17 +764,17 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime?>("RousFechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RousRolRolCodigo")
+                    b.Property<int>("RousRol")
                         .HasColumnType("int");
 
-                    b.Property<int>("RousUsuarioUsuaCodigo")
+                    b.Property<int>("RousUsuario")
                         .HasColumnType("int");
 
                     b.HasKey("RousCodigo");
 
-                    b.HasIndex("RousRolRolCodigo");
+                    b.HasIndex("RousRol");
 
-                    b.HasIndex("RousUsuarioUsuaCodigo");
+                    b.HasIndex("RousUsuario");
 
                     b.ToTable("RolUsuario");
                 });
@@ -985,13 +985,13 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.CiudadModel", b =>
                 {
-                    b.HasOne("DomainLayer.Models.DeptoModel", "CiudDepto")
-                        .WithMany()
-                        .HasForeignKey("CiudDeptoDeptoCodigo")
+                    b.HasOne("DomainLayer.Models.DeptoModel", "Depto")
+                        .WithMany("Ciudades")
+                        .HasForeignKey("CiudDepto")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("CiudDepto");
+                    b.Navigation("Depto");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.LocalidadModel", b =>
@@ -1015,31 +1015,36 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.RolUsuarioModel", b =>
                 {
-                    b.HasOne("DomainLayer.Models.RolModel", "RousRol")
-                        .WithMany("RolUsuario")
-                        .HasForeignKey("RousRolRolCodigo")
+                    b.HasOne("DomainLayer.Models.RolModel", "Rol")
+                        .WithMany("Roles")
+                        .HasForeignKey("RousRol")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DomainLayer.Models.UsuarioModel", "RousUsuario")
-                        .WithMany("UsuRoles")
-                        .HasForeignKey("RousUsuarioUsuaCodigo")
+                    b.HasOne("DomainLayer.Models.UsuarioModel", "Usuario")
+                        .WithMany("Roles")
+                        .HasForeignKey("RousUsuario")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("RousRol");
+                    b.Navigation("Rol");
 
-                    b.Navigation("RousUsuario");
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.DeptoModel", b =>
+                {
+                    b.Navigation("Ciudades");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RolModel", b =>
                 {
-                    b.Navigation("RolUsuario");
+                    b.Navigation("Roles");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.UsuarioModel", b =>
                 {
-                    b.Navigation("UsuRoles");
+                    b.Navigation("Roles");
                 });
 #pragma warning restore 612, 618
         }
