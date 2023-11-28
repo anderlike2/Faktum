@@ -95,6 +95,8 @@ namespace DomainLayer.Models
         public virtual ICollection<ClienteModel>? EmprClientes { get; set; }
         [Required]
         public virtual ICollection<ResolucionModel>? EmprResoluciones{ get; set; }
+        [Required]
+        public virtual ICollection<ContratoSaludModel>? EmprContratosSalud{ get; set; }
 
     }
 }

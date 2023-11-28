@@ -12,5 +12,7 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<FacturaModel>? CobeFacturas { get; set; }
+        [Required]
+        public virtual ICollection<ContratoSaludModel>? CobeContratosSalud { get; set; }
     }
 }

@@ -12,7 +12,7 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231128015120_Empresa")]
+    [Migration("20231128020643_Empresa")]
     partial class Empresa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -383,6 +383,60 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CondicionVenta");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ContratoSaludModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CosaClieIdId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CosaCobeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CosaContrato")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CosaEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CosaMopaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CosaNitCliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CosaPoliza")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CosaClieIdId");
+
+                    b.HasIndex("CosaCobeId");
+
+                    b.HasIndex("CosaEmpresaId");
+
+                    b.HasIndex("CosaMopaId");
+
+                    b.ToTable("ContratoSalud");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CumModel", b =>
@@ -1659,7 +1713,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ResoTipoDocId");
 
-                    b.ToTable("ResolucionModel");
+                    b.ToTable("Resolucion");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RespFiscalModel", b =>
@@ -2373,6 +2427,41 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("ClieTipoId");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ContratoSaludModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.ClienteModel", "CosaClieId")
+                        .WithMany("ClieContratosSalud")
+                        .HasForeignKey("CosaClieIdId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.CoberturaModel", "CosaCobe")
+                        .WithMany("CobeContratosSalud")
+                        .HasForeignKey("CosaCobeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "CosaEmpresa")
+                        .WithMany("EmprContratosSalud")
+                        .HasForeignKey("CosaEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.ModalidadPagoModel", "CosaMopa")
+                        .WithMany("MopaContratosSalud")
+                        .HasForeignKey("CosaMopaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("CosaClieId");
+
+                    b.Navigation("CosaCobe");
+
+                    b.Navigation("CosaEmpresa");
+
+                    b.Navigation("CosaMopa");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.DetalleFactModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.EmpresaModel", "DetaEmpresa")
@@ -2941,6 +3030,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ClienteModel", b =>
                 {
+                    b.Navigation("ClieContratosSalud");
+
                     b.Navigation("ClieFacturas");
 
                     b.Navigation("ClieListaPrecios");
@@ -2950,6 +3041,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.CoberturaModel", b =>
                 {
+                    b.Navigation("CobeContratosSalud");
+
                     b.Navigation("CobeFacturas");
                 });
 
@@ -2987,6 +3080,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("EmprCentroCostos");
 
                     b.Navigation("EmprClientes");
+
+                    b.Navigation("EmprContratosSalud");
 
                     b.Navigation("EmprDetFacturas");
 
@@ -3055,6 +3150,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("LiprDetFacturas");
 
                     b.Navigation("LiprFacturas");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ModalidadPagoModel", b =>
+                {
+                    b.Navigation("MopaContratosSalud");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.MonedaModel", b =>

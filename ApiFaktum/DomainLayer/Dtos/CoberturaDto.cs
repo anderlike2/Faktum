@@ -9,5 +9,6 @@ namespace DomainLayer.Dtos
 
         //Referencias
         public List<FacturaDto>? CobeFacturas { get; set; }
+        public List<ContratoSaludDto>? CobeContratosSalud { get; set; }
     }
 }

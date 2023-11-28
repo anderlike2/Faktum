@@ -69,5 +69,7 @@ namespace DomainLayer.Models
         public virtual TipoClienteModel? ClieTipoCliente { get; set; }
         [Required]
         public virtual TipoIdModel? ClieTipoId { get; set; }
+        [Required]
+        public virtual ICollection<ContratoSaludModel>? ClieContratosSalud { get; set; }
     }
 }

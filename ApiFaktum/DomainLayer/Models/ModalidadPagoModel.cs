@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int MopaCodigo { get; set; }
         [Required]
         public string? MopaNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ContratoSaludModel>? MopaContratosSalud { get; set; }
     }
 }

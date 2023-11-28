@@ -923,6 +923,52 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ContratoSalud",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CosaContrato = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CosaNitCliente = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CosaPoliza = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CosaClieIdId = table.Column<int>(type: "int", nullable: false),
+                    CosaCobeId = table.Column<int>(type: "int", nullable: false),
+                    CosaEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    CosaMopaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ContratoSalud", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ContratoSalud_Cliente_CosaClieIdId",
+                        column: x => x.CosaClieIdId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ContratoSalud_Cobertura_CosaCobeId",
+                        column: x => x.CosaCobeId,
+                        principalTable: "Cobertura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ContratoSalud_Empresa_CosaEmpresaId",
+                        column: x => x.CosaEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ContratoSalud_ModalidadPago_CosaMopaId",
+                        column: x => x.CosaMopaId,
+                        principalTable: "ModalidadPago",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "SucursalCliente",
                 columns: table => new
                 {
@@ -1136,7 +1182,7 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ResolucionModel",
+                name: "Resolucion",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1159,27 +1205,27 @@ namespace RepositoryLayer.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ResolucionModel", x => x.Id);
+                    table.PrimaryKey("PK_Resolucion", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ResolucionModel_Empresa_ResoEmpresaId",
+                        name: "FK_Resolucion_Empresa_ResoEmpresaId",
                         column: x => x.ResoEmpresaId,
                         principalTable: "Empresa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ResolucionModel_NumeracionResolucion_ResoNumeracionResolucionId",
+                        name: "FK_Resolucion_NumeracionResolucion_ResoNumeracionResolucionId",
                         column: x => x.ResoNumeracionResolucionId,
                         principalTable: "NumeracionResolucion",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ResolucionModel_Sucursal_ResoSucursalId",
+                        name: "FK_Resolucion_Sucursal_ResoSucursalId",
                         column: x => x.ResoSucursalId,
                         principalTable: "Sucursal",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ResolucionModel_TipoDocElectr_ResoTipoDocId",
+                        name: "FK_Resolucion_TipoDocElectr_ResoTipoDocId",
                         column: x => x.ResoTipoDocId,
                         principalTable: "TipoDocElectr",
                         principalColumn: "Id",
@@ -1519,6 +1565,26 @@ namespace RepositoryLayer.Migrations
                 column: "ClieTipoIdId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ContratoSalud_CosaClieIdId",
+                table: "ContratoSalud",
+                column: "CosaClieIdId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ContratoSalud_CosaCobeId",
+                table: "ContratoSalud",
+                column: "CosaCobeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ContratoSalud_CosaEmpresaId",
+                table: "ContratoSalud",
+                column: "CosaEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ContratoSalud_CosaMopaId",
+                table: "ContratoSalud",
+                column: "CosaMopaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DetalleFact_DetaEmpresaId",
                 table: "DetalleFact",
                 column: "DetaEmpresaId");
@@ -1759,23 +1825,23 @@ namespace RepositoryLayer.Migrations
                 column: "ProdUnidadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResolucionModel_ResoEmpresaId",
-                table: "ResolucionModel",
+                name: "IX_Resolucion_ResoEmpresaId",
+                table: "Resolucion",
                 column: "ResoEmpresaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResolucionModel_ResoNumeracionResolucionId",
-                table: "ResolucionModel",
+                name: "IX_Resolucion_ResoNumeracionResolucionId",
+                table: "Resolucion",
                 column: "ResoNumeracionResolucionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResolucionModel_ResoSucursalId",
-                table: "ResolucionModel",
+                name: "IX_Resolucion_ResoSucursalId",
+                table: "Resolucion",
                 column: "ResoSucursalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ResolucionModel_ResoTipoDocId",
-                table: "ResolucionModel",
+                name: "IX_Resolucion_ResoTipoDocId",
+                table: "Resolucion",
                 column: "ResoTipoDocId");
 
             migrationBuilder.CreateIndex(
@@ -1832,22 +1898,25 @@ namespace RepositoryLayer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ContratoSalud");
+
+            migrationBuilder.DropTable(
                 name: "DetalleFact");
 
             migrationBuilder.DropTable(
                 name: "Localidad");
 
             migrationBuilder.DropTable(
-                name: "ModalidadPago");
-
-            migrationBuilder.DropTable(
-                name: "ResolucionModel");
+                name: "Resolucion");
 
             migrationBuilder.DropTable(
                 name: "RolUsuario");
 
             migrationBuilder.DropTable(
                 name: "Vendedor");
+
+            migrationBuilder.DropTable(
+                name: "ModalidadPago");
 
             migrationBuilder.DropTable(
                 name: "Factura");

@@ -44,5 +44,6 @@ namespace DomainLayer.Dtos
         public RespTributariaDto? ClieRespTributaria { get; set; }
         public TipoClienteDto? ClieTipoCliente { get; set; }
         public TipoIdDto? ClieTipoId { get; set; }
+        public List<ContratoSaludDto>? ClieContratosSalud { get; set; }
     }
 }
