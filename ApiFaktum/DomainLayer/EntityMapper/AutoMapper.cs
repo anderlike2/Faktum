@@ -130,6 +130,12 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<ListaPrecioModel, ListaPrecioDto>().ReverseMap();
             CreateMap<ListaPrecioDto, ListaPrecioModel>();
+
+            CreateMap<NotaDebitoModel, NotaDebitoDto>().ReverseMap();
+            CreateMap<NotaDebitoDto, NotaDebitoModel>();
+
+            CreateMap<NotaCreditoModel, NotaCreditoDto>().ReverseMap();
+            CreateMap<NotaCreditoDto, NotaCreditoModel>();
         }
     }
 }

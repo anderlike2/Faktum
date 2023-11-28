@@ -83,6 +83,10 @@ namespace DomainLayer.Models
         public virtual ICollection<VendedorModel>? EmprVendedores { get; set; }
         [Required]
         public virtual ICollection<ListaPrecioModel>? EmprListaPrecios { get; set; }
+        [Required]
+        public virtual ICollection<NotaDebitoModel>? EmprNotasDebito { get; set; }
+        [Required]
+        public virtual ICollection<NotaCreditoModel>? EmprNotasCredito { get; set; }
 
     }
 }

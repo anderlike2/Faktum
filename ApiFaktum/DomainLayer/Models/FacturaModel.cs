@@ -109,6 +109,10 @@ namespace DomainLayer.Models
         public virtual ICollection<DetalleFactModel>? FactDetFacturas { get; set; }
         [Required]
         public virtual ListaPrecioModel? FactListaPrecios { get; set; }
+        [Required]
+        public virtual NotaDebitoModel? FactNotaDebito { get; set; }
+        [Required]
+        public virtual NotaCreditoModel? FactNotaCredito { get; set; }
 
     }
 }

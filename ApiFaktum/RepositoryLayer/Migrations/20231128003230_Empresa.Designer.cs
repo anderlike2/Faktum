@@ -12,7 +12,7 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231128001010_Empresa")]
+    [Migration("20231128003230_Empresa")]
     partial class Empresa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -744,6 +744,12 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("FactMonedaId")
                         .HasColumnType("int");
 
+                    b.Property<int>("FactNotaCreditoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FactNotaDebitoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FactNumero")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -845,6 +851,10 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("FactListaPreciosId");
 
                     b.HasIndex("FactMonedaId");
+
+                    b.HasIndex("FactNotaCreditoId");
+
+                    b.HasIndex("FactNotaDebitoId");
 
                     b.HasIndex("FactSaludTipoId");
 
@@ -1136,6 +1146,102 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Moneda");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.NotaCreditoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NocrConceptoNotaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NocrEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("NocrFactura")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NocrMotivo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NocrNumero")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("NocrValor")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("NocrValorIva")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NocrConceptoNotaId");
+
+                    b.HasIndex("NocrEmpresaId");
+
+                    b.ToTable("NotaCredito");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.NotaDebitoModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("NodbConceptoNotaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NodbEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<long>("NodbFactura")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NodbMotivo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NodbNumero")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("NodbValor")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("NodbValorIva")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NodbConceptoNotaId");
+
+                    b.HasIndex("NodbEmpresaId");
+
+                    b.ToTable("NotaDebito");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.NumeracionResolucionModel", b =>
@@ -1953,6 +2059,18 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DomainLayer.Models.NotaCreditoModel", "FactNotaCredito")
+                        .WithMany("NocrFacturas")
+                        .HasForeignKey("FactNotaCreditoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.NotaDebitoModel", "FactNotaDebito")
+                        .WithMany("NodbFacturas")
+                        .HasForeignKey("FactNotaDebitoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("DomainLayer.Models.FactSaludTipoModel", "FactSaludTipo")
                         .WithMany("FasaFacturas")
                         .HasForeignKey("FactSaludTipoId")
@@ -1988,6 +2106,10 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("FactListaPrecios");
 
                     b.Navigation("FactMoneda");
+
+                    b.Navigation("FactNotaCredito");
+
+                    b.Navigation("FactNotaDebito");
 
                     b.Navigation("FactSaludTipo");
 
@@ -2043,6 +2165,44 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("LocaCiudad");
 
                     b.Navigation("LocaDepto");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.NotaCreditoModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.ConceptoNotaModel", "NocrConceptoNota")
+                        .WithMany("ConoNotasCredito")
+                        .HasForeignKey("NocrConceptoNotaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "NocrEmpresa")
+                        .WithMany("EmprNotasCredito")
+                        .HasForeignKey("NocrEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("NocrConceptoNota");
+
+                    b.Navigation("NocrEmpresa");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.NotaDebitoModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.ConceptoNotaModel", "NodbConceptoNota")
+                        .WithMany("ConoNotasDebito")
+                        .HasForeignKey("NodbConceptoNotaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "NodbEmpresa")
+                        .WithMany("EmprNotasDebito")
+                        .HasForeignKey("NodbEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("NodbConceptoNota");
+
+                    b.Navigation("NodbEmpresa");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ProductoModel", b =>
@@ -2200,6 +2360,13 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("CobeFacturas");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ConceptoNotaModel", b =>
+                {
+                    b.Navigation("ConoNotasCredito");
+
+                    b.Navigation("ConoNotasDebito");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.CondicionVentaModel", b =>
                 {
                     b.Navigation("CoveFacturas");
@@ -2231,6 +2398,10 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("EmprFormatosImpresion");
 
                     b.Navigation("EmprListaPrecios");
+
+                    b.Navigation("EmprNotasCredito");
+
+                    b.Navigation("EmprNotasDebito");
 
                     b.Navigation("EmprProductos");
 
@@ -2284,6 +2455,16 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.MonedaModel", b =>
                 {
                     b.Navigation("MoneFacturas");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.NotaCreditoModel", b =>
+                {
+                    b.Navigation("NocrFacturas");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.NotaDebitoModel", b =>
+                {
+                    b.Navigation("NodbFacturas");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ProductoModel", b =>

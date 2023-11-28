@@ -8,5 +8,11 @@ namespace DomainLayer.Models
         public int ConoCodigo { get; set; }
         [Required]
         public string? ConoNombre { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<NotaDebitoModel>? ConoNotasDebito { get; set; }
+        [Required]
+        public virtual ICollection<NotaCreditoModel>? ConoNotasCredito { get; set; }
     }
 }

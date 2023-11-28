@@ -680,6 +680,74 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NotaCredito",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NocrFactura = table.Column<long>(type: "bigint", nullable: false),
+                    NocrMotivo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NocrNumero = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NocrValor = table.Column<long>(type: "bigint", nullable: false),
+                    NocrValorIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NocrConceptoNotaId = table.Column<int>(type: "int", nullable: false),
+                    NocrEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotaCredito", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_NotaCredito_ConceptoNota_NocrConceptoNotaId",
+                        column: x => x.NocrConceptoNotaId,
+                        principalTable: "ConceptoNota",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_NotaCredito_Empresa_NocrEmpresaId",
+                        column: x => x.NocrEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NotaDebito",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NodbFactura = table.Column<long>(type: "bigint", nullable: false),
+                    NodbMotivo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NodbNumero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NodbValor = table.Column<long>(type: "bigint", nullable: false),
+                    NodbValorIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    NodbConceptoNotaId = table.Column<int>(type: "int", nullable: false),
+                    NodbEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotaDebito", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_NotaDebito_ConceptoNota_NodbConceptoNotaId",
+                        column: x => x.NodbConceptoNotaId,
+                        principalTable: "ConceptoNota",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_NotaDebito_Empresa_NodbEmpresaId",
+                        column: x => x.NodbEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Unidad",
                 columns: table => new
                 {
@@ -962,6 +1030,8 @@ namespace RepositoryLayer.Migrations
                     FactTipoDescuentoId = table.Column<int>(type: "int", nullable: false),
                     FactTipoDocElectrId = table.Column<int>(type: "int", nullable: false),
                     FactListaPreciosId = table.Column<int>(type: "int", nullable: false),
+                    FactNotaDebitoId = table.Column<int>(type: "int", nullable: false),
+                    FactNotaCreditoId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1027,6 +1097,18 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Factura_Moneda_FactMonedaId",
                         column: x => x.FactMonedaId,
                         principalTable: "Moneda",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_NotaCredito_FactNotaCreditoId",
+                        column: x => x.FactNotaCreditoId,
+                        principalTable: "NotaCredito",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_NotaDebito_FactNotaDebitoId",
+                        column: x => x.FactNotaDebitoId,
+                        principalTable: "NotaDebito",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -1234,6 +1316,16 @@ namespace RepositoryLayer.Migrations
                 column: "FactMonedaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Factura_FactNotaCreditoId",
+                table: "Factura",
+                column: "FactNotaCreditoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Factura_FactNotaDebitoId",
+                table: "Factura",
+                column: "FactNotaDebitoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Factura_FactSaludTipoId",
                 table: "Factura",
                 column: "FactSaludTipoId");
@@ -1272,6 +1364,26 @@ namespace RepositoryLayer.Migrations
                 name: "IX_Localidad_LocaDeptoId",
                 table: "Localidad",
                 column: "LocaDeptoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NotaCredito_NocrConceptoNotaId",
+                table: "NotaCredito",
+                column: "NocrConceptoNotaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NotaCredito_NocrEmpresaId",
+                table: "NotaCredito",
+                column: "NocrEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NotaDebito_NodbConceptoNotaId",
+                table: "NotaDebito",
+                column: "NodbConceptoNotaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_NotaDebito_NodbEmpresaId",
+                table: "NotaDebito",
+                column: "NodbEmpresaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Producto_ProdCentroCostoId",
@@ -1352,9 +1464,6 @@ namespace RepositoryLayer.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "ConceptoNota");
-
-            migrationBuilder.DropTable(
                 name: "DetalleFact");
 
             migrationBuilder.DropTable(
@@ -1415,6 +1524,12 @@ namespace RepositoryLayer.Migrations
                 name: "Moneda");
 
             migrationBuilder.DropTable(
+                name: "NotaCredito");
+
+            migrationBuilder.DropTable(
+                name: "NotaDebito");
+
+            migrationBuilder.DropTable(
                 name: "TipoDescuento");
 
             migrationBuilder.DropTable(
@@ -1425,6 +1540,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Producto");
+
+            migrationBuilder.DropTable(
+                name: "ConceptoNota");
 
             migrationBuilder.DropTable(
                 name: "CentroCosto");
