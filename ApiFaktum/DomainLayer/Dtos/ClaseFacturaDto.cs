@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations;
-
+﻿
 namespace DomainLayer.Dtos
 {
     public class ClaseFacturaDto : BaseDto

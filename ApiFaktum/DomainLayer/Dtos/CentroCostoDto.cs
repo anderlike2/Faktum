@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class CentroCostoDto : BaseDto
     {

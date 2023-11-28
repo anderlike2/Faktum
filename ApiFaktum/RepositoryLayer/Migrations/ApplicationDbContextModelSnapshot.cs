@@ -2909,7 +2909,7 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.RolUsuarioModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.RolModel", "RousRol")
-                        .WithMany()
+                        .WithMany("RolRolesUsuario")
                         .HasForeignKey("RousRolId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -3211,6 +3211,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("ReteDetFacturas");
 
                     b.Navigation("ReteProductos");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.RolModel", b =>
+                {
+                    b.Navigation("RolRolesUsuario");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>

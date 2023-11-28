@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -31,7 +29,6 @@ namespace DomainLayer.Dtos
         public string? ClieTelFijo { get; set; }
 
         //Referencias
-        [Required]
         public CiudadDto? ClieCiudad { get; set; }
         public DeptoDto? ClieDepto { get; set; }
         public PaisDto? CliePais { get; set; }
