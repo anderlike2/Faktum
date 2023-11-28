@@ -9,5 +9,6 @@ namespace DomainLayer.Dtos
 
         //Referencias
         public List<EmpresaDto>? TiidEmpresas { get; set; }
+        public List<ClienteDto>? TiidClientes { get; set; }
     }
 }

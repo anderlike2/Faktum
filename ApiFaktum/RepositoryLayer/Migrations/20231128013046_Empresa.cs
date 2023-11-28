@@ -656,6 +656,106 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "cliente",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ClieApellidos = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClieCelular = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieCiuu = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClieCobertura = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieCorreo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieCorreoFact = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieDescGlobal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ClieDiasPago = table.Column<int>(type: "int", nullable: false),
+                    ClieDireccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieDv = table.Column<long>(type: "bigint", nullable: false),
+                    ClieEstadoOperacion = table.Column<int>(type: "int", nullable: false),
+                    ClieIdReprLegal = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieJuridica = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieLocalidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClieNit = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CliePaginaWeb = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CliePrimerNom = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClieRazonSocial = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieReprLegal = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClieSegundoNom = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClieTelFijo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClieCiudadId = table.Column<int>(type: "int", nullable: false),
+                    ClieDeptoId = table.Column<int>(type: "int", nullable: false),
+                    CliePaisId = table.Column<int>(type: "int", nullable: false),
+                    ClieEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    ClieRegimenId = table.Column<int>(type: "int", nullable: false),
+                    ClieRespFiscalId = table.Column<int>(type: "int", nullable: false),
+                    ClieRespTributariaId = table.Column<int>(type: "int", nullable: false),
+                    ClieTipoClienteId = table.Column<int>(type: "int", nullable: false),
+                    ClieTipoIdId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_cliente", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_cliente_Ciudad_ClieCiudadId",
+                        column: x => x.ClieCiudadId,
+                        principalTable: "Ciudad",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_Depto_ClieDeptoId",
+                        column: x => x.ClieDeptoId,
+                        principalTable: "Depto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_Empresa_ClieEmpresaId",
+                        column: x => x.ClieEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_Pais_CliePaisId",
+                        column: x => x.CliePaisId,
+                        principalTable: "Pais",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_Regimen_ClieRegimenId",
+                        column: x => x.ClieRegimenId,
+                        principalTable: "Regimen",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_RespFiscal_ClieRespFiscalId",
+                        column: x => x.ClieRespFiscalId,
+                        principalTable: "RespFiscal",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_RespTributaria_ClieRespTributariaId",
+                        column: x => x.ClieRespTributariaId,
+                        principalTable: "RespTributaria",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_TipoCliente_ClieTipoClienteId",
+                        column: x => x.ClieTipoClienteId,
+                        principalTable: "TipoCliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_cliente_TipoId_ClieTipoIdId",
+                        column: x => x.ClieTipoIdId,
+                        principalTable: "TipoId",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FormatoImpresion",
                 columns: table => new
                 {
@@ -748,36 +848,6 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "sucursalCliente",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SuclDepto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclCiudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclDiasPago = table.Column<int>(type: "int", nullable: false),
-                    SuclListaPrecio = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclTelefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SuclEmpresaId = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_sucursalCliente", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_sucursalCliente_Empresa_SuclEmpresaId",
-                        column: x => x.SuclEmpresaId,
-                        principalTable: "Empresa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Unidad",
                 columns: table => new
                 {
@@ -847,6 +917,43 @@ namespace RepositoryLayer.Migrations
                     table.ForeignKey(
                         name: "FK_Vendedor_Empresa_VendEmpresaId",
                         column: x => x.VendEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "sucursalCliente",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SuclDepto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclCiudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclDiasPago = table.Column<int>(type: "int", nullable: false),
+                    SuclListaPrecio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclTelefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    SuclClienteId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_sucursalCliente", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_sucursalCliente_cliente_SuclClienteId",
+                        column: x => x.SuclClienteId,
+                        principalTable: "cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_sucursalCliente_Empresa_SuclEmpresaId",
+                        column: x => x.SuclEmpresaId,
                         principalTable: "Empresa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -1042,6 +1149,7 @@ namespace RepositoryLayer.Migrations
                     LiprEmpresaId = table.Column<int>(type: "int", nullable: false),
                     LiprProductoId = table.Column<int>(type: "int", nullable: false),
                     LiprSucursalClienteId = table.Column<int>(type: "int", nullable: false),
+                    LiprClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1049,6 +1157,12 @@ namespace RepositoryLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ListaPrecio", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ListaPrecio_cliente_LiprClienteId",
+                        column: x => x.LiprClienteId,
+                        principalTable: "cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_ListaPrecio_Empresa_LiprEmpresaId",
                         column: x => x.LiprEmpresaId,
@@ -1123,6 +1237,7 @@ namespace RepositoryLayer.Migrations
                     FactListaPreciosId = table.Column<int>(type: "int", nullable: false),
                     FactNotaDebitoId = table.Column<int>(type: "int", nullable: false),
                     FactNotaCreditoId = table.Column<int>(type: "int", nullable: false),
+                    FactClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1134,6 +1249,12 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Factura_ClaseFactura_FactClaseFacturaId",
                         column: x => x.FactClaseFacturaId,
                         principalTable: "ClaseFactura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_cliente_FactClienteId",
+                        column: x => x.FactClienteId,
+                        principalTable: "cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -1302,6 +1423,51 @@ namespace RepositoryLayer.Migrations
                 column: "CiudDeptoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieCiudadId",
+                table: "cliente",
+                column: "ClieCiudadId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieDeptoId",
+                table: "cliente",
+                column: "ClieDeptoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieEmpresaId",
+                table: "cliente",
+                column: "ClieEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_CliePaisId",
+                table: "cliente",
+                column: "CliePaisId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieRegimenId",
+                table: "cliente",
+                column: "ClieRegimenId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieRespFiscalId",
+                table: "cliente",
+                column: "ClieRespFiscalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieRespTributariaId",
+                table: "cliente",
+                column: "ClieRespTributariaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieTipoClienteId",
+                table: "cliente",
+                column: "ClieTipoClienteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_cliente_ClieTipoIdId",
+                table: "cliente",
+                column: "ClieTipoIdId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DetalleFact_DetaEmpresaId",
                 table: "DetalleFact",
                 column: "DetaEmpresaId");
@@ -1365,6 +1531,11 @@ namespace RepositoryLayer.Migrations
                 name: "IX_Factura_FactClaseFacturaId",
                 table: "Factura",
                 column: "FactClaseFacturaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Factura_FactClienteId",
+                table: "Factura",
+                column: "FactClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Factura_FactCoberturaId",
@@ -1435,6 +1606,11 @@ namespace RepositoryLayer.Migrations
                 name: "IX_FormatoImpresion_FormEmpresaId",
                 table: "FormatoImpresion",
                 column: "FormEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListaPrecio_LiprClienteId",
+                table: "ListaPrecio",
+                column: "LiprClienteId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ListaPrecio_LiprEmpresaId",
@@ -1557,6 +1733,11 @@ namespace RepositoryLayer.Migrations
                 column: "SucuFormatoImpresionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_sucursalCliente_SuclClienteId",
+                table: "sucursalCliente",
+                column: "SuclClienteId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_sucursalCliente_SuclEmpresaId",
                 table: "sucursalCliente",
                 column: "SuclEmpresaId");
@@ -1592,9 +1773,6 @@ namespace RepositoryLayer.Migrations
                 name: "NumeracionResolucion");
 
             migrationBuilder.DropTable(
-                name: "Pais");
-
-            migrationBuilder.DropTable(
                 name: "RolUsuario");
 
             migrationBuilder.DropTable(
@@ -1605,9 +1783,6 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Factura");
-
-            migrationBuilder.DropTable(
-                name: "Ciudad");
 
             migrationBuilder.DropTable(
                 name: "Rol");
@@ -1655,9 +1830,6 @@ namespace RepositoryLayer.Migrations
                 name: "TipoDocElectr");
 
             migrationBuilder.DropTable(
-                name: "Depto");
-
-            migrationBuilder.DropTable(
                 name: "Producto");
 
             migrationBuilder.DropTable(
@@ -1694,7 +1866,19 @@ namespace RepositoryLayer.Migrations
                 name: "Unidad");
 
             migrationBuilder.DropTable(
+                name: "cliente");
+
+            migrationBuilder.DropTable(
+                name: "Ciudad");
+
+            migrationBuilder.DropTable(
                 name: "Empresa");
+
+            migrationBuilder.DropTable(
+                name: "Pais");
+
+            migrationBuilder.DropTable(
+                name: "Depto");
 
             migrationBuilder.DropTable(
                 name: "ClasJuridica");

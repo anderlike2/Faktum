@@ -65,5 +65,6 @@ namespace DomainLayer.Dtos
         public ListaPrecioDto? FactListaPrecios { get; set; }
         public NotaDebitoDto? FactNotaDebito { get; set; }
         public NotaCreditoDto? FactNotaCredito { get; set; }
+        public ClienteDto? FactCliente { get; set; }
     }
 }

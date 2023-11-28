@@ -14,5 +14,7 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<EmpresaModel>? RegiEmpresas { get; set; }
+        [Required]
+        public virtual ICollection<ClienteModel>? RegiClientes { get; set; }
     }
 }

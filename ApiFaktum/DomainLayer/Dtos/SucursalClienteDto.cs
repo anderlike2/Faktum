@@ -17,5 +17,6 @@ namespace DomainLayer.Dtos
         //Referencias
         public List<ListaPrecioDto>? SuclListaPrecios { get; set; }
         public EmpresaDto? SuclEmpresa { get; set; }
+        public ClienteDto? SuclCliente { get; set; }
     }
 }

@@ -50,6 +50,7 @@ namespace DomainLayer.Dtos
         public List<NotaCreditoDto>? EmprNotasCredito { get; set; }
         public List<SucursalDto>? EmprSucursales { get; set; }
         public List<SucursalClienteDto>? EmprSucursalesCliente { get; set; }
+        public List<ClienteDto>? EmprClientes { get; set; }
 
     }
 }

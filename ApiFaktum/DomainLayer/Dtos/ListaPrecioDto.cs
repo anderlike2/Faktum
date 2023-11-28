@@ -20,5 +20,6 @@ namespace DomainLayer.Dtos
         public List<FacturaDto>? LiprFacturas { get; set; }
         public List<DetalleFactDto>? LiprDetFacturas { get; set; }
         public SucursalClienteDto? LiprSucursalCliente { get; set; }
+        public ClienteDto? LiprCliente { get; set; }
     }
 }

@@ -29,5 +29,7 @@ namespace DomainLayer.Models
         public virtual ICollection<DetalleFactModel>? LiprDetFacturas { get; set; }
         [Required]
         public virtual SucursalClienteModel? LiprSucursalCliente { get; set; }
+        [Required]
+        public virtual ClienteModel? LiprCliente { get; set; }
     }
 }

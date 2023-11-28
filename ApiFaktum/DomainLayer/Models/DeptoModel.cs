@@ -9,7 +9,11 @@ namespace DomainLayer.Models
         public int DeptoCodigo { get; set; }
         [Required]
         public string? DeptoNombre { get; set; }
+
+        //Referencias
         [Required]
         public virtual ICollection<CiudadModel>? DeptoCiudades { get; set; }
+        [Required]
+        public virtual ICollection<ClienteModel>? DeptoClientes { get; set; }
     }
 }

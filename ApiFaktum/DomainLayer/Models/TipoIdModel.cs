@@ -12,5 +12,7 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<EmpresaModel>? TiidEmpresas { get; set; }
+        [Required]
+        public virtual ICollection<ClienteModel>? TiidClientes { get; set; }
     }
 }

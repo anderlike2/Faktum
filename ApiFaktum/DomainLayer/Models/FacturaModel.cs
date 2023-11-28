@@ -113,6 +113,8 @@ namespace DomainLayer.Models
         public virtual NotaDebitoModel? FactNotaDebito { get; set; }
         [Required]
         public virtual NotaCreditoModel? FactNotaCredito { get; set; }
+        [Required]
+        public virtual ClienteModel? FactCliente { get; set; }
 
     }
 }

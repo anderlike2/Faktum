@@ -25,5 +25,7 @@ namespace DomainLayer.Models
         public virtual ICollection<ListaPrecioModel>? SuclListaPrecios { get; set; }
         [Required]
         public virtual EmpresaModel? SuclEmpresa { get; set; }
+        [Required]
+        public virtual ClienteModel? SuclCliente { get; set; }
     }
 }

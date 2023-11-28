@@ -1,4 +1,6 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
     public class TipoClienteDto : BaseDto
     {
@@ -7,5 +9,6 @@
 
         //Referencias
         public List<EmpresaDto>? TiclEmpresas { get; set; }
+        public List<ClienteDto>? TiclClientes { get; set; }
     }
 }

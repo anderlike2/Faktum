@@ -1,4 +1,6 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
     public class RespTributariaDto : BaseDto
     {
@@ -7,5 +9,6 @@
 
         //Referencias
         public List<EmpresaDto>? RetrEmpresas { get; set; }
+        public List<ClienteDto>? RetrClientes { get; set; }
     }
 }
