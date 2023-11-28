@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class CoberturaModel : BaseEntity
     {
         [Required]
-        public int CobeCodigo { get; set; }
+        public string? CobeCodigo { get; set; }
         [Required]
         public string? CobeNombre { get; set; }
 

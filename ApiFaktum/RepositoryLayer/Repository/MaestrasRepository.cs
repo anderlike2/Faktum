@@ -162,7 +162,7 @@ namespace RepositoryLayer.Repository
         /// <param name="fechaCreacion"></param>
         /// <param name="fechaModificacion"></param>
         /// <returns>Task<Result></returns>
-        public MaestraDto FormarRespuestaMaestra(int codigo, string? nombre, int estado, DateTime? fechaCreacion, DateTime? fechaModificacion)
+        public MaestraDto FormarRespuestaMaestra(string? codigo, string? nombre, int estado, DateTime? fechaCreacion, DateTime? fechaModificacion)
         {
             return new MaestraDto
             {

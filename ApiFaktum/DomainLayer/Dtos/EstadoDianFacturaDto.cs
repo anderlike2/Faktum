@@ -2,7 +2,7 @@
 {
     public class EstadoDianFacturaDto : BaseDto
     {
-        public int EsfaCodigo { get; set; }
+        public string? EsfaCodigo { get; set; }
         public string? EsfaNombre { get; set; }
 
         //Referencias

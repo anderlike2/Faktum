@@ -2,7 +2,7 @@
 {
     public class CupDto : BaseDto
     {
-        public int CupsCodigo { get; set; }
+        public string? CupsCodigo { get; set; }
         public string? CupsNombre { get; set; }
 
         //Referencias

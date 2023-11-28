@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class CiudadModel : BaseEntity
     {
         [Required]
-        public int CiudCodigo { get; set; }
+        public string? CiudCodigo { get; set; }
         [Required]
         public string? CiudNombre { get; set; }
 

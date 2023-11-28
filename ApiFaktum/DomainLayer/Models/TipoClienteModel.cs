@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class TipoClienteModel : BaseEntity
     {
         [Required]
-        public int TiclCodigo { get; set; }
+        public string? TiclCodigo { get; set; }
         [Required]
         public string? TiclNombre { get; set; }
 

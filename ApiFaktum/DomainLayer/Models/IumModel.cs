@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class IumModel : BaseEntity
     {
         [Required]
-        public int IumCodigo { get; set; }
+        public string? IumCodigo { get; set; }
         [Required]
         public string? IumNombre { get; set; }
         [Required]

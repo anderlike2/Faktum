@@ -4,7 +4,7 @@ namespace DomainLayer.Dtos
 {
     public class ImpuestoDto : BaseDto
     {
-        public int ImpuCodigo { get; set; }
+        public string? ImpuCodigo { get; set; }
         public string? ImpuNombre { get; set; }
         public int ImpuEstadoOperacion { get; set; }
         public string? ImpuOperacion { get; set; }

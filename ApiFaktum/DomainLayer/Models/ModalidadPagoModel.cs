@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class ModalidadPagoModel : BaseEntity
     {
         [Required]
-        public int MopaCodigo { get; set; }
+        public string? MopaCodigo { get; set; }
         [Required]
         public string? MopaNombre { get; set; }
 

@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class LocalidadModel : BaseEntity
     {
         [Required]
-        public int LocaCodigo { get; set; }
+        public string? LocaCodigo { get; set; }
         [Required]
         public string? LocaNombre { get; set; }
         [Required]

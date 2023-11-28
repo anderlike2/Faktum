@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class TipoDescuentoModel : BaseEntity
     {
         [Required]
-        public int TideCodigo { get; set; }
+        public string? TideCodigo { get; set; }
         [Required]
         public string? TideNombre { get; set; }
 

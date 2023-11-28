@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class TipoCupModel : BaseEntity
     {
         [Required]
-        public int TicuCodigo { get; set; }
+        public string? TicuCodigo { get; set; }
         [Required]
         public string? TicuNombre { get; set; }
 

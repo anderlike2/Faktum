@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class ConceptoNotaModel : BaseEntity
     {
         [Required]
-        public int ConoCodigo { get; set; }
+        public string? ConoCodigo { get; set; }
         [Required]
         public string? ConoNombre { get; set; }
 

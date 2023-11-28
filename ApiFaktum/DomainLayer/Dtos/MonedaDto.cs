@@ -2,7 +2,7 @@
 {
     public class MonedaDto : BaseDto
     {
-        public int MoneCodigo { get; set; }
+        public string? MoneCodigo { get; set; }
         public string? MoneNombre { get; set; }
 
         //Referencias

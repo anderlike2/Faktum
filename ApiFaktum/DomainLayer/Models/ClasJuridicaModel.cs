@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class ClasJuridicaModel : BaseEntity
     {
         [Required]
-        public int JuriCodigo { get; set; }
+        public string? JuriCodigo { get; set; }
         [Required]
         public string? JuriNombre { get; set; }
         [Required]

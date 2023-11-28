@@ -6,7 +6,7 @@ namespace DomainLayer.Models
     public class DeptoModel : BaseEntity
     {
         [Required]
-        public int DeptoCodigo { get; set; }
+        public string? DeptoCodigo { get; set; }
         [Required]
         public string? DeptoNombre { get; set; }
 

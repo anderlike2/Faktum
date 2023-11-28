@@ -2,7 +2,7 @@
 {
     public class RespTributariaDto : BaseDto
     {
-        public int RetrCodigo { get; set; }
+        public string? RetrCodigo { get; set; }
         public string? RetrNombre { get; set; }
 
         //Referencias
