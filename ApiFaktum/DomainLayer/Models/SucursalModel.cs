@@ -50,5 +50,7 @@ namespace DomainLayer.Models
         public virtual EmpresaModel? SucuEmpresa { get; set; }
         [Required]
         public virtual FormatoImpresionModel? SucuFormatoImpresion { get; set; }
+        [Required]
+        public virtual ICollection<ResolucionModel>? SucuResoluciones { get; set; }
     }
 }

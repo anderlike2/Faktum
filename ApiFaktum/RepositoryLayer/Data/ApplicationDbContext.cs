@@ -64,5 +64,6 @@ namespace RepositoryLayer.Data
         public DbSet<SucursalModel> Sucursal { get; set; }
         public DbSet<SucursalClienteModel> SucursalCliente { get; set; }
         public DbSet<ClienteModel> Cliente { get; set; }
+        public DbSet<ResolucionModel> Resolucion { get; set; }
     }
 }

@@ -93,6 +93,8 @@ namespace DomainLayer.Models
         public virtual ICollection<SucursalClienteModel>? EmprSucursalesCliente { get; set; }
         [Required]
         public virtual ICollection<ClienteModel>? EmprClientes { get; set; }
+        [Required]
+        public virtual ICollection<ResolucionModel>? EmprResoluciones{ get; set; }
 
     }
 }

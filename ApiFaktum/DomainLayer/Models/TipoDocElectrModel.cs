@@ -12,5 +12,7 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<FacturaModel>? TidoFacturas { get; set; }
+        [Required]
+        public virtual ICollection<ResolucionModel>? TidoResoluciones { get; set; }
     }
 }

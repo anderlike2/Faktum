@@ -10,5 +10,6 @@ namespace DomainLayer.Dtos
 
         //Referencias
         public List<FacturaDto>? TidoFacturas { get; set; }
+        public List<ResolucionDto>? TidoResoluciones { get; set; }
     }
 }

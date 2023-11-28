@@ -293,7 +293,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ClieTipoIdId");
 
-                    b.ToTable("cliente");
+                    b.ToTable("Cliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CoberturaModel", b =>
@@ -1592,6 +1592,74 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Regimen");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ResolucionModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ResoAnio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("ResoConsActual")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ResoConsFinal")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("ResoConsInicial")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("ResoEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResoEstadoOperacion")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResoFecheExpide")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ResoNumeracionResolucionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ResoPrefijo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ResoSucursalId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResoTipoDocId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ResoVigencia")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResoEmpresaId");
+
+                    b.HasIndex("ResoNumeracionResolucionId");
+
+                    b.HasIndex("ResoSucursalId");
+
+                    b.HasIndex("ResoTipoDocId");
+
+                    b.ToTable("ResolucionModel");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.RespFiscalModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1805,7 +1873,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("SuclEmpresaId");
 
-                    b.ToTable("sucursalCliente");
+                    b.ToTable("SucursalCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
@@ -2714,6 +2782,41 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("ProdUnidad");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ResolucionModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "ResoEmpresa")
+                        .WithMany("EmprResoluciones")
+                        .HasForeignKey("ResoEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.NumeracionResolucionModel", "ResoNumeracionResolucion")
+                        .WithMany("NureResoluciones")
+                        .HasForeignKey("ResoNumeracionResolucionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.SucursalModel", "ResoSucursal")
+                        .WithMany("SucuResoluciones")
+                        .HasForeignKey("ResoSucursalId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.TipoDocElectrModel", "ResoTipoDoc")
+                        .WithMany("TidoResoluciones")
+                        .HasForeignKey("ResoTipoDocId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ResoEmpresa");
+
+                    b.Navigation("ResoNumeracionResolucion");
+
+                    b.Navigation("ResoSucursal");
+
+                    b.Navigation("ResoTipoDoc");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.RolUsuarioModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.RolModel", "RousRol")
@@ -2897,6 +3000,8 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("EmprProductos");
 
+                    b.Navigation("EmprResoluciones");
+
                     b.Navigation("EmprSucursales");
 
                     b.Navigation("EmprSucursalesCliente");
@@ -2965,6 +3070,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("NodbFacturas");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.NumeracionResolucionModel", b =>
+                {
+                    b.Navigation("NureResoluciones");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.PaisModel", b =>
                 {
                     b.Navigation("PaisClientes");
@@ -3008,6 +3118,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("SuclListaPrecios");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
+                {
+                    b.Navigation("SucuResoluciones");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.TipoArchivoRipsModel", b =>
                 {
                     b.Navigation("ArriProductos");
@@ -3033,6 +3148,8 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.TipoDocElectrModel", b =>
                 {
                     b.Navigation("TidoFacturas");
+
+                    b.Navigation("TidoResoluciones");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.TipoIdModel", b =>

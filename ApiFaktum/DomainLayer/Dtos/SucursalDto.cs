@@ -30,5 +30,6 @@ namespace DomainLayer.Dtos
         public CentroCostoDto? SucuCentroCostos { get; set; }
         public EmpresaDto? SucuEmpresa { get; set; }
         public FormatoImpresionDto? SucuFormatoImpresion { get; set; }
+        public List<ResolucionDto>? SucuResoluciones { get; set; }
     }
 }

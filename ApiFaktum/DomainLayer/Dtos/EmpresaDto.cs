@@ -51,6 +51,7 @@ namespace DomainLayer.Dtos
         public List<SucursalDto>? EmprSucursales { get; set; }
         public List<SucursalClienteDto>? EmprSucursalesCliente { get; set; }
         public List<ClienteDto>? EmprClientes { get; set; }
+        public List<ResolucionDto>? EmprResoluciones { get; set; }
 
     }
 }

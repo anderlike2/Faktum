@@ -8,5 +8,9 @@ namespace DomainLayer.Models
         public int NureCodigo { get; set; }
         [Required]
         public int NureNumeracionActual { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<ResolucionModel>? NureResoluciones { get; set; }
     }
 }
