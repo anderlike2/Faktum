@@ -10,5 +10,6 @@ namespace DomainLayer.Dtos
         //Referencias
         public EmpresaDto? FormEmpresa { get; set; }
         public List<FacturaDto>? FormFacturas { get; set; }
+        public List<SucursalDto>? FormSucursales { get; set; }
     }
 }

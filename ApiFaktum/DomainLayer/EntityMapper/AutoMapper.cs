@@ -136,6 +136,9 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<NotaCreditoModel, NotaCreditoDto>().ReverseMap();
             CreateMap<NotaCreditoDto, NotaCreditoModel>();
+
+            CreateMap<SucursalModel, SucursalDto>().ReverseMap();
+            CreateMap<SucursalDto, SucursalModel>();
         }
     }
 }

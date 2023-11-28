@@ -48,6 +48,7 @@ namespace DomainLayer.Dtos
         public List<ListaPrecioDto>? EmprListaPrecios { get; set; }
         public List<NotaDebitoDto>? EmprNotasDebito { get; set; }
         public List<NotaCreditoDto>? EmprNotasCredito { get; set; }
+        public List<SucursalDto>? EmprSucursales { get; set; }
 
     }
 }

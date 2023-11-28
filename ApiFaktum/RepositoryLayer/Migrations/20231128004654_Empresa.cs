@@ -823,6 +823,60 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Sucursal",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SucuDepto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuCelular = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuCiudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuDireccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuEstadoOperacion = table.Column<int>(type: "int", nullable: false),
+                    SucuHabilitacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuLeyendaFactura = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuLeyendaNotaCredito = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuLeyendaNotaDebito = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuListPrecio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuMail = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuObservaciones = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuPrincipal = table.Column<int>(type: "int", nullable: false),
+                    SucuReteIca = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    SucuTelefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SucuCentroCostosId = table.Column<int>(type: "int", nullable: false),
+                    SucuEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    SucuFormatoImpresionId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sucursal", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Sucursal_CentroCosto_SucuCentroCostosId",
+                        column: x => x.SucuCentroCostosId,
+                        principalTable: "CentroCosto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Sucursal_Empresa_SucuEmpresaId",
+                        column: x => x.SucuEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Sucursal_FormatoImpresion_SucuFormatoImpresionId",
+                        column: x => x.SucuFormatoImpresionId,
+                        principalTable: "FormatoImpresion",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Producto",
                 columns: table => new
                 {
@@ -1446,6 +1500,21 @@ namespace RepositoryLayer.Migrations
                 column: "RousUsuarioId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Sucursal_SucuCentroCostosId",
+                table: "Sucursal",
+                column: "SucuCentroCostosId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sucursal_SucuEmpresaId",
+                table: "Sucursal",
+                column: "SucuEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Sucursal_SucuFormatoImpresionId",
+                table: "Sucursal",
+                column: "SucuFormatoImpresionId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Unidad_UnidEmpresaId",
                 table: "Unidad",
                 column: "UnidEmpresaId");
@@ -1480,6 +1549,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "RolUsuario");
+
+            migrationBuilder.DropTable(
+                name: "Sucursal");
 
             migrationBuilder.DropTable(
                 name: "Vendedor");

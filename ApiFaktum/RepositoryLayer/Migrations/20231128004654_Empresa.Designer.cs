@@ -12,7 +12,7 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231128003230_Empresa")]
+    [Migration("20231128004654_Empresa")]
     partial class Empresa
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1588,6 +1588,113 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("RolUsuario");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SucuCelular")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SucuCentroCostosId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SucuCiudad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuContacto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuDepto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuDireccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SucuEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SucuEstadoOperacion")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SucuFormatoImpresionId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SucuHabilitacion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuLeyendaFactura")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuLeyendaNotaCredito")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuLeyendaNotaDebito")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuListPrecio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuNombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SucuObservaciones")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SucuPrincipal")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("SucuReteIca")
+                        .IsRequired()
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("SucuTelefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SucuCentroCostosId");
+
+                    b.HasIndex("SucuEmpresaId");
+
+                    b.HasIndex("SucuFormatoImpresionId");
+
+                    b.ToTable("Sucursal");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.TipoArchivoRipsModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2307,6 +2414,33 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("RousUsuario");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.CentroCostoModel", "SucuCentroCostos")
+                        .WithMany("CcosSucursales")
+                        .HasForeignKey("SucuCentroCostosId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "SucuEmpresa")
+                        .WithMany("EmprSucursales")
+                        .HasForeignKey("SucuEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.FormatoImpresionModel", "SucuFormatoImpresion")
+                        .WithMany("FormSucursales")
+                        .HasForeignKey("SucuFormatoImpresionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("SucuCentroCostos");
+
+                    b.Navigation("SucuEmpresa");
+
+                    b.Navigation("SucuFormatoImpresion");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.UnidadModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.EmpresaModel", "UnidEmpresa")
@@ -2343,6 +2477,8 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.CentroCostoModel", b =>
                 {
                     b.Navigation("CcosProductos");
+
+                    b.Navigation("CcosSucursales");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ClaseFacturaModel", b =>
@@ -2405,6 +2541,8 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("EmprProductos");
 
+                    b.Navigation("EmprSucursales");
+
                     b.Navigation("EmprVendedores");
                 });
 
@@ -2431,6 +2569,8 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.FormatoImpresionModel", b =>
                 {
                     b.Navigation("FormFacturas");
+
+                    b.Navigation("FormSucursales");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ImpuestoModel", b =>
