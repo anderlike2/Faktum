@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class Empresa : Migration
+    public partial class BD_Inicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,7 +18,7 @@ namespace RepositoryLayer.Migrations
                     ClfaCodigo = table.Column<int>(type: "int", nullable: false),
                     ClfaNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -36,7 +36,7 @@ namespace RepositoryLayer.Migrations
                     JuriNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JuriEstadoOperacion = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -53,7 +53,7 @@ namespace RepositoryLayer.Migrations
                     CobeCodigo = table.Column<int>(type: "int", nullable: false),
                     CobeNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -70,7 +70,7 @@ namespace RepositoryLayer.Migrations
                     ConoCodigo = table.Column<int>(type: "int", nullable: false),
                     ConoNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -87,7 +87,7 @@ namespace RepositoryLayer.Migrations
                     CoveCodigo = table.Column<int>(type: "int", nullable: false),
                     CoveNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -106,7 +106,7 @@ namespace RepositoryLayer.Migrations
                     CumsConsecutivo = table.Column<int>(type: "int", nullable: false),
                     CumsExpediente = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -123,7 +123,7 @@ namespace RepositoryLayer.Migrations
                     CupsCodigo = table.Column<int>(type: "int", nullable: false),
                     CupsNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -140,7 +140,7 @@ namespace RepositoryLayer.Migrations
                     DeptoCodigo = table.Column<int>(type: "int", nullable: false),
                     DeptoNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -157,7 +157,7 @@ namespace RepositoryLayer.Migrations
                     EsfaCodigo = table.Column<int>(type: "int", nullable: false),
                     EsfaNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -174,7 +174,7 @@ namespace RepositoryLayer.Migrations
                     FasaCodigo = table.Column<int>(type: "int", nullable: false),
                     FasaNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -191,7 +191,7 @@ namespace RepositoryLayer.Migrations
                     FopaCodigo = table.Column<int>(type: "int", nullable: false),
                     FopaNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -211,7 +211,7 @@ namespace RepositoryLayer.Migrations
                     ImpuOperacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImpuPorcentaje = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -229,7 +229,7 @@ namespace RepositoryLayer.Migrations
                     IumNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IumUnidad = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -246,7 +246,7 @@ namespace RepositoryLayer.Migrations
                     MopaCodigo = table.Column<int>(type: "int", nullable: false),
                     MopaNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -263,7 +263,7 @@ namespace RepositoryLayer.Migrations
                     MoneCodigo = table.Column<int>(type: "int", nullable: false),
                     MoneNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -280,7 +280,7 @@ namespace RepositoryLayer.Migrations
                     NureCodigo = table.Column<int>(type: "int", nullable: false),
                     NureNumeracionActual = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -297,7 +297,7 @@ namespace RepositoryLayer.Migrations
                     PaisCodigo = table.Column<int>(type: "int", nullable: false),
                     PaisNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -315,7 +315,7 @@ namespace RepositoryLayer.Migrations
                     RegiNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RegiEstadoOperacion = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -332,7 +332,7 @@ namespace RepositoryLayer.Migrations
                     RefiCodigo = table.Column<int>(type: "int", nullable: false),
                     RefiNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -349,7 +349,7 @@ namespace RepositoryLayer.Migrations
                     RetrCodigo = table.Column<int>(type: "int", nullable: false),
                     RetrNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -367,7 +367,7 @@ namespace RepositoryLayer.Migrations
                     ReteNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RetePorcentaje = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -384,7 +384,7 @@ namespace RepositoryLayer.Migrations
                     RolCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RolDescripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -401,7 +401,7 @@ namespace RepositoryLayer.Migrations
                     ArriCodigo = table.Column<int>(type: "int", nullable: false),
                     ArriNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -418,7 +418,7 @@ namespace RepositoryLayer.Migrations
                     TiclCodigo = table.Column<int>(type: "int", nullable: false),
                     TiclNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -435,7 +435,7 @@ namespace RepositoryLayer.Migrations
                     TicuCodigo = table.Column<int>(type: "int", nullable: false),
                     TicuNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -452,7 +452,7 @@ namespace RepositoryLayer.Migrations
                     TideCodigo = table.Column<int>(type: "int", nullable: false),
                     TideNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -469,7 +469,7 @@ namespace RepositoryLayer.Migrations
                     TidoCodigo = table.Column<int>(type: "int", nullable: false),
                     TidoNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -486,7 +486,7 @@ namespace RepositoryLayer.Migrations
                     TiidCodigo = table.Column<int>(type: "int", nullable: false),
                     TiidNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -504,7 +504,7 @@ namespace RepositoryLayer.Migrations
                     CiudNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CiudDeptoId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -556,7 +556,7 @@ namespace RepositoryLayer.Migrations
                     EmprRespFiscalId = table.Column<int>(type: "int", nullable: false),
                     EmprClasJuridicaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -611,7 +611,7 @@ namespace RepositoryLayer.Migrations
                     LocaDeptoId = table.Column<int>(type: "int", nullable: false),
                     LocaCiudadId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -640,8 +640,9 @@ namespace RepositoryLayer.Migrations
                     CcosCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CcosNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CcosEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    CcosTipoDescuentoId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -651,6 +652,12 @@ namespace RepositoryLayer.Migrations
                         name: "FK_CentroCosto_Empresa_CcosEmpresaId",
                         column: x => x.CcosEmpresaId,
                         principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CentroCosto_TipoDescuento_CcosTipoDescuentoId",
+                        column: x => x.CcosTipoDescuentoId,
+                        principalTable: "TipoDescuento",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -693,7 +700,7 @@ namespace RepositoryLayer.Migrations
                     ClieTipoClienteId = table.Column<int>(type: "int", nullable: false),
                     ClieTipoIdId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -765,7 +772,7 @@ namespace RepositoryLayer.Migrations
                     FormNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FormEmpresaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -793,7 +800,7 @@ namespace RepositoryLayer.Migrations
                     NocrConceptoNotaId = table.Column<int>(type: "int", nullable: false),
                     NocrEmpresaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -827,7 +834,7 @@ namespace RepositoryLayer.Migrations
                     NodbConceptoNotaId = table.Column<int>(type: "int", nullable: false),
                     NodbEmpresaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -858,7 +865,7 @@ namespace RepositoryLayer.Migrations
                     UnidNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UnidEmpresaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -883,7 +890,7 @@ namespace RepositoryLayer.Migrations
                     UsuaIntentos = table.Column<int>(type: "int", nullable: false),
                     UsuEmpresaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -908,7 +915,7 @@ namespace RepositoryLayer.Migrations
                     VendTipoDoc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     VendEmpresaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -936,7 +943,7 @@ namespace RepositoryLayer.Migrations
                     CosaEmpresaId = table.Column<int>(type: "int", nullable: false),
                     CosaMopaId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -978,6 +985,7 @@ namespace RepositoryLayer.Migrations
                     SuclCiudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SuclCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SuclContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclCorreo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SuclDiasPago = table.Column<int>(type: "int", nullable: false),
                     SuclListaPrecio = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SuclNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -985,7 +993,7 @@ namespace RepositoryLayer.Migrations
                     SuclEmpresaId = table.Column<int>(type: "int", nullable: false),
                     SuclClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1033,7 +1041,7 @@ namespace RepositoryLayer.Migrations
                     SucuEmpresaId = table.Column<int>(type: "int", nullable: false),
                     SucuFormatoImpresionId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1084,7 +1092,7 @@ namespace RepositoryLayer.Migrations
                     ProdTipoRipsId = table.Column<int>(type: "int", nullable: false),
                     ProdUnidadId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1161,7 +1169,7 @@ namespace RepositoryLayer.Migrations
                     RousUsuarioId = table.Column<int>(type: "int", nullable: false),
                     RousRolId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1200,7 +1208,7 @@ namespace RepositoryLayer.Migrations
                     ResoSucursalId = table.Column<int>(type: "int", nullable: false),
                     ResoTipoDocId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1248,7 +1256,7 @@ namespace RepositoryLayer.Migrations
                     LiprSucursalClienteId = table.Column<int>(type: "int", nullable: false),
                     LiprClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1336,7 +1344,7 @@ namespace RepositoryLayer.Migrations
                     FactNotaCreditoId = table.Column<int>(type: "int", nullable: false),
                     FactClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1465,7 +1473,7 @@ namespace RepositoryLayer.Migrations
                     DetaUnidadId = table.Column<int>(type: "int", nullable: false),
                     DetaListaPreciosId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
@@ -1513,6 +1521,11 @@ namespace RepositoryLayer.Migrations
                 name: "IX_CentroCosto_CcosEmpresaId",
                 table: "CentroCosto",
                 column: "CcosEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CentroCosto_CcosTipoDescuentoId",
+                table: "CentroCosto",
+                column: "CcosTipoDescuentoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ciudad_CiudDeptoId",
@@ -1964,9 +1977,6 @@ namespace RepositoryLayer.Migrations
                 name: "NotaDebito");
 
             migrationBuilder.DropTable(
-                name: "TipoDescuento");
-
-            migrationBuilder.DropTable(
                 name: "TipoDocElectr");
 
             migrationBuilder.DropTable(
@@ -2010,6 +2020,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "TipoDescuento");
 
             migrationBuilder.DropTable(
                 name: "Ciudad");

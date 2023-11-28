@@ -41,10 +41,14 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CcosTipoDescuentoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -53,6 +57,8 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CcosEmpresaId");
+
+                    b.HasIndex("CcosTipoDescuentoId");
 
                     b.ToTable("CentroCosto");
                 });
@@ -79,6 +85,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -110,6 +117,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -132,6 +140,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -268,6 +277,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -315,6 +325,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -344,6 +355,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -373,6 +385,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -419,6 +432,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -463,6 +477,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -492,6 +507,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -521,6 +537,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -618,6 +635,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -765,6 +783,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -806,6 +825,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -835,6 +855,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1026,6 +1047,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1078,6 +1100,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1107,6 +1130,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1142,6 +1166,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1182,6 +1207,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1215,6 +1241,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1274,6 +1301,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1313,6 +1341,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1342,6 +1371,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1371,6 +1401,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1418,6 +1449,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1467,6 +1499,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1495,6 +1528,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1524,6 +1558,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1626,6 +1661,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1658,6 +1694,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1726,6 +1763,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1755,6 +1793,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1784,6 +1823,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1817,6 +1857,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1847,6 +1888,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1879,6 +1921,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1896,6 +1939,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SuclContacto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclCorreo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -1942,6 +1989,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2056,6 +2104,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2078,6 +2127,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2107,6 +2157,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2136,6 +2187,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2165,6 +2217,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2194,6 +2247,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2223,6 +2277,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2262,6 +2317,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2301,6 +2357,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2336,7 +2393,15 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DomainLayer.Models.TipoDescuentoModel", "CcosTipoDescuento")
+                        .WithMany("TideCentrosCostos")
+                        .HasForeignKey("CcosTipoDescuentoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("CcosEmpresa");
+
+                    b.Navigation("CcosTipoDescuento");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CiudadModel", b =>
@@ -3247,6 +3312,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.TipoDescuentoModel", b =>
                 {
+                    b.Navigation("TideCentrosCostos");
+
                     b.Navigation("TideFacturas");
                 });
 
