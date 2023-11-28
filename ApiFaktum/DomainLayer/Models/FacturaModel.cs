@@ -107,6 +107,8 @@ namespace DomainLayer.Models
         public virtual TipoDocElectrModel? FactTipoDocElectr { get; set; }
         [Required]
         public virtual ICollection<DetalleFactModel>? FactDetFacturas { get; set; }
+        [Required]
+        public virtual ListaPrecioModel? FactListaPrecios { get; set; }
 
     }
 }

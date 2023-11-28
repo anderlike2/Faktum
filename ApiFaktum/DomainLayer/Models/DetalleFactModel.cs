@@ -22,7 +22,6 @@ namespace DomainLayer.Models
         public int DetaLinea { get; set; }
         [Required]
         public string? DetaListaPrecio { get; set; }
-        [Required]
         public string? DetaOrdenCompra { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal DetaPorDescuento { get; set; }
@@ -32,7 +31,6 @@ namespace DomainLayer.Models
         public decimal DetaPorcCrf { get; set; }
         [Required]
         public long DetaProducto { get; set; }
-        [Required]
         public string? DetaRemision { get; set; }
         [Column(TypeName = "decimal(18,2)")]
         public decimal DetaValor { get; set; }
@@ -54,5 +52,7 @@ namespace DomainLayer.Models
         public virtual ImpuestoModel? DetaTipoImpuesto { get; set; }
         [Required]
         public virtual UnidadModel? DetaUnidad { get; set; }
+        [Required]
+        public virtual ListaPrecioModel? DetaListaPrecios { get; set; }
     }
 }

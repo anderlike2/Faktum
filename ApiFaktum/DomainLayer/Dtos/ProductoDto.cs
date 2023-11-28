@@ -24,5 +24,6 @@ namespace DomainLayer.Dtos
         public ImpuestoDto? ProdTipoImpuesto { get; set; }
         public TipoArchivoRipsDto? ProdTipoRips { get; set; }
         public UnidadDto? ProdUnidad { get; set; }
+        public List<ListaPrecioDto>? ProdListaPrecios { get; set; }
     }
 }

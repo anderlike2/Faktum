@@ -44,5 +44,7 @@ namespace DomainLayer.Models
         public virtual TipoArchivoRipsModel? ProdTipoRips { get; set; }
         [Required]
         public virtual UnidadModel? ProdUnidad { get; set; }
+        [Required]
+        public virtual ICollection<ListaPrecioModel>? ProdListaPrecios { get; set; }
     }
 }

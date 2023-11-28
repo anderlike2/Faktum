@@ -62,5 +62,6 @@ namespace DomainLayer.Dtos
         public TipoDescuentoDto? FactTipoDescuento { get; set; }
         public TipoDocElectrDto? FactTipoDocElectr { get; set; }
         public List<DetalleFactDto>? FactDetFacturas { get; set; }
+        public ListaPrecioDto? FactListaPrecios { get; set; }
     }
 }

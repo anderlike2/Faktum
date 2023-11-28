@@ -44,6 +44,8 @@ namespace DomainLayer.Dtos
         public List<FormatoImpresionDto>? EmprFormatosImpresion { get; set; }
         public List<FacturaDto>? EmprFacturas { get; set; }
         public List<DetalleFactDto>? EmprDetFacturas { get; set; }
+        public List<VendedorDto>? EmprVendedores { get; set; }
+        public List<ListaPrecioDto>? EmprListaPrecios { get; set; }
 
     }
 }

@@ -40,5 +40,6 @@ namespace DomainLayer.Dtos
         public ReteFuenteDto? DetaRetefuente { get; set; }
         public ImpuestoDto? DetaTipoImpuesto { get; set; }
         public UnidadDto? DetaUnidad { get; set; }
+        public ListaPrecioDto? DetaListaPrecios { get; set; }
     }
 }

@@ -79,6 +79,10 @@ namespace DomainLayer.Models
         public virtual ICollection<FacturaModel>? EmprFacturas { get; set; }
         [Required]
         public virtual ICollection<DetalleFactModel>? EmprDetFacturas { get; set; }
+        [Required]
+        public virtual ICollection<VendedorModel>? EmprVendedores { get; set; }
+        [Required]
+        public virtual ICollection<ListaPrecioModel>? EmprListaPrecios { get; set; }
 
     }
 }
