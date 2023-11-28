@@ -1,11 +1,14 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
-    public class TipoIdDto
+    public class TipoIdDto : BaseDto
     {
         public int TiidCodigo { get; set; }
         public string? TiidNombre { get; set; }
-        public bool? TiidEstado { get; set; }
-        public DateTime? TiidFechaCreacion { get; set; }
-        public DateTime? TiidFechaModificacion { get; set; }
+
+        //Referencias
+        public List<EmpresaDto>? TiidEmpresas { get; set; }
+        public List<ClienteDto>? TiidClientes { get; set; }
     }
 }

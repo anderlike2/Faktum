@@ -1,19 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class EstadoDianFacturaModel
+    public class EstadoDianFacturaModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int EsfaCodigo { get; set; }
         [Required]
         public string? EsfaNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? EsfaEstado { get; set; }
-        [Required]
-        public DateTime? EsfaFechaCreacion { get; set; }
-        public DateTime? EsfaFechaModificacion { get; set; }
+        public virtual ICollection<FacturaModel>? EsfaFacturas { get; set; }
     }
 }

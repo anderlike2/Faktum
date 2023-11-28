@@ -1,19 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class FormaPagoModel
+    public class FormaPagoModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int FopaCodigo { get; set; }
         [Required]
         public string? FopaNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? FopaEstado { get; set; }
-        [Required]
-        public DateTime? FopaFechaCreacion { get; set; }
-        public DateTime? FopaFechaModificacion { get; set; }
+        public virtual ICollection<FacturaModel>? FopaFacturas { get; set; }
     }
 }

@@ -1,12 +1,14 @@
-﻿
+﻿using DomainLayer.Models;
+
 namespace DomainLayer.Dtos
 {
-    public class RespTributariaDto
+    public class RespTributariaDto : BaseDto
     {
         public int RetrCodigo { get; set; }
         public string? RetrNombre { get; set; }
-        public bool? RetrEstado { get; set; }
-        public DateTime? RetrFechaCreacion { get; set; }
-        public DateTime? RetrFechaModificacion { get; set; }
+
+        //Referencias
+        public List<EmpresaDto>? RetrEmpresas { get; set; }
+        public List<ClienteDto>? RetrClientes { get; set; }
     }
 }

@@ -1,19 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class TipoArchivoRipsModel
+    public class TipoArchivoRipsModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ArriCodigo { get; set; }
         [Required]
         public string? ArriNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? ArriEstado { get; set; }
-        [Required]
-        public DateTime? ArriFechaCreacion { get; set; }
-        public DateTime? ArriFechaModificacion { get; set; }
+        public virtual ICollection<ProductoModel>? ArriProductos { get; set; }
     }
 }

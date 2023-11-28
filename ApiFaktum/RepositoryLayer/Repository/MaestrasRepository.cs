@@ -44,104 +44,99 @@ namespace RepositoryLayer.Repository
                 switch (tipoClase)
                 {
                     case Constantes.claseFactura:
-                        var r1 = await objContext.Set<ClaseFacturaModel>().Where(x => x.ClfaEstado != null && (bool)x.ClfaEstado).ToListAsync();
+                        var r1 = await objContext.Set<ClaseFacturaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r1)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.ClfaCodigo, item.ClfaNombre, item.ClfaEstado, item.ClfaFechaCreacion, item.ClfaFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.ClfaCodigo, item.ClfaNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.tipoCliente:
-                        var r2 = await objContext.Set<TipoClienteModel>().Where(x => x.TiclEstado != null && (bool)x.TiclEstado).ToListAsync();
+                        var r2 = await objContext.Set<TipoClienteModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r2)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.TiclCodigo, item.TiclNombre, item.TiclEstado, item.TiclFechaCreacion, item.TiclFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.TiclCodigo, item.TiclNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.tipoCups:
-                        var r3 = await objContext.Set<TipoCupModel>().Where(x => x.TicuEstado != null && (bool)x.TicuEstado).ToListAsync();
+                        var r3 = await objContext.Set<TipoCupModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r3)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.TicuCodigo, item.TicuNombre, item.TicuEstado, item.TicuFechaCreacion, item.TicuFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.TicuCodigo, item.TicuNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.tipoDocElectr:
-                        var r4 = await objContext.Set<TipoDocElectrModel>().Where(x => x.TidoEstado != null && (bool)x.TidoEstado).ToListAsync();
+                        var r4 = await objContext.Set<TipoDocElectrModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r4)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.TidoCodigo, item.TidoNombre, item.TidoEstado, item.TidoFechaCreacion, item.TidoFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.TidoCodigo, item.TidoNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.moneda:
-                        var r5 = await objContext.Set<MonedaModel>().Where(x => x.MoneEstado != null && (bool)x.MoneEstado).ToListAsync();
+                        var r5 = await objContext.Set<MonedaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r5)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.MoneCodigo, item.MoneNombre, item.MoneEstado, item.MoneFechaCreacion, item.MoneFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.MoneCodigo, item.MoneNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.tipoId:
-                        var r6 = await objContext.Set<TipoIdModel>().Where(x => x.TiidEstado != null && (bool)x.TiidEstado).ToListAsync();
+                        var r6 = await objContext.Set<TipoIdModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r6)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.TiidCodigo, item.TiidNombre, item.TiidEstado, item.TiidFechaCreacion, item.TiidFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.TiidCodigo, item.TiidNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.tipoDescuento:
-                        var r7 = await objContext.Set<TipoDescuentoModel>().Where(x => x.TideEstado != null && (bool)x.TideEstado).ToListAsync();
+                        var r7 = await objContext.Set<TipoDescuentoModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r7)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.TideCodigo, item.TideNombre, item.TideEstado, item.TideFechaCreacion, item.TideFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.TideCodigo, item.TideNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.tipoArchivoRips:
-                        var r8 = await objContext.Set<TipoArchivoRipsModel>().Where(x => x.ArriEstado != null && (bool)x.ArriEstado).ToListAsync();
+                        var r8 = await objContext.Set<TipoArchivoRipsModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r8)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.ArriCodigo, item.ArriNombre, item.ArriEstado, item.ArriFechaCreacion, item.ArriFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.ArriCodigo, item.ArriNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.respTributaria:
-                        var r9 = await objContext.Set<RespTributariaModel>().Where(x => x.RetrEstado != null && (bool)x.RetrEstado).ToListAsync();
+                        var r9 = await objContext.Set<RespTributariaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r9)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.RetrCodigo, item.RetrNombre, item.RetrEstado, item.RetrFechaCreacion, item.RetrFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.RetrCodigo, item.RetrNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.respFiscal:
-                        var r10 = await objContext.Set<RespFiscalModel>().Where(x => x.RefiEstado != null && (bool)x.RefiEstado).ToListAsync();
+                        var r10 = await objContext.Set<RespFiscalModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r10)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.RefiCodigo, item.RefiNombre, item.RefiEstado, item.RefiFechaCreacion, item.RefiFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.RefiCodigo, item.RefiNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.formaPago:
-                        var r11 = await objContext.Set<FormaPagoModel>().Where(x => x.FopaEstado != null && (bool)x.FopaEstado).ToListAsync();
+                        var r11 = await objContext.Set<FormaPagoModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r11)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.FopaCodigo, item.FopaNombre, item.FopaEstado, item.FopaFechaCreacion, item.FopaFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.FopaCodigo, item.FopaNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.factSaludTipo:
-                        var r12 = await objContext.Set<FactSaludTipoModel>().Where(x => x.FasaEstado != null && (bool)x.FasaEstado).ToListAsync();
+                        var r12 = await objContext.Set<FactSaludTipoModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r12)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.FasaCodigo, item.FasaNombre, item.FasaEstado, item.FasaFechaCreacion, item.FasaFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.FasaCodigo, item.FasaNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.estadoDianFactura:
-                        var r13 = await objContext.Set<EstadoDianFacturaModel>().Where(x => x.EsfaEstado != null && (bool)x.EsfaEstado).ToListAsync();
+                        var r13 = await objContext.Set<EstadoDianFacturaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r13)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.EsfaCodigo, item.EsfaNombre, item.EsfaEstado, item.EsfaFechaCreacion, item.EsfaFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.EsfaCodigo, item.EsfaNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.cups:
-                        var r14 = await objContext.Set<CupModel>().Where(x => x.CupsEstado != null && (bool)x.CupsEstado).ToListAsync();
+                        var r14 = await objContext.Set<CupModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r14)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.CupsCodigo, item.CupsNombre, item.CupsEstado, item.CupsFechaCreacion, item.CupsFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.CupsCodigo, item.CupsNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.condicionVenta:
-                        var r15 = await objContext.Set<CondicionVentaModel>().Where(x => x.CoveEstado != null && (bool)x.CoveEstado).ToListAsync();
+                        var r15 = await objContext.Set<CondicionVentaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r15)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.CoveCodigo, item.CoveNombre, item.CoveEstado, item.CoveFechaCreacion, item.CoveFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.CoveCodigo, item.CoveNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.pais:
-                        var r16 = await objContext.Set<PaisModel>().Where(x => x.PaisEstado != null && (bool)x.PaisEstado).ToListAsync();
+                        var r16 = await objContext.Set<PaisModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r16)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.PaisCodigo, item.PaisNombre, item.PaisEstado, item.PaisFechaCreacion, item.PaisFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.PaisCodigo, item.PaisNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.modalidadPago:
-                        var r17 = await objContext.Set<ModalidadPagoModel>().Where(x => x.MopaEstado != null && (bool)x.MopaEstado).ToListAsync();
+                        var r17 = await objContext.Set<ModalidadPagoModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r17)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.MopaCodigo, item.MopaNombre, item.MopaEstado, item.MopaFechaCreacion, item.MopaFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.MopaCodigo, item.MopaNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.conceptoNotas:
-                        var r18 = await objContext.Set<ConceptoNotaModel>().Where(x => x.ConoEstado != null && (bool)x.ConoEstado).ToListAsync();
+                        var r18 = await objContext.Set<ConceptoNotaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r18)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.ConoCodigo, item.ConoNombre, item.ConoEstado, item.ConoFechaCreacion, item.ConoFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.ConoCodigo, item.ConoNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                     case Constantes.cobertura:
-                        var r19 = await objContext.Set<CoberturaModel>().Where(x => x.CobeEstado != null && (bool)x.CobeEstado).ToListAsync();
+                        var r19 = await objContext.Set<CoberturaModel>().Where(x => x.Estado == 1).ToListAsync();
                         foreach (var item in r19)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.CobeCodigo, item.CobeNombre, item.CobeEstado, item.CobeFechaCreacion, item.CobeFechaModificacion));
-                        break;
-                    case Constantes.depto:
-                        var r20 = await objContext.Set<DeptoModel>().Where(x => x.DeptoEstado != null && (bool)x.DeptoEstado).ToListAsync();
-                        foreach (var item in r20)
-                            lstRespuesta.Add(FormarRespuestaMaestra(item.DeptoCodigo, item.DeptoNombre, item.DeptoEstado, item.DeptoFechaCreacion, item.DeptoFechaModificacion));
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.CobeCodigo, item.CobeNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
                 }
 
@@ -167,7 +162,7 @@ namespace RepositoryLayer.Repository
         /// <param name="fechaCreacion"></param>
         /// <param name="fechaModificacion"></param>
         /// <returns>Task<Result></returns>
-        public MaestraDto FormarRespuestaMaestra(int codigo, string? nombre, bool? estado, DateTime? fechaCreacion, DateTime? fechaModificacion)
+        public MaestraDto FormarRespuestaMaestra(int codigo, string? nombre, int estado, DateTime? fechaCreacion, DateTime? fechaModificacion)
         {
             return new MaestraDto
             {

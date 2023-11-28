@@ -1,11 +1,13 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
-    public class EstadoDianFacturaDto
+    public class EstadoDianFacturaDto : BaseDto
     {
         public int EsfaCodigo { get; set; }
         public string? EsfaNombre { get; set; }
-        public bool? EsfaEstado { get; set; }
-        public DateTime? EsfaFechaCreacion { get; set; }
-        public DateTime? EsfaFechaModificacion { get; set; }
+
+        //Referencias
+        public List<FacturaDto>? EsfaFacturas { get; set; }
     }
 }

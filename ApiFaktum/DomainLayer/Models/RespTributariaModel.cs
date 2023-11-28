@@ -1,20 +1,19 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class RespTributariaModel
+    public class RespTributariaModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RetrCodigo { get; set; }
         [Required]
         public string? RetrNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? RetrEstado { get; set; }
+        public virtual ICollection<EmpresaModel>? RetrEmpresas { get; set; }
         [Required]
-        public DateTime? RetrFechaCreacion { get; set; }
-        public DateTime? RetrFechaModificacion { get; set; }
+        public virtual ICollection<ClienteModel>? RetrClientes { get; set; }
     }
 }

@@ -1,20 +1,18 @@
-﻿
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class ConceptoNotaModel
+    public class ConceptoNotaModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ConoCodigo { get; set; }
         [Required]
         public string? ConoNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? ConoEstado { get; set; }
+        public virtual ICollection<NotaDebitoModel>? ConoNotasDebito { get; set; }
         [Required]
-        public DateTime? ConoFechaCreacion { get; set; }
-        public DateTime? ConoFechaModificacion { get; set; }
+        public virtual ICollection<NotaCreditoModel>? ConoNotasCredito { get; set; }
     }
 }

@@ -1,12 +1,15 @@
 ﻿
+using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations;
+
 namespace DomainLayer.Dtos
 {
-    public class CupDto
+    public class CupDto : BaseDto
     {
         public int CupsCodigo { get; set; }
         public string? CupsNombre { get; set; }
-        public bool? CupsEstado { get; set; }
-        public DateTime? CupsFechaCreacion { get; set; }
-        public DateTime? CupsFechaModificacion { get; set; }
+
+        //Referencias
+        public List<ProductoDto>? CupsProductos { get; set; }
     }
 }

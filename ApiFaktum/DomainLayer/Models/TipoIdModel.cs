@@ -1,19 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class TipoIdModel
+    public class TipoIdModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TiidCodigo { get; set; }
         [Required]
         public string? TiidNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? TiidEstado { get; set; }
+        public virtual ICollection<EmpresaModel>? TiidEmpresas { get; set; }
         [Required]
-        public DateTime? TiidFechaCreacion { get; set; }
-        public DateTime? TiidFechaModificacion { get; set; }
+        public virtual ICollection<ClienteModel>? TiidClientes { get; set; }
     }
 }

@@ -1,19 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class RespFiscalModel
+    public class RespFiscalModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RefiCodigo { get; set; }
         [Required]
         public string? RefiNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? RefiEstado { get; set; }
+        public virtual ICollection<EmpresaModel>? RefiEmpresas { get; set; }
         [Required]
-        public DateTime? RefiFechaCreacion { get; set; }
-        public DateTime? RefiFechaModificacion { get; set; }
+        public virtual ICollection<ClienteModel>? RefiClientes { get; set; }
     }
 }

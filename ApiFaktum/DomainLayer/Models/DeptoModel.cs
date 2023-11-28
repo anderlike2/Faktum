@@ -1,20 +1,19 @@
 ﻿
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class DeptoModel
+    public class DeptoModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int DeptoCodigo { get; set; }
         [Required]
         public string? DeptoNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? DeptoEstado { get; set; }
+        public virtual ICollection<CiudadModel>? DeptoCiudades { get; set; }
         [Required]
-        public DateTime? DeptoFechaCreacion { get; set; }
-        public DateTime? DeptoFechaModificacion { get; set; }
+        public virtual ICollection<ClienteModel>? DeptoClientes { get; set; }
     }
 }

@@ -1,13 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Models
 {
-    public class UsuarioModel
+    public class UsuarioModel : BaseEntity
     {
-        [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int UsuaCodigo { get; set; }
         [Required]
         public string? UsuaUsuario { get; set; }
         [Required]
@@ -15,11 +11,6 @@ namespace DomainLayer.Models
         [Required]
         public int? UsuaIntentos { get; set; }
         [Required]
-        public bool? UsuaEstado { get; set; }
-        [Required]
-        public DateTime? UsuaFechaCreacion { get; set; }
-        public DateTime? UsuaFechaModificacion { get; set; }
-        [Required]
-        public virtual ICollection<RolUsuarioModel>? UsuRoles { get; set; }
+        public virtual EmpresaModel? UsuEmpresa { get; set; }
     }
 }

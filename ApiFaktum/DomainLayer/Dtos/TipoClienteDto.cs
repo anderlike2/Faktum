@@ -1,11 +1,14 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
-    public class TipoClienteDto
+    public class TipoClienteDto : BaseDto
     {
         public int TiclCodigo { get; set; }
         public string? TiclNombre { get; set; }
-        public bool? TiclEstado { get; set; }
-        public DateTime? TiclFechaCreacion { get; set; }
-        public DateTime? TiclFechaModificacion { get; set; }
+
+        //Referencias
+        public List<EmpresaDto>? TiclEmpresas { get; set; }
+        public List<ClienteDto>? TiclClientes { get; set; }
     }
 }

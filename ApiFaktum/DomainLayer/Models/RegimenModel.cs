@@ -1,21 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class RegimenModel
+    public class RegimenModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RegiCodigo { get; set; }
         [Required]
         public string? RegiNombre { get; set; }
         [Required]
-        public bool? RegiEstadoOperacion { get; set; }
+        public int RegiEstadoOperacion { get; set; }
+
+        //Referencias
         [Required]
-        public bool? RegiEstado { get; set; }
+        public virtual ICollection<EmpresaModel>? RegiEmpresas { get; set; }
         [Required]
-        public DateTime? RegiFechaCreacion { get; set; }
-        public DateTime? RegiFechaModificacion { get; set; }
+        public virtual ICollection<ClienteModel>? RegiClientes { get; set; }
     }
 }

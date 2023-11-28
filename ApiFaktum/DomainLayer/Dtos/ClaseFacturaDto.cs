@@ -1,11 +1,14 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace DomainLayer.Dtos
 {
-    public class ClaseFacturaDto
+    public class ClaseFacturaDto : BaseDto
     {
         public int ClfaCodigo { get; set; }
         public string? ClfaNombre { get; set; }
-        public bool? ClfaEstado { get; set; }
-        public DateTime? ClfaFechaCreacion { get; set; }
-        public DateTime? ClfaFechaModificacion { get; set; }
+
+        //Referencias
+        public List<FacturaDto>? ClfaFacturas { get; set; }
     }
 }

@@ -1,10 +1,10 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
-    public class RolUsuarioDto
+    public class RolUsuarioDto : BaseDto
     {
-        public int RousCodigo { get; set; }
-        public bool? RousEstado { get; set; }
-        public DateTime? RousFechaCreacion { get; set; }
-        public DateTime? RousFechaModificacion { get; set; }
+        public UsuarioModel? RousUsuario { get; set; }
+        public RolModel? RousRol { get; set; }
     }
 }

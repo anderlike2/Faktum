@@ -1,11 +1,14 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace DomainLayer.Dtos
 {
-    public class MonedaDto
+    public class MonedaDto : BaseDto
     {
         public int MoneCodigo { get; set; }
         public string? MoneNombre { get; set; }
-        public bool? MoneEstado { get; set; }
-        public DateTime? MoneFechaCreacion { get; set; }
-        public DateTime? MoneFechaModificacion { get; set; }
+
+        //Referencias
+        public List<FacturaDto>? MoneFacturas { get; set; }
     }
 }

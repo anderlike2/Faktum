@@ -1,19 +1,18 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class CoberturaModel
+    public class CoberturaModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CobeCodigo { get; set; }
         [Required]
         public string? CobeNombre { get; set; }
+
+        //Referencias
         [Required]
-        public bool? CobeEstado { get; set; }
+        public virtual ICollection<FacturaModel>? CobeFacturas { get; set; }
         [Required]
-        public DateTime? CobeFechaCreacion { get; set; }
-        public DateTime? CobeFechaModificacion { get; set; }
+        public virtual ICollection<ContratoSaludModel>? CobeContratosSalud { get; set; }
     }
 }

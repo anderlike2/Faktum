@@ -103,6 +103,54 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<LocalidadModel, LocalidadDto>().ReverseMap();
             CreateMap<LocalidadDto, LocalidadModel>();
+
+            CreateMap<EmpresaModel, EmpresaDto>().ReverseMap();
+            CreateMap<EmpresaDto, EmpresaModel>();
+
+            CreateMap<FormatoImpresionModel, FormatoImpresionDto>().ReverseMap();
+            CreateMap<FormatoImpresionDto, FormatoImpresionModel>();
+
+            CreateMap<UnidadModel, UnidadDto>().ReverseMap();
+            CreateMap<UnidadDto, UnidadModel>();
+
+            CreateMap<CentroCostoModel, CentroCostoDto>().ReverseMap();
+            CreateMap<CentroCostoDto, CentroCostoModel>();
+
+            CreateMap<ProductoModel, ProductoDto>().ReverseMap();
+            CreateMap<ProductoDto, ProductoModel>();
+
+            CreateMap<FacturaModel, FacturaDto>().ReverseMap();
+            CreateMap<FacturaDto, FacturaModel>();
+
+            CreateMap<DetalleFactModel, DetalleFactDto>().ReverseMap();
+            CreateMap<DetalleFactDto, DetalleFactModel>();
+
+            CreateMap<VendedorModel, VendedorDto>().ReverseMap();
+            CreateMap<VendedorDto, VendedorModel>();
+
+            CreateMap<ListaPrecioModel, ListaPrecioDto>().ReverseMap();
+            CreateMap<ListaPrecioDto, ListaPrecioModel>();
+
+            CreateMap<NotaDebitoModel, NotaDebitoDto>().ReverseMap();
+            CreateMap<NotaDebitoDto, NotaDebitoModel>();
+
+            CreateMap<NotaCreditoModel, NotaCreditoDto>().ReverseMap();
+            CreateMap<NotaCreditoDto, NotaCreditoModel>();
+
+            CreateMap<SucursalModel, SucursalDto>().ReverseMap();
+            CreateMap<SucursalDto, SucursalModel>();
+
+            CreateMap<SucursalClienteModel, SucursalClienteDto>().ReverseMap();
+            CreateMap<SucursalClienteDto, SucursalClienteModel>();
+
+            CreateMap<ClienteModel, ClienteDto>().ReverseMap();
+            CreateMap<ClienteDto, ClienteModel>();
+
+            CreateMap<ResolucionModel, ResolucionDto>().ReverseMap();
+            CreateMap<ResolucionDto, ResolucionModel>();
+
+            CreateMap<ContratoSaludModel, ContratoSaludDto>().ReverseMap();
+            CreateMap<ContratoSaludDto, ContratoSaludModel>();
         }
     }
 }

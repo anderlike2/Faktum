@@ -1,21 +1,19 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using DomainLayer.Dtos;
 using System.ComponentModel.DataAnnotations;
 
 namespace DomainLayer.Models
 {
-    public class IumModel
+    public class IumModel : BaseEntity
     {
         [Required]
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int IumCodigo { get; set; }
         [Required]
         public string? IumNombre { get; set; }
         [Required]
         public string? IumUnidad { get; set; }
+
+        //Referencias
         [Required]
-        public bool? IumEstado { get; set; }
-        [Required]
-        public DateTime? IumFechaCreacion { get; set; }
-        public DateTime? IumFechaModificacion { get; set; }
+        public virtual ICollection<ProductoModel>? IumProductos { get; set; }
     }
 }

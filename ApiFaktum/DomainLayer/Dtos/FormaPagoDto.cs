@@ -1,11 +1,13 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
-    public class FormaPagoDto
+    public class FormaPagoDto : BaseDto
     {
         public int FopaCodigo { get; set; }
         public string? FopaNombre { get; set; }
-        public bool? FopaEstado { get; set; }
-        public DateTime? FopaFechaCreacion { get; set; }
-        public DateTime? FopaFechaModificacion { get; set; }
+
+        //Referencias
+        public List<FacturaDto>? FopaFacturas { get; set; }
     }
 }

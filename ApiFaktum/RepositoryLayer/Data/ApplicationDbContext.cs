@@ -48,7 +48,23 @@ namespace RepositoryLayer.Data
         public DbSet<TipoCupModel> TipoCup { get; set; }
         public DbSet<TipoClienteModel> TipoCliente { get; set; }
         public DbSet<ClaseFacturaModel> ClaseFactura { get; set; }
-        public DbSet<NumeracionResolucionModel> numeracionResolucion { get; set; }
+        public DbSet<NumeracionResolucionModel> NumeracionResolucion { get; set; }
         public DbSet<LocalidadModel> Localidad { get; set; }
+        public DbSet<EmpresaModel> Empresa { get; set; }
+        public DbSet<FormatoImpresionModel> FormatoImpresion { get; set; }
+        public DbSet<UnidadModel> Unidad { get; set; }
+        public DbSet<CentroCostoModel> CentroCosto { get; set; }
+        public DbSet<ProductoModel> Producto { get; set; }
+        public DbSet<FacturaModel> Factura { get; set; }
+        public DbSet<DetalleFactModel> DetalleFact { get; set; }
+        public DbSet<VendedorModel> Vendedor { get; set; }
+        public DbSet<ListaPrecioModel> ListaPrecio { get; set; }
+        public DbSet<NotaDebitoModel> NotaDebito { get; set; }
+        public DbSet<NotaCreditoModel> NotaCredito { get; set; }
+        public DbSet<SucursalModel> Sucursal { get; set; }
+        public DbSet<SucursalClienteModel> SucursalCliente { get; set; }
+        public DbSet<ClienteModel> Cliente { get; set; }
+        public DbSet<ResolucionModel> Resolucion { get; set; }
+        public DbSet<ContratoSaludModel> ContratoSalud { get; set; }
     }
 }

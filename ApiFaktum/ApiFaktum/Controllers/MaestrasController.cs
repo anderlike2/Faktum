@@ -403,5 +403,46 @@ namespace ApiFaktum.Controllers
                 return BadRequest();
             }
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla Depto
+        /// </summary>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarTablaDepto")]
+        public async Task<IActionResult> ConsultarTablaDepto()
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarTablaDepto();
+
+                if (vRespuesta.Success)
+                {
+                    oRespuesta.Success = true;
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                    oRespuesta.Data = vRespuesta.Data;
+
+                    return Ok(oRespuesta);
+                }
+                else
+                {
+                    oRespuesta.Success = false;
+                    oRespuesta.Message = vRespuesta.Message;
+
+                    return Ok(oRespuesta);
+                }
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Message = ex.Message;
+
+                return BadRequest();
+            }
+        }
     }
 }

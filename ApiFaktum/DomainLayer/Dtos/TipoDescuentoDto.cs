@@ -1,11 +1,14 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace DomainLayer.Dtos
 {
-    public class TipoDescuentoDto
+    public class TipoDescuentoDto : BaseDto
     {
         public int TideCodigo { get; set; }
         public string? TideNombre { get; set; }
-        public bool? TideEstado { get; set; }
-        public DateTime? TideFechaCreacion { get; set; }
-        public DateTime? TideFechaModificacion { get; set; }
+
+        //Referencias
+        public List<FacturaDto>? TideFacturas { get; set; }
     }
 }

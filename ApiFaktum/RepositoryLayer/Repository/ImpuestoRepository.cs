@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.Impuesto.Where(x => x.ImpuEstado != null && (bool)x.ImpuEstado).ToListAsync();
+                lstResult = await objContext.Impuesto.Where(x => x.Estado == 1).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

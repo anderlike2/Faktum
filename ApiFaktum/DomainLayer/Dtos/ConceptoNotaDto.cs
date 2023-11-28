@@ -1,11 +1,14 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
-    public class ConceptoNotaDto
+    public class ConceptoNotaDto : BaseDto
     {
         public int ConoCodigo { get; set; }
         public string? ConoNombre { get; set; }
-        public bool? ConoEstado { get; set; }
-        public DateTime? ConoFechaCreacion { get; set; }
-        public DateTime? ConoFechaModificacion { get; set; }
+
+        //Referencias
+        public List<NotaDebitoDto>? ConoNotasDebito { get; set; }
+        public List<NotaCreditoDto>? ConoNotasCredito { get; set; }
     }
 }
