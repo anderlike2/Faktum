@@ -7,5 +7,6 @@
 
         //Referencias
         public List<FacturaDto>? TideFacturas { get; set; }
+        public List<CentroCostoDto>? TideCentrosCostos { get; set; }
     }
 }

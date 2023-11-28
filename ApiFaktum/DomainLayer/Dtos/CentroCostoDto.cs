@@ -9,5 +9,6 @@
         public EmpresaDto? CcosEmpresa { get; set; }
         public List<ProductoDto>? CcosProductos { get; set; }
         public List<SucursalDto>? CcosSucursales { get; set; }
+        public TipoDescuentoDto? CcosTipoDescuento { get; set; }
     }
 }

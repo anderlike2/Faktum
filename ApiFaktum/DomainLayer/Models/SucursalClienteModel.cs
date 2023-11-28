@@ -13,6 +13,8 @@ namespace DomainLayer.Models
         [Required]
         public string? SuclContacto { get; set; }
         [Required]
+        public string? SuclCorreo { get; set; }
+        [Required]
         public int SuclDiasPago { get; set; }
         [Required]
         public string? SuclListaPrecio { get; set; }
