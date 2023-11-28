@@ -62,5 +62,6 @@ namespace RepositoryLayer.Data
         public DbSet<NotaDebitoModel> NotaDebito { get; set; }
         public DbSet<NotaCreditoModel> NotaCredito { get; set; }
         public DbSet<SucursalModel> Sucursal { get; set; }
+        public DbSet<SucursalClienteModel> sucursalCliente { get; set; }
     }
 }

@@ -1037,6 +1037,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("LiprProductoId")
                         .HasColumnType("int");
 
+                    b.Property<int>("LiprSucursalClienteId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("LiprValor")
                         .HasColumnType("decimal(18,2)");
 
@@ -1045,6 +1048,8 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("LiprEmpresaId");
 
                     b.HasIndex("LiprProductoId");
+
+                    b.HasIndex("LiprSucursalClienteId");
 
                     b.ToTable("ListaPrecio");
                 });
@@ -1584,6 +1589,64 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("RousUsuarioId");
 
                     b.ToTable("RolUsuario");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SuclCiudad")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclContacto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclDepto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SuclDiasPago")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SuclEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SuclListaPrecio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclNombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclTelefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SuclEmpresaId");
+
+                    b.ToTable("sucursalCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
@@ -2248,9 +2311,17 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DomainLayer.Models.SucursalClienteModel", "LiprSucursalCliente")
+                        .WithMany("SuclListaPrecios")
+                        .HasForeignKey("LiprSucursalClienteId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("LiprEmpresa");
 
                     b.Navigation("LiprProducto");
+
+                    b.Navigation("LiprSucursalCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.LocalidadModel", b =>
@@ -2412,6 +2483,17 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("RousUsuario");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "SuclEmpresa")
+                        .WithMany("EmprSucursalesCliente")
+                        .HasForeignKey("SuclEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("SuclEmpresa");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.CentroCostoModel", "SucuCentroCostos")
@@ -2541,6 +2623,8 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("EmprSucursales");
 
+                    b.Navigation("EmprSucursalesCliente");
+
                     b.Navigation("EmprVendedores");
                 });
 
@@ -2630,6 +2714,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("ReteDetFacturas");
 
                     b.Navigation("ReteProductos");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
+                {
+                    b.Navigation("SuclListaPrecios");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.TipoArchivoRipsModel", b =>

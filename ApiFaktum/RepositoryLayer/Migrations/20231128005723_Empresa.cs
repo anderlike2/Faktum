@@ -748,6 +748,36 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "sucursalCliente",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SuclDepto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclCiudad = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclContacto = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclDiasPago = table.Column<int>(type: "int", nullable: false),
+                    SuclListaPrecio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclTelefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SuclEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_sucursalCliente", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_sucursalCliente_Empresa_SuclEmpresaId",
+                        column: x => x.SuclEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Unidad",
                 columns: table => new
                 {
@@ -1011,6 +1041,7 @@ namespace RepositoryLayer.Migrations
                     LiprValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     LiprEmpresaId = table.Column<int>(type: "int", nullable: false),
                     LiprProductoId = table.Column<int>(type: "int", nullable: false),
+                    LiprSucursalClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: true),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1028,6 +1059,12 @@ namespace RepositoryLayer.Migrations
                         name: "FK_ListaPrecio_Producto_LiprProductoId",
                         column: x => x.LiprProductoId,
                         principalTable: "Producto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ListaPrecio_sucursalCliente_LiprSucursalClienteId",
+                        column: x => x.LiprSucursalClienteId,
+                        principalTable: "sucursalCliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -1410,6 +1447,11 @@ namespace RepositoryLayer.Migrations
                 column: "LiprProductoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ListaPrecio_LiprSucursalClienteId",
+                table: "ListaPrecio",
+                column: "LiprSucursalClienteId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Localidad_LocaCiudadId",
                 table: "Localidad",
                 column: "LocaCiudadId");
@@ -1515,6 +1557,11 @@ namespace RepositoryLayer.Migrations
                 column: "SucuFormatoImpresionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_sucursalCliente_SuclEmpresaId",
+                table: "sucursalCliente",
+                column: "SuclEmpresaId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Unidad_UnidEmpresaId",
                 table: "Unidad",
                 column: "UnidEmpresaId");
@@ -1612,6 +1659,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Producto");
+
+            migrationBuilder.DropTable(
+                name: "sucursalCliente");
 
             migrationBuilder.DropTable(
                 name: "ConceptoNota");

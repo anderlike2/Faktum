@@ -139,6 +139,9 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<SucursalModel, SucursalDto>().ReverseMap();
             CreateMap<SucursalDto, SucursalModel>();
+
+            CreateMap<SucursalClienteModel, SucursalClienteDto>().ReverseMap();
+            CreateMap<SucursalClienteDto, SucursalClienteModel>();
         }
     }
 }
