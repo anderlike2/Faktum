@@ -9,5 +9,6 @@
         //Referencias
         public EmpresaDto? UsuEmpresa { get; set; }
         public List<RolUsuarioDto>? UsuRolesUsuario { get; set; }
+        public List<RolDto>? UsuRoles {  get; set; }
     }
 }

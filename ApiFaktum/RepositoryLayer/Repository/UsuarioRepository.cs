@@ -47,7 +47,8 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                result = await objContext.Usuario.AsNoTracking().Where(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword)).Include(z => z.UsuEmpresa).FirstAsync();
+                result = await objContext.Usuario.AsNoTracking().
+                    Where(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword)).Include(z => z.UsuEmpresa).FirstAsync();
 
                 if (result != null)
                 {
