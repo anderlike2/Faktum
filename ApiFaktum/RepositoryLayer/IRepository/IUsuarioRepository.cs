@@ -17,5 +17,23 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarUsuario(UsuarioFiltroDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el usuario por username
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarUsuarioPorUsername(string username);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar informacion de un usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ActualizarUsuario(UsuarioDto objModel);
     }
 }

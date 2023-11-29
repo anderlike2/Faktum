@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.NumeracionResolucion.Include(x => x.Estado == 1).ToListAsync();
+                lstResult = await objContext.NumeracionResolucion.Where(x => x.Estado == 1).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

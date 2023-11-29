@@ -52,29 +52,17 @@ namespace Api_Empopasto.Controllers
             {
                 var vRespuesta = await objService.ValidarLogin(loginModel);
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjLoginCorrecto;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;                
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
     }
 }

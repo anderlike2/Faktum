@@ -4,11 +4,14 @@
     {
         public const string Autorizado = "Autorizado";
         public const string NoAutorizado = "NoAutorizado";
+        public const string IntentosInicioSesion = "3";
 
         //MENSAJES
         public const string msjNoAutorizado = "No autorizado";
-        public const string msjLoginErrado = "Usuario o Password Incorrectos";
-        public const string msjLoginCorrecto = "Credenciales válidas";
+        public const string msjLoginErrado = "Usuario o Password Incorrectos. Su usuario será bloqueado en {a} intento(s).";
+        public const string msjUsuarioNoExiste = "El usuario ingresado no existe en nuestro sistema.";
+        public const string msjUsuarioBloqueado = "El usuario ha sido bloqueado o inactivado, por favor contactar al Administrador del sistema.";
+        public const string msjLoginCorrecto = "Credenciales válidas.";
         public const string msjNoHayRegistros = "No se encuentran Registros";
         public const string msjUsuarioEstaRegistrado = "El usuario ya se encuentra registrado";
         public const string msjUsuarioNoGuardado = "El usuario no se pudo guardar";
@@ -25,7 +28,6 @@
         public const string msjUsuarioLoginYaExiste = "Nombre de usuario ya existe";
         public const string msjUsuarioCodigoYaAsignado = "Codigo de usuario ya asignado";
         public const string msjUsuarioNroDocumentoYaExiste = "Numero de documento ya existe";
-        public const string msjUsuarioBloqueado = "Usuario bloqueado. contáctese con el administrador";
         public const string msjUsuarioEliminado = "Usuario eliminado";
         public const string msjLLaveCodigoNombre = "Hay campos que ya existen";
         public const string msjConsultaExitosa = "Consulta realizada con éxito";

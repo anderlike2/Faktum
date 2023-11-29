@@ -43,7 +43,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.ReteFuente.Include(x => x.Estado == 1).ToListAsync();
+                lstResult = await objContext.ReteFuente.Where(x => x.Estado == 1).ToListAsync();
 
                 if (lstResult.Count > 0)
                 {

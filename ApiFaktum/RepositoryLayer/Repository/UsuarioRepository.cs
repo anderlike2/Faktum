@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Commun;
 using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +47,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                result = await objContext.Usuario.Include(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword)).FirstAsync();
+                result = await objContext.Usuario.AsNoTracking().Where(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword)).Include(z => z.UsuEmpresa).FirstAsync();
 
                 if (result != null)
                 {
@@ -54,11 +55,78 @@ namespace RepositoryLayer.Repository
 
                     oRespuesta.Success = true;
                     oRespuesta.Data = temp;
+                    oRespuesta.Message = Constantes.msjLoginCorrecto;
                 }
             }
             catch (Exception ex)
             {
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
+            }
+
+            return oRespuesta;
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el usuario por username
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarUsuarioPorUsername(string username)
+        {
+            Result oRespuesta = new Result();
+
+            UsuarioModel? result = new UsuarioModel();
+            UsuarioDto temp = new UsuarioDto();
+
+            try
+            {
+                result = await objContext.Usuario.AsNoTracking().Where(x => x.UsuaUsuario.Equals(username)).FirstAsync();
+
+                if (result != null)
+                {
+                    temp = mapper.Map<UsuarioDto>(result);
+
+                    oRespuesta.Success = true;
+                    oRespuesta.Data = temp;
+                    oRespuesta.Message = Constantes.msjLoginCorrecto;
+                }
+            }
+            catch (Exception ex)
+            {
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message;
+            }
+
+            return oRespuesta;
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar informacion de un usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ActualizarUsuario(UsuarioDto objModel)
+        {
+            Result oRespuesta = new Result();
+
+            try
+            {
+                var objTemp = mapper.Map<UsuarioModel>(objModel);
+                objTemp.FechaModificacion = DateTime.UtcNow;
+
+                objContext.Update(objTemp);
+                await objContext.SaveChangesAsync();
+
+                oRespuesta.Success = true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
             return oRespuesta;
