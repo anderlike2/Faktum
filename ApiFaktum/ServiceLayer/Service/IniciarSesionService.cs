@@ -14,6 +14,7 @@ namespace ServiceLayer.Service
     {
         private readonly IUsuarioRepository objUsuarioRepository;
         private readonly IRolRepository objRolRepository;
+        private readonly IEmpresaRepository objEmpresaRepository;
 
         /// <summary>
         /// Katary
@@ -23,10 +24,11 @@ namespace ServiceLayer.Service
         /// <param name="_objUsuarioRepository"></param>
         /// <param name="_objRolRepository"></param>
         /// <returns></returns>
-        public IniciarSesionService(IUsuarioRepository _objUsuarioRepository, IRolRepository _objRolRepository)
+        public IniciarSesionService(IUsuarioRepository _objUsuarioRepository, IRolRepository _objRolRepository, IEmpresaRepository _objEmpresaRepository)
         {
             this.objUsuarioRepository = _objUsuarioRepository;
             this.objRolRepository = _objRolRepository;
+            this.objEmpresaRepository = _objEmpresaRepository;
         }
 
         /// <summary>
@@ -81,22 +83,7 @@ namespace ServiceLayer.Service
             }
 
             //Consultar los perfiles
-            Task<Result> rolesUsuario = objRolRepository.ConsultarRolesUsuario(usuarioCompleto.Id);
-            List<RolDto> roles = (List<RolDto>)rolesUsuario.Result.Data;
-            if(roles == null || roles.Count <= 0)
-            {
-                oRespuesta.Success = false;
-                oRespuesta.Message = Constantes.msjUsuarioSinRoles;
-                return oRespuesta;
-            }
-            else
-            {
-                usuarioCompleto.UsuRoles = roles;
-                oRespuesta.Success = true;
-                oRespuesta.Message = Constantes.msjLoginCorrecto;
-                oRespuesta.Data = usuarioCompleto;
-                return oRespuesta;
-            }
+            return ConsultarEmpresasRolesUsuario(usuarioCompleto).Result;
         }
 
         /// <summary>
@@ -130,6 +117,58 @@ namespace ServiceLayer.Service
             }
             await objUsuarioRepository.ActualizarUsuario(usuarioUsername);
             return oRespuesta;
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar empresas y roles de la empresa
+        /// </summary>
+        /// <param name="usuarioCompleto"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarEmpresasRolesUsuario(UsuarioDto usuarioCompleto)
+        {
+            Result oRespuesta = new Result();
+            Task<Result> rolesUsuario = objRolRepository.ConsultarRolesUsuario(usuarioCompleto.Id);
+            List<RolDto> roles = (List<RolDto>)rolesUsuario.Result.Data;
+            if (roles == null || roles.Count <= 0)
+            {
+                oRespuesta.Success = false;
+                oRespuesta.Message = Constantes.msjUsuarioSinRoles;
+                return oRespuesta;
+            }
+            else
+            {
+                //Validar usuario Administrador o Operativo
+                bool esAdministrador = false;
+                roles.ForEach(item =>
+                {
+                    if(item.RolCodigo != null && item.RolCodigo.Equals(Constantes.rolAdministrador))
+                        esAdministrador |= true;
+                });
+                Task<Result> empresasUsuario;
+                if (esAdministrador)
+                    empresasUsuario = objEmpresaRepository.ConsultarEmpresas();
+                else
+                    empresasUsuario = objEmpresaRepository.ConsultarEmpresasUsuario(usuarioCompleto.Id);
+
+                List<EmpresaDto> empresas = (List<EmpresaDto>)empresasUsuario.Result.Data;
+                if (empresas == null || empresas.Count <= 0)
+                {
+                    oRespuesta.Success = false;
+                    oRespuesta.Message = Constantes.msjUsuarioSinEmpresas;
+                    return oRespuesta;
+                }
+                else
+                {
+                    usuarioCompleto.UsuRoles = roles;
+                    usuarioCompleto.UsuEmpresas = empresas;
+                    oRespuesta.Success = true;
+                    oRespuesta.Message = Constantes.msjLoginCorrecto;
+                    oRespuesta.Data = usuarioCompleto;
+                    return oRespuesta;
+                }
+            }
         }
     }
 }

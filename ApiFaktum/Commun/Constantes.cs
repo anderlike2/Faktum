@@ -6,12 +6,17 @@
         public const string NoAutorizado = "NoAutorizado";
         public const string IntentosInicioSesion = "3";
 
+        //ROLES
+        public const string rolAdministrador = "ROL_ADMINISTRADOR";
+        public const string rolOperativo = "ROL_OPERATIVO";
+
         //MENSAJES
         public const string msjNoAutorizado = "No autorizado";
         public const string msjLoginErrado = "Usuario o Password Incorrectos. Su usuario será bloqueado en {a} intento(s).";
         public const string msjUsuarioNoExiste = "El usuario ingresado no existe en nuestro sistema.";
         public const string msjUsuarioBloqueado = "El usuario ha sido bloqueado o inactivado, por favor contactar al Administrador del sistema.";
         public const string msjUsuarioSinRoles = "El usuario no tiene roles asociados.";
+        public const string msjUsuarioSinEmpresas = "El usuario no tiene empresas asociadas.";
         public const string msjLoginCorrecto = "Credenciales válidas.";
         public const string msjNoHayRegistros = "No se encuentran Registros";
         public const string msjUsuarioEstaRegistrado = "El usuario ya se encuentra registrado";

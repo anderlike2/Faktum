@@ -7,8 +7,7 @@
         public int? UsuaIntentos { get; set; }
 
         //Referencias
-        public EmpresaDto? UsuEmpresa { get; set; }
-        public List<RolUsuarioDto>? UsuRolesUsuario { get; set; }
+        public List<EmpresaDto>? UsuEmpresas { get; set; }
         public List<RolDto>? UsuRoles {  get; set; }
     }
 }

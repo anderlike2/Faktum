@@ -13,7 +13,7 @@ namespace DomainLayer.Models
 
         //Referencias
         [Required]
-        public virtual EmpresaModel? UsuEmpresa { get; set; }
+        public virtual ICollection<EmpresasUsuarioModel>? UsuEmpresasUsuario { get; set; }
         public virtual ICollection<RolUsuarioModel>? UsuRolesUsuario { get; set; }
     }
 }
