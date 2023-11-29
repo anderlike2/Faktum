@@ -142,10 +142,11 @@ namespace RepositoryLayer.Repository
 
                 oRespuesta.Success = true;
                 oRespuesta.Data = lstRespuesta;
+                oRespuesta.Message = Constantes.msjConsultaExitosa;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                oRespuesta.Message = ex.Message;
+                throw;
             }
 
             return oRespuesta;

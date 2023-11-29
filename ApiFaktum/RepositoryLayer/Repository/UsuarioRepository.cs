@@ -59,10 +59,9 @@ namespace RepositoryLayer.Repository
                     oRespuesta.Message = Constantes.msjLoginCorrecto;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                oRespuesta.Success = false;
-                oRespuesta.Message = ex.Message;
+                throw;
             }
 
             return oRespuesta;
@@ -95,10 +94,9 @@ namespace RepositoryLayer.Repository
                     oRespuesta.Message = Constantes.msjLoginCorrecto;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                oRespuesta.Success = false;
-                oRespuesta.Message = ex.Message;
+                throw;
             }
 
             return oRespuesta;
@@ -124,10 +122,11 @@ namespace RepositoryLayer.Repository
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegActualizado;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
             return oRespuesta;

@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using Commun;
 using DomainLayer.Dtos;
 using DomainLayer.Models;
@@ -11,9 +10,9 @@ namespace RepositoryLayer.Repository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Clase para el manejo de la tabla Depto
+    /// Clase para el manejo de la tabla empresa
     /// </summary>
-    public class DeptoRepository : IDeptoRepository
+    public class EmpresaRepository : IEmpresaRepository
     {
         private readonly ApplicationDbContext objContext;
         private readonly IMapper mapper;
@@ -26,7 +25,7 @@ namespace RepositoryLayer.Repository
         /// <param name="_objContext"></param>
         /// <param name="_mapper"></param>
         /// <returns></returns>
-        public DeptoRepository(ApplicationDbContext _objContext, IMapper _mapper)
+        public EmpresaRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
             this.objContext = _objContext;
             this.mapper = _mapper;
@@ -35,28 +34,30 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar la tabla
+        /// Metodo para consultar las empresas
         /// </summary>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarTabla()
+        public async Task<Result> ConsultarEmpresas()
         {
             Result oRespuesta = new Result();
-            List<DeptoModel>? lstResult = new List<DeptoModel>();
+            List<EmpresaModel>? lstResult = new List<EmpresaModel>();
 
             try
             {
-                lstResult = await objContext.Depto.Where(x => x.Estado == 1).Include(z => z.DeptoCiudades).ToListAsync();
+                lstResult = 
+                    await objContext.Empresa.Where(x => x.Estado == 1).Include(z => z.EmprTipoCliente).Include(z => z.EmprTipoId)
+                    .Include(z => z.EmprRespTribut).Include(z => z.EmprRegimen).Include(z => z.EmprRespFiscal).Include(z => z.EmprClasJuridica).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)
                 {
 
-                    oRespuesta.Data = mapper.Map<List<DeptoDto>>(lstResult);
+                    oRespuesta.Data = mapper.Map<List<EmpresaDto>>(lstResult);
                     oRespuesta.Message = Constantes.msjConsultaExitosa;
                 }
                 else
                 {
-                    oRespuesta.Data = new List<DeptoDto>();
+                    oRespuesta.Data = new List<EmpresaDto>();
                     oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }

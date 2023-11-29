@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Commun;
 using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
@@ -57,15 +58,22 @@ namespace RepositoryLayer.Repository
                                        FechaModificacion = rol.FechaModificacion
                                    }).ToListAsync();
 
+                oRespuesta.Success = true;
                 if (lstResult.Count > 0)
                 {
-                    oRespuesta.Success = true;
+
                     oRespuesta.Data = mapper.Map<List<RolDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<RolDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                oRespuesta.Message = ex.Message;
+                throw;
             }
 
             return oRespuesta;

@@ -51,29 +51,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaMaestra(tipoClase);
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -92,29 +80,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaRetefuente();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -133,29 +109,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaCum();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -174,29 +138,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaRegimen();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -215,29 +167,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaIum();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -256,29 +196,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaClasJuridica();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -297,29 +225,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaImpuesto();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -338,29 +254,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaCiudad();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -379,29 +283,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaNumeracionResolucion();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
 
         /// <summary>
@@ -420,29 +312,17 @@ namespace ApiFaktum.Controllers
             {
                 var vRespuesta = await objService.ConsultarTablaDepto();
 
-                if (vRespuesta.Success)
-                {
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                    oRespuesta.Data = vRespuesta.Data;
-
-                    return Ok(oRespuesta);
-                }
-                else
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = vRespuesta.Message;
-
-                    return Ok(oRespuesta);
-                }
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {
                 createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message;
-
-                return BadRequest();
             }
+            return Ok(oRespuesta);
         }
     }
 }
