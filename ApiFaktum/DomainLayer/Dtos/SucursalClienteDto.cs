@@ -13,8 +13,7 @@
         public string? SuclTelefono { get; set; }
 
         //Referencias
-        public List<ListaPrecioDto>? SuclListaPrecios { get; set; }
-        public EmpresaDto? SuclEmpresa { get; set; }
-        public ClienteDto? SuclCliente { get; set; }
+        public int SuclEmpresaId { get; set; }
+        public int SuclClienteId { get; set; }
     }
 }
