@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class BD_Inicial : Migration
+    public partial class carga : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -495,6 +495,24 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Usuario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UsuaUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UsuaPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UsuaIntentos = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Usuario", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ciudad",
                 columns: table => new
                 {
@@ -596,6 +614,35 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Empresa_TipoId_EmprTipoIdId",
                         column: x => x.EmprTipoIdId,
                         principalTable: "TipoId",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RolUsuario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RousUsuarioId = table.Column<int>(type: "int", nullable: false),
+                    RousRolId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RolUsuario", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RolUsuario_Rol_RousRolId",
+                        column: x => x.RousRolId,
+                        principalTable: "Rol",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_RolUsuario_Usuario_RousUsuarioId",
+                        column: x => x.RousUsuarioId,
+                        principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -763,6 +810,35 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EmpresasUsuario",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EmusUsuarioId = table.Column<int>(type: "int", nullable: false),
+                    EmusEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmpresasUsuario", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EmpresasUsuario_Empresa_EmusEmpresaId",
+                        column: x => x.EmusEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_EmpresasUsuario_Usuario_EmusUsuarioId",
+                        column: x => x.EmusUsuarioId,
+                        principalTable: "Usuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FormatoImpresion",
                 columns: table => new
                 {
@@ -874,31 +950,6 @@ namespace RepositoryLayer.Migrations
                     table.ForeignKey(
                         name: "FK_Unidad_Empresa_UnidEmpresaId",
                         column: x => x.UnidEmpresaId,
-                        principalTable: "Empresa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Usuario",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UsuaUsuario = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UsuaPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UsuaIntentos = table.Column<int>(type: "int", nullable: false),
-                    UsuEmpresaId = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Usuario", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Usuario_Empresa_UsuEmpresaId",
-                        column: x => x.UsuEmpresaId,
                         principalTable: "Empresa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -1156,35 +1207,6 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Producto_Unidad_ProdUnidadId",
                         column: x => x.ProdUnidadId,
                         principalTable: "Unidad",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "RolUsuario",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    RousUsuarioId = table.Column<int>(type: "int", nullable: false),
-                    RousRolId = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_RolUsuario", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_RolUsuario_Rol_RousRolId",
-                        column: x => x.RousRolId,
-                        principalTable: "Rol",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_RolUsuario_Usuario_RousUsuarioId",
-                        column: x => x.RousUsuarioId,
-                        principalTable: "Usuario",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -1658,6 +1680,16 @@ namespace RepositoryLayer.Migrations
                 column: "EmprTipoIdId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_EmpresasUsuario_EmusEmpresaId",
+                table: "EmpresasUsuario",
+                column: "EmusEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmpresasUsuario_EmusUsuarioId",
+                table: "EmpresasUsuario",
+                column: "EmusUsuarioId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Factura_FactClaseFacturaId",
                 table: "Factura",
                 column: "FactClaseFacturaId");
@@ -1898,11 +1930,6 @@ namespace RepositoryLayer.Migrations
                 column: "UnidEmpresaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuario_UsuEmpresaId",
-                table: "Usuario",
-                column: "UsuEmpresaId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Vendedor_VendEmpresaId",
                 table: "Vendedor",
                 column: "VendEmpresaId");
@@ -1915,6 +1942,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "DetalleFact");
+
+            migrationBuilder.DropTable(
+                name: "EmpresasUsuario");
 
             migrationBuilder.DropTable(
                 name: "Localidad");
