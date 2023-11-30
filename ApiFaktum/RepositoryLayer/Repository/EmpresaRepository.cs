@@ -88,6 +88,7 @@ namespace RepositoryLayer.Repository
                                    where empusu.EmusUsuario.Id == idUsuario
                                    select new EmpresaModel
                                    {
+                                       Id = emp.Id,
                                        EmprFactContador = emp.EmprFactContador,
                                        EmprCelular = emp.EmprCelular,
                                        EmprCiudad = emp.EmprCiudad,
@@ -121,7 +122,13 @@ namespace RepositoryLayer.Repository
                                        EmprClasJuridica = emp.EmprClasJuridica,
                                        Estado = emp.Estado,
                                        FechaCreacion = emp.FechaCreacion,
-                                       FechaModificacion = emp.FechaModificacion
+                                       FechaModificacion = emp.FechaModificacion,
+                                       EmprTipoClienteId = emp.EmprTipoClienteId,
+                                       EmprTipoIdId = emp.EmprTipoIdId,
+                                       EmprRespTributId = emp.EmprRespTributId,
+                                       EmprRegimenId = emp.EmprRegimenId,
+                                       EmprRespFiscalId = emp.EmprRespFiscalId,
+                                       EmprClasJuridicaId = emp.EmprClasJuridicaId
                                    }).ToListAsync();
 
                 oRespuesta.Success = true;

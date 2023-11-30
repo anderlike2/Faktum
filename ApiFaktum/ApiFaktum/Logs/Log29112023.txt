@@ -46,3 +46,15 @@ An error occurred while saving the entity changes. See the inner exception for d
 ------------------------------------------------------------------------------------
 miércoles, 29 de noviembre de 2023 8:10:14.21 p. m.
 An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 9:27:10.90 p. m.
+One or more errors occurred. (Sequence contains no elements.)
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 9:27:56.28 p. m.
+One or more errors occurred. (Sequence contains no elements.)
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 9:28:57.85 p. m.
+One or more errors occurred. (Sequence contains no elements.)

@@ -43,12 +43,12 @@ namespace ServiceLayer.Service
             Result oRespuesta = new Result();
 
             Task<Result> informacionUsuario = objUsuarioRepository.ConsultarUsuario(objModel);
-            UsuarioDto usuarioCompleto = (UsuarioDto)informacionUsuario.Result.Data;
+            UsuarioDto? usuarioCompleto = (UsuarioDto)informacionUsuario.Result.Data;
 
             if (usuarioCompleto == null)
             {
                 Task<Result> existeUsuario = objUsuarioRepository.ConsultarUsuarioPorUsername(objModel.UsuaUsuario);
-                UsuarioDto usuarioUsername = (UsuarioDto)existeUsuario.Result.Data;              
+                UsuarioDto? usuarioUsername = (UsuarioDto)existeUsuario.Result.Data;              
 
                 if (usuarioUsername == null)
                 {
@@ -129,8 +129,8 @@ namespace ServiceLayer.Service
         public async Task<Result> ConsultarEmpresasRolesUsuario(UsuarioDto usuarioCompleto)
         {
             Result oRespuesta = new Result();
-            Task<Result> rolesUsuario = objRolRepository.ConsultarRolesUsuario(usuarioCompleto.Id);
-            List<RolDto> roles = (List<RolDto>)rolesUsuario.Result.Data;
+            Task<Result>? rolesUsuario = objRolRepository.ConsultarRolesUsuario(usuarioCompleto.Id);
+            List<RolDto>? roles = (List<RolDto>)rolesUsuario.Result.Data;
             if (roles == null || roles.Count <= 0)
             {
                 oRespuesta.Success = false;

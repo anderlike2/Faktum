@@ -4,15 +4,14 @@ using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Data;
-using RepositoryLayer.IRepository;
 
-namespace RepositoryLayer.Repository
+namespace RepositoryLayer.IRepository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Clase para el manejo de la autenticacion
+    /// Clase para el manejo de la tabla sucursal
     /// </summary>
-    public class UsuarioRepository : IUsuarioRepository
+    public class SucursalRepository : ISucursalRepository
     {
         private readonly ApplicationDbContext objContext;
         private readonly IMapper mapper;
@@ -25,7 +24,7 @@ namespace RepositoryLayer.Repository
         /// <param name="_objContext"></param>
         /// <param name="_mapper"></param>
         /// <returns></returns>
-        public UsuarioRepository(ApplicationDbContext _objContext, IMapper _mapper)
+        public SucursalRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
             this.objContext = _objContext;
             this.mapper = _mapper;
@@ -34,29 +33,31 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar el usuario
+        /// Metodo para consultar las sucursales de una empresa
         /// </summary>
-        /// <param name="objModel"></param>
+        /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarUsuario(UsuarioFiltroDto objModel)
+        public async Task<Result> ConsultarSucursalesEmpresa(int idEmpresa)
         {
             Result oRespuesta = new Result();
-
-            UsuarioModel? result = new UsuarioModel();
-            UsuarioDto temp = new UsuarioDto();
+            List<SucursalModel>? lstResult = new List<SucursalModel>();
 
             try
             {
-                result = await objContext.Usuario.AsNoTracking().
-                    Where(x => x.UsuaUsuario.Equals(objModel.UsuaUsuario) && x.UsuaPassword.Equals(objModel.UsuaPassword)).FirstOrDefaultAsync();
+                lstResult =
+                    await objContext.Sucursal.Where(x => x.Estado == 1 && x.SucuEmpresa.Id.Equals(idEmpresa)).ToListAsync();
 
-                if (result != null)
+                oRespuesta.Success = true;
+                if (lstResult.Count > 0)
                 {
-                    temp = mapper.Map<UsuarioDto>(result);
 
-                    oRespuesta.Success = true;
-                    oRespuesta.Data = temp;
-                    oRespuesta.Message = Constantes.msjLoginCorrecto;
+                    oRespuesta.Data = mapper.Map<List<SucursalDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<SucursalDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
             catch (Exception)
@@ -70,29 +71,23 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar el usuario por username
+        /// Metodo para crear una sucursal
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarUsuarioPorUsername(string username)
+        public async Task<Result> CrearSucursal(SucursalDto objModel)
         {
-            Result oRespuesta = new Result();
-
-            UsuarioModel? result = new UsuarioModel();
-            UsuarioDto temp = new UsuarioDto();
+            Result oRespuesta = new();
 
             try
             {
-                result = await objContext.Usuario.AsNoTracking().Where(x => x.UsuaUsuario.Equals(username)).FirstOrDefaultAsync();
+                objModel.FechaCreacion = DateTime.UtcNow;
 
-                if (result != null)
-                {
-                    temp = mapper.Map<UsuarioDto>(result);
+                await objContext.AddAsync(mapper.Map<SucursalModel>(objModel));
+                await objContext.SaveChangesAsync();
 
-                    oRespuesta.Success = true;
-                    oRespuesta.Data = temp;
-                    oRespuesta.Message = Constantes.msjLoginCorrecto;
-                }
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegGuardado;
             }
             catch (Exception)
             {
@@ -105,20 +100,19 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar informacion de un usuario
+        /// Metodo para actualizar una sucursal
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ActualizarUsuario(UsuarioDto objModel)
+        public async Task<Result> ActualizarSucursal(SucursalDto objModel)
         {
             Result oRespuesta = new Result();
 
             try
             {
-                var objTemp = mapper.Map<UsuarioModel>(objModel);
-                objTemp.FechaModificacion = DateTime.UtcNow;
+                objModel.FechaModificacion = DateTime.UtcNow;
 
-                objContext.Update(objTemp);
+                objContext.Update(mapper.Map<SucursalModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
