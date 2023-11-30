@@ -6,3 +6,7 @@ The instance of entity type 'UsuarioModel' cannot be tracked because another ins
 ------------------------------------------------------------------------------------
 miércoles, 29 de noviembre de 2023 2:28:02.76 p. m.
 The instance of entity type 'UsuarioModel' cannot be tracked because another instance with the same key value for {'Id'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 7:07:49.55 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.

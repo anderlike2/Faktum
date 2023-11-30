@@ -38,20 +38,5 @@ namespace DomainLayer.Dtos
         public RegimenDto? EmprRegimen { get; set; }
         public RespFiscalDto? EmprRespFiscal { get; set; }
         public ClasJuridicaDto? EmprClasJuridica { get; set; }
-        public List<ProductoDto>? EmprProductos { get; set; }
-        public List<CentroCostoDto>? EmprCentroCostos { get; set; }
-        public List<FormatoImpresionDto>? EmprFormatosImpresion { get; set; }
-        public List<FacturaDto>? EmprFacturas { get; set; }
-        public List<DetalleFactDto>? EmprDetFacturas { get; set; }
-        public List<VendedorDto>? EmprVendedores { get; set; }
-        public List<ListaPrecioDto>? EmprListaPrecios { get; set; }
-        public List<NotaDebitoDto>? EmprNotasDebito { get; set; }
-        public List<NotaCreditoDto>? EmprNotasCredito { get; set; }
-        public List<SucursalDto>? EmprSucursales { get; set; }
-        public List<SucursalClienteDto>? EmprSucursalesCliente { get; set; }
-        public List<ClienteDto>? EmprClientes { get; set; }
-        public List<ResolucionDto>? EmprResoluciones { get; set; }
-        public List<ContratoSaludDto>? EmprContratosSalud { get; set; }
-
     }
 }

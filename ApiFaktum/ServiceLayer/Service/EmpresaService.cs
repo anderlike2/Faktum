@@ -1,4 +1,5 @@
-﻿using DomainLayer.Models;
+﻿using DomainLayer.Dtos;
+using DomainLayer.Models;
 using RepositoryLayer.IRepository;
 using ServiceLayer.IService;
 
@@ -33,6 +34,30 @@ namespace ServiceLayer.Service
         public Task<Result> ConsultarEmpresas()
         {
             return objEmpresaRepository.ConsultarEmpresas();
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para crear una empresa
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> CrearEmpresa(EmpresaDto objModel)
+        {
+            return objEmpresaRepository.CrearEmpresa(objModel);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar una empresa
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ActualizarEmpresa(EmpresaDto objModel)
+        {
+            return objEmpresaRepository.ActualizarEmpresa(objModel);
         }
     }
 }

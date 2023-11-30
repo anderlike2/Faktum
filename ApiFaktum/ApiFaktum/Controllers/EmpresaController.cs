@@ -4,6 +4,7 @@ using DomainLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IService;
+using DomainLayer.Dtos;
 
 namespace ApiFaktum.Controllers
 {
@@ -48,6 +49,66 @@ namespace ApiFaktum.Controllers
             try
             {
                 var vRespuesta = await objService.ConsultarEmpresas();
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar las tablas maestras
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("CrearEmpresa")]
+        public async Task<IActionResult> CrearEmpresa([FromBody] EmpresaDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.CrearEmpresa(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar las tablas maestras
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ActualizarEmpresa")]
+        public async Task<IActionResult> ActualizarEmpresa([FromBody] EmpresaDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ActualizarEmpresa(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

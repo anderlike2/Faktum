@@ -154,7 +154,24 @@ namespace RepositoryLayer.Repository
         /// <returns>Task<Result></returns>
         public async Task<Result> CrearEmpresa(EmpresaDto objModel)
         {
-            return null;
+            Result oRespuesta = new();
+
+            try
+            {
+                objModel.FechaCreacion = DateTime.UtcNow;
+
+                await objContext.AddAsync(mapper.Map<EmpresaModel>(objModel));
+                await objContext.SaveChangesAsync();
+
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegGuardado;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
         }
 
         /// <summary>
@@ -166,7 +183,24 @@ namespace RepositoryLayer.Repository
         /// <returns>Task<Result></returns>
         public async Task<Result> ActualizarEmpresa(EmpresaDto objModel)
         {
-            return null;
+            Result oRespuesta = new Result();
+
+            try
+            {
+                objModel.FechaModificacion = DateTime.UtcNow;
+
+                objContext.Update(mapper.Map<EmpresaModel>(objModel));
+                await objContext.SaveChangesAsync();
+
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegActualizado;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
         }
     }
 }
