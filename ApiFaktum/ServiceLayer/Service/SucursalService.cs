@@ -59,5 +59,17 @@ namespace ServiceLayer.Service
         {
             return objSucursalRepository.ActualizarSucursal(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para eliminar una sucursal
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> EliminarSucursal(SucursalDto objModel)
+        {
+            return objSucursalRepository.EliminarSucursal(objModel);
+        }
     }
 }

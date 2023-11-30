@@ -6,9 +6,7 @@
         public string? CcosNombre { get; set; }
 
         //Referencias
-        public EmpresaDto? CcosEmpresa { get; set; }
-        public List<ProductoDto>? CcosProductos { get; set; }
-        public List<SucursalDto>? CcosSucursales { get; set; }
-        public TipoDescuentoDto? CcosTipoDescuento { get; set; }
+        public int CcosEmpresaId { get; set; }
+        public int CcosTipoDescuentoId { get; set; }
     }
 }

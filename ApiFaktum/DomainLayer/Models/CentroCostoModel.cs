@@ -18,5 +18,9 @@ namespace DomainLayer.Models
         public virtual ICollection<SucursalModel>? CcosSucursales { get; set; }
         [Required]
         public virtual TipoDescuentoModel? CcosTipoDescuento { get; set; }
+
+        //Referencias para consultas
+        public virtual int CcosEmpresaId {  get; set; }
+        public virtual int CcosTipoDescuentoId { get; set; }
     }
 }

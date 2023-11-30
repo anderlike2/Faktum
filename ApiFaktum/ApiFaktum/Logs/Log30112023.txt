@@ -1,0 +1,20 @@
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 7:01:26.46 a. m.
+The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 7:01:35.71 a. m.
+The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 7:57:05.21 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 8:03:06.36 a. m.
+The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 8:04:38.83 a. m.
+The database operation was expected to affect 1 row(s), but actually affected 0 row(s); data may have been modified or deleted since entities were loaded. See http://go.microsoft.com/fwlink/?LinkId=527962 for information on understanding and handling optimistic concurrency exceptions.

@@ -5,53 +5,44 @@ namespace RepositoryLayer.IRepository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Interfaz para el manejo de la tabla sucursal
+    /// Interfaz para el manejo de la tabla centro de costo
     /// </summary>
-    public interface ISucursalRepository
+    public interface ICentroCostoRepository
     {
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
+        /// Metodo para consultar los centros de costo de una empresa
         /// </summary>
         /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ConsultarSucursalesEmpresa(int idEmpresa);
+        Task<Result> ConsultarCentrosCostoEmpresa(int idEmpresa);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear una sucursal
+        /// Metodo para crear un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> CrearSucursal(SucursalDto objModel);
+        Task<Result> CrearCentroCosto(CentroCostoDto objModel);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar una sucursal
+        /// Metodo para actualizar un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ActualizarSucursal(SucursalDto objModel);
+        Task<Result> ActualizarCentroCosto(CentroCostoDto objModel);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar una sucursal
+        /// Metodo para borrar un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> EliminarSucursal(SucursalDto objModel);
-
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
-        /// </summary>
-        /// <param name="idSucursal"></param>
-        /// <returns>Task<Result></returns>
-        Task<Result> ConsultarSucursalesCentroCosto(int idSucursal);
+        Task<Result> EliminarCentroCosto(CentroCostoDto objModel);
     }
 }

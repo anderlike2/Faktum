@@ -9,15 +9,15 @@ namespace ApiFaktum.Controllers
 {
     /// <summary>
     /// Anderson Benavides
-    /// Controlador para el manejo de la tabla sucursal
+    /// Controlador para el manejo de la tabla centro de costo
     /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class SucursalController : ControllerBase
+    public class CentroCostoController : ControllerBase
     {
         private readonly ICreateLogger createLogger;
-        private readonly ISucursalService objService;
+        private readonly ICentroCostoService objService;
 
         /// <summary>
         /// Katary
@@ -27,7 +27,7 @@ namespace ApiFaktum.Controllers
         /// <param name="_objService"></param>
         /// <param name="_createLogger"></param>
         /// <returns></returns>
-        public SucursalController(ISucursalService _objService, ICreateLogger _createLogger)
+        public CentroCostoController(ICentroCostoService _objService, ICreateLogger _createLogger)
         {
             this.objService = _objService;
             this.createLogger = _createLogger;
@@ -36,19 +36,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales
+        /// Metodo para consultar los centros de costo
         /// </summary>
         /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
         [HttpGet]
-        [Route("ConsultarSucursalesEmpresa")]
-        public async Task<IActionResult> ConsultarSucursalesEmpresa(int idEmpresa)
+        [Route("ConsultarCentrosCostoEmpresa")]
+        public async Task<IActionResult> ConsultarCentrosCostoEmpresa(int idEmpresa)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.ConsultarSucursalesEmpresa(idEmpresa);
+                var vRespuesta = await objService.ConsultarCentrosCostoEmpresa(idEmpresa);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
@@ -66,19 +66,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear las sucursales
+        /// Metodo para crear un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        [Route("CrearSucursal")]
-        public async Task<IActionResult> CrearSucursal([FromBody] SucursalDto objModel)
+        [Route("CrearCentroCosto")]
+        public async Task<IActionResult> CrearCentroCosto([FromBody] CentroCostoDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.CrearSucursal(objModel);
+                var vRespuesta = await objService.CrearCentroCosto(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
@@ -96,19 +96,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar las sucursales
+        /// Metodo para actualizar un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        [Route("ActualizarSucursal")]
-        public async Task<IActionResult> ActualizarSucursal([FromBody] SucursalDto objModel)
+        [Route("ActualizarCentroCosto")]
+        public async Task<IActionResult> ActualizarCentroCosto([FromBody] CentroCostoDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.ActualizarSucursal(objModel);
+                var vRespuesta = await objService.ActualizarCentroCosto(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
@@ -126,19 +126,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para eliminar las sucursales
+        /// Metodo para eliminar un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        [Route("EliminarSucursal")]
-        public async Task<IActionResult> EliminarSucursal([FromBody] SucursalDto objModel)
+        [Route("EliminarCentroCosto")]
+        public async Task<IActionResult> EliminarCentroCosto([FromBody] CentroCostoDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.EliminarSucursal(objModel);
+                var vRespuesta = await objService.EliminarCentroCosto(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

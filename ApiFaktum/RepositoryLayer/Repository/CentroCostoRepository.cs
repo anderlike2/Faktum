@@ -8,11 +8,7 @@ using RepositoryLayer.IRepository;
 
 namespace RepositoryLayer.Repository
 {
-    /// <summary>
-    /// Anderson Benavides
-    /// Clase para el manejo de la tabla sucursal
-    /// </summary>
-    public class SucursalRepository : ISucursalRepository
+    public class CentroCostoRepository : ICentroCostoRepository
     {
         private readonly ApplicationDbContext objContext;
         private readonly IMapper mapper;
@@ -25,7 +21,7 @@ namespace RepositoryLayer.Repository
         /// <param name="_objContext"></param>
         /// <param name="_mapper"></param>
         /// <returns></returns>
-        public SucursalRepository(ApplicationDbContext _objContext, IMapper _mapper)
+        public CentroCostoRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
             objContext = _objContext;
             mapper = _mapper;
@@ -34,30 +30,30 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
+        /// Metodo para consultar los centros de costo de una empresa
         /// </summary>
         /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarSucursalesEmpresa(int idEmpresa)
+        public async Task<Result> ConsultarCentrosCostoEmpresa(int idEmpresa)
         {
             Result oRespuesta = new Result();
-            List<SucursalModel>? lstResult = new List<SucursalModel>();
+            List<CentroCostoModel>? lstResult = new List<CentroCostoModel>();
 
             try
             {
                 lstResult =
-                    await objContext.Sucursal.Where(x => x.Estado == 1 && x.SucuEmpresa.Id.Equals(idEmpresa)).ToListAsync();
+                    await objContext.CentroCosto.Where(x => x.Estado == 1 && x.CcosEmpresa.Id == idEmpresa).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)
                 {
 
-                    oRespuesta.Data = mapper.Map<List<SucursalDto>>(lstResult);
+                    oRespuesta.Data = mapper.Map<List<CentroCostoDto>>(lstResult);
                     oRespuesta.Message = Constantes.msjConsultaExitosa;
                 }
                 else
                 {
-                    oRespuesta.Data = new List<SucursalDto>();
+                    oRespuesta.Data = new List<CentroCostoDto>();
                     oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
@@ -72,11 +68,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear una sucursal
+        /// Metodo para crear un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> CrearSucursal(SucursalDto objModel)
+        public async Task<Result> CrearCentroCosto(CentroCostoDto objModel)
         {
             Result oRespuesta = new();
 
@@ -84,7 +80,7 @@ namespace RepositoryLayer.Repository
             {
                 objModel.FechaCreacion = DateTime.UtcNow;
 
-                await objContext.AddAsync(mapper.Map<SucursalModel>(objModel));
+                await objContext.AddAsync(mapper.Map<CentroCostoModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
@@ -101,11 +97,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar una sucursal
+        /// Metodo para actualizar un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ActualizarSucursal(SucursalDto objModel)
+        public async Task<Result> ActualizarCentroCosto(CentroCostoDto objModel)
         {
             Result oRespuesta = new Result();
 
@@ -113,7 +109,7 @@ namespace RepositoryLayer.Repository
             {
                 objModel.FechaModificacion = DateTime.UtcNow;
 
-                objContext.Update(mapper.Map<SucursalModel>(objModel));
+                objContext.Update(mapper.Map<CentroCostoModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
@@ -130,59 +126,21 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para eliminar una sucursal
+        /// Metodo para borrar un centro de costo
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> EliminarSucursal(SucursalDto objModel)
+        public async Task<Result> EliminarCentroCosto(CentroCostoDto objModel)
         {
             Result oRespuesta = new Result();
 
             try
             {
-                objContext.Sucursal.Remove(mapper.Map<SucursalModel>(objModel));
+                objContext.CentroCosto.Remove(mapper.Map<CentroCostoModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
                 oRespuesta.Message = Constantes.msjRegEliminado;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            return oRespuesta;
-        }
-
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
-        /// </summary>
-        /// <param name="idSucursal"></param>
-        /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarSucursalesCentroCosto(int idSucursal)
-        {
-            Result oRespuesta = new Result();
-            List<SucursalModel>? lstResult = new List<SucursalModel>();
-
-            try
-            {
-                lstResult =
-                    await objContext.Sucursal.Where(x => x.Estado == 1 && x.SucuCentroCostos.Id.Equals(idSucursal)).ToListAsync();
-
-                oRespuesta.Success = true;
-                if (lstResult.Count > 0)
-                {
-
-                    oRespuesta.Data = mapper.Map<List<SucursalDto>>(lstResult);
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                }
-                else
-                {
-                    oRespuesta.Data = new List<SucursalDto>();
-                    oRespuesta.Message = Constantes.msjNoHayRegistros;
-                }
             }
             catch (Exception)
             {

@@ -66,11 +66,13 @@ namespace DependencyInjection
             services.AddScoped(typeof(IRolRepository), typeof(RolRepository));
             services.AddScoped(typeof(IEmpresaRepository), typeof(EmpresaRepository));
             services.AddScoped(typeof(ISucursalRepository), typeof(SucursalRepository));
+            services.AddScoped(typeof(ICentroCostoRepository), typeof(CentroCostoRepository));
 
             services.AddScoped(typeof(IIniciarSesionService), typeof(IniciarSesionService));
             services.AddScoped(typeof(IMaestrasService), typeof(MaestrasService));
             services.AddScoped(typeof(IEmpresaService), typeof(EmpresaService));
             services.AddScoped(typeof(ISucursalService), typeof(SucursalService));
+            services.AddScoped(typeof(ICentroCostoService), typeof(CentroCostoService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 
