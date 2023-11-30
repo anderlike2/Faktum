@@ -35,5 +35,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> ActualizarUsuario(UsuarioDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para crear informacion de un usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> CrearUsuario(UsuarioDto objModel);
     }
 }

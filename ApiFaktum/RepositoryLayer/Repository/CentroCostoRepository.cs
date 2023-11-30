@@ -78,7 +78,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                objModel.FechaCreacion = DateTime.UtcNow;
+                objModel.FechaCreacion = DateTime.UtcNow.ToLocalTime();
 
                 await objContext.AddAsync(mapper.Map<CentroCostoModel>(objModel));
                 await objContext.SaveChangesAsync();

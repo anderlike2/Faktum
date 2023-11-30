@@ -131,5 +131,36 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para crear informacion de un usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> CrearUsuario(UsuarioDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                objModel.FechaCreacion = DateTime.UtcNow.ToLocalTime();
+
+                var temp = mapper.Map<UsuarioModel>(objModel);
+                await objContext.AddAsync(temp);
+                await objContext.SaveChangesAsync();
+
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegGuardado;
+                oRespuesta.Data = temp.Id;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

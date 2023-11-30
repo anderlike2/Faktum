@@ -8,6 +8,8 @@ namespace DomainLayer.Models
         public string? ConoCodigo { get; set; }
         [Required]
         public string? ConoNombre { get; set; }
+        [Required]
+        public string? ConoTipoNota { get; set; }
 
         //Referencias
         [Required]

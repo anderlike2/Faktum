@@ -10,11 +10,13 @@ namespace ServiceLayer.Service
     /// Anderson Benavides
     /// Clase para el manejo de la autenticacion
     /// </summary>
-    public class IniciarSesionService : IIniciarSesionService
+    public class UsuarioService : IUsuarioService
     {
         private readonly IUsuarioRepository objUsuarioRepository;
         private readonly IRolRepository objRolRepository;
         private readonly IEmpresaRepository objEmpresaRepository;
+        private readonly IUsuarioEmpresaRepository objUsuarioEmpresaRepository;
+        private readonly IRolUsuarioRepository objRolUsuarioRepository;
 
         /// <summary>
         /// Katary
@@ -23,12 +25,18 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="_objUsuarioRepository"></param>
         /// <param name="_objRolRepository"></param>
+        /// <param name="_objEmpresaRepository"></param>
+        /// <param name="_objUsuarioEmpresaRepository"></param>
+        /// <param name="_objRolUsuarioRepository"></param>
         /// <returns></returns>
-        public IniciarSesionService(IUsuarioRepository _objUsuarioRepository, IRolRepository _objRolRepository, IEmpresaRepository _objEmpresaRepository)
+        public UsuarioService(IUsuarioRepository _objUsuarioRepository, IRolRepository _objRolRepository, IEmpresaRepository _objEmpresaRepository, 
+            IUsuarioEmpresaRepository _objUsuarioEmpresaRepository, IRolUsuarioRepository _objRolUsuarioRepository)
         {
             this.objUsuarioRepository = _objUsuarioRepository;
             this.objRolRepository = _objRolRepository;
             this.objEmpresaRepository = _objEmpresaRepository;
+            this.objUsuarioEmpresaRepository = _objUsuarioEmpresaRepository;
+            this.objRolUsuarioRepository = _objRolUsuarioRepository;
         }
 
         /// <summary>
@@ -168,6 +176,65 @@ namespace ServiceLayer.Service
                     oRespuesta.Data = usuarioCompleto;
                     return oRespuesta;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para crear un usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> CrearUsuario(UsuarioDto objModel)
+        {
+            Result oRespuesta = new Result();
+
+            //Validar el usuario en la empresa
+            Task<Result> existeUsuario = objUsuarioRepository.ConsultarUsuarioPorUsername(objModel.UsuaUsuario);
+            UsuarioDto? usuarioUsername = (UsuarioDto)existeUsuario.Result.Data;
+            if(usuarioUsername == null)
+            {
+                Task<Result> usuarioInsertado = objUsuarioRepository.CrearUsuario(objModel);
+                int usuario = (int)usuarioInsertado.Result.Data;
+                if (usuario > 0 && objModel.UsuEmpresas != null && objModel.UsuRoles != null)
+                {
+                    //Se inserta las empresas del usuario
+                    foreach (EmpresaDto empresa in objModel.UsuEmpresas)
+                    {
+                        EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
+                        refEmpresa.EmusEmpresaId = empresa.Id;
+                        refEmpresa.EmusUsuarioId = usuario;
+                        refEmpresa.Estado = int.Parse(Constantes.estadoActivo);
+                        objUsuarioEmpresaRepository.CrearUsuarioEmpresa(refEmpresa);
+                    }
+
+                    //Se inserta los roles del usuario
+                    foreach (RolDto rol in objModel.UsuRoles)
+                    {
+                        RolUsuarioDto refRol = new RolUsuarioDto();
+                        refRol.RousRolId = rol.Id;
+                        refRol.RousUsuarioId = usuario;
+                        refRol.Estado = int.Parse(Constantes.estadoActivo);
+                        objRolUsuarioRepository.CrearUsuarioRol(refRol);
+                    }
+
+                    oRespuesta.Success = true;
+                    oRespuesta.Message = Constantes.msjRegGuardado;
+                    return Task.FromResult(oRespuesta);
+                }
+                else
+                {
+                    oRespuesta.Success = false;
+                    oRespuesta.Message = Constantes.msjUsuarioNoInsertado;
+                    return Task.FromResult(oRespuesta);
+                }
+            }
+            else
+            {
+                oRespuesta.Success = false;
+                oRespuesta.Message = Constantes.msjUsuarioYaCreado;
+                return Task.FromResult(oRespuesta);
             }
         }
     }

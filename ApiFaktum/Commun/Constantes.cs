@@ -14,7 +14,9 @@
         public const string msjUsuarioNoExiste = "El usuario ingresado no existe en nuestro sistema.";
         public const string msjUsuarioBloqueado = "El usuario ha sido bloqueado o inactivado, por favor contactar al Administrador del sistema.";
         public const string msjUsuarioSinRoles = "El usuario no tiene roles asociados.";
+        public const string msjUsuarioNoInsertado = "No fue posible guardar el usuario, por favor comuníquese con el Adminstrador del sistema.";
         public const string msjUsuarioSinEmpresas = "El usuario no tiene empresas asociadas.";
+        public const string msjUsuarioYaCreado = "El usuario ya se encuentra creado en el sistema.";
         public const string msjLoginCorrecto = "Credenciales válidas.";
         public const string msjNoHayRegistros = "No se encuentran registros para los criterios de búsqueda ingresados.";
         public const string msjRegActualizado = "Registro actualizado con éxito.";
@@ -44,5 +46,8 @@
         public const string modalidadPago = "modalidadPago";
         public const string conceptoNotas = "conceptoNotas";
         public const string cobertura = "cobertura";
+
+        //ESTADOS
+        public const string estadoActivo = "1";
     }
 }

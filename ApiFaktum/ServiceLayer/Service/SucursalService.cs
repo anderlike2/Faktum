@@ -36,6 +36,7 @@ namespace ServiceLayer.Service
         {
             return objSucursalRepository.ConsultarSucursalesEmpresa(idEmpresa);
         }
+
         /// <summary>
         /// Katary
         /// Anderson Benavides

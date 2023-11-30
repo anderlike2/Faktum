@@ -1,21 +1,21 @@
 ﻿using DomainLayer.Dtos;
 using DomainLayer.Models;
 
-namespace ServiceLayer.IService
+namespace RepositoryLayer.IRepository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Interfaz para el manejo de la autenticacion
+    /// Interfaz para el manejo de la tabla usuarios con empresas
     /// </summary>
-    public interface IIniciarSesionService
+    public interface IUsuarioEmpresaRepository
     {
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para validar el login
+        /// Metodo para crear informacion de un usuario con su emrpesa
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ValidarLogin(UsuarioFiltroDto objModel);
+        Task<Result> CrearUsuarioEmpresa(EmpresasUsuarioDto objModel);
     }
 }

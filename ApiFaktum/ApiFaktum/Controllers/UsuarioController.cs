@@ -1,12 +1,11 @@
-﻿using Commun;
-using Commun.Logger;
+﻿using Commun.Logger;
 using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IService;
 
-namespace Api_Empopasto.Controllers
+namespace ApiFaktum.Controllers
 {
     /// <summary>
     /// Anderson Benavides
@@ -15,10 +14,10 @@ namespace Api_Empopasto.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class IniciarSesionController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
         private readonly ICreateLogger createLogger;
-        private readonly IIniciarSesionService objService;
+        private readonly IUsuarioService objService;
 
         /// <summary>
         /// Katary
@@ -29,7 +28,7 @@ namespace Api_Empopasto.Controllers
         /// <param name="_mapper"></param>
         /// <param name="_createLogger"></param>
         /// <returns></returns>
-        public IniciarSesionController(IIniciarSesionService _objService, ICreateLogger _createLogger)
+        public UsuarioController(IUsuarioService _objService, ICreateLogger _createLogger)
         {
             this.objService = _objService;
             this.createLogger = _createLogger;
@@ -54,7 +53,37 @@ namespace Api_Empopasto.Controllers
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
-                oRespuesta.Data = vRespuesta.Data;                
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para iniciar sesion
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("CrearUsuario")]
+        public async Task<IActionResult> CrearUsuario([FromBody] UsuarioDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.CrearUsuario(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
             }
             catch (Exception ex)
             {

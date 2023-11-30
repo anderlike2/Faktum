@@ -82,7 +82,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                objModel.FechaCreacion = DateTime.UtcNow;
+                objModel.FechaCreacion = DateTime.UtcNow.ToLocalTime();
 
                 await objContext.AddAsync(mapper.Map<SucursalModel>(objModel));
                 await objContext.SaveChangesAsync();
