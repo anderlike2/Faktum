@@ -69,12 +69,14 @@ namespace DependencyInjection
             services.AddScoped(typeof(ICentroCostoRepository), typeof(CentroCostoRepository));
             services.AddScoped(typeof(IUsuarioEmpresaRepository), typeof(UsuarioEmpresaRepository));
             services.AddScoped(typeof(IRolUsuarioRepository), typeof(RolUsuarioRepository));
+            services.AddScoped(typeof(IClienteRepository), typeof(ClienteRepository));
 
             services.AddScoped(typeof(IUsuarioService), typeof(UsuarioService));
             services.AddScoped(typeof(IMaestrasService), typeof(MaestrasService));
             services.AddScoped(typeof(IEmpresaService), typeof(EmpresaService));
             services.AddScoped(typeof(ISucursalService), typeof(SucursalService));
             services.AddScoped(typeof(ICentroCostoService), typeof(CentroCostoService));
+            services.AddScoped(typeof(IClienteService), typeof(ClienteService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 

@@ -34,3 +34,19 @@ Unable to cast object of type 'System.Int32' to type 'DomainLayer.Dtos.UsuarioDt
 ------------------------------------------------------------------------------------
 jueves, 30 de noviembre de 2023 4:20:17.13 p. m.
 Unable to cast object of type 'System.Int32' to type 'DomainLayer.Dtos.UsuarioDto'.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 5:29:30.46 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 5:29:35.89 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 5:29:41.92 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+jueves, 30 de noviembre de 2023 5:29:47.52 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.

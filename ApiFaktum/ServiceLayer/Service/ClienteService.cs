@@ -7,70 +7,70 @@ namespace ServiceLayer.Service
 {
     /// <summary>
     /// Anderson Benavides
-    /// Clase para el manejo de la tabla sucursal
+    /// Clase para el manejo de la tabla cliente
     /// </summary>
-    public class SucursalService : ISucursalService
+    public class ClienteService : IClienteService
     {
-        private readonly ISucursalRepository objSucursalRepository;
+        private readonly IClienteRepository objClienteRepository;
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
         /// Constructor por defecto
         /// </summary>
-        /// <param name="_objSucursalRepository"></param>
+        /// <param name="_objClienteRepository"></param>
         /// <returns></returns>
-        public SucursalService(ISucursalRepository _objSucursalRepository)
+        public ClienteService(IClienteRepository _objClienteRepository)
         {
-            this.objSucursalRepository = _objSucursalRepository;
+            this.objClienteRepository = _objClienteRepository;
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
+        /// Metodo para consultar los clientes de una empresa
         /// </summary>
         /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> ConsultarSucursalesEmpresa(int idEmpresa)
+        public Task<Result> ConsultarClientesEmpresa(int idEmpresa)
         {
-            return objSucursalRepository.ConsultarSucursalesEmpresa(idEmpresa);
+            return objClienteRepository.ConsultarClientesEmpresa(idEmpresa);
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear una sucursal
+        /// Metodo para crear un cliente
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> CrearSucursal(SucursalDto objModel)
+        public Task<Result> CrearCliente(ClienteDto objModel)
         {
-            return objSucursalRepository.CrearSucursal(objModel);
+            return objClienteRepository.CrearCliente(objModel);
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar una sucursal
+        /// Metodo para actualizar un cliente
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> ActualizarSucursal(SucursalDto objModel)
+        public Task<Result> ActualizarCliente(ClienteDto objModel)
         {
-            return objSucursalRepository.ActualizarSucursal(objModel);
+            return objClienteRepository.ActualizarCliente(objModel);
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para eliminar una sucursal
+        /// Metodo para borrar un cliente
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> EliminarSucursal(SucursalDto objModel)
+        public Task<Result> EliminarCliente(ClienteDto objModel)
         {
-            return objSucursalRepository.EliminarSucursal(objModel);
+            return objClienteRepository.EliminarCliente(objModel);
         }
     }
 }

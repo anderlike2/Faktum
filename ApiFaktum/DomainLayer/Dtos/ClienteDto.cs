@@ -29,18 +29,14 @@ namespace DomainLayer.Dtos
         public string? ClieTelFijo { get; set; }
 
         //Referencias
-        public CiudadDto? ClieCiudad { get; set; }
-        public DeptoDto? ClieDepto { get; set; }
-        public PaisDto? CliePais { get; set; }
-        public EmpresaDto? ClieEmpresa { get; set; }
-        public List<FacturaDto>? ClieFacturas { get; set; }
-        public List<SucursalClienteDto>? ClieSucursalesCliente { get; set; }
-        public List<ListaPrecioDto>? ClieListaPrecios { get; set; }
-        public RegimenDto? ClieRegimen { get; set; }
-        public RespFiscalDto? ClieRespFiscal { get; set; }
-        public RespTributariaDto? ClieRespTributaria { get; set; }
-        public TipoClienteDto? ClieTipoCliente { get; set; }
-        public TipoIdDto? ClieTipoId { get; set; }
-        public List<ContratoSaludDto>? ClieContratosSalud { get; set; }
+        public int ClieCiudadId { get; set; }
+        public int ClieDeptoId { get; set; }
+        public int CliePaisId { get; set; }
+        public int ClieEmpresaId { get; set; }
+        public int ClieRegimenId { get; set; }
+        public int ClieRespFiscalId { get; set; }
+        public int ClieRespTributariaId { get; set; }
+        public int ClieTipoClienteId { get; set; }
+        public int ClieTipoIdId { get; set; }
     }
 }
