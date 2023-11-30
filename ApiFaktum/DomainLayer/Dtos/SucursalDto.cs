@@ -25,9 +25,8 @@ namespace DomainLayer.Dtos
         public string? SucuTelefono { get; set; }
 
         //Referencias
-        public CentroCostoDto? SucuCentroCostos { get; set; }
-        public EmpresaDto? SucuEmpresa { get; set; }
-        public FormatoImpresionDto? SucuFormatoImpresion { get; set; }
-        public List<ResolucionDto>? SucuResoluciones { get; set; }
+        public int SucuCentroCostosId { get; set; }
+        public int SucuEmpresaId { get; set; }
+        public int SucuFormatoImpresionId { get; set; }
     }
 }

@@ -4,8 +4,9 @@ using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Data;
+using RepositoryLayer.IRepository;
 
-namespace RepositoryLayer.IRepository
+namespace RepositoryLayer.Repository
 {
     /// <summary>
     /// Anderson Benavides
@@ -26,8 +27,8 @@ namespace RepositoryLayer.IRepository
         /// <returns></returns>
         public SucursalRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
-            this.objContext = _objContext;
-            this.mapper = _mapper;
+            objContext = _objContext;
+            mapper = _mapper;
         }
 
         /// <summary>

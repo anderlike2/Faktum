@@ -58,3 +58,7 @@ One or more errors occurred. (Sequence contains no elements.)
 ------------------------------------------------------------------------------------
 miércoles, 29 de noviembre de 2023 9:28:57.85 p. m.
 One or more errors occurred. (Sequence contains no elements.)
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 9:55:28.84 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
