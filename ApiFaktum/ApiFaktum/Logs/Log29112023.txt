@@ -10,3 +10,39 @@ The instance of entity type 'UsuarioModel' cannot be tracked because another ins
 ------------------------------------------------------------------------------------
 miércoles, 29 de noviembre de 2023 7:07:49.55 p. m.
 An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 7:35:07.55 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 7:35:32.14 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 7:36:56.26 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 8:05:46.00 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 8:06:09.08 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 8:06:22.84 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 8:06:36.97 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 8:08:28.44 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 29 de noviembre de 2023 8:10:14.21 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.

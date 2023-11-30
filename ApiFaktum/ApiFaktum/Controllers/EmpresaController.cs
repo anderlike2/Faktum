@@ -58,7 +58,7 @@ namespace ApiFaktum.Controllers
             {
                 createLogger.LogWriteExcepcion(ex.Message);
                 oRespuesta.Success = false;
-                oRespuesta.Message = ex.Message;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
             }
             return Ok(oRespuesta);
         }
@@ -88,7 +88,7 @@ namespace ApiFaktum.Controllers
             {
                 createLogger.LogWriteExcepcion(ex.Message);
                 oRespuesta.Success = false;
-                oRespuesta.Message = ex.Message;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
             }
             return Ok(oRespuesta);
         }
@@ -118,7 +118,7 @@ namespace ApiFaktum.Controllers
             {
                 createLogger.LogWriteExcepcion(ex.Message);
                 oRespuesta.Success = false;
-                oRespuesta.Message = ex.Message;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
             }
             return Ok(oRespuesta);
         }

@@ -12,7 +12,7 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231129231527_EmpresasUsuario")]
+    [Migration("20231130004129_EmpresasUsuario")]
     partial class EmpresasUsuario
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

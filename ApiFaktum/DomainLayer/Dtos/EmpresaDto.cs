@@ -32,11 +32,11 @@ namespace DomainLayer.Dtos
         public string? EmprHabilitacion { get; set; }
 
         //Referencias
-        public TipoClienteDto? EmprTipoCliente { get; set; }
-        public TipoIdDto? EmprTipoId { get; set; }
-        public RespTributariaDto? EmprRespTribut { get; set; }
-        public RegimenDto? EmprRegimen { get; set; }
-        public RespFiscalDto? EmprRespFiscal { get; set; }
-        public ClasJuridicaDto? EmprClasJuridica { get; set; }
+        public int EmprTipoClienteId { get; set; }
+        public int EmprTipoIdId { get; set; }
+        public int EmprRespTributId { get; set; }
+        public int EmprRegimenId { get; set; }
+        public int EmprRespFiscalId { get; set; }
+        public int EmprClasJuridicaId { get; set; }
     }
 }
