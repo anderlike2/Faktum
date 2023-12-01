@@ -20,5 +20,11 @@ namespace DomainLayer.Models
         public virtual EmpresaModel? CosaEmpresa { get; set; }
         [Required]
         public virtual ModalidadPagoModel? CosaMopa { get; set; }
+
+        //Para creacion de datos mediante FK
+        public virtual int CosaClieIdId { get; set; }
+        public virtual int CosaCobeId { get; set; }
+        public virtual int CosaEmpresaId { get; set; }
+        public virtual int CosaMopaId { get; set; }
     }
 }

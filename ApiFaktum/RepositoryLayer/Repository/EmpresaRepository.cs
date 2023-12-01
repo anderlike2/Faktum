@@ -194,7 +194,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                objModel.FechaModificacion = DateTime.UtcNow;
+                objModel.FechaModificacion = DateTime.UtcNow.ToLocalTime();
 
                 objContext.Update(mapper.Map<EmpresaModel>(objModel));
                 await objContext.SaveChangesAsync();

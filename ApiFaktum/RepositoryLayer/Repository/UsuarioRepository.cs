@@ -116,7 +116,7 @@ namespace RepositoryLayer.Repository
             try
             {
                 var objTemp = mapper.Map<UsuarioModel>(objModel);
-                objTemp.FechaModificacion = DateTime.UtcNow;
+                objTemp.FechaModificacion = DateTime.UtcNow.ToLocalTime();
 
                 objContext.Update(objTemp);
                 await objContext.SaveChangesAsync();

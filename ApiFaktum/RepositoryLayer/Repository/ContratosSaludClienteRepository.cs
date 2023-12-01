@@ -10,9 +10,9 @@ namespace RepositoryLayer.Repository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Clase para el manejo de la tabla sucursal cliente
+    /// Clase para el manejo de la tabla contratos salud cliente
     /// </summary>
-    public class SucursalClienteRepository : ISucursalClienteRepository
+    public class ContratosSaludClienteRepository : IContratosSaludClienteRepository
     {
         private readonly ApplicationDbContext objContext;
         private readonly IMapper mapper;
@@ -25,7 +25,7 @@ namespace RepositoryLayer.Repository
         /// <param name="_objContext"></param>
         /// <param name="_mapper"></param>
         /// <returns></returns>
-        public SucursalClienteRepository(ApplicationDbContext _objContext, IMapper _mapper)
+        public ContratosSaludClienteRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
             objContext = _objContext;
             mapper = _mapper;
@@ -34,30 +34,30 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales de un cliente
+        /// Metodo para consultar los contratos de un cliente
         /// </summary>
         /// <param name="idCliente"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarSucursalesCliente(int idCliente)
+        public async Task<Result> ConsultarContratosSaludCliente(int idCliente)
         {
             Result oRespuesta = new Result();
-            List<SucursalClienteModel>? lstResult = new List<SucursalClienteModel>();
+            List<ContratoSaludModel>? lstResult = new List<ContratoSaludModel>();
 
             try
             {
                 lstResult =
-                    await objContext.SucursalCliente.Where(x => x.Estado == 1 && x.SuclCliente.Id.Equals(idCliente)).ToListAsync();
+                    await objContext.ContratoSalud.Where(x => x.Estado == 1 && x.CosaClieId.Id.Equals(idCliente)).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)
                 {
 
-                    oRespuesta.Data = mapper.Map<List<SucursalClienteDto>>(lstResult);
+                    oRespuesta.Data = mapper.Map<List<ContratoSaludDto>>(lstResult);
                     oRespuesta.Message = Constantes.msjConsultaExitosa;
                 }
                 else
                 {
-                    oRespuesta.Data = new List<SucursalClienteDto>();
+                    oRespuesta.Data = new List<ContratoSaludDto>();
                     oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
@@ -72,11 +72,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear una sucursal de un cliente
+        /// Metodo para crear un contrato de un cliente
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> CrearSucursalCliente(SucursalClienteDto objModel)
+        public async Task<Result> CrearContratoSaludCliente(ContratoSaludDto objModel)
         {
             Result oRespuesta = new();
 
@@ -84,7 +84,7 @@ namespace RepositoryLayer.Repository
             {
                 objModel.FechaCreacion = DateTime.UtcNow.ToLocalTime();
 
-                await objContext.AddAsync(mapper.Map<SucursalClienteModel>(objModel));
+                await objContext.AddAsync(mapper.Map<ContratoSaludModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
@@ -101,11 +101,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar una sucursal de un cliente
+        /// Metodo para actualizar un contrato de un cliente
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ActualizarSucursalCliente(SucursalClienteDto objModel)
+        public async Task<Result> ActualizarContratoSaludCliente(ContratoSaludDto objModel)
         {
             Result oRespuesta = new Result();
 
@@ -113,7 +113,7 @@ namespace RepositoryLayer.Repository
             {
                 objModel.FechaModificacion = DateTime.UtcNow.ToLocalTime();
 
-                objContext.Update(mapper.Map<SucursalClienteModel>(objModel));
+                objContext.Update(mapper.Map<ContratoSaludModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
@@ -130,17 +130,17 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar una sucursal de un cliente
+        /// Metodo para borrar un contrato de un cliente
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> EliminarSucursalCliente(SucursalClienteDto objModel)
+        public async Task<Result> EliminarContratoSaludCliente(ContratoSaludDto objModel)
         {
             Result oRespuesta = new Result();
 
             try
             {
-                objContext.SucursalCliente.Remove(mapper.Map<SucursalClienteModel>(objModel));
+                objContext.ContratoSalud.Remove(mapper.Map<ContratoSaludModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
