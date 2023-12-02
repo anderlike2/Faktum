@@ -11,10 +11,10 @@
         public string? ResoPrefijo { get; set; }
         public DateTime ResoVigencia { get; set; }
 
-        //Referencias
-        public NumeracionResolucionDto? ResoNumeracionResolucion { get; set; }
-        public EmpresaDto? ResoEmpresa { get; set; }
-        public SucursalDto? ResoSucursal { get; set; }
-        public TipoDocElectrDto? ResoTipoDoc { get; set; }
+        //Referencias para consultas
+        public int ResoNumeracionResolucionId { get; set; }
+        public int ResoEmpresaId { get; set; }
+        public int ResoSucursalId { get; set; }
+        public int ResoTipoDocId { get; set; }
     }
 }

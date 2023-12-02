@@ -9,15 +9,15 @@ namespace ApiFaktum.Controllers
 {
     /// <summary>
     /// Anderson Benavides
-    /// Controlador para el manejo de la tabla contratos cliente
+    /// Controlador para el manejo de la tabla resolucion
     /// </summary>
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class ContratoSaludClienteController : ControllerBase
+    public class ResolucionController : ControllerBase
     {
         private readonly ICreateLogger createLogger;
-        private readonly IContratosSaludClienteService objService;
+        private readonly IResolucionService objService;
 
         /// <summary>
         /// Katary
@@ -27,7 +27,7 @@ namespace ApiFaktum.Controllers
         /// <param name="_objService"></param>
         /// <param name="_createLogger"></param>
         /// <returns></returns>
-        public ContratoSaludClienteController(IContratosSaludClienteService _objService, ICreateLogger _createLogger)
+        public ResolucionController(IResolucionService _objService, ICreateLogger _createLogger)
         {
             this.objService = _objService;
             this.createLogger = _createLogger;
@@ -36,19 +36,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar los contratos de un cliente
+        /// Metodo para consultar las resoluciones de una empresa
         /// </summary>
-        /// <param name="idCliente"></param>
+        /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
         [HttpGet]
-        [Route("ConsultarContratosSaludCliente")]
-        public async Task<IActionResult> ConsultarContratosSaludCliente(int idCliente)
+        [Route("ConsultarResolucionesEmpresa")]
+        public async Task<IActionResult> ConsultarResolucionesEmpresa(int idEmpresa)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.ConsultarContratosSaludCliente(idCliente);
+                var vRespuesta = await objService.ConsultarResolucionesEmpresa(idEmpresa);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
@@ -66,19 +66,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear un contrato de un cliente
+        /// Metodo para crear las resoluciones
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        [Route("CrearContratoSaludCliente")]
-        public async Task<IActionResult> CrearContratoSaludCliente([FromBody] ContratoSaludDto objModel)
+        [Route("CrearResolucion")]
+        public async Task<IActionResult> CrearResolucion([FromBody] ResolucionDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.CrearContratoSaludCliente(objModel);
+                var vRespuesta = await objService.CrearResolucion(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
@@ -96,19 +96,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar un contrato de un cliente
+        /// Metodo para actualizar las resolucione
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        [Route("ActualizarContratoSaludCliente")]
-        public async Task<IActionResult> ActualizarContratoSaludCliente([FromBody] ContratoSaludDto objModel)
+        [Route("ActualizarResolucion")]
+        public async Task<IActionResult> ActualizarResolucion([FromBody] ResolucionDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.ActualizarContratoSaludCliente(objModel);
+                var vRespuesta = await objService.ActualizarResolucion(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;
@@ -126,19 +126,19 @@ namespace ApiFaktum.Controllers
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar un contrato de un cliente
+        /// Metodo para eliminar las resolucion
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
-        [Route("EliminarContratoSaludCliente")]
-        public async Task<IActionResult> EliminarContratoSaludCliente([FromBody] ContratoSaludDto objModel)
+        [Route("EliminarResolucion")]
+        public async Task<IActionResult> EliminarResolucion([FromBody] ResolucionDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.EliminarContratoSaludCliente(objModel);
+                var vRespuesta = await objService.EliminarResolucion(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

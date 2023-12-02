@@ -12,7 +12,7 @@ namespace RepositoryLayer.Repository
     /// Anderson Benavides
     /// Clase para el manejo de la tabla contratos salud cliente
     /// </summary>
-    public class ContratosSaludClienteRepository : IContratosSaludClienteRepository
+    public class ContratosSaludRepository : IContratosSaludRepository
     {
         private readonly ApplicationDbContext objContext;
         private readonly IMapper mapper;
@@ -25,7 +25,7 @@ namespace RepositoryLayer.Repository
         /// <param name="_objContext"></param>
         /// <param name="_mapper"></param>
         /// <returns></returns>
-        public ContratosSaludClienteRepository(ApplicationDbContext _objContext, IMapper _mapper)
+        public ContratosSaludRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
             objContext = _objContext;
             mapper = _mapper;
@@ -72,11 +72,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear un contrato de un cliente
+        /// Metodo para crear un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> CrearContratoSaludCliente(ContratoSaludDto objModel)
+        public async Task<Result> CrearContratoSalud(ContratoSaludDto objModel)
         {
             Result oRespuesta = new();
 
@@ -101,11 +101,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar un contrato de un cliente
+        /// Metodo para actualizar un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ActualizarContratoSaludCliente(ContratoSaludDto objModel)
+        public async Task<Result> ActualizarContratoSalud(ContratoSaludDto objModel)
         {
             Result oRespuesta = new Result();
 
@@ -130,11 +130,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar un contrato de un cliente
+        /// Metodo para borrar un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> EliminarContratoSaludCliente(ContratoSaludDto objModel)
+        public async Task<Result> EliminarContratoSalud(ContratoSaludDto objModel)
         {
             Result oRespuesta = new Result();
 

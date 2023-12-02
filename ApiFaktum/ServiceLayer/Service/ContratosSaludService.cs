@@ -9,68 +9,68 @@ namespace ServiceLayer.Service
     /// Anderson Benavides
     /// Clase para el manejo de la tabla contratos cliente
     /// </summary>
-    public class ContratosSaludClienteService : IContratosSaludClienteService
+    public class ContratosSaludService : IContratosSaludService
     {
-        private readonly IContratosSaludClienteRepository objContratosSaludClienteRepository;
+        private readonly IContratosSaludRepository objContratosSaludRepository;
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
         /// Constructor por defecto
         /// </summary>
-        /// <param name="_objContratosSaludClienteRepository"></param>
+        /// <param name="_objContratosSaludRepository"></param>
         /// <returns></returns>
-        public ContratosSaludClienteService(IContratosSaludClienteRepository _objContratosSaludClienteRepository)
+        public ContratosSaludService(IContratosSaludRepository _objContratosSaludRepository)
         {
-            this.objContratosSaludClienteRepository = _objContratosSaludClienteRepository;
+            this.objContratosSaludRepository = _objContratosSaludRepository;
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar los contratos de un cliente
+        /// Metodo para consultar los contratos de salud
         /// </summary>
         /// <param name="idCliente"></param>
         /// <returns>Task<Result></returns>
         public Task<Result> ConsultarContratosSaludCliente(int idCliente)
         {
-            return objContratosSaludClienteRepository.ConsultarContratosSaludCliente(idCliente);
+            return objContratosSaludRepository.ConsultarContratosSaludCliente(idCliente);
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear un contrato de un cliente
+        /// Metodo para crear un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> CrearContratoSaludCliente(ContratoSaludDto objModel)
+        public Task<Result> CrearContratoSalud(ContratoSaludDto objModel)
         {
-            return objContratosSaludClienteRepository.CrearContratoSaludCliente(objModel);
+            return objContratosSaludRepository.CrearContratoSalud(objModel);
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar un contrato de un cliente
+        /// Metodo para actualizar un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> ActualizarContratoSaludCliente(ContratoSaludDto objModel)
+        public Task<Result> ActualizarContratoSalud(ContratoSaludDto objModel)
         {
-            return objContratosSaludClienteRepository.ActualizarContratoSaludCliente(objModel);
+            return objContratosSaludRepository.ActualizarContratoSalud(objModel);
         }
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar un contrato de un cliente
+        /// Metodo para borrar un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> EliminarContratoSaludCliente(ContratoSaludDto objModel)
+        public Task<Result> EliminarContratoSalud(ContratoSaludDto objModel)
         {
-            return objContratosSaludClienteRepository.EliminarContratoSaludCliente(objModel);
+            return objContratosSaludRepository.EliminarContratoSalud(objModel);
         }
     }
 }

@@ -30,5 +30,11 @@ namespace DomainLayer.Models
         public virtual SucursalModel? ResoSucursal { get; set; }
         [Required]
         public virtual TipoDocElectrModel? ResoTipoDoc { get; set; }
+
+        //Referencias para consultas
+        public virtual int ResoNumeracionResolucionId { get; set; }
+        public virtual int ResoEmpresaId { get; set; }
+        public virtual int ResoSucursalId { get; set; }
+        public virtual int ResoTipoDocId { get; set; }
     }
 }

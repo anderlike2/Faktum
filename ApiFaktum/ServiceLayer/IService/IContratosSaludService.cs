@@ -1,13 +1,13 @@
 ﻿using DomainLayer.Dtos;
 using DomainLayer.Models;
 
-namespace RepositoryLayer.IRepository
+namespace ServiceLayer.IService
 {
     /// <summary>
     /// Anderson Benavides
     /// Interfaz para el manejo de la tabla contratoscliente
     /// </summary>
-    public interface IContratosSaludClienteRepository
+    public interface IContratosSaludService
     {
         /// <summary>
         /// Katary
@@ -21,28 +21,28 @@ namespace RepositoryLayer.IRepository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear un contrato de un cliente
+        /// Metodo para crear un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> CrearContratoSaludCliente(ContratoSaludDto objModel);
+        Task<Result> CrearContratoSalud(ContratoSaludDto objModel);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar un contrato de un cliente
+        /// Metodo para actualizar un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ActualizarContratoSaludCliente(ContratoSaludDto objModel);
+        Task<Result> ActualizarContratoSalud(ContratoSaludDto objModel);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar un contrato de un cliente
+        /// Metodo para borrar un contrato de salud
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> EliminarContratoSaludCliente(ContratoSaludDto objModel);
+        Task<Result> EliminarContratoSalud(ContratoSaludDto objModel);
     }
 }
