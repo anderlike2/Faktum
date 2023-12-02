@@ -10,9 +10,9 @@ namespace RepositoryLayer.Repository
 {
     /// <summary>
     /// Anderson Benavides
-    /// Clase para el manejo de la tabla sucursal
+    /// Clase para el manejo de la tabla lista precios
     /// </summary>
-    public class SucursalRepository : ISucursalRepository
+    public class ListaPreciosRepository : IListaPreciosRepository
     {
         private readonly ApplicationDbContext objContext;
         private readonly IMapper mapper;
@@ -25,7 +25,7 @@ namespace RepositoryLayer.Repository
         /// <param name="_objContext"></param>
         /// <param name="_mapper"></param>
         /// <returns></returns>
-        public SucursalRepository(ApplicationDbContext _objContext, IMapper _mapper)
+        public ListaPreciosRepository(ApplicationDbContext _objContext, IMapper _mapper)
         {
             objContext = _objContext;
             mapper = _mapper;
@@ -34,30 +34,30 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
+        /// Metodo para consultar la lista de precios de una sucursal cliente
         /// </summary>
-        /// <param name="idEmpresa"></param>
+        /// <param name="idSucursalCliente"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarSucursalesEmpresa(int idEmpresa)
+        public async Task<Result> ConsultarListaPreciosSucursalesCliente(int idSucursalCliente)
         {
             Result oRespuesta = new Result();
-            List<SucursalModel>? lstResult = new List<SucursalModel>();
+            List<ListaPrecioModel>? lstResult = new List<ListaPrecioModel>();
 
             try
             {
                 lstResult =
-                    await objContext.Sucursal.Where(x => x.Estado == 1 && x.SucuEmpresa.Id.Equals(idEmpresa)).ToListAsync();
+                    await objContext.ListaPrecio.Where(x => x.Estado == 1 && x.LiprSucursalCliente.Id.Equals(idSucursalCliente)).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)
                 {
 
-                    oRespuesta.Data = mapper.Map<List<SucursalDto>>(lstResult);
+                    oRespuesta.Data = mapper.Map<List<ListaPrecioDto>>(lstResult);
                     oRespuesta.Message = Constantes.msjConsultaExitosa;
                 }
                 else
                 {
-                    oRespuesta.Data = new List<SucursalDto>();
+                    oRespuesta.Data = new List<ListaPrecioDto>();
                     oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
@@ -72,11 +72,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear una sucursal
+        /// Metodo para crear una lista de precios
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> CrearSucursal(SucursalDto objModel)
+        public async Task<Result> CrearListaPrecio(ListaPrecioDto objModel)
         {
             Result oRespuesta = new();
 
@@ -84,7 +84,7 @@ namespace RepositoryLayer.Repository
             {
                 objModel.FechaCreacion = DateTime.UtcNow.ToLocalTime();
 
-                await objContext.AddAsync(mapper.Map<SucursalModel>(objModel));
+                await objContext.AddAsync(mapper.Map<ListaPrecioModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
@@ -101,11 +101,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar una sucursal
+        /// Metodo para actualizar una lista de precios
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ActualizarSucursal(SucursalDto objModel)
+        public async Task<Result> ActualizarListaPrecio(ListaPrecioDto objModel)
         {
             Result oRespuesta = new Result();
 
@@ -113,7 +113,7 @@ namespace RepositoryLayer.Repository
             {
                 objModel.FechaModificacion = DateTime.UtcNow.ToLocalTime();
 
-                objContext.Update(mapper.Map<SucursalModel>(objModel));
+                objContext.Update(mapper.Map<ListaPrecioModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;
@@ -130,17 +130,17 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para eliminar una sucursal
+        /// Metodo para borrar una lista de precios
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> EliminarSucursal(SucursalDto objModel)
+        public async Task<Result> EliminarListaPrecio(ListaPrecioDto objModel)
         {
             Result oRespuesta = new Result();
 
             try
             {
-                objContext.Sucursal.Remove(mapper.Map<SucursalModel>(objModel));
+                objContext.ListaPrecio.Remove(mapper.Map<ListaPrecioModel>(objModel));
                 await objContext.SaveChangesAsync();
 
                 oRespuesta.Success = true;

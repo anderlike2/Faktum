@@ -74,20 +74,7 @@ namespace ServiceLayer.Service
         /// <returns>Task<Result></returns>
         public Task<Result> EliminarCentroCosto(CentroCostoDto objModel)
         {
-            //Validar referencia a sucursales
-            Task<Result> sucursales = objSucursalRepository.ConsultarSucursalesCentroCosto(objModel.Id);
-            List<SucursalDto> lstSucursales = (List<SucursalDto>)sucursales.Result.Data;
-            if(lstSucursales != null && lstSucursales.Count > 0)
-            {
-                Result oRespuesta = new Result();
-                oRespuesta.Success = false;
-                oRespuesta.Message = Constantes.msjSucursalCentroCosto;
-                return Task.FromResult(oRespuesta);
-            }
-            else
-            {
-                return objCentroCostoRepository.EliminarCentroCosto(objModel);
-            }            
+            return objCentroCostoRepository.EliminarCentroCosto(objModel);
         }
     }
 }

@@ -23,9 +23,9 @@ namespace DomainLayer.Dtos
         [Column(TypeName = "decimal(18,2)")]
         public decimal? SucuReteIca { get; set; }
         public string? SucuTelefono { get; set; }
+        public string? SucuCentroCosto { get; set; }
 
         //Referencias
-        public int SucuCentroCostosId { get; set; }
         public int SucuEmpresaId { get; set; }
         public int SucuFormatoImpresionId { get; set; }
     }

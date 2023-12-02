@@ -1,48 +1,48 @@
 ﻿using DomainLayer.Dtos;
 using DomainLayer.Models;
 
-namespace RepositoryLayer.IRepository
+namespace ServiceLayer.IService
 {
     /// <summary>
     /// Anderson Benavides
-    /// Interfaz para el manejo de la tabla sucursal
+    /// Interfaz para el manejo de la tabla lista precios
     /// </summary>
-    public interface ISucursalRepository
+    public interface IListaPreciosService
     {
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar las sucursales de una empresa
+        /// Metodo para consultar la lista de precios de una sucursal cliente
         /// </summary>
-        /// <param name="idEmpresa"></param>
+        /// <param name="idSucursalCliente"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ConsultarSucursalesEmpresa(int idEmpresa);
+        Task<Result> ConsultarListaPreciosSucursalesCliente(int idSucursalCliente);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para crear una sucursal
+        /// Metodo para crear una lista de precios
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> CrearSucursal(SucursalDto objModel);
+        Task<Result> CrearListaPrecio(ListaPrecioDto objModel);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para actualizar una sucursal
+        /// Metodo para actualizar una lista de precios
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ActualizarSucursal(SucursalDto objModel);
+        Task<Result> ActualizarListaPrecio(ListaPrecioDto objModel);
 
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para borrar una sucursal
+        /// Metodo para borrar una lista de precios
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> EliminarSucursal(SucursalDto objModel);
+        Task<Result> EliminarListaPrecio(ListaPrecioDto objModel);
     }
 }
