@@ -13,7 +13,6 @@
         public string? SuclTelefono { get; set; }
 
         //Referencias
-        public int SuclEmpresaId { get; set; }
         public int SuclClienteId { get; set; }
     }
 }

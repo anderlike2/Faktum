@@ -25,14 +25,11 @@ namespace DomainLayer.Models
 
         //Referencias
         [Required]
-        public virtual ICollection<ListaPrecioModel>? SuclListaPrecios { get; set; }
-        [Required]
-        public virtual EmpresaModel? SuclEmpresa { get; set; }
-        [Required]
         public virtual ClienteModel? SuclCliente { get; set; }
+        [Required]
+        public virtual ICollection<ListaPrecioModel>? SuclListaPrecios { get; set; }
 
         //Para creacion de datos mediante FK
-        public virtual int SuclEmpresaId { get; set; }
         public virtual int SuclClienteId { get; set; }
     }
 }

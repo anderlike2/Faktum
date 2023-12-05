@@ -82,15 +82,11 @@ namespace DomainLayer.Models
         [Required]
         public virtual ICollection<VendedorModel>? EmprVendedores { get; set; }
         [Required]
-        public virtual ICollection<ListaPrecioModel>? EmprListaPrecios { get; set; }
-        [Required]
         public virtual ICollection<NotaDebitoModel>? EmprNotasDebito { get; set; }
         [Required]
         public virtual ICollection<NotaCreditoModel>? EmprNotasCredito { get; set; }
         [Required]
         public virtual ICollection<SucursalModel>? EmprSucursales { get; set; }
-        [Required]
-        public virtual ICollection<SucursalClienteModel>? EmprSucursalesCliente { get; set; }
         [Required]
         public virtual ICollection<ClienteModel>? EmprClientes { get; set; }
         [Required]
@@ -99,6 +95,8 @@ namespace DomainLayer.Models
         public virtual ICollection<ContratoSaludModel>? EmprContratosSalud{ get; set; }
         [Required]
         public virtual ICollection<EmpresasUsuarioModel>? EmprEmpresasUsuario { get; set; }
+        [Required]
+        public virtual ICollection<OtroProductoModel>? EmprOtrosProductos { get; set; }
 
         //Para creacion de datos mediante FK
         public virtual int EmprTipoClienteId { get; set; }

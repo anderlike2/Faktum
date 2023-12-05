@@ -20,22 +20,16 @@ namespace DomainLayer.Models
 
         //Referencias
         [Required]
-        public virtual EmpresaModel? LiprEmpresa { get; set; }
-        [Required]
         public virtual ProductoModel? LiprProducto { get; set; }
-        [Required]
-        public virtual ICollection<FacturaModel>? LiprFacturas { get; set; }
-        [Required]
-        public virtual ICollection<DetalleFactModel>? LiprDetFacturas { get; set; }
         [Required]
         public virtual SucursalClienteModel? LiprSucursalCliente { get; set; }
         [Required]
-        public virtual ClienteModel? LiprCliente { get; set; }
+        public virtual ICollection<FacturaModel>? LiprFacturas { get; set; }
+        [Required]
+        public virtual ICollection<DetalleFactModel>? LiprDetFacturas { get; set; }        
 
         //Referencias para consultas
-        public virtual int LiprEmpresaId { get; set; }
         public virtual int LiprProductoId { get; set; }
         public virtual int LiprSucursalClienteId { get; set; }
-        public virtual int LiprClienteId { get; set; }
     }
 }

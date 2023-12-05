@@ -13,9 +13,7 @@ namespace DomainLayer.Dtos
         public decimal LiprValor { get; set; }
 
         //Referencias para Consultas
-        public int LiprEmpresaId { get; set; }
         public int LiprProductoId { get; set; }
         public int LiprSucursalClienteId { get; set; }
-        public int LiprClienteId { get; set; }
     }
 }

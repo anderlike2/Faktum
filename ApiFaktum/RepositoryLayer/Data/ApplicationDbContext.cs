@@ -67,5 +67,6 @@ namespace RepositoryLayer.Data
         public DbSet<ResolucionModel> Resolucion { get; set; }
         public DbSet<ContratoSaludModel> ContratoSalud { get; set; }
         public DbSet<EmpresasUsuarioModel> EmpresasUsuario { get; set; }
+        public DbSet<OtroProductoModel> OtrosProductos { get; set; }
     }
 }

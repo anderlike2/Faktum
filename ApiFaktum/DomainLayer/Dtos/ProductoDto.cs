@@ -22,5 +22,6 @@
         public int ProdTipoImpuestoId { get; set; }
         public int ProdTipoRipsId { get; set; }
         public int ProdUnidadId { get; set; }
+        public int ProdOtroProductoId { get; set; }
     }
 }

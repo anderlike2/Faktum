@@ -7,6 +7,5 @@
 
         //Referencias
         public int CcosEmpresaId { get; set; }
-        public int CcosTipoDescuentoId { get; set; }
     }
 }

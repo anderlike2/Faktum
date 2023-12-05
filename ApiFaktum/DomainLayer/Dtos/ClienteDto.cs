@@ -38,5 +38,6 @@ namespace DomainLayer.Dtos
         public int ClieRespTributariaId { get; set; }
         public int ClieTipoClienteId { get; set; }
         public int ClieTipoIdId { get; set; }
+        public int ClieClasJuridicaId { get; set; }
     }
 }

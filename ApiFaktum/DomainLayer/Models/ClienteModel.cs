@@ -52,13 +52,7 @@ namespace DomainLayer.Models
         [Required]
         public virtual PaisModel? CliePais { get; set; }
         [Required]
-        public virtual EmpresaModel? ClieEmpresa { get; set; }
-        [Required]
-        public virtual ICollection<FacturaModel>? ClieFacturas { get; set; }
-        [Required]
-        public virtual ICollection<SucursalClienteModel>? ClieSucursalesCliente { get; set; }
-        [Required]
-        public virtual ICollection<ListaPrecioModel>? ClieListaPrecios { get; set; }
+        public virtual EmpresaModel? ClieEmpresa { get; set; }       
         [Required]
         public virtual RegimenModel? ClieRegimen { get; set; }
         [Required]
@@ -70,7 +64,14 @@ namespace DomainLayer.Models
         [Required]
         public virtual TipoIdModel? ClieTipoId { get; set; }
         [Required]
+        public virtual ClasJuridicaModel? ClieClasJuridica { get; set; }
+        [Required]
+        public virtual ICollection<FacturaModel>? ClieFacturas { get; set; }
+        [Required]
+        public virtual ICollection<SucursalClienteModel>? ClieSucursalesCliente { get; set; }
+        [Required]
         public virtual ICollection<ContratoSaludModel>? ClieContratosSalud { get; set; }
+       
 
         //Referencias para consultas FK
         public virtual int ClieCiudadId { get; set; }
@@ -82,5 +83,6 @@ namespace DomainLayer.Models
         public virtual int ClieRespTributariaId { get; set; }
         public virtual int ClieTipoClienteId { get; set; }
         public virtual int ClieTipoIdId { get; set; }
+        public virtual int ClieClasJuridicaId { get; set; }
     }
 }
