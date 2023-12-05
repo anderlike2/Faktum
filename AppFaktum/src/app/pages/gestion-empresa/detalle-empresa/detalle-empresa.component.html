@@ -1,10 +1,14 @@
 <div class="row">
   <div class="col-sm-12">
-    <app-card cardTitle="Información general" [options]="false">
+    <app-card cardTitle="Información general" [hidHeader]="true" [options]="false">
 
       <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex">
+          <h5 class="font-weight-bold">Empresa</h5>
+          <i class="feather chevron-up"></i>
+        </div>
         <h5 class="font-weight-bold">Empresa</h5>
-        <button class="btn btn-primary">Editar</button>
+        <!-- <button class="btn btn-primary">Editar</button> -->
       </div>
 
         <hr>
@@ -45,15 +49,13 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Departamento</label>
-                  <select formControlName="departamento" class="form-control">
-
-                  </select>
+                  <input formControlName="departamento" type="text" class="form-control" placeholder="Departamento">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Ciudad</label>
-                  <select formControlName="ciudad" class="form-control"></select>
+                  <input formControlName="ciudad" type="text" class="form-control" placeholder="Ciudad">
                 </div>
               </div>
               <div class="col-md-4">
@@ -133,7 +135,11 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Regimen empresa</label>
-                  <select formControlName="regimenId" class="form-control"></select>
+                  <select formControlName="regimenId" class="form-control">
+                    <ng-container *ngFor="let item of ListRegEmpresa">
+                      <option [value]="item.valor">{{item.nombre}}</option>
+                    </ng-container>
+                  </select>
                 </div>
               </div>
 
@@ -155,7 +161,11 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Responsable fiscal</label>
-                  <select formControlName="respFiscalId" class="form-control"></select>
+                  <select formControlName="respFiscalId" class="form-control">
+                    <ng-container *ngFor="let item of listRespFiscal">
+                      <option [value]="item.valor">{{item.nombre}}</option>
+                    </ng-container>
+                  </select>
                 </div>
               </div>
 
@@ -166,13 +176,21 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Responsable tributario</label>
-                  <select formControlName="respTributId" class="form-control"></select>
+                  <select formControlName="respTributId" class="form-control">
+                    <ng-container *ngFor="let item of listRespTributaria">
+                      <option [value]="item.valor">{{item.nombre}}</option>
+                    </ng-container>
+                  </select>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">Tipo cliente</label>
-                  <select formControlName="tipoClienteId" class="form-control"></select>
+                  <select formControlName="tipoClienteId" class="form-control">
+                    <ng-container *ngFor="let item of listTipoCliente">
+                      <option [value]="item.valor">{{item.nombre}}</option>
+                    </ng-container>
+                  </select>
                 </div>
               </div>
               <div class="col-md-4">
@@ -212,7 +230,11 @@
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="">tipo</label>
-                  <input formControlName="tipoId" type="text" class="form-control">
+                  <select formControlName="tipoId" class="form-control">
+                    <ng-container *ngFor="let item of listTipoId">
+                      <option [value]="item.valor">{{item.nombre}}</option>
+                    </ng-container>
+                  </select>
                 </div>
               </div>
 
@@ -231,29 +253,6 @@
               </div>
             </div>
 
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Estado</label>
-                  <input formControlName="estado" type="text" class="form-control">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Fecha creación</label>
-                  <input formControlName="fechaCreacion" type="text" class="form-control">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Fecha modificación</label>
-                  <input formControlName="fechaModificacion" type="text" class="form-control">
-                </div>
-              </div>
-            </div>
 
             <div class="row">
               <div class="col-md-12">

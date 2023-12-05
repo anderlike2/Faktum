@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
+import { Observable } from 'rxjs';
+import { IListCombo } from 'src/app/models/general.model';
+import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -13,8 +17,15 @@ export class DetalleEmpresaComponent implements OnInit {
   empresaFormGroup: FormGroup;
   fb = new FormBuilder();
 
+  listTipoId: IListCombo[] = [];
+  listRespFiscal: IListCombo[] = [];
+  listRespTributaria: IListCombo[] = [];
+  listTipoCliente: IListCombo[] = [];
+  ListRegEmpresa: IListCombo[] = [];
+
   constructor(
-    private storageService: StorageService
+    private storageService: StorageService,
+    private detalleEmpresaService: DetalleEmpresaService
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +34,47 @@ export class DetalleEmpresaComponent implements OnInit {
 
   init(): void {
     this.initForm();
+    this.cargarComboListas();
     this.cargarInfoEmpresa();
+  }
+
+  cargarComboListas(): void {
+
+    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.TIPO_ID)
+    .subscribe({
+      next: (response) => {
+        this.listTipoId = response;
+      }
+    });
+
+    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.RESP_FISCAL)
+    .subscribe({
+      next: (response) => {
+        this.listRespFiscal = response;
+      }
+    });
+
+    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.RESP_TRIBUTARIA)
+    .subscribe({
+      next: (response) => {
+        this.listRespTributaria = response;
+      }
+    });
+
+    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.TIPO_CLIENTE)
+    .subscribe({
+      next: (response) => {
+        this.listTipoCliente = response;
+      }
+    });
+
+    this.detalleEmpresaService.obtenerListaRegimen()
+    .subscribe({
+      next: (response) => {
+        this.ListRegEmpresa = response;
+      }
+    });
+
   }
 
   cargarInfoEmpresa(): void {
@@ -45,12 +96,27 @@ export class DetalleEmpresaComponent implements OnInit {
         repLegal: dataEmpresa.emprRepLegal,
         docRepLegal: dataEmpresa.emprIdRepLegal,
         empreCiuu: dataEmpresa.emprCiuu,
-        contacto: dataEmpresa.emprContacto
+        contacto: dataEmpresa.emprContacto,
+        formatoImp: dataEmpresa.emprFormatoImpr,
+        empreHabilitacion: dataEmpresa.emprHabilitacion,
+        empreLocalidad: dataEmpresa.emprLocalidad,
+        observacion: dataEmpresa.emprObservaciones,
+        porcRetIca: dataEmpresa.emprPorcReteIca,
+        recepcion: dataEmpresa.emprRecepcion,
+        regimenId: dataEmpresa.emprRegimenId,
+        respFiscalId: dataEmpresa.emprRespFiscalId,
+        respTributId: dataEmpresa.emprRespTributId,
+        tipoClienteId: dataEmpresa.emprTipoClienteId,
+        tipoId: dataEmpresa.emprTipoIdId,
+        leyEnFactura: dataEmpresa.emprLeyEnFactura,
+        leyEnNotaCredito: dataEmpresa.emprLeyEnNotaCredito,
+        leyEnNotaDebito: dataEmpresa.emprLeyEnNotaDebito,
       });
 
     }
 
   }
+
 
   initForm(): void {
     const formControls: { [key: string]: any } = {
@@ -217,24 +283,6 @@ export class DetalleEmpresaComponent implements OnInit {
         ]
       ],
       emprFactContador: [
-        { value: '', disabled: false },
-        [
-          Validators.required
-        ]
-      ],
-      estado: [
-        { value: '', disabled: false },
-        [
-          Validators.required
-        ]
-      ],
-      fechaCreacion: [
-        { value: '', disabled: false },
-        [
-          Validators.required
-        ]
-      ],
-      fechaModificacion: [
         { value: '', disabled: false },
         [
           Validators.required
@@ -412,25 +460,5 @@ export class DetalleEmpresaComponent implements OnInit {
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
-
-  get estadoErrorMensaje(): string {
-    const form: AbstractControl = this.empresaFormGroup.get('estado') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-  get fechaCreacionErrorMensaje(): string {
-    const form: AbstractControl = this.empresaFormGroup.get('fechaCreacion') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-  get fechaModificacionErrorMensaje(): string {
-    const form: AbstractControl = this.empresaFormGroup.get('fechaModificacion') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-
 
 }
