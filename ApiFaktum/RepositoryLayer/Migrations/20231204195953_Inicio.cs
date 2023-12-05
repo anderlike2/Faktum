@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class carga : Migration
+    public partial class Inicio : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -69,6 +69,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ConoCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ConoNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConoTipoNota = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1088,7 +1089,7 @@ namespace RepositoryLayer.Migrations
                     SucuPrincipal = table.Column<int>(type: "int", nullable: false),
                     SucuReteIca = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     SucuTelefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SucuCentroCostosId = table.Column<int>(type: "int", nullable: false),
+                    SucuCentroCosto = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SucuEmpresaId = table.Column<int>(type: "int", nullable: false),
                     SucuFormatoImpresionId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
@@ -1098,12 +1099,6 @@ namespace RepositoryLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Sucursal", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Sucursal_CentroCosto_SucuCentroCostosId",
-                        column: x => x.SucuCentroCostosId,
-                        principalTable: "CentroCosto",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Sucursal_Empresa_SucuEmpresaId",
                         column: x => x.SucuEmpresaId,
@@ -1898,11 +1893,6 @@ namespace RepositoryLayer.Migrations
                 name: "IX_RolUsuario_RousUsuarioId",
                 table: "RolUsuario",
                 column: "RousUsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Sucursal_SucuCentroCostosId",
-                table: "Sucursal",
-                column: "SucuCentroCostosId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Sucursal_SucuEmpresaId",

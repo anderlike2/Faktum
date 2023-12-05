@@ -11,7 +11,7 @@ namespace ApiFaktum.Controllers
     /// Anderson Benavides
     /// Controlador para el manejo del inicio de sesion
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsuarioController : ControllerBase

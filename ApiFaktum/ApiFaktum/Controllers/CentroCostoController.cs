@@ -11,7 +11,7 @@ namespace ApiFaktum.Controllers
     /// Anderson Benavides
     /// Controlador para el manejo de la tabla centro de costo
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CentroCostoController : ControllerBase

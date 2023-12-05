@@ -12,7 +12,7 @@ namespace ApiFaktum.Controllers
     /// Anderson Benavides
     /// Controlador para el manejo de las tablas maestras
     /// </summary>
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class MaestrasController : ControllerBase

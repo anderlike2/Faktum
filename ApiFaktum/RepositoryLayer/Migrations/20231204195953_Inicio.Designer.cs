@@ -12,8 +12,8 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231130194945_ConceptoNota")]
-    partial class ConceptoNota
+    [Migration("20231204195953_Inicio")]
+    partial class Inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -2061,8 +2061,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SucuCentroCostosId")
-                        .HasColumnType("int");
+                    b.Property<string>("SucuCentroCosto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SucuCiudad")
                         .IsRequired()
@@ -2137,8 +2137,6 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SucuCentroCostosId");
 
                     b.HasIndex("SucuEmpresaId");
 
@@ -3093,12 +3091,6 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
                 {
-                    b.HasOne("DomainLayer.Models.CentroCostoModel", "SucuCentroCostos")
-                        .WithMany("CcosSucursales")
-                        .HasForeignKey("SucuCentroCostosId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DomainLayer.Models.EmpresaModel", "SucuEmpresa")
                         .WithMany("EmprSucursales")
                         .HasForeignKey("SucuEmpresaId")
@@ -3110,8 +3102,6 @@ namespace RepositoryLayer.Migrations
                         .HasForeignKey("SucuFormatoImpresionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("SucuCentroCostos");
 
                     b.Navigation("SucuEmpresa");
 
@@ -3143,8 +3133,6 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.CentroCostoModel", b =>
                 {
                     b.Navigation("CcosProductos");
-
-                    b.Navigation("CcosSucursales");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CiudadModel", b =>
