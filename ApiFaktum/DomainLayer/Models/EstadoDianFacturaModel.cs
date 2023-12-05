@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class EstadoDianFacturaModel : BaseEntity
     {
         [Required]
-        public int EsfaCodigo { get; set; }
+        public string? EsfaCodigo { get; set; }
         [Required]
         public string? EsfaNombre { get; set; }
 

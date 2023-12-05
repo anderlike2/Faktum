@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -14,12 +12,10 @@ namespace DomainLayer.Dtos
         [Column(TypeName = "decimal(18,2)")]
         public decimal LiprValor { get; set; }
 
-        //Referencias
-        public EmpresaDto? LiprEmpresa { get; set; }
-        public ProductoDto? LiprProducto { get; set; }
-        public List<FacturaDto>? LiprFacturas { get; set; }
-        public List<DetalleFactDto>? LiprDetFacturas { get; set; }
-        public SucursalClienteDto? LiprSucursalCliente { get; set; }
-        public ClienteDto? LiprCliente { get; set; }
+        //Referencias para Consultas
+        public int LiprEmpresaId { get; set; }
+        public int LiprProductoId { get; set; }
+        public int LiprSucursalClienteId { get; set; }
+        public int LiprClienteId { get; set; }
     }
 }

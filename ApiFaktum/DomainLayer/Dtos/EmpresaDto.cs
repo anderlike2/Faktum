@@ -1,5 +1,4 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -33,26 +32,11 @@ namespace DomainLayer.Dtos
         public string? EmprHabilitacion { get; set; }
 
         //Referencias
-        public TipoClienteDto? EmprTipoCliente { get; set; }
-        public TipoIdDto? EmprTipoId { get; set; }
-        public RespTributariaDto? EmprRespTribut { get; set; }
-        public RegimenDto? EmprRegimen { get; set; }
-        public RespFiscalDto? EmprRespFiscal { get; set; }
-        public ClasJuridicaDto? EmprClasJuridica { get; set; }
-        public List<ProductoDto>? EmprProductos { get; set; }
-        public List<CentroCostoDto>? EmprCentroCostos { get; set; }
-        public List<FormatoImpresionDto>? EmprFormatosImpresion { get; set; }
-        public List<FacturaDto>? EmprFacturas { get; set; }
-        public List<DetalleFactDto>? EmprDetFacturas { get; set; }
-        public List<VendedorDto>? EmprVendedores { get; set; }
-        public List<ListaPrecioDto>? EmprListaPrecios { get; set; }
-        public List<NotaDebitoDto>? EmprNotasDebito { get; set; }
-        public List<NotaCreditoDto>? EmprNotasCredito { get; set; }
-        public List<SucursalDto>? EmprSucursales { get; set; }
-        public List<SucursalClienteDto>? EmprSucursalesCliente { get; set; }
-        public List<ClienteDto>? EmprClientes { get; set; }
-        public List<ResolucionDto>? EmprResoluciones { get; set; }
-        public List<ContratoSaludDto>? EmprContratosSalud { get; set; }
-
+        public int EmprTipoClienteId { get; set; }
+        public int EmprTipoIdId { get; set; }
+        public int EmprRespTributId { get; set; }
+        public int EmprRegimenId { get; set; }
+        public int EmprRespFiscalId { get; set; }
+        public int EmprClasJuridicaId { get; set; }
     }
 }

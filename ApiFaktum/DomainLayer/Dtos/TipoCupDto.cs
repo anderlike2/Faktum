@@ -1,11 +1,9 @@
 ﻿
-using DomainLayer.Models;
-
 namespace DomainLayer.Dtos
 {
     public class TipoCupDto : BaseDto
     {
-        public int TicuCodigo { get; set; }
+        public string? TicuCodigo { get; set; }
         public string? TicuNombre { get; set; }
 
         //Referencias

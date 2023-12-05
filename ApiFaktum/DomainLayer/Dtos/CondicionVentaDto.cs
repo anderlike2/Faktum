@@ -1,10 +1,8 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class CondicionVentaDto : BaseDto
     {
-        public int CoveCodigo { get; set; }
+        public string? CoveCodigo { get; set; }
         public string? CoveNombre { get; set; }
 
         //Referencias

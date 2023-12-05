@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Commun;
 using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
@@ -43,17 +44,23 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.ReteFuente.Include(x => x.Estado == 1).ToListAsync();
+                lstResult = await objContext.ReteFuente.Where(x => x.Estado == 1).ToListAsync();
 
-                if (lstResult.Count > 0)
-                {
-                    oRespuesta.Success = true;
+                oRespuesta.Success = true;
+                if (lstResult.Count > 0)                {
+                   
                     oRespuesta.Data = mapper.Map<List<ReteFuenteDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ReteFuenteDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                oRespuesta.Message = ex.Message;
+                throw;
             }
 
             return oRespuesta;

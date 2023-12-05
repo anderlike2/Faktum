@@ -42,15 +42,18 @@ namespace DomainLayer.Models
         public decimal? SucuReteIca { get; set; }
         [Required]
         public string? SucuTelefono { get; set; }
+        public string? SucuCentroCosto { get; set; }
 
         //Referencias
-        [Required]
-        public virtual CentroCostoModel? SucuCentroCostos { get; set; }
         [Required]
         public virtual EmpresaModel? SucuEmpresa { get; set; }
         [Required]
         public virtual FormatoImpresionModel? SucuFormatoImpresion { get; set; }
         [Required]
         public virtual ICollection<ResolucionModel>? SucuResoluciones { get; set; }
+
+        //Para creacion de datos mediante FK
+        public virtual int SucuEmpresaId { get; set; }
+        public virtual int SucuFormatoImpresionId { get; set; }
     }
 }

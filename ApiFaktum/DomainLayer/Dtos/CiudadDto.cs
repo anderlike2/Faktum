@@ -1,10 +1,8 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class CiudadDto : BaseDto
     {
-        public int CiudCodigo { get; set; }
+        public string? CiudCodigo { get; set; }
         public string? CiudNombre { get; set; }
 
         //Referencias

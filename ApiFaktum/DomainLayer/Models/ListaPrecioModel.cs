@@ -31,5 +31,11 @@ namespace DomainLayer.Models
         public virtual SucursalClienteModel? LiprSucursalCliente { get; set; }
         [Required]
         public virtual ClienteModel? LiprCliente { get; set; }
+
+        //Referencias para consultas
+        public virtual int LiprEmpresaId { get; set; }
+        public virtual int LiprProductoId { get; set; }
+        public virtual int LiprSucursalClienteId { get; set; }
+        public virtual int LiprClienteId { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class ProductoDto : BaseDto
     {
@@ -14,16 +12,15 @@ namespace DomainLayer.Dtos
         public decimal ProdValor { get; set; }
 
         //Referencias
-        public CentroCostoDto? ProdCentroCosto { get; set; }
-        public ReteFuenteDto? ProdCodReteFuente { get; set; }
-        public CumDto? ProdCum { get; set; }
-        public CupDto? ProdCup { get; set; }
-        public EmpresaDto? ProdEmpresa { get; set; }
-        public IumDto? ProdIum { get; set; }
-        public TipoCupDto? ProdTipoCup { get; set; }
-        public ImpuestoDto? ProdTipoImpuesto { get; set; }
-        public TipoArchivoRipsDto? ProdTipoRips { get; set; }
-        public UnidadDto? ProdUnidad { get; set; }
-        public List<ListaPrecioDto>? ProdListaPrecios { get; set; }
+        public int ProdCentroCostoId { get; set; }
+        public int ProdCodReteFuenteId { get; set; }
+        public int ProdCumId { get; set; }
+        public int ProdCupId { get; set; }
+        public int ProdEmpresaId { get; set; }
+        public int ProdIumId { get; set; }
+        public int ProdTipoCupId { get; set; }
+        public int ProdTipoImpuestoId { get; set; }
+        public int ProdTipoRipsId { get; set; }
+        public int ProdUnidadId { get; set; }
     }
 }

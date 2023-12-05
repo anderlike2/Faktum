@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class CumModel : BaseEntity
     {
         [Required]
-        public int CumsCodigo { get; set; }
+        public string? CumsCodigo { get; set; }
         [Required]
         public string? CumsNombre { get; set; }
         [Required]

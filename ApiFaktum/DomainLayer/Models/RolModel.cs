@@ -7,6 +7,10 @@ namespace DomainLayer.Models
         [Required]
         public string? RolCodigo { get; set; }
         [Required]
-        public string? RolDescripcion { get; set; }    
+        public string? RolDescripcion { get; set; }
+
+        //Referencias
+        [Required]
+        public virtual ICollection<RolUsuarioModel>? RolRolesUsuario { get; set; }
     }
 }

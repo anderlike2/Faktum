@@ -1,11 +1,8 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class TipoDocElectrDto : BaseDto
     {
-        public int TidoCodigo { get; set; }
+        public string? TidoCodigo { get; set; }
         public string? TidoNombre { get; set; }
 
         //Referencias

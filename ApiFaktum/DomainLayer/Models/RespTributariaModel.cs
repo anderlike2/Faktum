@@ -6,7 +6,7 @@ namespace DomainLayer.Models
     public class RespTributariaModel : BaseEntity
     {
         [Required]
-        public int RetrCodigo { get; set; }
+        public string? RetrCodigo { get; set; }
         [Required]
         public string? RetrNombre { get; set; }
 

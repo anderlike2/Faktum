@@ -5,6 +5,9 @@
         public string? UsuaUsuario { get; set; }
         public string? UsuaPassword { get; set; }
         public int? UsuaIntentos { get; set; }
-        public EmpresaDto? UsuEmpresa { get; set; }
+
+        //Referencias
+        public List<EmpresaDto>? UsuEmpresas { get; set; }
+        public List<RolDto>? UsuRoles {  get; set; }
     }
 }

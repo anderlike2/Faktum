@@ -56,7 +56,7 @@ namespace DomainLayer.Models
         [Required]
         public string? EmprHabilitacion { get; set; }
 
-        //Referencias
+        //Referencias        
         [Required]
         public virtual TipoClienteModel? EmprTipoCliente { get; set; }
         [Required]
@@ -97,6 +97,15 @@ namespace DomainLayer.Models
         public virtual ICollection<ResolucionModel>? EmprResoluciones{ get; set; }
         [Required]
         public virtual ICollection<ContratoSaludModel>? EmprContratosSalud{ get; set; }
+        [Required]
+        public virtual ICollection<EmpresasUsuarioModel>? EmprEmpresasUsuario { get; set; }
 
+        //Para creacion de datos mediante FK
+        public virtual int EmprTipoClienteId { get; set; }
+        public virtual int EmprTipoIdId { get; set; }
+        public virtual int EmprRespTributId { get; set; }
+        public virtual int EmprRegimenId { get; set; }
+        public virtual int EmprRespFiscalId { get; set; }
+        public virtual int EmprClasJuridicaId { get; set; }
     }
 }

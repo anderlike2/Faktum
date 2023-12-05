@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class CupModel : BaseEntity
     {
         [Required]
-        public int CupsCodigo { get; set; }
+        public string? CupsCodigo { get; set; }
         [Required]
         public string? CupsNombre { get; set; }
 

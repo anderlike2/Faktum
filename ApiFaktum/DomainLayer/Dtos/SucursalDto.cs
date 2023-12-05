@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -25,11 +23,10 @@ namespace DomainLayer.Dtos
         [Column(TypeName = "decimal(18,2)")]
         public decimal? SucuReteIca { get; set; }
         public string? SucuTelefono { get; set; }
+        public string? SucuCentroCosto { get; set; }
 
         //Referencias
-        public CentroCostoDto? SucuCentroCostos { get; set; }
-        public EmpresaDto? SucuEmpresa { get; set; }
-        public FormatoImpresionDto? SucuFormatoImpresion { get; set; }
-        public List<ResolucionDto>? SucuResoluciones { get; set; }
+        public int SucuEmpresaId { get; set; }
+        public int SucuFormatoImpresionId { get; set; }
     }
 }

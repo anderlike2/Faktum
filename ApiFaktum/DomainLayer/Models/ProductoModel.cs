@@ -46,5 +46,17 @@ namespace DomainLayer.Models
         public virtual UnidadModel? ProdUnidad { get; set; }
         [Required]
         public virtual ICollection<ListaPrecioModel>? ProdListaPrecios { get; set; }
+
+        //Referencias para consultas FK
+        public virtual int ProdCentroCostoId { get; set; }
+        public virtual int ProdCodReteFuenteId { get; set; }
+        public virtual int ProdCumId { get; set; }
+        public virtual int ProdCupId { get; set; }
+        public virtual int ProdEmpresaId { get; set; }
+        public virtual int ProdIumId { get; set; }
+        public virtual int ProdTipoCupId { get; set; }
+        public virtual int ProdTipoImpuestoId { get; set; }
+        public virtual int ProdTipoRipsId { get; set; }
+        public virtual int ProdUnidadId { get; set; }
     }
 }

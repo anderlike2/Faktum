@@ -15,6 +15,10 @@ namespace DomainLayer.Models
         [Required]
         public virtual ICollection<ProductoModel>? CcosProductos { get; set; }
         [Required]
-        public virtual ICollection<SucursalModel>? CcosSucursales { get; set; }
+        public virtual TipoDescuentoModel? CcosTipoDescuento { get; set; }
+
+        //Referencias para consultas
+        public virtual int CcosEmpresaId {  get; set; }
+        public virtual int CcosTipoDescuentoId { get; set; }
     }
 }

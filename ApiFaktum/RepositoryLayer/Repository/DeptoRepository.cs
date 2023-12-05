@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using Commun;
 using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.EntityFrameworkCore;
@@ -46,15 +47,22 @@ namespace RepositoryLayer.Repository
             {
                 lstResult = await objContext.Depto.Where(x => x.Estado == 1).Include(z => z.DeptoCiudades).ToListAsync();
 
+                oRespuesta.Success = true;
                 if (lstResult.Count > 0)
                 {
-                    oRespuesta.Success = true;
+
                     oRespuesta.Data = mapper.Map<List<DeptoDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<DeptoDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                oRespuesta.Message = ex.Message;
+                throw;
             }
 
             return oRespuesta;

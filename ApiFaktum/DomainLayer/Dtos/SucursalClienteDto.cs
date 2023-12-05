@@ -1,7 +1,4 @@
-﻿using DomainLayer.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class SucursalClienteDto : BaseDto
     {
@@ -9,14 +6,14 @@ namespace DomainLayer.Dtos
         public string? SuclCiudad { get; set; }
         public string? SuclCodigo { get; set; }
         public string? SuclContacto { get; set; }
+        public string? SuclCorreo { get; set; }
         public int SuclDiasPago { get; set; }
         public string? SuclListaPrecio { get; set; }
         public string? SuclNombre { get; set; }
         public string? SuclTelefono { get; set; }
 
         //Referencias
-        public List<ListaPrecioDto>? SuclListaPrecios { get; set; }
-        public EmpresaDto? SuclEmpresa { get; set; }
-        public ClienteDto? SuclCliente { get; set; }
+        public int SuclEmpresaId { get; set; }
+        public int SuclClienteId { get; set; }
     }
 }

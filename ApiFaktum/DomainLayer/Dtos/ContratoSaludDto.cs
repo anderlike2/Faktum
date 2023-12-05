@@ -1,6 +1,4 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class ContratoSaludDto : BaseDto
     {
@@ -9,9 +7,9 @@ namespace DomainLayer.Dtos
         public string? CosaPoliza { get; set; }
 
         //Referencias
-        public ClienteDto? CosaClieId { get; set; }
-        public CoberturaDto? CosaCobe { get; set; }
-        public EmpresaDto? CosaEmpresa { get; set; }
-        public ModalidadPagoDto? CosaMopa { get; set; }
+        public int CosaClieIdId { get; set; }
+        public int CosaCobeId { get; set; }
+        public int CosaEmpresaId { get; set; }
+        public int CosaMopaId { get; set; }
     }
 }

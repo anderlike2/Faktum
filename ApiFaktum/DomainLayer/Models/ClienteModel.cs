@@ -71,5 +71,16 @@ namespace DomainLayer.Models
         public virtual TipoIdModel? ClieTipoId { get; set; }
         [Required]
         public virtual ICollection<ContratoSaludModel>? ClieContratosSalud { get; set; }
+
+        //Referencias para consultas FK
+        public virtual int ClieCiudadId { get; set; }
+        public virtual int ClieDeptoId { get; set; }
+        public virtual int CliePaisId { get; set; }
+        public virtual int ClieEmpresaId { get; set; }
+        public virtual int ClieRegimenId { get; set; }
+        public virtual int ClieRespFiscalId { get; set; }
+        public virtual int ClieRespTributariaId { get; set; }
+        public virtual int ClieTipoClienteId { get; set; }
+        public virtual int ClieTipoIdId { get; set; }
     }
 }

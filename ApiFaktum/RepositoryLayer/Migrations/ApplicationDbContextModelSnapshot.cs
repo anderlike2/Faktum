@@ -41,10 +41,14 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("CcosTipoDescuentoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -53,6 +57,8 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CcosEmpresaId");
+
+                    b.HasIndex("CcosTipoDescuentoId");
 
                     b.ToTable("CentroCosto");
                 });
@@ -65,8 +71,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CiudCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("CiudCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CiudDeptoId")
                         .HasColumnType("int");
@@ -79,6 +86,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -99,8 +107,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ClfaCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("ClfaCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ClfaNombre")
                         .IsRequired()
@@ -110,6 +119,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -132,13 +142,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("JuriCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("JuriCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("JuriEstadoOperacion")
                         .HasColumnType("int");
@@ -268,6 +280,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -304,8 +317,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CobeCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("CobeCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CobeNombre")
                         .IsRequired()
@@ -315,6 +329,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -333,10 +348,15 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ConoCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("ConoCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConoNombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConoTipoNota")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -344,6 +364,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -362,8 +383,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CoveCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("CoveCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CoveNombre")
                         .IsRequired()
@@ -373,6 +395,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -419,6 +442,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -445,8 +469,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CumsCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("CumsCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CumsConsecutivo")
                         .HasColumnType("int");
@@ -463,6 +488,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -481,8 +507,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CupsCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("CupsCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CupsNombre")
                         .IsRequired()
@@ -492,6 +519,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -510,8 +538,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("DeptoCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("DeptoCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DeptoNombre")
                         .IsRequired()
@@ -521,6 +550,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -618,6 +648,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -765,6 +796,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -787,6 +819,39 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Empresa");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.EmpresasUsuarioModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("EmusEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmusUsuarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmusEmpresaId");
+
+                    b.HasIndex("EmusUsuarioId");
+
+                    b.ToTable("EmpresasUsuario");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.EstadoDianFacturaModel", b =>
                 {
                     b.Property<int>("Id")
@@ -795,8 +860,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("EsfaCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("EsfaCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EsfaNombre")
                         .IsRequired()
@@ -806,6 +872,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -827,14 +894,16 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
-                    b.Property<int>("FasaCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("FasaCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FasaNombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1026,6 +1095,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1078,13 +1148,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("FopaCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("FopaCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FopaNombre")
                         .IsRequired()
@@ -1107,6 +1179,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1142,13 +1215,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ImpuCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("ImpuCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ImpuEstadoOperacion")
                         .HasColumnType("int");
@@ -1182,13 +1257,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IumCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("IumCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IumNombre")
                         .IsRequired()
@@ -1215,6 +1292,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1274,6 +1352,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1282,8 +1361,9 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("LocaCiudadId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LocaCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("LocaCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("LocaDeptoId")
                         .HasColumnType("int");
@@ -1313,13 +1393,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MopaCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("MopaCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MopaNombre")
                         .IsRequired()
@@ -1342,13 +1424,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MoneCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("MoneCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MoneNombre")
                         .IsRequired()
@@ -1371,6 +1455,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1418,6 +1503,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1467,13 +1553,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NureCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("NureCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("NureNumeracionActual")
                         .HasColumnType("int");
@@ -1495,13 +1583,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PaisCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("PaisCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PaisNombre")
                         .IsRequired()
@@ -1524,6 +1614,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1626,13 +1717,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RegiCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("RegiCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("RegiEstadoOperacion")
                         .HasColumnType("int");
@@ -1658,6 +1751,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1726,13 +1820,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RefiCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("RefiCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RefiNombre")
                         .IsRequired()
@@ -1755,13 +1851,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("RetrCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("RetrCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RetrNombre")
                         .IsRequired()
@@ -1784,13 +1882,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ReteCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("ReteCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ReteNombre")
                         .IsRequired()
@@ -1817,6 +1917,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1847,6 +1948,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1879,6 +1981,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1896,6 +1999,10 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SuclContacto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SuclCorreo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -1942,6 +2049,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -1951,8 +2059,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SucuCentroCostosId")
-                        .HasColumnType("int");
+                    b.Property<string>("SucuCentroCosto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SucuCiudad")
                         .IsRequired()
@@ -2028,8 +2136,6 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("SucuCentroCostosId");
-
                     b.HasIndex("SucuEmpresaId");
 
                     b.HasIndex("SucuFormatoImpresionId");
@@ -2045,8 +2151,9 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ArriCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("ArriCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ArriNombre")
                         .IsRequired()
@@ -2056,6 +2163,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2078,13 +2186,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TiclCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("TiclCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TiclNombre")
                         .IsRequired()
@@ -2107,13 +2217,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TicuCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("TicuCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TicuNombre")
                         .IsRequired()
@@ -2136,13 +2248,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TideCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("TideCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TideNombre")
                         .IsRequired()
@@ -2165,13 +2279,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TidoCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("TidoCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TidoNombre")
                         .IsRequired()
@@ -2194,13 +2310,15 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TiidCodigo")
-                        .HasColumnType("int");
+                    b.Property<string>("TiidCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TiidNombre")
                         .IsRequired()
@@ -2223,6 +2341,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2262,13 +2381,11 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("UsuEmpresaId")
-                        .HasColumnType("int");
 
                     b.Property<int?>("UsuaIntentos")
                         .IsRequired()
@@ -2283,8 +2400,6 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UsuEmpresaId");
 
                     b.ToTable("Usuario");
                 });
@@ -2301,6 +2416,7 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaModificacion")
@@ -2336,7 +2452,15 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DomainLayer.Models.TipoDescuentoModel", "CcosTipoDescuento")
+                        .WithMany("TideCentrosCostos")
+                        .HasForeignKey("CcosTipoDescuentoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("CcosEmpresa");
+
+                    b.Navigation("CcosTipoDescuento");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CiudadModel", b =>
@@ -2560,6 +2684,25 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("EmprTipoCliente");
 
                     b.Navigation("EmprTipoId");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.EmpresasUsuarioModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "EmusEmpresa")
+                        .WithMany("EmprEmpresasUsuario")
+                        .HasForeignKey("EmusEmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.UsuarioModel", "EmusUsuario")
+                        .WithMany("UsuEmpresasUsuario")
+                        .HasForeignKey("EmusUsuarioId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("EmusEmpresa");
+
+                    b.Navigation("EmusUsuario");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.FacturaModel", b =>
@@ -2909,13 +3052,13 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.RolUsuarioModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.RolModel", "RousRol")
-                        .WithMany()
+                        .WithMany("RolRolesUsuario")
                         .HasForeignKey("RousRolId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("DomainLayer.Models.UsuarioModel", "RousUsuario")
-                        .WithMany()
+                        .WithMany("UsuRolesUsuario")
                         .HasForeignKey("RousUsuarioId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -2946,12 +3089,6 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
                 {
-                    b.HasOne("DomainLayer.Models.CentroCostoModel", "SucuCentroCostos")
-                        .WithMany("CcosSucursales")
-                        .HasForeignKey("SucuCentroCostosId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DomainLayer.Models.EmpresaModel", "SucuEmpresa")
                         .WithMany("EmprSucursales")
                         .HasForeignKey("SucuEmpresaId")
@@ -2963,8 +3100,6 @@ namespace RepositoryLayer.Migrations
                         .HasForeignKey("SucuFormatoImpresionId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-
-                    b.Navigation("SucuCentroCostos");
 
                     b.Navigation("SucuEmpresa");
 
@@ -2982,17 +3117,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("UnidEmpresa");
                 });
 
-            modelBuilder.Entity("DomainLayer.Models.UsuarioModel", b =>
-                {
-                    b.HasOne("DomainLayer.Models.EmpresaModel", "UsuEmpresa")
-                        .WithMany()
-                        .HasForeignKey("UsuEmpresaId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("UsuEmpresa");
-                });
-
             modelBuilder.Entity("DomainLayer.Models.VendedorModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.EmpresaModel", "VendEmpresa")
@@ -3007,8 +3131,6 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.CentroCostoModel", b =>
                 {
                     b.Navigation("CcosProductos");
-
-                    b.Navigation("CcosSucursales");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CiudadModel", b =>
@@ -3082,6 +3204,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("EmprContratosSalud");
 
                     b.Navigation("EmprDetFacturas");
+
+                    b.Navigation("EmprEmpresasUsuario");
 
                     b.Navigation("EmprFacturas");
 
@@ -3213,6 +3337,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("ReteProductos");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.RolModel", b =>
+                {
+                    b.Navigation("RolRolesUsuario");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
                 {
                     b.Navigation("SuclListaPrecios");
@@ -3242,6 +3371,8 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.TipoDescuentoModel", b =>
                 {
+                    b.Navigation("TideCentrosCostos");
+
                     b.Navigation("TideFacturas");
                 });
 
@@ -3264,6 +3395,13 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("UnidDetFacturas");
 
                     b.Navigation("UnidProductos");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.UsuarioModel", b =>
+                {
+                    b.Navigation("UsuEmpresasUsuario");
+
+                    b.Navigation("UsuRolesUsuario");
                 });
 #pragma warning restore 612, 618
         }

@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class TipoArchivoRipsModel : BaseEntity
     {
         [Required]
-        public int ArriCodigo { get; set; }
+        public string? ArriCodigo { get; set; }
         [Required]
         public string? ArriNombre { get; set; }
 

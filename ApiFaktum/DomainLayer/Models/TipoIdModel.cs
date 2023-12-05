@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class TipoIdModel : BaseEntity
     {
         [Required]
-        public int TiidCodigo { get; set; }
+        public string? TiidCodigo { get; set; }
         [Required]
         public string? TiidNombre { get; set; }
 

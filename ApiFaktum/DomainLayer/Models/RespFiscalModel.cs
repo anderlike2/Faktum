@@ -5,7 +5,7 @@ namespace DomainLayer.Models
     public class RespFiscalModel : BaseEntity
     {
         [Required]
-        public int RefiCodigo { get; set; }
+        public string? RefiCodigo { get; set; }
         [Required]
         public string? RefiNombre { get; set; }
 

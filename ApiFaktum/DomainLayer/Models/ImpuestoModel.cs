@@ -6,7 +6,7 @@ namespace DomainLayer.Models
     public class ImpuestoModel : BaseEntity
     {
         [Required]
-        public int ImpuCodigo { get; set; }
+        public string? ImpuCodigo { get; set; }
         [Required]
         public string? ImpuNombre { get; set; }
         [Required]

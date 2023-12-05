@@ -1,10 +1,8 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class EstadoDianFacturaDto : BaseDto
     {
-        public int EsfaCodigo { get; set; }
+        public string? EsfaCodigo { get; set; }
         public string? EsfaNombre { get; set; }
 
         //Referencias

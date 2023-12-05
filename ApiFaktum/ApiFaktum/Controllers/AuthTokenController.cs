@@ -45,7 +45,7 @@ namespace Api_Empopasto.Controllers
             {
                 IsAuthSuccessful = true,
                 Token = vToken,
-                ExpiresIn = DateTime.UtcNow.AddMinutes(10).ToString(),
+                ExpiresIn = DateTime.UtcNow.ToLocalTime().AddMinutes(10).ToString(),
                 TokenType = "bearer"
             });
         }
