@@ -1,0 +1,30 @@
+
+<div class="modal-header">
+  <h5 class="modal-title">Elija una empresa</h5>
+</div>
+<div class="modal-body">
+
+  <p-table [columns]="cols" [value]="empresas" selectionMode="single" [(selection)]="seletedEmpresa" [scrollable]="true" [rows]="10"
+  (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+          <th *ngFor="let col of columns">
+              {{col.header}}
+          </th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr style="height:34px" [pSelectableRow]="rowData">
+          <td *ngFor="let col of columns">
+              {{rowData[col.field]}}
+          </td>
+      </tr>
+  </ng-template>
+  </p-table>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="guardarEmpresa()" [disabled]="!botonGuardarActivo">Guardar empresa</button>
+</div>
+

@@ -1,0 +1,12 @@
+
+------------------------------------------------------------------------------------
+lunes, 4 de diciembre de 2023 8:42:06.34 a. m.
+One or more errors occurred. (Connection Timeout Expired.  The timeout period elapsed during the post-login phase.  The connection could have timed out while waiting for server to complete the login process and respond; Or it could have timed out while attempting to create multiple active connections.  The duration spent while attempting to connect to this server was - [Pre-Login] initialization=121; handshake=30; [Login] initialization=31; authentication=99; [Post-Login] complete=14005; )
+
+------------------------------------------------------------------------------------
+lunes, 4 de diciembre de 2023 8:42:55.51 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+lunes, 4 de diciembre de 2023 8:44:02.93 a. m.
+One or more errors occurred. (Execution Timeout Expired.  The timeout period elapsed prior to completion of the operation or the server is not responding.)

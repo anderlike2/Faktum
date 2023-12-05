@@ -13,6 +13,7 @@
   "dependencies": {
     "@agm/core": "^1.1.0",
     "@angular/animations": "~10.0.2",
+    "@angular/cdk": "^10.2.7",
     "@angular/common": "~10.0.2",
     "@angular/compiler": "~10.0.2",
     "@angular/core": "~10.0.2",
@@ -68,6 +69,8 @@
     "ngx-perfect-scrollbar": "^9.0.0",
     "nouislider": "^14.6.0",
     "peity": "^3.3.0",
+    "primeicons": "^6.0.1",
+    "primeng-lts": "^10.1.5",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.0",
     "screenfull": "^5.0.2",

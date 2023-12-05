@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './theme/shared/shared.module';
@@ -23,7 +23,16 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDropdownModule, NgbModalRef, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './pages/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { InterceptorFaktum } from '../app/shared/interceptor/interceptor-faktum.interceptor';
+import { environment } from 'src/environments/environment';
+import { AppErrorHandler } from '../app/core/handlers/error.handler';
+import { CambiarEmpresaComponent } from './pages/modals/cambiar-empresa/cambiar-empresa.component';
+
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -40,7 +49,9 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
     NavSearchComponent,
     NavRightComponent,
     ConfigurationComponent,
-    ToggleFullScreenDirective
+    ToggleFullScreenDirective,
+    LoginComponent,
+    CambiarEmpresaComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +61,27 @@ import { NgbButtonsModule, NgbDropdownModule, NgbTabsetModule, NgbTooltipModule 
     NgbDropdownModule,
     NgbTooltipModule,
     NgbButtonsModule,
-    NgbTabsetModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    TableModule
   ],
-  providers: [NavigationItem],
+  providers: [
+    NavigationItem,
+    {
+      provide: "environment",
+      useValue: environment,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorFaktum,
+      multi: true
+    },
+    {
+      provide: ErrorHandler,
+      useClass: AppErrorHandler
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
