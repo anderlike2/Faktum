@@ -6,8 +6,6 @@
         public string? FormNombre { get; set; }
 
         //Referencias
-        public EmpresaDto? FormEmpresa { get; set; }
-        public List<FacturaDto>? FormFacturas { get; set; }
-        public List<SucursalDto>? FormSucursales { get; set; }
+        public int? FormEmpresaId { get; set; }
     }
 }

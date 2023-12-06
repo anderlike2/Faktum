@@ -16,5 +16,8 @@ namespace DomainLayer.Models
         public virtual ICollection<FacturaModel>? FormFacturas { get; set; }
         [Required]
         public virtual ICollection<SucursalModel>? FormSucursales { get; set; }
+
+        //Referencias para consultas
+        public virtual int? FormEmpresaId { get; set; }
     }
 }

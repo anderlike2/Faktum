@@ -10,8 +10,10 @@
         <hr>
 
         <div id="collapseCliente" [ngbCollapse]="clienteCollapsed">
-            <div class="d-flex flex-row justify-content-end" *ngIf="!edicionCliente"  (click)="editarForm()">
-                <button class="btn btn-primary">Editar</button>
+            <div class="d-flex flex-row justify-content-end" *ngIf="!edicionCliente">
+              <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Activar edición" (click)="editarForm()">
+                <i class="fa fa-edit"></i>
+              </button>
             </div>
             <form [formGroup]="clienteFormGroup" class="d-flex flex-column">
                 <div class="col-12">
@@ -290,8 +292,12 @@
             <ng-container *ngIf="edicionCliente">
                 <hr />
                 <div class="d-flex justify-content-end">
-                  <button class="btn btn-danger" (click)="cancelarEdicion()">Cancelar</button>
-                  <button class="btn btn-primary ml-3">Guardar</button>
+                  <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                    <i class="fa fa-ban"></i>
+                  </button>
+                  <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar cliente">
+                    <i class="fa fa-save"></i>
+                  </button>
                 </div>
             </ng-container>
         </div>

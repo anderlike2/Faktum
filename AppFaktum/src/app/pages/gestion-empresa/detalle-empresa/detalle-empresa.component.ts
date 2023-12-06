@@ -12,6 +12,7 @@ import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
 import { ISucursalEmpresa } from 'src/app/models/sucursal-empresa.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CrearSucursalComponent } from '../../modals/crear-sucursal/crear-sucursal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -51,11 +52,12 @@ export class DetalleEmpresaComponent implements OnInit {
   ];
 
   colsClientesEmpresa: any[] = [
-    { field: 'sucuNombre', header: 'Nombre' },
-    { field: 'sucuCodigo', header: 'Código' },
-    { field: 'sucuContacto', header: 'Contacto' },
-    { field: 'sucuMail', header: 'Correo' },
-    { field: 'sucuTelefono', header: 'Teléfono' }
+    { field: 'cliePrimerNom', header: 'Primer nombre' },
+    { field: 'clieSegundoNom', header: 'Segundo nombre' },
+    { field: 'clieApellidos', header: 'Apellidos' },
+    { field: 'clieCorreo', header: 'Correo' },
+    { field: 'clieCelular', header: 'Teléfono' },
+    { field: '', header: 'Opciones' }
   ];
 
   constructor(
@@ -63,6 +65,7 @@ export class DetalleEmpresaComponent implements OnInit {
     private cargueCombosService: CargueCombosService,
     private detalleEmpresaService: DetalleEmpresaService,
     private modalService: NgbModal,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -630,6 +633,10 @@ export class DetalleEmpresaComponent implements OnInit {
         backdrop: false
       }
     );
+  }
+
+  verEmpleado(value:IClienteEmpresa): void{
+    this.router.navigate(['./gestion-cliente/detalle-cliente']);
   }
 
 }
