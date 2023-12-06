@@ -25,6 +25,8 @@ export class DetalleEmpresaComponent implements OnInit {
   edicionEmpresa: boolean = false;
 
   empresaCollapsed: boolean = false;
+  clienteCollapsed: boolean = false;
+  sucursalCollapsed: boolean = false;
 
   constructor(
     private storageService: StorageService,
