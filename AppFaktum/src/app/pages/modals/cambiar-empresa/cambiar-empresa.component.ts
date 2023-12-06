@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from 'src/app/services/session-service/session.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
@@ -9,6 +9,8 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
   styleUrls: ['./cambiar-empresa.component.scss']
 })
 export class CambiarEmpresaComponent implements OnInit {
+
+  @Input() activarBtnCerrar: boolean = false;
 
   empresas: any[];
   seletedEmpresa: any;
@@ -46,6 +48,10 @@ export class CambiarEmpresaComponent implements OnInit {
 
   guardarEmpresa(): void {
     this.storageService.setEmpresaActivaStorage(this.seletedEmpresa);
+    this.modalRef.close();
+  }
+
+  cerrarModal(): void {
     this.modalRef.close();
   }
 

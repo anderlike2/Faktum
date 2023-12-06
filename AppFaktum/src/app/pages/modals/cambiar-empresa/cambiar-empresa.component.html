@@ -24,7 +24,22 @@
   </p-table>
 
 </div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-primary" (click)="guardarEmpresa()" [disabled]="!botonGuardarActivo">Guardar empresa</button>
+
+<hr/>
+
+<div class="d-flex justify-content-end m-3">
+  <ng-container *ngIf="activarBtnCerrar">
+    <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar selección" (click)="cerrarModal()">
+      <i class="fa fa-ban"></i>
+    </button>
+  </ng-container>
+  <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar empresa" [disabled]="!botonGuardarActivo" (click)="guardarEmpresa()">
+    <i class="fa fa-save"></i>
+  </button>
 </div>
+
+<!-- <div class="modal-footer">
+  <button type="button" class="btn btn-icon btn-primary">Cerrar</button>
+  <button type="button" class="btn btn-primary" (click)="guardarEmpresa()" [disabled]="!botonGuardarActivo">Guardar empresa</button>
+</div> -->
 

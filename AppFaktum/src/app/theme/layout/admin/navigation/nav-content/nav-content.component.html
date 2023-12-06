@@ -16,6 +16,16 @@
         </ul>
       </div>
     </div>
+
+    <div class="d-flex mt-3 mx-3">
+      <button class="btn btn-sm btn-block btn-primary d-flex flex-row justify-content-center align-items-center gap-05-rem" (click)="cambiarEmpresa()">
+        <i class="fas fa-exchange-alt"></i>
+        <span class="text-change-company">
+          Cambiar empresa
+        </span>
+      </button>
+    </div>
+
     <ul class="nav pcoded-inner-navbar" (clickOutside)="fireOutClick()">
       <ng-container *ngFor="let item of navigation">
         <app-nav-group *ngIf="item.type=='group'" [item]="item"></app-nav-group>

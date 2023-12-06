@@ -131,6 +131,9 @@
   }
 
   &.navbar-collapsed {
+    .text-change-company {
+      display: none;
+    }
     .pcoded-inner-navbar {
       .pcoded-menu-caption {
         &:after {
@@ -195,6 +198,9 @@
     }
 
     &:hover {
+      .text-change-company {
+        display: block;
+      }
       .pcoded-inner-navbar {
         > app-nav-group > app-nav-collapse > li,
         > app-nav-group > app-nav-item > li {

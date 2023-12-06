@@ -19,19 +19,24 @@ export class AppComponent implements OnInit {
     private router: Router
     ) { }
 
+    get activeEmpresa() {
+      return this.sessionService.isActiveEmpresa;
+    }
+
   ngOnInit() {
     this.router.events.subscribe((evt) => {
       if (!(evt instanceof NavigationEnd)) {
         return;
       }
       window.scrollTo(0, 0);
+      this.validarEmpresa();
     });
 
-    this.validarEmpresa();
+
   }
 
   validarEmpresa() {
-    if (this.sessionService.isLogged && !this.sessionService.isActiveEmpresa) {
+    if (this.sessionService.isLogged && !this.activeEmpresa) {
       this.modalService.open(
         CambiarEmpresaComponent, {
           backdrop: 'static',

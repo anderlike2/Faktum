@@ -2,6 +2,10 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, NgZone, OnInit, Out
 import { NavigationItem } from '../navigation';
 import { NextConfig } from '../../../../../app-config';
 import { Location } from '@angular/common';
+import { SharedService } from 'src/app/services/shared-service/shared.service';
+import { Observable } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CambiarEmpresaComponent } from 'src/app/pages/modals/cambiar-empresa/cambiar-empresa.component';
 
 @Component({
   selector: 'app-nav-content',
@@ -24,7 +28,13 @@ export class NavContentComponent implements OnInit, AfterViewInit {
   @ViewChild('navbarContent') navbarContent: ElementRef;
   @ViewChild('navbarWrapper') navbarWrapper: ElementRef;
 
-  constructor(public nav: NavigationItem, private zone: NgZone, private location: Location) {
+  constructor(
+    public nav: NavigationItem,
+    private zone: NgZone,
+    private location: Location,
+    private sharedService: SharedService,
+    private modalService: NgbModal
+  ) {
     this.flatConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
 
@@ -81,6 +91,10 @@ export class NavContentComponent implements OnInit, AfterViewInit {
       (document.querySelector('#side-nav-horizontal') as HTMLElement).style.marginLeft = '-' + this.scrollWidth + 'px';
     }
 
+  }
+
+  get collapseObservable(): Observable<boolean> {
+    return this.sharedService.collapseSidebarListener$;
   }
 
   fireLeave() {
@@ -144,6 +158,18 @@ export class NavContentComponent implements OnInit, AfterViewInit {
         last_parent.classList.add('active');
       }
     }
+  }
+
+  cambiarEmpresa(): void {
+    const instanciaCambiar = this.modalService.open(
+      CambiarEmpresaComponent, {
+        centered: true,
+        size: 'xl'
+      }
+    );
+
+    instanciaCambiar.componentInstance.activarBtnCerrar = true;
+
   }
 
 }
