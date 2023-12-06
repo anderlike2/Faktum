@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body">
 
-  <form>
+  <form [formGroup]="sucursalFormGroup">
 
     <div class="col-12">
 
@@ -11,13 +11,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Nombre sucursal</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuNombre" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Código sucursal</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuCodigo" type="text"  class="form-control">
           </div>
         </div>
       </div>
@@ -26,13 +26,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Departamento</label>
-            <select class="form-control"></select>
+            <select formControlName="sucuDepto" class="form-control"></select>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Ciudad</label>
-            <select class="form-control"></select>
+            <select formControlName="sucuCiudad" class="form-control"></select>
           </div>
         </div>
       </div>
@@ -41,13 +41,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Dirección</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuDireccion" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Teléfono</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuTelefono" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -56,13 +56,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Celular</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuCelular" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Correo electrónico</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuMail" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -71,13 +71,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Contacto</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuContacto" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Lista de precios</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuListPrecio" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -86,13 +86,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Sucursal habilitación</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuHabilitacion" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Estado operación</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuEstadoOperacion" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -101,13 +101,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Sucursal Rete ICA</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuReteIca" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Centro de costos</label>
-            <select class="form-control"></select>
+            <select formControlName="sucuCentroCostosId" class="form-control"></select>
           </div>
         </div>
       </div>
@@ -116,13 +116,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Empresa</label>
-            <select class="form-control"></select>
+            <select formControlName="sucuEmpresaId" class="form-control"></select>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Formato impreso</label>
-            <select class="form-control"></select>
+            <select formControlName="sucuFormatoImpresionId" class="form-control"></select>
           </div>
         </div>
       </div>
@@ -131,13 +131,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda factura</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuLeyendaFactura" type="text" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda nota credito</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuLeyendaNotaCredito" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -146,7 +146,7 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda nota debito</label>
-            <input type="text" class="form-control">
+            <input formControlName="sucuLeyendaNotaDebito" type="text" class="form-control">
           </div>
         </div>
       </div>
@@ -155,7 +155,7 @@
         <div class="col-12">
           <div class="form-group">
             <label>Oberservación</label>
-            <textarea class="form-control" cols="30" rows="4"></textarea>
+            <textarea formControlName="sucuObservaciones" class="form-control" cols="30" rows="4"></textarea>
           </div>
         </div>
       </div>

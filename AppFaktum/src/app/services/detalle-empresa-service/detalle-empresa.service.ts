@@ -6,6 +6,7 @@ import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { IEnvironment } from 'src/app/models/environment.model';
 import { ISucursalEmpresa } from 'src/app/models/sucursal-empresa.model';
+import { ISucursal } from 'src/app/models/sucursal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,15 @@ export class DetalleEmpresaService {
       map((response) =>
         response.data as IClienteEmpresa[]
       )
+    );
+  }
+
+  crearSucursal(data: ISucursal) {
+    const url = `${this.environment.faktumUrl}/Sucursal/CrearSucursal`;
+
+    return this.httpClient.post(
+      url,
+      data
     );
   }
 }
