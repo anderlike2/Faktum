@@ -44,5 +44,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarCliente(ClienteDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los clientes por id
+        /// </summary>
+        /// <param name="idCliente"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarClienteId(int idCliente);
     }
 }

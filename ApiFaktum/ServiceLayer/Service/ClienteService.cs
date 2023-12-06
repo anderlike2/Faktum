@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objClienteRepository.EliminarCliente(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los clientes por id
+        /// </summary>
+        /// <param name="idCliente"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarClienteId(int idCliente)
+        {
+            return objClienteRepository.ConsultarClienteId(idCliente);
+        }
     }
 }

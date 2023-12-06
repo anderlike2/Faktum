@@ -6,7 +6,6 @@
         public string? CiudNombre { get; set; }
 
         //Referencias
-        public DeptoDto? CiudDepto { get; set; }
-        public ICollection<ClienteDto>? CiudClientes { get; set; }
+        public int? CiudDeptoId { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DetalleEmpresaService } from './detalle-empresa.service';
+import { DetalleEmpresaService } from './cargue-combos.service';
 
 describe('DetalleEmpresaService', () => {
   let service: DetalleEmpresaService;

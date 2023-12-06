@@ -152,5 +152,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los clientes por id
+        /// </summary>
+        /// <param name="idCliente"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarClienteId(int idCliente)
+        {
+            Result oRespuesta = new Result();
+            ClienteModel? result = new ClienteModel();
+
+            try
+            {
+                result =
+                    await objContext.Cliente.FirstOrDefaultAsync(x => x.Id.Equals(idCliente));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<ClienteDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ClienteDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

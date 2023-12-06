@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
-import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
+import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { Observable } from 'rxjs';
 import { IListCombo } from 'src/app/models/general.model';
 import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
@@ -30,7 +30,7 @@ export class DetalleEmpresaComponent implements OnInit {
 
   constructor(
     private storageService: StorageService,
-    private detalleEmpresaService: DetalleEmpresaService
+    private cargueCombosService: CargueCombosService
   ) { }
 
   ngOnInit(): void {
@@ -45,35 +45,35 @@ export class DetalleEmpresaComponent implements OnInit {
 
   cargarComboListas(): void {
 
-    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.TIPO_ID)
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.TIPO_ID)
     .subscribe({
       next: (response) => {
         this.listTipoId = response;
       }
     });
 
-    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.RESP_FISCAL)
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.RESP_FISCAL)
     .subscribe({
       next: (response) => {
         this.listRespFiscal = response;
       }
     });
 
-    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.RESP_TRIBUTARIA)
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.RESP_TRIBUTARIA)
     .subscribe({
       next: (response) => {
         this.listRespTributaria = response;
       }
     });
 
-    this.detalleEmpresaService.obtenerListaTablaMaestro(TipoListEnum.TIPO_CLIENTE)
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.TIPO_CLIENTE)
     .subscribe({
       next: (response) => {
         this.listTipoCliente = response;
       }
     });
 
-    this.detalleEmpresaService.obtenerListaRegimen()
+    this.cargueCombosService.obtenerListaRegimen()
     .subscribe({
       next: (response) => {
         this.ListRegEmpresa = response;

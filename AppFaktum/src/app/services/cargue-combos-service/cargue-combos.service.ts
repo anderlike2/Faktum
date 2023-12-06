@@ -9,7 +9,7 @@ import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DetalleEmpresaService {
+export class CargueCombosService {
 
   constructor(
     @Inject('environment') private environment: IEnvironment,

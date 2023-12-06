@@ -1,1 +1,192 @@
-<p>detalle-cliente works!</p>
+<div class="row">
+    <div class="col-sm-12">
+      <app-card [hidHeader]="true" [options]="false">
+        
+        <div class="d-flex flex-row justify-content-end">
+            <button class="btn btn-primary">Editar</button>
+        </div>
+
+        <form [formGroup]="clienteFormGroup" class="d-flex flex-column">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Primer nombre</label>
+                          <input formControlName="primerNombre" type="text" class="form-control" placeholder="Primer nombre">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Segundo nombre</label>
+                          <input formControlName="segundoNombre" type="text" class="form-control" placeholder="Segundo nombre">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Apellidos</label>
+                          <input formControlName="apellidos" type="text" class="form-control" placeholder="Apellidos">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">País</label>
+                          <select formControlName="paisId" class="form-control">
+                            <ng-container *ngFor="let item of listPaises">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Departamento</label>
+                          <select formControlName="deptoId" class="form-control">
+                            <ng-container *ngFor="let item of listDeptos">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Nit</label>
+                          <input formControlName="nit" type="text" class="form-control" placeholder="Nit">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">DV</label>
+                          <input formControlName="dv" type="text" class="form-control" placeholder="Dígito de verificación">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Ciuu</label>
+                          <input formControlName="ciuu" type="text" class="form-control" placeholder="Ciuu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Celular</label>
+                          <input formControlName="celular" type="text" class="form-control" placeholder="Celular">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Teléfono fijo</label>
+                          <input formControlName="telefonoFijo" type="text" class="form-control" placeholder="Teléfono fijo">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Contacto</label>
+                          <input formControlName="contacto" type="text" class="form-control" placeholder="Contacto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Correo</label>
+                          <input formControlName="correo" type="text" class="form-control" placeholder="Correo">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Correo facturación</label>
+                          <input formControlName="correoFacturacion" type="text" class="form-control" placeholder="Correo facturación">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Página web</label>
+                          <input formControlName="paginaWeb" type="text" class="form-control" placeholder="Página web">
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Dirección</label>
+                          <input formControlName="direccion" type="text" class="form-control" placeholder="Dirección">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Cobertura</label>
+                          <input formControlName="cobertura" type="text" class="form-control" placeholder="Cobertura">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Desc global</label>
+                          <input formControlName="descGlobal" type="text" class="form-control" placeholder="Desc global">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Días pago</label>
+                          <input formControlName="diasPago" type="text" class="form-control" placeholder="Días pago">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Estado Operación</label>
+                          <input formControlName="estadoOperacion" type="text" class="form-control" placeholder="Estado Operación">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Jurídica</label>
+                          <input formControlName="juridica" type="text" class="form-control" placeholder="Jurídica">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Localidad</label>
+                          <input formControlName="localidad" type="text" class="form-control" placeholder="Localidad">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Id rep legal</label>
+                          <input formControlName="idRepLegal" type="text" class="form-control" placeholder="Id representante legal">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Representante Legal</label>
+                          <input formControlName="representanteLegal" type="text" class="form-control" placeholder="Representante Legal">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+      </app-card>
+    </div>
+</div>
