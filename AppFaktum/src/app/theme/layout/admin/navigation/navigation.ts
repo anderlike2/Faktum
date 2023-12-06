@@ -64,7 +64,7 @@ const NavigationItems = [
             id: 'detalle-sucursal',
             title: 'Sucursal detalle',
             type: 'item',
-            url: '#',
+            url: '/gestion-sucursal/detalle-sucursal',
             external: false
           }
         ]

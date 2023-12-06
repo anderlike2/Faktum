@@ -106,4 +106,18 @@ export class CargueCombosService {
         })) as IListCombo[])
     );
   }
+
+  obtenerListaCentrosCostoEmpresa(empresaID: number): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/CentroCosto/ConsultarCentrosCostoEmpresa?idEmpresa=${empresaID}`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.ccosNombre,
+          codigo: item.ccosCodigo
+        })) as IListCombo[])
+    );
+  }
 }

@@ -1,0 +1,194 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [hidHeader]="true" [options]="false">
+
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="sucursalCollapsed = !sucursalCollapsed" [attr.aria-expanded]="!sucursalCollapsed" aria-controls="collapseSucursal">
+          <h5 class="font-weight-bold mb-0">Sucursal</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': sucursalCollapsed, 'fa-chevron-down': !sucursalCollapsed }"></i>
+        </div>
+
+      </div>
+
+        <hr>
+
+        <div id="collapseSucursal" [ngbCollapse]="sucursalCollapsed">
+
+          <div class="d-flex flex-row justify-content-end" *ngIf="!edicionSucursal">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Activar edición" (click)="editarForm()">
+              <i class="fa fa-edit"></i>
+            </button>
+          </div>
+
+          <form [formGroup]="sucursalFormGroup">
+
+            <div class="col-12">
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Nombre sucursal</label>
+                    <input formControlName="sucuNombre" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Código sucursal</label>
+                    <input formControlName="sucuCodigo" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Departamento</label>
+                    <input formControlName="sucuDepto" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Ciudad</label>
+                    <input formControlName="sucuCiudad" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Dirección</label>
+                    <input formControlName="sucuDireccion" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input formControlName="sucuTelefono" type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Celular</label>
+                    <input formControlName="sucuCelular" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Correo electrónico</label>
+                    <input formControlName="sucuMail" type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Contacto</label>
+                    <input formControlName="sucuContacto" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Lista de precios</label>
+                    <input formControlName="sucuListPrecio" type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Sucursal habilitación</label>
+                    <input formControlName="sucuHabilitacion" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Estado operación</label>
+                    <input formControlName="sucuEstadoOperacion" type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Sucursal Rete ICA</label>
+                    <input formControlName="sucuReteIca" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Centro de costos</label>
+                    <select formControlName="sucuCentroCostosId" class="form-control">
+                      <ng-container *ngFor="let item of listCentroCostos">
+                        <option [value]="item.valor">{{ item.nombre }}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <!-- <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Empresa</label>
+                    <select formControlName="sucuEmpresaId" class="form-control"></select>
+                  </div>
+                </div> -->
+                <!-- <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Formato impreso</label>
+                    <select formControlName="sucuFormatoImpresionId" class="form-control"></select>
+                  </div>
+                </div> -->
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Leyenda factura</label>
+                    <input formControlName="sucuLeyendaFactura" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Leyenda nota credito</label>
+                    <input formControlName="sucuLeyendaNotaCredito" type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Leyenda nota debito</label>
+                    <input formControlName="sucuLeyendaNotaDebito" type="text" class="form-control">
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="form-group">
+                    <label>Oberservación</label>
+                    <textarea formControlName="sucuObservaciones" class="form-control" cols="30" rows="4"></textarea>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+
+        </div>
+
+    </app-card>
+
+  </div>
+</div>

@@ -624,12 +624,14 @@ export class DetalleEmpresaComponent implements OnInit {
   }
 
   abrirModalCrearSucursal(): void {
-    this.modalService.open(
+    const modalSucursal = this.modalService.open(
       CrearSucursalComponent, {
         size: 'xl',
         backdrop: false
       }
     );
+
+    modalSucursal.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
 }
