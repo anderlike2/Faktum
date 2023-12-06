@@ -26,13 +26,13 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Departamento</label>
-            <select formControlName="sucuDepto" class="form-control"></select>
+            <input formControlName="sucuDepto" class="form-control">
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Ciudad</label>
-            <select formControlName="sucuCiudad" class="form-control"></select>
+            <input formControlName="sucuCiudad" class="form-control">
           </div>
         </div>
       </div>
@@ -107,27 +107,28 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Centro de costos</label>
-            <select formControlName="sucuCentroCostosId" class="form-control"></select>
+            <select formControlName="sucuCentroCostosId" class="form-control">
+              <ng-container *ngFor="let item of listCentroCostos">
+                <option [value]="item.valor">{{ item.nombre }}</option>
+              </ng-container>
+            </select>
           </div>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-6">
+        <!-- <div class="col-6">
           <div class="form-group">
             <label for="">Empresa</label>
             <select formControlName="sucuEmpresaId" class="form-control"></select>
           </div>
-        </div>
-        <div class="col-6">
+        </div> -->
+        <!-- <div class="col-6">
           <div class="form-group">
             <label for="">Formato impreso</label>
             <select formControlName="sucuFormatoImpresionId" class="form-control"></select>
           </div>
-        </div>
-      </div>
-
-      <div class="row">
+        </div> -->
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda factura</label>
@@ -143,6 +144,8 @@
       </div>
 
       <div class="row">
+
+
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda nota debito</label>
@@ -150,6 +153,8 @@
           </div>
         </div>
       </div>
+
+
 
       <div class="row">
         <div class="col-12">
@@ -167,7 +172,10 @@
 </div>
 <div class="modal-footer">
   <div class="d-flex justify-content-end m-2">
-    <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar sucursal">
+    <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+      <i class="fa fa-ban"></i>
+    </button>
+    <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar sucursal" (click)="guardarSucursal()">
       <i class="fa fa-save"></i>
     </button>
   </div>

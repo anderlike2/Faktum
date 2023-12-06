@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { IListCombo } from 'src/app/models/general.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
@@ -8,24 +7,23 @@ import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/
 import swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-crear-sucursal',
-  templateUrl: './crear-sucursal.component.html',
-  styleUrls: ['./crear-sucursal.component.scss']
+  selector: 'app-detalle-sucursal',
+  templateUrl: './detalle-sucursal.component.html',
+  styleUrls: ['./detalle-sucursal.component.scss']
 })
-export class CrearSucursalComponent implements OnInit {
+export class DetalleSucursalComponent implements OnInit {
 
-  @Input() empresaID: number;
+  sucursalCollapsed: boolean = false;
+  edicionSucursal: boolean = false;
 
   sucursalFormGroup: FormGroup;
   fb = new FormBuilder();
-
 
   listCentroCostos: IListCombo[] = [];
 
   constructor(
     private detalleEmpresaService: DetalleEmpresaService,
-    private cargueCombosService: CargueCombosService,
-    private modalRef: NgbActiveModal
+    private cargueCombosService: CargueCombosService
   ) { }
 
   ngOnInit(): void {
@@ -146,14 +144,9 @@ export class CrearSucursalComponent implements OnInit {
 
     this.detalleEmpresaService.crearSucursal(dataBody).subscribe({
       next: (response: any) => {
-        this.modalRef.close();
         swal.fire(``, response.message, 'success');
       }
     });
-  }
-
-  cerrarModal() {
-    this.modalRef.close();
   }
 
 }
