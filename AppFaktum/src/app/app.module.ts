@@ -33,6 +33,8 @@ import { AppErrorHandler } from '../app/core/handlers/error.handler';
 import { CambiarEmpresaComponent } from './pages/modals/cambiar-empresa/cambiar-empresa.component';
 
 import { TableModule } from 'primeng/table';
+import { CrearSucursalComponent } from './pages/modals/crear-sucursal/crear-sucursal.component';
+import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-cliente.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { TableModule } from 'primeng/table';
     ConfigurationComponent,
     ToggleFullScreenDirective,
     LoginComponent,
-    CambiarEmpresaComponent
+    CambiarEmpresaComponent,
+    CrearSucursalComponent,
+    CrearClienteComponent
   ],
   imports: [
     BrowserModule,

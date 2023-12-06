@@ -10,6 +10,8 @@ import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/
 import swal from 'sweetalert2';
 import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
 import { ISucursalEmpresa } from 'src/app/models/sucursal-empresa.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CrearSucursalComponent } from '../../modals/crear-sucursal/crear-sucursal.component';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -59,7 +61,8 @@ export class DetalleEmpresaComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
-    private detalleEmpresaService: DetalleEmpresaService
+    private detalleEmpresaService: DetalleEmpresaService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -618,6 +621,15 @@ export class DetalleEmpresaComponent implements OnInit {
       }
     });
 
+  }
+
+  abrirModalCrearSucursal(): void {
+    this.modalService.open(
+      CrearSucursalComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
   }
 
 }
