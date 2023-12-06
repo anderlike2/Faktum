@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
+import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
   selector: 'app-nav-right',
@@ -9,7 +10,13 @@ import {NgbDropdownConfig} from '@ng-bootstrap/ng-bootstrap';
 })
 export class NavRightComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private storageService: StorageService
+  ) { }
 
   ngOnInit() { }
+
+  get infoUsuario() {
+    return this.storageService.getUsuarioStorage();
+  }
 }

@@ -28,51 +28,52 @@ export interface Navigation extends NavigationItem {
 const NavigationItems = [
   {
     id: 'navigation',
-    title: 'Navigation',
+    title: 'menu Faktum',
     type: 'group',
     icon: 'feather icon-align-left',
     children: [
       {
-        id: 'sample-page',
-        title: 'Sample Page',
-        type: 'item',
-        url: '/sample-page',
-        classes: 'nav-item',
-        icon: 'feather icon-sidebar'
-      },
-      {
-        id: 'menu-level',
-        title: 'Menu Levels',
+        id: 'empresa',
+        title: 'Empresa',
         type: 'collapse',
-        icon: 'feather icon-menu',
+        icon: 'fas fa-building',
         children: [
           {
-            id: 'menu-level-2.1',
-            title: 'Menu Level 2.1',
+            id: 'detalle-empresa',
+            title: 'Empresa detalle',
             type: 'item',
-            url: 'javascript:',
-            external: true
-          },
+            url: '/gestion-empresa/detalle-empresa',
+            external: false
+          }
+        ]
+      },
+      {
+        id: 'sucursal',
+        title: 'Sucursal',
+        type: 'collapse',
+        icon: 'fas fa-briefcase',
+        children: [
           {
-            id: 'menu-level-2.2',
-            title: 'Menu Level 2.2',
-            type: 'collapse',
-            children: [
-              {
-                id: 'menu-level-2.2.1',
-                title: 'Menu Level 2.2.1',
-                type: 'item',
-                url: 'javascript:',
-                external: true
-              },
-              {
-                id: 'menu-level-2.2.2',
-                title: 'Menu Level 2.2.2',
-                type: 'item',
-                url: 'javascript:',
-                external: true
-              }
-            ]
+            id: 'detalle-sucursal',
+            title: 'Sucursal detalle',
+            type: 'item',
+            url: '#',
+            external: false
+          }
+        ]
+      },
+      {
+        id: 'cliente',
+        title: 'Cliente',
+        type: 'collapse',
+        icon: "fas fa-portrait",
+        children: [
+          {
+            id: 'detalle-cliente',
+            title: 'Cliente detalle',
+            type: 'item',
+            url: '/gestion-cliente/detalle-cliente',
+            external: false
           }
         ]
       }

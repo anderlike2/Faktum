@@ -38,6 +38,14 @@ export class StorageService {
     }
   }
 
+  getUsuarioStorage(): any {
+    const usuario = sessionStorage.getItem('userInfo');
+    if (usuario) {
+      return JSON.parse(usuario);
+    } else {
+      return {};
+    }
+  }
 
   setUserRolesStorage(rolesInfo: any): void {
     sessionStorage.setItem('rolesInfo', JSON.stringify(rolesInfo));

@@ -6,6 +6,7 @@ import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CambiarEmpresaComponent } from 'src/app/pages/modals/cambiar-empresa/cambiar-empresa.component';
+import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
   selector: 'app-nav-content',
@@ -33,7 +34,8 @@ export class NavContentComponent implements OnInit, AfterViewInit {
     private zone: NgZone,
     private location: Location,
     private sharedService: SharedService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private storageService: StorageService
   ) {
     this.flatConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
@@ -95,6 +97,10 @@ export class NavContentComponent implements OnInit, AfterViewInit {
 
   get collapseObservable(): Observable<boolean> {
     return this.sharedService.collapseSidebarListener$;
+  }
+
+  get infoUsuario() {
+    return this.storageService.getUsuarioStorage();
   }
 
   fireLeave() {
