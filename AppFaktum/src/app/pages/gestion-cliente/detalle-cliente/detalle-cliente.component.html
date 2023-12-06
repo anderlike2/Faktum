@@ -2,7 +2,7 @@
     <div class="col-sm-12">
       <app-card [hidHeader]="true" [options]="false">
         
-        <div class="d-flex flex-row justify-content-end">
+        <div class="d-flex flex-row justify-content-end" *ngIf="!edicionCliente"  (click)="editarForm()">
             <button class="btn btn-primary">Editar</button>
         </div>
 
@@ -93,6 +93,18 @@
                           <input formControlName="ciuu" type="text" class="form-control" placeholder="Ciuu">
                         </div>
                     </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Id rep legal</label>
+                          <input formControlName="idRepLegal" type="text" class="form-control" placeholder="Id representante legal">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Representante Legal</label>
+                          <input formControlName="representanteLegal" type="text" class="form-control" placeholder="Representante Legal">
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col-12">
@@ -171,7 +183,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                          <label for="">Estado Operación</label>
+                          <label for="">Estado operación</label>
                           <input formControlName="estadoOperacion" type="text" class="form-control" placeholder="Estado Operación">
                         </div>
                     </div>
@@ -187,20 +199,82 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
+                          <label for="">Régimen</label>
+                          <select formControlName="regimenId" class="form-control">
+                            <ng-container *ngFor="let item of listRegimenes">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div> 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Responsabilidad fiscal</label>
+                          <select formControlName="respFiscalId" class="form-control">
+                            <ng-container *ngFor="let item of listResponsabilidadesFiscales">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Responsabilidad tributaria</label>
+                          <select formControlName="respTributariaId" class="form-control">
+                            <ng-container *ngFor="let item of listResponsabilidadesTributarias">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Tipo cliente</label>
+                          <select formControlName="tipoClienteId" class="form-control">
+                            <ng-container *ngFor="let item of listTipoClientes">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div> 
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Tipo id</label>
+                          <select formControlName="tipoIdId" class="form-control">
+                            <ng-container *ngFor="let item of listTipoIds">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                          <label for="">Clase jurídica</label>
+                          <select formControlName="clasJuridicaId" class="form-control">
+                            <ng-container *ngFor="let item of listClasesJuridicas">
+                              <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                          </select>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
                           <label for="">Localidad</label>
                           <input formControlName="localidad" type="text" class="form-control" placeholder="Localidad">
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
-                          <label for="">Id rep legal</label>
-                          <input formControlName="idRepLegal" type="text" class="form-control" placeholder="Id representante legal">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                          <label for="">Representante Legal</label>
-                          <input formControlName="representanteLegal" type="text" class="form-control" placeholder="Representante Legal">
+                          <label for="">Razón social</label>
+                          <input formControlName="razonSocial" type="text" class="form-control" placeholder="Razón social">
                         </div>
                     </div>
                 </div>

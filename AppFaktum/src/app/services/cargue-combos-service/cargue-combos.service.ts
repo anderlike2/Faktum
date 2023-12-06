@@ -92,4 +92,18 @@ export class CargueCombosService {
         })) as IEmpresa[])
     );
   }
+
+  obtenerListaClasesJuridicas(): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Maestras/ConsultarTablaClasJuridica`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.juriNombre,
+          codigo: item.juriCodigo
+        })) as IListCombo[])
+    );
+  }
 }
