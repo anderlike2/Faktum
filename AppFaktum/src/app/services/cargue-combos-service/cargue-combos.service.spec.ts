@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DetalleEmpresaService } from './cargue-combos.service';
+import { CargueCombosService } from './cargue-combos.service';
 
 describe('DetalleEmpresaService', () => {
-  let service: DetalleEmpresaService;
+  let service: CargueCombosService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(DetalleEmpresaService);
+    service = TestBed.inject(CargueCombosService);
   });
 
   it('should be created', () => {
