@@ -22,6 +22,9 @@ export class DetalleEmpresaComponent implements OnInit {
   listRespTributaria: IListCombo[] = [];
   listTipoCliente: IListCombo[] = [];
   ListRegEmpresa: IListCombo[] = [];
+  edicionEmpresa: boolean = false;
+
+  empresaCollapsed: boolean = false;
 
   constructor(
     private storageService: StorageService,
@@ -112,6 +115,9 @@ export class DetalleEmpresaComponent implements OnInit {
         leyEnNotaCredito: dataEmpresa.emprLeyEnNotaCredito,
         leyEnNotaDebito: dataEmpresa.emprLeyEnNotaDebito,
       });
+
+      this.empresaFormGroup.disable();
+      this.edicionEmpresa = false;
 
     }
 
@@ -459,6 +465,15 @@ export class DetalleEmpresaComponent implements OnInit {
     const form: AbstractControl = this.empresaFormGroup.get('emprFactContador') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
+  }
+
+  editarForm(): void {
+    this.empresaFormGroup.enable();
+    this.edicionEmpresa = true;
+  }
+
+  cancelarEdicion(): void {
+    this.cargarInfoEmpresa();
   }
 
 }

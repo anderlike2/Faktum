@@ -3,280 +3,288 @@
     <app-card cardTitle="Información general" [hidHeader]="true" [options]="false">
 
       <div class="d-flex align-items-center justify-content-between">
-        <div class="d-flex">
-          <h5 class="font-weight-bold">Empresa</h5>
-          <i class="feather chevron-up"></i>
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="empresaCollapsed = !empresaCollapsed" [attr.aria-expanded]="!empresaCollapsed" aria-controls="collapseEmpresa">
+          <h5 class="font-weight-bold mb-0">Empresa</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': empresaCollapsed, 'fa-chevron-down': !empresaCollapsed }"></i>
         </div>
-        <h5 class="font-weight-bold">Empresa</h5>
-        <!-- <button class="btn btn-primary">Editar</button> -->
+
       </div>
 
         <hr>
 
-        <form [formGroup]="empresaFormGroup" class="d-flex flex-column">
-          <div class="col-12">
+        <div id="collapseEmpresa" [ngbCollapse]="empresaCollapsed">
 
-            <div class="row">
+          <div class="d-flex flex-row justify-content-end" *ngIf="!edicionEmpresa">
+            <button class="btn btn-primary" (click)="editarForm()">Editar</button>
+          </div>
 
-              <div class="col-md-4">
+          <form [formGroup]="empresaFormGroup" class="d-flex flex-column">
+            <div class="col-12">
 
-                <div class="form-group">
-                  <label for="">Nombre empresa</label>
-                  <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre empresa">
+              <div class="row">
+
+                <div class="col-md-4">
+
+                  <div class="form-group">
+                    <label for="">Nombre empresa</label>
+                    <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre empresa">
+                  </div>
+
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>Nit</label>
+                    <input formControlName="nit" type="text" class="form-control" placeholder="nit">
+                  </div>
+
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label>DV</label>
+                    <input formControlName="dv" type="text" class="form-control" placeholder="digito verificación">
+                  </div>
                 </div>
 
               </div>
 
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>Nit</label>
-                  <input formControlName="nit" type="text" class="form-control" placeholder="nit">
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Departamento</label>
+                    <input formControlName="departamento" type="text" class="form-control" placeholder="Departamento">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Ciudad</label>
+                    <input formControlName="ciudad" type="text" class="form-control" placeholder="Ciudad">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Dirección</label>
+                    <input formControlName="direccion" type="text" class="form-control">
+                  </div>
                 </div>
 
               </div>
 
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label>DV</label>
-                  <input formControlName="dv" type="text" class="form-control" placeholder="digito verificación">
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Teléfono</label>
+                    <input formControlName="telefono" type="text" class="form-control">
+                  </div>
                 </div>
-              </div>
 
-            </div>
-
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Departamento</label>
-                  <input formControlName="departamento" type="text" class="form-control" placeholder="Departamento">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Correo electrónico</label>
+                    <input formControlName="correo" type="text" class="form-control">
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Ciudad</label>
-                  <input formControlName="ciudad" type="text" class="form-control" placeholder="Ciudad">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Dirección</label>
-                  <input formControlName="direccion" type="text" class="form-control">
-                </div>
-              </div>
 
-            </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Sitio web</label>
+                    <input formControlName="paginaWeb" type="text" class="form-control">
+                  </div>
 
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Teléfono</label>
-                  <input formControlName="telefono" type="text" class="form-control">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Correo electrónico</label>
-                  <input formControlName="correo" type="text" class="form-control">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Sitio web</label>
-                  <input formControlName="paginaWeb" type="text" class="form-control">
                 </div>
 
               </div>
 
-            </div>
+              <div class="row">
 
-            <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Nombre representante legal</label>
+                    <input formControlName="repLegal" type="text" class="form-control">
+                  </div>
+                </div>
 
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Nombre representante legal</label>
-                  <input formControlName="repLegal" type="text" class="form-control">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Documento representante legal</label>
+                    <input formControlName="docRepLegal" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Contacto empresa</label>
+                    <input formControlName="contacto" type="text" class="form-control">
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Empresa CIUU</label>
+                    <input formControlName="empreCiuu" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Localidad empresa</label>
+                    <input formControlName="empreLocalidad" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Regimen empresa</label>
+                    <select formControlName="regimenId" class="form-control">
+                      <ng-container *ngFor="let item of ListRegEmpresa">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Recepción</label>
+                    <input formControlName="recepcion" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Porcentaje retención ICA</label>
+                    <input formControlName="porcRetIca" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Responsable fiscal</label>
+                    <select formControlName="respFiscalId" class="form-control">
+                      <ng-container *ngFor="let item of listRespFiscal">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Responsable tributario</label>
+                    <select formControlName="respTributId" class="form-control">
+                      <ng-container *ngFor="let item of listRespTributaria">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Tipo cliente</label>
+                    <select formControlName="tipoClienteId" class="form-control">
+                      <ng-container *ngFor="let item of listTipoCliente">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Factura contador</label>
+                    <input formControlName="emprFactContador" type="text" class="form-control">
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Leyenda en factura</label>
+                    <input formControlName="leyEnFactura" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Leyenda en nota credito</label>
+                    <input formControlName="leyEnNotaCredito" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Leyenda en noda debito</label>
+                    <input formControlName="leyEnNotaDebito" type="text" class="form-control">
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">tipo</label>
+                    <select formControlName="tipoId" class="form-control">
+                      <ng-container *ngFor="let item of listTipoId">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Formato impreso</label>
+                    <input formControlName="formatoImp" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Habilitación</label>
+                    <input formControlName="empreHabilitacion" type="text" class="form-control">
+                  </div>
                 </div>
               </div>
 
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Documento representante legal</label>
-                  <input formControlName="docRepLegal" type="text" class="form-control">
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="">Observación</label>
+                    <textarea formControlName="observacion" class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                  </div>
                 </div>
               </div>
 
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Contacto empresa</label>
-                  <input formControlName="contacto" type="text" class="form-control">
-                </div>
-              </div>
 
-            </div>
+          </div>
 
-            <div class="row">
+          </form>
 
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Empresa CIUU</label>
-                  <input formControlName="empreCiuu" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Localidad empresa</label>
-                  <input formControlName="empreLocalidad" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Regimen empresa</label>
-                  <select formControlName="regimenId" class="form-control">
-                    <ng-container *ngFor="let item of ListRegEmpresa">
-                      <option [value]="item.valor">{{item.nombre}}</option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
+        <ng-container *ngIf="edicionEmpresa">
 
-            </div>
+          <hr />
 
-            <div class="row">
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Recepción</label>
-                  <input formControlName="recepcion" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Porcentaje retención ICA</label>
-                  <input formControlName="porcRetIca" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Responsable fiscal</label>
-                  <select formControlName="respFiscalId" class="form-control">
-                    <ng-container *ngFor="let item of listRespFiscal">
-                      <option [value]="item.valor">{{item.nombre}}</option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
+          <div class="d-flex justify-content-end">
+            <button class="btn btn-danger" (click)="cancelarEdicion()">Cancelar</button>
+            <button class="btn btn-primary ml-3">Guardar</button>
+          </div>
 
-            </div>
-
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Responsable tributario</label>
-                  <select formControlName="respTributId" class="form-control">
-                    <ng-container *ngFor="let item of listRespTributaria">
-                      <option [value]="item.valor">{{item.nombre}}</option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Tipo cliente</label>
-                  <select formControlName="tipoClienteId" class="form-control">
-                    <ng-container *ngFor="let item of listTipoCliente">
-                      <option [value]="item.valor">{{item.nombre}}</option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Factura contador</label>
-                  <input formControlName="emprFactContador" type="text" class="form-control">
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Leyenda en factura</label>
-                  <input formControlName="leyEnFactura" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Leyenda en nota credito</label>
-                  <input formControlName="leyEnNotaCredito" type="text" class="form-control">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Leyenda en noda debito</label>
-                  <input formControlName="leyEnNotaDebito" type="text" class="form-control">
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row">
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">tipo</label>
-                  <select formControlName="tipoId" class="form-control">
-                    <ng-container *ngFor="let item of listTipoId">
-                      <option [value]="item.valor">{{item.nombre}}</option>
-                    </ng-container>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Formato impreso</label>
-                  <input formControlName="formatoImp" type="text" class="form-control">
-                </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="">Habilitación</label>
-                  <input formControlName="empreHabilitacion" type="text" class="form-control">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="">Observación</label>
-                  <textarea formControlName="observacion" class="form-control" name="" id="" cols="30" rows="5"></textarea>
-                </div>
-              </div>
-            </div>
-
+        </ng-container>
 
         </div>
-
-      </form>
-
-      <hr />
-
-      <div class="d-flex justify-content-end">
-        <button class="btn btn-danger">Cancelar</button>
-        <button class="btn btn-primary ml-3">Guardar</button>
-      </div>
-
-
-
 
 
     </app-card>
