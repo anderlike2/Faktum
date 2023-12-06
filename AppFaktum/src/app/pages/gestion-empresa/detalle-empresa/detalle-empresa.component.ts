@@ -6,6 +6,10 @@ import { CargueCombosService } from 'src/app/services/cargue-combos-service/carg
 import { Observable } from 'rxjs';
 import { IListCombo } from 'src/app/models/general.model';
 import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
+import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
+import swal from 'sweetalert2';
+import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
+import { ISucursalEmpresa } from 'src/app/models/sucursal-empresa.model';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -22,15 +26,40 @@ export class DetalleEmpresaComponent implements OnInit {
   listRespTributaria: IListCombo[] = [];
   listTipoCliente: IListCombo[] = [];
   ListRegEmpresa: IListCombo[] = [];
+  listClasJuridica: IListCombo[] = [];
+  listSucursalesEmpresaObs: Observable<ISucursalEmpresa[]>;
+  listClientesEmpresaObs: Observable<IClienteEmpresa[]>;
   edicionEmpresa: boolean = false;
+
+  dataEmpresa: IEmpresa;
+
+  seletedSucursalEmpresa: any;
+  seletedClientesEmpresa: any;
 
   empresaCollapsed: boolean = false;
   clienteCollapsed: boolean = false;
   sucursalCollapsed: boolean = false;
 
+  colsSucursalesEmpresa: any[] = [
+    { field: 'sucuNombre', header: 'Nombre' },
+    { field: 'sucuCodigo', header: 'Código' },
+    { field: 'sucuContacto', header: 'Contacto' },
+    { field: 'sucuMail', header: 'Correo' },
+    { field: 'sucuTelefono', header: 'Teléfono' }
+  ];
+
+  colsClientesEmpresa: any[] = [
+    { field: 'sucuNombre', header: 'Nombre' },
+    { field: 'sucuCodigo', header: 'Código' },
+    { field: 'sucuContacto', header: 'Contacto' },
+    { field: 'sucuMail', header: 'Correo' },
+    { field: 'sucuTelefono', header: 'Teléfono' }
+  ];
+
   constructor(
     private storageService: StorageService,
-    private cargueCombosService: CargueCombosService
+    private cargueCombosService: CargueCombosService,
+    private detalleEmpresaService: DetalleEmpresaService
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +70,7 @@ export class DetalleEmpresaComponent implements OnInit {
     this.initForm();
     this.cargarComboListas();
     this.cargarInfoEmpresa();
+    this.cargarTablas();
   }
 
   cargarComboListas(): void {
@@ -80,42 +110,61 @@ export class DetalleEmpresaComponent implements OnInit {
       }
     });
 
+    this.cargueCombosService.obtenerListaClasesJuridicas()
+    .subscribe({
+      next: (response) => {
+        this.listClasJuridica = response;
+      }
+    });
+
+  }
+
+  cargarTablas(): void {
+    this.listSucursalesEmpresaObs =
+      this.detalleEmpresaService.obtenerInformacionSucursalesEmpresaId(this.dataEmpresa.id);
+
+    this.listClientesEmpresaObs =
+      this.detalleEmpresaService.obtenerInformacionClientesEmpresaId(this.dataEmpresa.id);
   }
 
   cargarInfoEmpresa(): void {
 
-    const dataEmpresa: IEmpresa = this.storageService.getEmpresaActivaStorage();
+    this.dataEmpresa = this.storageService.getEmpresaActivaStorage();
 
-    if (dataEmpresa) {
+    if (this.dataEmpresa) {
 
       this.empresaFormGroup.patchValue({
-        nombre: dataEmpresa.emprNombre,
-        nit: dataEmpresa.emprNit,
-        dv: dataEmpresa.emprDv,
-        departamento: dataEmpresa.emprDepto,
-        ciudad: dataEmpresa.emprCiudad,
-        direccion: dataEmpresa.emprDireccion,
-        telefono: dataEmpresa.emprTelefono,
-        correo: dataEmpresa.emprMail,
-        paginaWeb: dataEmpresa.emprPagWeb,
-        repLegal: dataEmpresa.emprRepLegal,
-        docRepLegal: dataEmpresa.emprIdRepLegal,
-        empreCiuu: dataEmpresa.emprCiuu,
-        contacto: dataEmpresa.emprContacto,
-        formatoImp: dataEmpresa.emprFormatoImpr,
-        empreHabilitacion: dataEmpresa.emprHabilitacion,
-        empreLocalidad: dataEmpresa.emprLocalidad,
-        observacion: dataEmpresa.emprObservaciones,
-        porcRetIca: dataEmpresa.emprPorcReteIca,
-        recepcion: dataEmpresa.emprRecepcion,
-        regimenId: dataEmpresa.emprRegimenId,
-        respFiscalId: dataEmpresa.emprRespFiscalId,
-        respTributId: dataEmpresa.emprRespTributId,
-        tipoClienteId: dataEmpresa.emprTipoClienteId,
-        tipoId: dataEmpresa.emprTipoIdId,
-        leyEnFactura: dataEmpresa.emprLeyEnFactura,
-        leyEnNotaCredito: dataEmpresa.emprLeyEnNotaCredito,
-        leyEnNotaDebito: dataEmpresa.emprLeyEnNotaDebito,
+        nombre: this.dataEmpresa.emprNombre,
+        nit: this.dataEmpresa.emprNit,
+        dv: this.dataEmpresa.emprDv,
+        departamento: this.dataEmpresa.emprDepto,
+        ciudad: this.dataEmpresa.emprCiudad,
+        direccion: this.dataEmpresa.emprDireccion,
+        telefono: this.dataEmpresa.emprTelefono,
+        correo: this.dataEmpresa.emprMail,
+        paginaWeb: this.dataEmpresa.emprPagWeb,
+        repLegal: this.dataEmpresa.emprRepLegal,
+        docRepLegal: this.dataEmpresa.emprIdRepLegal,
+        empreCiuu: this.dataEmpresa.emprCiuu,
+        contacto: this.dataEmpresa.emprContacto,
+        formatoImp: this.dataEmpresa.emprFormatoImpr,
+        empreHabilitacion: this.dataEmpresa.emprHabilitacion,
+        empreLocalidad: this.dataEmpresa.emprLocalidad,
+        observacion: this.dataEmpresa.emprObservaciones,
+        porcRetIca: this.dataEmpresa.emprPorcReteIca,
+        recepcion: this.dataEmpresa.emprRecepcion,
+        regimenId: this.dataEmpresa.emprRegimenId,
+        respFiscalId: this.dataEmpresa.emprRespFiscalId,
+        respTributId: this.dataEmpresa.emprRespTributId,
+        tipoClienteId: this.dataEmpresa.emprTipoClienteId,
+        tipoId: this.dataEmpresa.emprTipoIdId,
+        leyEnFactura: this.dataEmpresa.emprLeyEnFactura,
+        leyEnNotaCredito: this.dataEmpresa.emprLeyEnNotaCredito,
+        leyEnNotaDebito: this.dataEmpresa.emprLeyEnNotaDebito,
+        emprClasJuridicaId: this.dataEmpresa.emprClasJuridicaId,
+        emprCelular: this.dataEmpresa.emprCelular,
+        emprDiasPago: this.dataEmpresa.emprDiasPago,
+        emprFactContador: this.dataEmpresa.emprFactContador,
       });
 
       this.empresaFormGroup.disable();
@@ -295,6 +344,24 @@ export class DetalleEmpresaComponent implements OnInit {
         [
           Validators.required
         ]
+      ],
+      emprClasJuridicaId: [
+        { value: '', disabled: false },
+        [
+          Validators.required
+        ]
+      ],
+      emprCelular: [
+        { value: '', disabled: false },
+        [
+          Validators.required
+        ]
+      ],
+      emprDiasPago: [
+        { value: '', disabled: false },
+        [
+          Validators.required
+        ]
       ]
     };
 
@@ -469,6 +536,24 @@ export class DetalleEmpresaComponent implements OnInit {
       ? 'Campo obligatorio' : '';
   }
 
+  get emprClasJuridicaErrorMensaje(): string {
+    const form: AbstractControl = this.empresaFormGroup.get('emprClasJuridicaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get emprCelularErrorMensaje(): string {
+    const form: AbstractControl = this.empresaFormGroup.get('emprCelular') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get emprDiasPagoErrorMensaje(): string {
+    const form: AbstractControl = this.empresaFormGroup.get('emprDiasPago') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
   editarForm(): void {
     this.empresaFormGroup.enable();
     this.edicionEmpresa = true;
@@ -476,6 +561,63 @@ export class DetalleEmpresaComponent implements OnInit {
 
   cancelarEdicion(): void {
     this.cargarInfoEmpresa();
+  }
+
+  actualizarEmpresa(): void {
+    if(this.empresaFormGroup.invalid) {
+      this.empresaFormGroup.markAllAsTouched();
+      return;
+    }
+
+    const formData = this.empresaFormGroup.getRawValue();
+
+    const dataBody: IEmpresa = {
+      id: this.dataEmpresa.id,
+      emprNombre: formData.nombre,
+      emprNit: formData.nit,
+      emprDv: formData.dv,
+      emprDepto: formData.departamento,
+      emprCiudad: formData.ciudad,
+      emprDireccion: formData.direccion,
+      emprTelefono: formData.telefono,
+      emprMail: formData.correo,
+      emprPagWeb: formData.paginaWeb,
+      emprRepLegal: formData.repLegal,
+      emprIdRepLegal: formData.docRepLegal,
+      emprCiuu: formData.empreCiuu,
+      emprContacto: formData.contacto,
+      emprFormatoImpr: formData.formatoImp,
+      emprHabilitacion: formData.empreHabilitacion,
+      emprLocalidad: formData.empreLocalidad,
+      emprObservaciones: formData.observacion,
+      emprPorcReteIca: formData.porcRetIca,
+      emprRecepcion: formData.recepcion,
+      emprRegimenId: formData.regimenId,
+      emprRespFiscalId: formData.respFiscalId,
+      emprRespTributId: formData.respTributId,
+      emprTipoClienteId: formData.tipoClienteId,
+      emprTipoIdId: formData.tipoId,
+      emprLeyEnFactura: formData.leyEnFactura,
+      emprLeyEnNotaCredito: formData.leyEnNotaCredito,
+      emprLeyEnNotaDebito: formData.leyEnNotaDebito,
+      emprFactContador: formData.emprFactContador,
+      emprClasJuridicaId: formData.emprClasJuridicaId,
+      emprCelular: formData.emprCelular,
+      emprDiasPago: formData.emprDiasPago,
+      estado: this.dataEmpresa.estado,
+      fechaCreacion: this.dataEmpresa.fechaCreacion,
+      fechaModificacion: this.dataEmpresa.fechaModificacion
+    };
+
+    this.detalleEmpresaService.actualizarEmpresa(dataBody)
+    .subscribe({
+      next: (response) => {
+        this.empresaFormGroup.disable();
+        this.storageService.setEmpresaActivaStorage(dataBody);
+        swal.fire(``, response.message, 'success');
+      }
+    });
+
   }
 
 }

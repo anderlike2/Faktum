@@ -5,6 +5,7 @@ import { GestionEmpresaComponent } from './gestion-empresa.component';
 import { DetalleEmpresaComponent } from './detalle-empresa/detalle-empresa.component';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableModule } from 'primeng-lts/table';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     GestionEmpresaRoutingModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    TableModule
   ]
 })
 export class GestionEmpresaModule { }

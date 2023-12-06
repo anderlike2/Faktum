@@ -66,6 +66,9 @@ import { TableModule } from 'primeng/table';
     HttpClientModule,
     TableModule
   ],
+  exports: [
+    TableModule
+  ],
   providers: [
     NavigationItem,
     {

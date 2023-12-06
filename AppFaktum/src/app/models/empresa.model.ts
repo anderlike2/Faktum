@@ -1,5 +1,5 @@
 export interface IEmpresa {
-  id: number;
+  id?: number;
   emprFactContador: number;
   emprCelular: string;
   emprCiudad: string;
@@ -31,7 +31,7 @@ export interface IEmpresa {
   emprRegimenId: number;
   emprRespFiscalId: number;
   emprClasJuridicaId: number;
-  estado: number;
-  fechaCreacion: string;
-  fechaModificacion: string | null;
+  estado?: number;
+  fechaCreacion?: string;
+  fechaModificacion?: string | null;
 }

@@ -15,7 +15,9 @@
         <div id="collapseEmpresa" [ngbCollapse]="empresaCollapsed">
 
           <div class="d-flex flex-row justify-content-end" *ngIf="!edicionEmpresa">
-            <button class="btn btn-primary" (click)="editarForm()">Editar</button>
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Activar edición" (click)="editarForm()">
+              <i class="fa fa-edit"></i>
+            </button>
           </div>
 
           <form [formGroup]="empresaFormGroup" class="d-flex flex-column">
@@ -258,6 +260,35 @@
                 </div>
               </div>
 
+              <div class="row">
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Clase juridica</label>
+                    <select formControlName="emprClasJuridicaId" class="form-control">
+                      <ng-container *ngFor="let item of listClasJuridica">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Celular</label>
+                    <input formControlName="emprCelular" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Días pago</label>
+                    <input formControlName="emprDiasPago" type="text" class="form-control">
+                  </div>
+                </div>
+
+              </div>
+
 
               <div class="row">
                 <div class="col-md-12">
@@ -278,8 +309,12 @@
           <hr />
 
           <div class="d-flex justify-content-end">
-            <button class="btn btn-danger" (click)="cancelarEdicion()">Cancelar</button>
-            <button class="btn btn-primary ml-3">Guardar</button>
+            <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+              <i class="fa fa-ban"></i>
+            </button>
+            <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar empresa" (click)="actualizarEmpresa()">
+              <i class="fa fa-save"></i>
+            </button>
           </div>
 
         </ng-container>
@@ -302,6 +337,31 @@
         <hr>
 
         <div id="collapseSucursal" [ngbCollapse]="sucursalCollapsed">
+
+          <div class="d-flex justify-content-end m-2">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear sucursal" (click)="editarForm()">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+
+          <p-table [columns]="colsSucursalesEmpresa" [value]="listSucursalesEmpresaObs | async" selectionMode="single" [(selection)]="seletedSucursalEmpresa" [scrollable]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr style="height:34px" [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+          </p-table>
+
         </div>
     </app-card>
 
@@ -318,6 +378,31 @@
         <hr>
 
         <div id="collapseCliente" [ngbCollapse]="clienteCollapsed">
+
+          <div class="d-flex justify-content-end m-2">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear cliente" (click)="editarForm()">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+
+          <p-table [columns]="colsClientesEmpresa" [value]="listClientesEmpresaObs | async" selectionMode="single" [(selection)]="seletedClientesEmpresa" [scrollable]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr style="height:34px" [pSelectableRow]="rowData">
+                    <td *ngFor="let col of columns">
+                        {{rowData[col.field]}}
+                    </td>
+                </tr>
+            </ng-template>
+          </p-table>
+
         </div>
     </app-card>
 
