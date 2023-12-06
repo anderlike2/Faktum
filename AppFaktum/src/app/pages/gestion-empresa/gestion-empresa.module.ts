@@ -6,12 +6,14 @@ import { DetalleEmpresaComponent } from './detalle-empresa/detalle-empresa.compo
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng-lts/table';
+import { CrearEmpresaPageComponent } from './crear-empresa-page/crear-empresa-page.component';
 
 
 @NgModule({
   declarations: [
     GestionEmpresaComponent,
-    DetalleEmpresaComponent
+    DetalleEmpresaComponent,
+    CrearEmpresaPageComponent
   ],
   imports: [
     CommonModule,

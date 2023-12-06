@@ -44,6 +44,13 @@ const NavigationItems = [
             type: 'item',
             url: '/gestion-empresa/detalle-empresa',
             external: false
+          },
+          {
+            id: 'crear-empresa',
+            title: 'Crear empresa',
+            type: 'item',
+            url: '/gestion-empresa/crear-empresa',
+            external: false
           }
         ]
       },

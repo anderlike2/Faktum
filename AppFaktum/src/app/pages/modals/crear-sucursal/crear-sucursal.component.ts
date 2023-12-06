@@ -137,6 +137,7 @@ export class CrearSucursalComponent implements OnInit {
     const dataBody: ISucursal = this.sucursalFormGroup.getRawValue();
 
     dataBody.id = 0;
+    dataBody.estado = 1;
 
     this.detalleEmpresaService.crearSucursal(dataBody).subscribe({
       next: (response) => {
