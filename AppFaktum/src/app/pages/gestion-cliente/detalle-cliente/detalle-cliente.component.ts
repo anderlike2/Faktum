@@ -4,8 +4,10 @@ import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { ICliente } from 'src/app/models/cliente.model';
+import { ISucursalCliente } from 'src/app/models/sucursal-cliente.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
+import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -28,6 +30,29 @@ export class DetalleClienteComponent implements OnInit {
   listTipoIds: IListCombo[] = [];
   listClasesJuridicas: IListCombo[] = [];
   informacionCliente: ICliente;
+  listSucursalesCliente: ISucursalCliente[] = [];
+  listContratosCliente: IContratoCliente[] = [];
+
+  clienteCollapsed: boolean = true;
+  sucursalClienteCollapsed: boolean = true;
+  contratoCollapsed: boolean = true;
+
+  colsSucursalesCliente: any[] = [
+    { field: 'suclNombre', header: 'Nombre' },
+    { field: 'suclCodigo', header: 'Código' },
+    { field: 'suclContacto', header: 'Contacto' },
+    { field: 'suclCorreo', header: 'Correo' },
+    { field: 'suclDiasPago', header: 'Días pago' },
+    { field: 'suclTelefono', header: 'Teléfono' }
+  ];
+  seletedSucursalCliente: any;
+
+  colsContratosCliente: any[] = [
+    { field: 'cosaContrato', header: 'Contrato' },
+    { field: 'cosaNitCliente', header: 'Nit Cliente' },
+    { field: 'cosaPoliza', header: 'Póliza' }
+  ];
+  seletedContratoCliente: any;
 
   constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService) { }
 
@@ -39,6 +64,8 @@ export class DetalleClienteComponent implements OnInit {
     this.initForm();
     this.cargarComboListas();
     this.cargarInformacionCliente(3);
+    this.cargarInformacionSucursalesCliente(3);
+    this.cargarInformacionContratosCliente(3);
   }
 
   initForm(): void {
@@ -184,10 +211,31 @@ export class DetalleClienteComponent implements OnInit {
     });
   }
 
-  
+  cargarInformacionSucursalesCliente(idCliente: number): void{
+    this.clienteService.obtenerInformacionSucursalesClienteId(idCliente)
+    .subscribe({
+      next: (response) => {
+        this.listSucursalesCliente = response;
+      }
+    });
+  }
+
+  cargarInformacionContratosCliente(idCliente: number): void{
+    this.clienteService.obtenerInformacionContratosClienteId(idCliente)
+    .subscribe({
+      next: (response) => {
+        this.listContratosCliente = response;
+      }
+    });
+  }
+
   editarForm(): void {
     this.clienteFormGroup.enable();
     this.edicionCliente = true;
+  }
+
+  cancelarEdicion(): void {
+    this.cargarInformacionCliente(3);
   }
 
 }

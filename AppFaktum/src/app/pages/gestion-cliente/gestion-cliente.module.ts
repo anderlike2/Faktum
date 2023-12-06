@@ -5,6 +5,7 @@ import { GestionClienteComponent } from './gestion-cliente.component';
 import { DetalleClienteComponent } from './detalle-cliente/detalle-cliente.component';
 import { SharedModule } from '../../theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     GestionClienteRoutingModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    TableModule
   ]
 })
 export class GestionClienteModule { }
