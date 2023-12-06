@@ -350,6 +350,7 @@
                     <th *ngFor="let col of columns">
                         {{col.header}}
                     </th>
+                    <th></th>
                 </tr>
                 </ng-template>
 
@@ -357,6 +358,11 @@
                 <tr style="height:34px" [pSelectableRow]="rowData">
                     <td *ngFor="let col of columns">
                         {{rowData[col.field]}}
+                    </td>
+                    <td>
+                      <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver sucursal" (click)="verSucursal(rowData)">
+                        <i class="fa fa-search"></i>
+                      </button>
                     </td>
                 </tr>
             </ng-template>

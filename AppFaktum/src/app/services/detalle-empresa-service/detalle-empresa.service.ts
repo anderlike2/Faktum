@@ -59,4 +59,13 @@ export class DetalleEmpresaService {
       data
     );
   }
+
+  actualizarSucursal(data: ISucursal) {
+    const url = `${this.environment.faktumUrl}/Sucursal/ActualizarSucursal`;
+
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
 }
