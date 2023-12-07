@@ -54,6 +54,21 @@ const NavigationItems = [
           }
         ]
       },
+      /*{
+        id: 'usuario',
+        title: 'Sucursal',
+        type: 'collapse',
+        icon: 'fas fa-briefcase',
+        children: [
+          {
+            id: 'detalle-sucursal',
+            title: 'Sucursal detalle',
+            type: 'item',
+            url: '/gestion-sucursal/detalle-sucursal',
+            external: false
+          }
+        ]
+      },*/
       {
         id: 'sucursal',
         title: 'Sucursal',

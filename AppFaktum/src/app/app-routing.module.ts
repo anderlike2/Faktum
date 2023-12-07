@@ -44,6 +44,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-usuario',
+        loadChildren: () => import('./pages/gestion-usuario/gestion-usuario.module').then(m => m.GestionUsuarioModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'sample-page',
         loadChildren: () => import('./demo/pages/sample-page/sample-page.module').then(module => module.SamplePageModule),
         canActivate: [LoginGuard],

@@ -6,7 +6,7 @@
         public EmpresaDto? EmusEmpresa { get; set; }
 
         //Referencias
-        public int EmusUsuarioId { get; set; }
-        public int EmusEmpresaId { get; set; }
+        public int? EmusUsuarioId { get; set; }
+        public int? EmusEmpresaId { get; set; }
     }
 }

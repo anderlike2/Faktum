@@ -200,24 +200,18 @@ namespace ServiceLayer.Service
                 if (usuario > 0 && objModel.UsuEmpresas != null && objModel.UsuRoles != null)
                 {
                     //Se inserta las empresas del usuario
-                    foreach (EmpresaDto empresa in objModel.UsuEmpresas)
-                    {
-                        EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
-                        refEmpresa.EmusEmpresaId = empresa.Id;
-                        refEmpresa.EmusUsuarioId = usuario;
-                        refEmpresa.Estado = int.Parse(Constantes.estadoActivo);
-                        objUsuarioEmpresaRepository.CrearUsuarioEmpresa(refEmpresa);
-                    }
+                    EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
+                    refEmpresa.EmusEmpresaId = objModel.UsuEmpresaId;
+                    refEmpresa.EmusUsuarioId = usuario;
+                    refEmpresa.Estado = int.Parse(Constantes.estadoActivo);
+                    objUsuarioEmpresaRepository.CrearUsuarioEmpresa(refEmpresa);
 
                     //Se inserta los roles del usuario
-                    foreach (RolDto rol in objModel.UsuRoles)
-                    {
-                        RolUsuarioDto refRol = new RolUsuarioDto();
-                        refRol.RousRolId = rol.Id;
-                        refRol.RousUsuarioId = usuario;
-                        refRol.Estado = int.Parse(Constantes.estadoActivo);
-                        objRolUsuarioRepository.CrearUsuarioRol(refRol);
-                    }
+                    RolUsuarioDto refRol = new RolUsuarioDto();
+                    refRol.RousRolId = objModel.UsuRolId;
+                    refRol.RousUsuarioId = usuario;
+                    refRol.Estado = int.Parse(Constantes.estadoActivo);
+                    objRolUsuarioRepository.CrearUsuarioRol(refRol);
 
                     oRespuesta.Success = true;
                     oRespuesta.Message = Constantes.msjRegGuardado;

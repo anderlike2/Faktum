@@ -37,7 +37,7 @@ export class DetalleSucursalComponent implements OnInit {
 
   cargarListaCombox(): void {
 
-    this.cargueCombosService.obtenerListaCentrosCostoEmpresa(this.empresaID)
+    this.cargueCombosService.obtenerListaCentrosCostoEmpresa(1)
     .subscribe({
       next: (response) => {
         this.listCentroCostos = response;
@@ -138,7 +138,7 @@ export class DetalleSucursalComponent implements OnInit {
     dataBody.estado = 1;
 
     // toca hablar de estos dos
-    dataBody.sucuEmpresaId = this.empresaID;
+    dataBody.sucuEmpresaId = 1;
     dataBody.sucuFormatoImpresionId = 1;
     dataBody.sucuPrincipal = 0;
 

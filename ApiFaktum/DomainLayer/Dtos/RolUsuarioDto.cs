@@ -9,7 +9,7 @@ namespace DomainLayer.Dtos
         public RolModel? RousRol { get; set; }
 
         //Para consultas
-        public int RousUsuarioId { get; set; }
-        public int RousRolId { get; set; }
+        public int? RousUsuarioId { get; set; }
+        public int? RousRolId { get; set; }
     }
 }
