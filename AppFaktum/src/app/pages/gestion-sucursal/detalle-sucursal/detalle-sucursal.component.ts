@@ -4,6 +4,7 @@ import { IListCombo } from 'src/app/models/general.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
+import { SharedService } from 'src/app/services/shared-service/shared.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -16,6 +17,8 @@ export class DetalleSucursalComponent implements OnInit {
   sucursalCollapsed: boolean = false;
   edicionSucursal: boolean = false;
 
+  sucursalData: ISucursal;
+
   sucursalFormGroup: FormGroup;
   fb = new FormBuilder();
 
@@ -23,7 +26,8 @@ export class DetalleSucursalComponent implements OnInit {
 
   constructor(
     private detalleEmpresaService: DetalleEmpresaService,
-    private cargueCombosService: CargueCombosService
+    private cargueCombosService: CargueCombosService,
+    private sharedService: SharedService
   ) { }
 
   ngOnInit(): void {
@@ -31,19 +35,44 @@ export class DetalleSucursalComponent implements OnInit {
   }
 
   init(): void {
+
+    this.sharedService.sucursalEmpresaDataListener$.subscribe({
+      next: (data) => {
+        this.sucursalData = data;
+      }
+    });
+
     this.initForm();
     this.cargarListaCombox();
+    this.cargarDataForm();
   }
 
   cargarListaCombox(): void {
 
-    this.cargueCombosService.obtenerListaCentrosCostoEmpresa(1)
+    this.cargueCombosService.obtenerListaCentrosCostoEmpresa(this.sucursalData.sucuEmpresaId)
     .subscribe({
       next: (response) => {
         this.listCentroCostos = response;
       }
     });
 
+  }
+
+  cargarDataForm(): void {
+    this.sucursalFormGroup.disable();
+    this.edicionSucursal = false;
+    this.sucursalFormGroup.patchValue(
+      this.sucursalData
+    );
+  }
+
+  editarForm(): void {
+    this.sucursalFormGroup.enable();
+    this.edicionSucursal = true;
+  }
+
+  cancelarEdicion(): void {
+    this.cargarDataForm();
   }
 
   initForm(): void {
@@ -134,16 +163,19 @@ export class DetalleSucursalComponent implements OnInit {
 
     const dataBody: ISucursal = this.sucursalFormGroup.getRawValue();
 
-    dataBody.id = 0;
-    dataBody.estado = 1;
+    dataBody.id = this.sucursalData.id;
+    dataBody.estado = this.sucursalData.estado;
 
     // toca hablar de estos dos
-    dataBody.sucuEmpresaId = 1;
-    dataBody.sucuFormatoImpresionId = 1;
-    dataBody.sucuPrincipal = 0;
+    dataBody.sucuEmpresaId = this.sucursalData.sucuEmpresaId;
+    dataBody.sucuFormatoImpresionId = this.sucursalData.sucuFormatoImpresionId;
+    dataBody.sucuPrincipal = this.sucursalData.sucuPrincipal;
+    dataBody.fechaCreacion = this.sucursalData.fechaCreacion;
+    dataBody.fechaModificacion = this.sucursalData.fechaModificacion;
 
-    this.detalleEmpresaService.crearSucursal(dataBody).subscribe({
+    this.detalleEmpresaService.actualizarSucursal(dataBody).subscribe({
       next: (response: any) => {
+        this.sucursalFormGroup.disable();
         swal.fire(``, response.message, 'success');
       }
     });

@@ -186,6 +186,21 @@
 
           </form>
 
+          <ng-container *ngIf="edicionSucursal">
+
+            <hr />
+
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                <i class="fa fa-ban"></i>
+              </button>
+              <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar sucursal" (click)="guardarSucursal()">
+                <i class="fa fa-save"></i>
+              </button>
+            </div>
+
+          </ng-container>
+
         </div>
 
     </app-card>

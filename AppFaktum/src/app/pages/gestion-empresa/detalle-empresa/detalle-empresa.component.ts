@@ -13,6 +13,8 @@ import { ISucursalEmpresa } from 'src/app/models/sucursal-empresa.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CrearSucursalComponent } from '../../modals/crear-sucursal/crear-sucursal.component';
 import { Router } from '@angular/router';
+import { ISucursal } from 'src/app/models/sucursal.model';
+import { SharedService } from 'src/app/services/shared-service/shared.service';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -64,6 +66,7 @@ export class DetalleEmpresaComponent implements OnInit {
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
     private detalleEmpresaService: DetalleEmpresaService,
+    private sharedService: SharedService,
     private modalService: NgbModal,
     private router: Router
   ) { }
@@ -639,6 +642,11 @@ export class DetalleEmpresaComponent implements OnInit {
 
   verEmpleado(value:IClienteEmpresa): void{
     this.router.navigate(['./gestion-cliente/detalle-cliente']);
+  }
+
+  verSucursal(value: ISucursal): void {
+    this.sharedService.addSucursalEmpresaData(value);
+    this.router.navigate(['/gestion-sucursal/detalle-sucursal']);
   }
 
 }
