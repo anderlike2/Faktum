@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { Observable } from 'rxjs';
+import { EmpresaService } from 'src/app/services/empresa-service/empresa.service';
 import { SessionService } from 'src/app/services/session-service/session.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 
@@ -12,7 +14,7 @@ export class CambiarEmpresaComponent implements OnInit {
 
   @Input() activarBtnCerrar: boolean = false;
 
-  empresas: any[];
+  empresas: Observable<any[]>;
   seletedEmpresa: any;
   botonGuardarActivo = false;
 
@@ -26,6 +28,7 @@ export class CambiarEmpresaComponent implements OnInit {
   constructor(
     private sessionService: SessionService,
     private storageService: StorageService,
+    private empresaService: EmpresaService,
     private modalRef: NgbActiveModal
   ) { }
 
@@ -34,8 +37,13 @@ export class CambiarEmpresaComponent implements OnInit {
   }
 
   initEmpresas() {
-    const empresasInfo = this.storageService.getEmpresaStorage();
-    this.empresas = empresasInfo;
+    // const empresasInfo = this.storageService.getEmpresaStorage();
+    // this.empresas = empresasInfo;
+    const usuario = this.storageService.getUsuarioStorage();
+    this.empresas = this.empresaService.consultarEmpresasUsusario(
+      usuario.id
+    );
+
   }
 
   onRowSelect(event) {

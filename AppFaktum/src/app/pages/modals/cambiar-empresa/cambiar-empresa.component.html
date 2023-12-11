@@ -4,7 +4,7 @@
 </div>
 <div class="modal-body">
 
-  <p-table [columns]="cols" [value]="empresas" selectionMode="single" [(selection)]="seletedEmpresa" [scrollable]="true" [rows]="10"
+  <p-table [columns]="cols" [value]="empresas | async" selectionMode="single" [(selection)]="seletedEmpresa" [scrollable]="true" [rows]="10"
   (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
     <ng-template pTemplate="header" let-columns>
       <tr>

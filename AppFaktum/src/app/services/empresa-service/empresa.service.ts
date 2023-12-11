@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { IEnvironment } from 'src/app/models/environment.model';
 
@@ -21,6 +23,24 @@ export class EmpresaService {
       url,
       data
     );
+  }
+
+  consultarEmpresasUsusario(usuarioID: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Usuario/ConsultarEmpresasUsuario`;
+
+    const body = {
+      id: usuarioID
+    };
+
+    return this.httpClient.post<any>(
+      url,
+      body
+    )
+    .pipe(
+      map((response) =>
+        response.data as IEmpresa[]
+      )
+    );;
   }
 
 }
