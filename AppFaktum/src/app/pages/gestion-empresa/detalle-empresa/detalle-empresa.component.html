@@ -405,7 +405,7 @@
                     <td *ngFor="let col of columns; index as i">
                         <div *ngIf="i != 5">{{rowData[col.field]}}</div>
                         <div *ngIf="i == 5">
-                          <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver Cliente" (click)="verEmpleado(rowData)">
+                          <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver Cliente" (click)="verCliente(rowData)">
                             <i class="fa fa-search"></i>
                           </button>
                         </div>

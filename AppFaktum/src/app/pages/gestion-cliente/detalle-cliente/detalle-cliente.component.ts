@@ -8,6 +8,7 @@ import { ISucursalCliente } from 'src/app/models/sucursal-cliente.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
 import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
+import { SharedService } from 'src/app/services/shared-service/shared.service';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -54,18 +55,25 @@ export class DetalleClienteComponent implements OnInit {
   ];
   seletedContratoCliente: any;
 
-  constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService) { }
+  constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService,
+    private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.init();
   }
 
   init(): void {
+    this.sharedService.clienteEmpresaDataListener$.subscribe({
+      next: (data) => {
+        this.informacionCliente = data;
+      }
+    });
+
     this.initForm();
     this.cargarComboListas();
-    this.cargarInformacionCliente(3);
-    this.cargarInformacionSucursalesCliente(3);
-    this.cargarInformacionContratosCliente(3);
+    this.cargarInformacionCliente(this.informacionCliente.id);
+    this.cargarInformacionSucursalesCliente(this.informacionCliente.id);
+    this.cargarInformacionContratosCliente(this.informacionCliente.id);
   }
 
   initForm(): void {

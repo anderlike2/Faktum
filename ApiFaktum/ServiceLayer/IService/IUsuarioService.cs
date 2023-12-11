@@ -26,5 +26,14 @@ namespace ServiceLayer.IService
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> CrearUsuario(UsuarioDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar empresas de usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarEmpresasUsuario(UsuarioDto objModel);
     }
 }

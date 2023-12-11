@@ -1,1 +1,32 @@
-<p>detalle-usuario works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [hidHeader]="true" [options]="false">
+
+            <form [formGroup]="usuarioFormGroup" class="d-flex flex-column">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Nombre de usuario</label>
+                              <input formControlName="nombreUsuario" type="text" class="form-control" placeholder="Nombre de usuario">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Contraseña</label>
+                              <input formControlName="passwordUsuario" type="password" class="form-control" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Confirmar contraseña</label>
+                              <input formControlName="confirmarPasswordUsuario" type="password" class="form-control" placeholder="Confirmar contraseña">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </app-card>
+    </div>
+</div>

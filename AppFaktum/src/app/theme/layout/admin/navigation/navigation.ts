@@ -54,21 +54,21 @@ const NavigationItems = [
           }
         ]
       },
-      /*{
+      {
         id: 'usuario',
-        title: 'Sucursal',
+        title: 'Usuario ',
         type: 'collapse',
         icon: 'fas fa-briefcase',
         children: [
           {
-            id: 'detalle-sucursal',
-            title: 'Sucursal detalle',
+            id: 'detalle-usuario',
+            title: 'Crear usuario',
             type: 'item',
-            url: '/gestion-sucursal/detalle-sucursal',
+            url: '/gestion-usuario/detalle-usuario',
             external: false
           }
         ]
-      },*/
+      },
       {
         id: 'sucursal',
         title: 'Sucursal',

@@ -41,9 +41,9 @@ export class DetalleEmpresaComponent implements OnInit {
   seletedSucursalEmpresa: any;
   seletedClientesEmpresa: any;
 
-  empresaCollapsed: boolean = false;
-  clienteCollapsed: boolean = false;
-  sucursalCollapsed: boolean = false;
+  empresaCollapsed: boolean = true;
+  clienteCollapsed: boolean = true;
+  sucursalCollapsed: boolean = true;
 
   colsSucursalesEmpresa: any[] = [
     { field: 'sucuNombre', header: 'Nombre' },
@@ -640,7 +640,8 @@ export class DetalleEmpresaComponent implements OnInit {
     modalSucursal.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
-  verEmpleado(value:IClienteEmpresa): void{
+  verCliente(value:IClienteEmpresa): void{
+    this.sharedService.addClienteEmpresaData(value);
     this.router.navigate(['./gestion-cliente/detalle-cliente']);
   }
 

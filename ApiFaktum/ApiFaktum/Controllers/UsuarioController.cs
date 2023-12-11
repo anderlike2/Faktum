@@ -39,11 +39,11 @@ namespace ApiFaktum.Controllers
         /// Anderson Benavides
         /// Metodo para iniciar sesion
         /// </summary>
-        /// <param name="authModel"></param>
+        /// <param name="loginModel"></param>
         /// <returns>Task<Result></returns>
         [HttpPost]
         [Route("IniciarSesion")]
-        public async Task<IActionResult> InicioSesionAsync([FromBody] UsuarioFiltroDto loginModel)
+        public async Task<IActionResult> IniciarSesion([FromBody] UsuarioFiltroDto loginModel)
         {
             Result oRespuesta = new();
 
@@ -80,6 +80,36 @@ namespace ApiFaktum.Controllers
             try
             {
                 var vRespuesta = await objService.CrearUsuario(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para iniciar sesion
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ConsultarEmpresasUsuario")]
+        public async Task<IActionResult> ConsultarEmpresasUsuario([FromBody] UsuarioDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarEmpresasUsuario(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

@@ -7,8 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 export class SharedService {
   private collapseSidebar = new BehaviorSubject<boolean>(true);
   private sucursalEmpresaData = new BehaviorSubject<any>(true);
+  private clienteEmpresaData = new BehaviorSubject<any>(true);
   collapseSidebarListener$ = this.collapseSidebar.asObservable();
   sucursalEmpresaDataListener$ = this.sucursalEmpresaData.asObservable();
+  clienteEmpresaDataListener$ = this.clienteEmpresaData.asObservable();
 
   collapseSidebarValue$ = this.collapseSidebar;
 
@@ -20,5 +22,9 @@ export class SharedService {
 
   addSucursalEmpresaData(data: any) {
     this.sucursalEmpresaData.next(data);
+  }
+
+  addClienteEmpresaData(data: any) {
+    this.clienteEmpresaData.next(data);
   }
 }

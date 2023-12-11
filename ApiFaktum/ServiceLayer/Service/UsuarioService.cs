@@ -90,8 +90,8 @@ namespace ServiceLayer.Service
                 await objUsuarioRepository.ActualizarUsuario(usuarioCompleto);
             }
 
-            //Consultar los perfiles
-            return ConsultarEmpresasRolesUsuario(usuarioCompleto).Result;
+            //Consultar la informacion de los roles
+            return ConsultarRolesUsuario(usuarioCompleto).Result;
         }
 
         /// <summary>
@@ -130,11 +130,11 @@ namespace ServiceLayer.Service
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar empresas y roles de la empresa
+        /// Metodo para consultar roles de la empresa
         /// </summary>
         /// <param name="usuarioCompleto"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarEmpresasRolesUsuario(UsuarioDto usuarioCompleto)
+        public async Task<Result> ConsultarRolesUsuario(UsuarioDto usuarioCompleto)
         {
             Result oRespuesta = new Result();
             Task<Result>? rolesUsuario = objRolRepository.ConsultarRolesUsuario(usuarioCompleto.Id);
@@ -147,35 +147,53 @@ namespace ServiceLayer.Service
             }
             else
             {
-                //Validar usuario Administrador o Operativo
-                bool esAdministrador = false;
-                roles.ForEach(item =>
-                {
-                    if(item.RolCodigo != null && item.RolCodigo.Equals(Constantes.rolAdministrador))
-                        esAdministrador |= true;
-                });
-                Task<Result> empresasUsuario;
-                if (esAdministrador)
-                    empresasUsuario = objEmpresaRepository.ConsultarEmpresas();
-                else
-                    empresasUsuario = objEmpresaRepository.ConsultarEmpresasUsuario(usuarioCompleto.Id);
+                usuarioCompleto.UsuRoles = roles;
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjLoginCorrecto;
+                oRespuesta.Data = usuarioCompleto;
+                return oRespuesta;
+            }
+        }
 
-                List<EmpresaDto> empresas = (List<EmpresaDto>)empresasUsuario.Result.Data;
-                if (empresas == null || empresas.Count <= 0)
-                {
-                    oRespuesta.Success = false;
-                    oRespuesta.Message = Constantes.msjUsuarioSinEmpresas;
-                    return oRespuesta;
-                }
-                else
-                {
-                    usuarioCompleto.UsuRoles = roles;
-                    usuarioCompleto.UsuEmpresas = empresas;
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjLoginCorrecto;
-                    oRespuesta.Data = usuarioCompleto;
-                    return oRespuesta;
-                }
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar empresas de usuario
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarEmpresasUsuario(UsuarioDto objModel)
+        {
+            Result oRespuesta = new Result();
+            Task<Result>? rolesUsuario = objRolRepository.ConsultarRolesUsuario(objModel.Id);
+            List<RolDto>? roles = (List<RolDto>)rolesUsuario.Result.Data;
+
+            //Validar usuario Administrador o Operativo
+            bool esAdministrador = false;
+            roles.ForEach(item =>
+            {
+                if (item.RolCodigo != null && item.RolCodigo.Equals(Constantes.rolAdministrador))
+                    esAdministrador |= true;
+            });
+            Task<Result> empresasUsuario;
+            if (esAdministrador)
+                empresasUsuario = objEmpresaRepository.ConsultarEmpresas();
+            else
+                empresasUsuario = objEmpresaRepository.ConsultarEmpresasUsuario(objModel.Id);
+
+            List<EmpresaDto> empresas = (List<EmpresaDto>)empresasUsuario.Result.Data;
+            if (empresas == null || empresas.Count <= 0)
+            {
+                oRespuesta.Success = false;
+                oRespuesta.Message = Constantes.msjUsuarioSinEmpresas;
+                return oRespuesta;
+            }
+            else
+            {
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjConsultaExitosa;
+                oRespuesta.Data = empresas;
+                return oRespuesta;
             }
         }
 
@@ -197,7 +215,7 @@ namespace ServiceLayer.Service
             {
                 Task<Result> usuarioInsertado = objUsuarioRepository.CrearUsuario(objModel);
                 int usuario = (int)usuarioInsertado.Result.Data;
-                if (usuario > 0 && objModel.UsuEmpresas != null && objModel.UsuRoles != null)
+                if (usuario > 0 && objModel.UsuRoles != null)
                 {
                     //Se inserta las empresas del usuario
                     EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
