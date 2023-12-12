@@ -28,6 +28,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { InterceptorFaktum } from '../app/shared/interceptor/interceptor-faktum.interceptor';
+import { LoaderFaktumInterceptor } from '../app/shared/loader-faktum-interceptor/loader-faktum.interceptor';
 import { environment } from 'src/environments/environment';
 import { AppErrorHandler } from '../app/core/handlers/error.handler';
 import { CambiarEmpresaComponent } from './pages/modals/cambiar-empresa/cambiar-empresa.component';
@@ -82,6 +83,11 @@ import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-client
     {
       provide: HTTP_INTERCEPTORS,
       useClass: InterceptorFaktum,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderFaktumInterceptor,
       multi: true
     },
     {
