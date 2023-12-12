@@ -73,16 +73,22 @@ export class DetalleUsuarioComponent implements OnInit {
     const dataBody: ICrearUsuario = this.usuarioFormGroup.getRawValue();
     dataBody.id = 0;
     dataBody.estado = 1;
+    dataBody.usuaIntentos = 0;
 
     this.usuarioService.crearUsuario(dataBody).subscribe({
       next: (response: any) => {
         if (!response?.success) {
-         this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR)
+         this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
          }else{
-          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR)
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+          this.limpiarFormulario();
          }
       }
     });
+  }
+
+  limpiarFormulario(): void{
+    this.usuarioFormGroup.reset();
   }
 
 }

@@ -218,7 +218,7 @@ namespace ServiceLayer.Service
                 {
                     Task<Result> usuarioInsertado = objUsuarioRepository.CrearUsuario(objModel);
                     int usuario = (int)usuarioInsertado.Result.Data;
-                    if (usuario > 0 && objModel.UsuaRoles != null)
+                    if (usuario > 0)
                     {
                         //Se inserta las empresas del usuario
                         EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
