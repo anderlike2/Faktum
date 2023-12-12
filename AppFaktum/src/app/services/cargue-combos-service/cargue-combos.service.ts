@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { IEnvironment } from 'src/app/models/environment.model';
 import { IListCombo } from 'src/app/models/general.model';
-import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
+import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 
 @Injectable({

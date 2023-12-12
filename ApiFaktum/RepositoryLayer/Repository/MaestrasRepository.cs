@@ -143,6 +143,11 @@ namespace RepositoryLayer.Repository
                         foreach (var item in r20)
                             lstRespuesta.Add(FormarRespuestaMaestra(item.Id, item.DeptoCodigo, item.DeptoNombre, item.Estado, item.FechaCreacion, item.FechaModificacion));
                         break;
+                    case Constantes.rol:
+                        var r21 = await objContext.Set<RolModel>().Where(x => x.Estado == 1).ToListAsync();
+                        foreach (var item in r21)
+                            lstRespuesta.Add(FormarRespuestaMaestra(item.Id, item.RolCodigo, item.RolDescripcion, item.Estado, item.FechaCreacion, item.FechaModificacion));
+                        break;
                 }
 
                 oRespuesta.Success = true;

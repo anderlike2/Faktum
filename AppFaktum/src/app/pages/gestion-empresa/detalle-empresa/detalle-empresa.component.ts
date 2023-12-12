@@ -5,7 +5,7 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { Observable } from 'rxjs';
 import { IListCombo } from 'src/app/models/general.model';
-import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
+import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import swal from 'sweetalert2';
 import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';

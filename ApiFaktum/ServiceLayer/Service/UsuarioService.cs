@@ -147,7 +147,7 @@ namespace ServiceLayer.Service
             }
             else
             {
-                usuarioCompleto.UsuRoles = roles;
+                usuarioCompleto.UsuaRoles = roles;
                 oRespuesta.Success = true;
                 oRespuesta.Message = Constantes.msjLoginCorrecto;
                 oRespuesta.Data = usuarioCompleto;
@@ -207,47 +207,75 @@ namespace ServiceLayer.Service
         public Task<Result> CrearUsuario(UsuarioDto objModel)
         {
             Result oRespuesta = new Result();
+            oRespuesta = ValidarInformacionUsuario(objModel);
 
-            //Validar el usuario en la empresa
-            Task<Result> existeUsuario = objUsuarioRepository.ConsultarUsuarioPorUsername(objModel.UsuaUsuario);
-            UsuarioDto? usuarioUsername = (UsuarioDto)existeUsuario.Result.Data;
-            if(usuarioUsername == null)
+            if (oRespuesta.Success)
             {
-                Task<Result> usuarioInsertado = objUsuarioRepository.CrearUsuario(objModel);
-                int usuario = (int)usuarioInsertado.Result.Data;
-                if (usuario > 0 && objModel.UsuRoles != null)
+                //Validar el usuario en la empresa
+                Task<Result> existeUsuario = objUsuarioRepository.ConsultarUsuarioPorUsername(objModel.UsuaUsuario);
+                UsuarioDto? usuarioUsername = (UsuarioDto)existeUsuario.Result.Data;
+                if (usuarioUsername == null)
                 {
-                    //Se inserta las empresas del usuario
-                    EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
-                    refEmpresa.EmusEmpresaId = objModel.UsuEmpresaId;
-                    refEmpresa.EmusUsuarioId = usuario;
-                    refEmpresa.Estado = int.Parse(Constantes.estadoActivo);
-                    objUsuarioEmpresaRepository.CrearUsuarioEmpresa(refEmpresa);
+                    Task<Result> usuarioInsertado = objUsuarioRepository.CrearUsuario(objModel);
+                    int usuario = (int)usuarioInsertado.Result.Data;
+                    if (usuario > 0 && objModel.UsuaRoles != null)
+                    {
+                        //Se inserta las empresas del usuario
+                        EmpresasUsuarioDto refEmpresa = new EmpresasUsuarioDto();
+                        refEmpresa.EmusEmpresaId = objModel.UsuaEmpresaId;
+                        refEmpresa.EmusUsuarioId = usuario;
+                        refEmpresa.Estado = int.Parse(Constantes.estadoActivo);
+                        objUsuarioEmpresaRepository.CrearUsuarioEmpresa(refEmpresa);
 
-                    //Se inserta los roles del usuario
-                    RolUsuarioDto refRol = new RolUsuarioDto();
-                    refRol.RousRolId = objModel.UsuRolId;
-                    refRol.RousUsuarioId = usuario;
-                    refRol.Estado = int.Parse(Constantes.estadoActivo);
-                    objRolUsuarioRepository.CrearUsuarioRol(refRol);
+                        //Se inserta los roles del usuario
+                        RolUsuarioDto refRol = new RolUsuarioDto();
+                        refRol.RousRolId = objModel.UsuaRolId;
+                        refRol.RousUsuarioId = usuario;
+                        refRol.Estado = int.Parse(Constantes.estadoActivo);
+                        objRolUsuarioRepository.CrearUsuarioRol(refRol);
 
-                    oRespuesta.Success = true;
-                    oRespuesta.Message = Constantes.msjRegGuardado;
-                    return Task.FromResult(oRespuesta);
+                        oRespuesta.Success = true;
+                        oRespuesta.Message = Constantes.msjRegGuardado;
+                        return Task.FromResult(oRespuesta);
+                    }
+                    else
+                    {
+                        oRespuesta.Success = false;
+                        oRespuesta.Message = Constantes.msjUsuarioNoInsertado;
+                        return Task.FromResult(oRespuesta);
+                    }
                 }
                 else
                 {
                     oRespuesta.Success = false;
-                    oRespuesta.Message = Constantes.msjUsuarioNoInsertado;
+                    oRespuesta.Message = Constantes.msjUsuarioYaCreado;
                     return Task.FromResult(oRespuesta);
                 }
             }
             else
             {
-                oRespuesta.Success = false;
-                oRespuesta.Message = Constantes.msjUsuarioYaCreado;
                 return Task.FromResult(oRespuesta);
             }
+            
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para validar informacion del usuario a insertar
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Result ValidarInformacionUsuario(UsuarioDto objModel)
+        {
+            Result oRespuesta = new Result();
+            oRespuesta.Success = true;
+            if (!objModel.UsuaPassword.Equals(objModel.UsuaPasswordConfirm))
+            {
+                oRespuesta.Success = false;
+                oRespuesta.Message = Constantes.msjPasswordNoCoincide;
+            }
+            return oRespuesta;
         }
     }
 }

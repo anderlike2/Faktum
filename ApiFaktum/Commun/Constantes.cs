@@ -25,6 +25,7 @@
         public const string msjUsuarioEliminado = "Usuario eliminado con éxito.";
         public const string msjConsultaExitosa = "Consulta realizada con éxito.";
         public const string msjSucursalCentroCosto= "El centro de costo se encuentra asignado a una sucursal. No es posible eliminar.";
+        public const string msjPasswordNoCoincide = "La contraseña no coincide con su confirmación.";
 
         //TIPOS DE CLASE MAESTRO
         public const string claseFactura = "claseFactura";
@@ -47,6 +48,7 @@
         public const string conceptoNotas = "conceptoNotas";
         public const string cobertura = "cobertura";
         public const string depto = "depto";
+        public const string rol = "rol";
 
         //ESTADOS
         public const string estadoActivo = "1";

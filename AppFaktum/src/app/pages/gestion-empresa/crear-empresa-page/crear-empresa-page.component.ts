@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TipoListEnum } from 'src/app/models/detalle-empresa.model';
+import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';

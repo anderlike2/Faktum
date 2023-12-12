@@ -18,8 +18,6 @@ export class CrearSucursalComponent implements OnInit {
 
   sucursalFormGroup: FormGroup;
   fb = new FormBuilder();
-
-
   listCentroCostos: IListCombo[] = [];
 
   constructor(

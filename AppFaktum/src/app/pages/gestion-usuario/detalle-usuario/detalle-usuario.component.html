@@ -8,21 +8,50 @@
                         <div class="col-md-4">
                             <div class="form-group">
                               <label for="">Nombre de usuario</label>
-                              <input formControlName="nombreUsuario" type="text" class="form-control" placeholder="Nombre de usuario">
+                              <input formControlName="usuaUsuario" type="text" class="form-control" placeholder="Nombre de usuario">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                               <label for="">Contraseña</label>
-                              <input formControlName="passwordUsuario" type="password" class="form-control" placeholder="Contraseña">
+                              <input formControlName="usuaPassword" type="password" class="form-control" placeholder="Contraseña">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
                               <label for="">Confirmar contraseña</label>
-                              <input formControlName="confirmarPasswordUsuario" type="password" class="form-control" placeholder="Confirmar contraseña">
+                              <input formControlName="usuaPasswordConfirm" type="password" class="form-control" placeholder="Confirmar contraseña">
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Empresa</label>
+                              <select formControlName="usuaEmpresaId" class="form-control">
+                                <ng-container *ngFor="let item of listEmpresas">
+                                  <option [value]="item.id">{{item.emprNombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="">Rol</label>
+                            <select formControlName="usuaRolId" class="form-control">
+                              <ng-container *ngFor="let item of listRoles">
+                                <option [value]="item.valor">{{item.nombre}}</option>
+                              </ng-container>
+                            </select>
+                          </div>
+                      </div>
+                      <div class="col-md-4 alinear-vertical">
+                        <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar Usuario" (click)="guardarUsuario()">
+                          <i class="fa fa-save"></i>
+                        </button>
+                      </div>
                     </div>
                 </div>
             </form>

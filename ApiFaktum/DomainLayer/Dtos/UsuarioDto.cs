@@ -4,12 +4,13 @@
     {
         public string? UsuaUsuario { get; set; }
         public string? UsuaPassword { get; set; }
+        public string? UsuaPasswordConfirm { get; set; }
         public int? UsuaIntentos { get; set; }
 
         //Referencias
-        public List<RolDto>? UsuRoles {  get; set; }
+        public List<RolDto>? UsuaRoles {  get; set; }
 
-        public int? UsuEmpresaId { get; set; }
-        public int? UsuRolId { get; set; }
+        public int? UsuaEmpresaId { get; set; }
+        public int? UsuaRolId { get; set; }
     }
 }
