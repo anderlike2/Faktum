@@ -75,4 +75,11 @@ export class ClienteService {
     );
   }
 
+  actualizarCliente(data: ICliente): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Cliente/ActualizarCliente`;
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { ICliente } from 'src/app/models/cliente.model';
@@ -9,6 +9,7 @@ import { CargueCombosService } from 'src/app/services/cargue-combos-service/carg
 import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
 import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-detalle-cliente',
@@ -56,7 +57,7 @@ export class DetalleClienteComponent implements OnInit {
   seletedContratoCliente: any;
 
   constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService, private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.init();
@@ -244,6 +245,69 @@ export class DetalleClienteComponent implements OnInit {
 
   cancelarEdicion(): void {
     this.cargarInformacionCliente(3);
+  }
+
+  actualizarCliente(): void{
+    if(this.clienteFormGroup.invalid) {
+      this.clienteFormGroup.markAllAsTouched();
+      return;
+    }
+
+    const formData = this.clienteFormGroup.getRawValue();
+
+    const dataBody: ICliente = {
+      id: this.informacionCliente.id,
+      cliePrimerNom: formData.primerNombre,
+      clieSegundoNom: formData.segundoNombre,
+      clieApellidos: formData.apellidos,
+      clieNit: formData.nit,
+      clieDv: formData.dv,
+      clieCiuu: formData.ciuu,
+      clieCelular: formData.celular,
+      clieTelFijo: formData.telefonoFijo,
+      clieContacto: formData.contacto,
+      clieCorreo: formData.correo,
+      clieCorreoFact: formData.correoFacturacion,
+      cliePaginaWeb: formData.paginaWeb,
+      clieDireccion: formData.direccion,
+      clieCobertura: formData.cobertura,
+      clieDescGlobal: formData.descGlobal,
+      clieDiasPago: formData.diasPago,
+      clieEstadoOperacion: formData.estadoOperacion,
+      clieJuridica: formData.juridica,
+      clieLocalidad: formData.localidad,
+      clieIdReprLegal: formData.idRepLegal,
+      clieReprLegal: formData.representanteLegal,
+      cliePaisId: formData.paisId,
+      clieDeptoId: formData.deptoId,
+      clieCiudadId: formData.ciudadId,
+      clieEmpresaId: formData.empresaId,
+      clieRegimenId: formData.regimenId,
+      clieRespFiscalId: formData.respFiscalId,
+      clieRespTributariaId: formData.respTributariaId,
+      clieTipoClienteId: formData.tipoClienteId,
+      clieTipoIdId: formData.tipoIdId,
+      clieClasJuridicaId: formData.clasJuridicaId,
+      clieRazonSocial: formData.razonSocial,
+      estado: this.informacionCliente.estado,
+      fechaCreacion: this.informacionCliente.fechaCreacion,
+      fechaModificacion: this.informacionCliente.fechaModificacion
+    }
+
+    this.clienteService.actualizarCliente(dataBody)
+    .subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+          }else{
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.clienteFormGroup.disable();
+           this.cargarInformacionCliente(this.informacionCliente.id);
+           this.cargarInformacionSucursalesCliente(this.informacionCliente.id);
+           this.cargarInformacionContratosCliente(this.informacionCliente.id);
+          }
+      }
+    });
   }
 
 }
