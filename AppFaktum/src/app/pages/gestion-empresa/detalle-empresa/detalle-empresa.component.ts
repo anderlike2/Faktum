@@ -15,6 +15,7 @@ import { CrearSucursalComponent } from '../../modals/crear-sucursal/crear-sucurs
 import { Router } from '@angular/router';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
+import { LoaderService } from 'src/app/services/loader-service/loader.service';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -68,7 +69,8 @@ export class DetalleEmpresaComponent implements OnInit {
     private detalleEmpresaService: DetalleEmpresaService,
     private sharedService: SharedService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private loaderService: LoaderService
   ) { }
 
   ngOnInit(): void {

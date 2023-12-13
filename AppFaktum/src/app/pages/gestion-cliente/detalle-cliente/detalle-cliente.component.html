@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
       <app-card [hidHeader]="true" [options]="false">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between" role="button">
             <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="clienteCollapsed = !clienteCollapsed" [attr.aria-expanded]="!clienteCollapsed" aria-controls="collapseCliente">
               <h5 class="font-weight-bold mb-0">Cliente</h5>
               <i class="fa" [ngClass]="{'fa-chevron-up': clienteCollapsed, 'fa-chevron-down': !clienteCollapsed }"></i>
-            </div>    
+            </div>
         </div>
         <hr>
 
@@ -91,7 +91,7 @@
                                 </ng-container>
                               </select>
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -157,7 +157,7 @@
                               <label for="">Página web</label>
                               <input formControlName="paginaWeb" type="text" class="form-control" placeholder="Página web">
                             </div>
-                        </div>                    
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -215,7 +215,7 @@
                                 </ng-container>
                               </select>
                             </div>
-                        </div> 
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                               <label for="">Responsabilidad fiscal</label>
@@ -235,7 +235,7 @@
                                 </ng-container>
                               </select>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -249,7 +249,7 @@
                                 </ng-container>
                               </select>
                             </div>
-                        </div> 
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                               <label for="">Tipo id</label>
@@ -269,7 +269,7 @@
                                 </ng-container>
                               </select>
                             </div>
-                        </div>  
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
@@ -304,13 +304,13 @@
       </app-card>
 
       <app-card [hidHeader]="true" [options]="false">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between" role="button">
             <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="sucursalClienteCollapsed = !sucursalClienteCollapsed" [attr.aria-expanded]="!sucursalClienteCollapsed" aria-controls="collapseSucursalCliente">
               <h5 class="font-weight-bold mb-0">Sucursales Cliente</h5>
               <i class="fa" [ngClass]="{'fa-chevron-up': sucursalClienteCollapsed, 'fa-chevron-down': !sucursalClienteCollapsed }"></i>
-            </div>    
-        </div>    
-        <hr>    
+            </div>
+        </div>
+        <hr>
         <div id="collapseSucursalCliente" [ngbCollapse]="sucursalClienteCollapsed">
             <p-table [columns]="colsSucursalesCliente" [value]="listSucursalesCliente" selectionMode="single" [(selection)]="seletedSucursalCliente" [scrollable]="true" [rows]="10">
                     <ng-template pTemplate="header" let-columns>
@@ -333,13 +333,13 @@
       </app-card>
 
       <app-card [hidHeader]="true" [options]="false">
-        <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center justify-content-between" role="button">
             <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="contratoCollapsed = !contratoCollapsed" [attr.aria-expanded]="!contratoCollapsed" aria-controls="collapseContratos">
               <h5 class="font-weight-bold mb-0">Contratos Cliente</h5>
               <i class="fa" [ngClass]="{'fa-chevron-up': contratoCollapsed, 'fa-chevron-down': !contratoCollapsed }"></i>
-            </div>    
-        </div>    
-        <hr>    
+            </div>
+        </div>
+        <hr>
         <div id="collapseContratos" [ngbCollapse]="contratoCollapsed">
             <p-table [columns]="colsContratosCliente" [value]="listContratosCliente" selectionMode="single" [(selection)]="seletedContratoCliente" [scrollable]="true" [rows]="10">
                 <ng-template pTemplate="header" let-columns>
@@ -360,6 +360,6 @@
             </p-table>
         </div>
       </app-card>
-        
+
     </div>
 </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { EmpresaService } from 'src/app/services/empresa-service/empresa.service';
@@ -29,6 +30,7 @@ export class CambiarEmpresaComponent implements OnInit {
     private sessionService: SessionService,
     private storageService: StorageService,
     private empresaService: EmpresaService,
+    private router: Router,
     private modalRef: NgbActiveModal
   ) { }
 
@@ -56,6 +58,9 @@ export class CambiarEmpresaComponent implements OnInit {
 
   guardarEmpresa(): void {
     this.storageService.setEmpresaActivaStorage(this.seletedEmpresa);
+    this.router.navigateByUrl('/', { skipLocationChange: false }).then(() => {
+      window.location.reload();
+    });
     this.modalRef.close();
   }
 

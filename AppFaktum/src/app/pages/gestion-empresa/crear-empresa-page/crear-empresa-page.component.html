@@ -2,7 +2,7 @@
   <div class="col-sm-12">
     <app-card [hidHeader]="true" [options]="false">
 
-      <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex align-items-center justify-content-between" role="button">
         <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="empresaCollapsed = !empresaCollapsed" [attr.aria-expanded]="!empresaCollapsed" aria-controls="collapseEmpresa">
           <h5 class="font-weight-bold mb-0">Empresa</h5>
           <i class="fa" [ngClass]="{'fa-chevron-up': empresaCollapsed, 'fa-chevron-down': !empresaCollapsed }"></i>

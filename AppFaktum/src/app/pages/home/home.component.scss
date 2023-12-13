@@ -1,0 +1,12 @@
+.container-img-home {
+  display: flex;
+  height: calc(100vh - 115px);
+  background-color: white;
+  justify-content: center;
+  list-style-type: none;
+
+  .home-img {
+    width: auto;
+    height: 100%;
+  }
+}

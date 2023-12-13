@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoginGuard } from './shared/login-guard/login.guard'
 import { LogoutGuard } from './shared/logout-guard/logout.guard';
 import { NoEmpresaGuard } from './shared/no-empresa/no-empresa.guard';
+import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'sample-page',
+        redirectTo: 'home',
         canActivate: [LoginGuard],
         pathMatch: 'full'
       },
@@ -49,9 +50,9 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
-        path: 'sample-page',
-        loadChildren: () => import('./demo/pages/sample-page/sample-page.module').then(module => module.SamplePageModule),
-        canActivate: [LoginGuard],
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [LoginGuard]
       }
     ]
   },

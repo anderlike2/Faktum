@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CambiarEmpresaComponent } from 'src/app/pages/modals/cambiar-empresa/cambiar-empresa.component';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { SessionService } from 'src/app/services/session-service/session.service';
 
 @Component({
   selector: 'app-nav-content',
@@ -35,7 +36,8 @@ export class NavContentComponent implements OnInit, AfterViewInit {
     private location: Location,
     private sharedService: SharedService,
     private modalService: NgbModal,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private sessionService: SessionService
   ) {
     this.flatConfig = NextConfig.config;
     this.windowWidth = window.innerWidth;
@@ -101,6 +103,10 @@ export class NavContentComponent implements OnInit, AfterViewInit {
 
   get infoUsuario() {
     return this.storageService.getUsuarioStorage();
+  }
+
+  logout() {
+    this.sessionService.logout();
   }
 
   fireLeave() {

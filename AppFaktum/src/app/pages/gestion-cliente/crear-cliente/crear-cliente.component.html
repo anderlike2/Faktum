@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
         <app-card [hidHeader]="true" [options]="false">
-            <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center justify-content-between" role="button">
                 <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="clienteCollapsed = !clienteCollapsed" [attr.aria-expanded]="!clienteCollapsed" aria-controls="collapseEmpresa">
                   <h5 class="font-weight-bold mb-0">Cliente</h5>
                   <i class="fa" [ngClass]="{'fa-chevron-up': clienteCollapsed, 'fa-chevron-down': !clienteCollapsed }"></i>
-                </div>        
+                </div>
             </div>
             <hr>
 
@@ -89,7 +89,7 @@
                                     </ng-container>
                                   </select>
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
                     </div>
                     <div class="col-12">
@@ -155,7 +155,7 @@
                                   <label for="">Página web</label>
                                   <input formControlName="cliePaginaWeb" type="text" class="form-control" placeholder="Página web">
                                 </div>
-                            </div>                    
+                            </div>
                         </div>
                     </div>
                     <div class="col-12">
@@ -213,7 +213,7 @@
                                     </ng-container>
                                   </select>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                   <label for="">Responsabilidad fiscal</label>
@@ -233,7 +233,7 @@
                                     </ng-container>
                                   </select>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                     <div class="col-12">
@@ -247,7 +247,7 @@
                                     </ng-container>
                                   </select>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                   <label for="">Tipo id</label>
@@ -267,7 +267,7 @@
                                     </ng-container>
                                   </select>
                                 </div>
-                            </div>  
+                            </div>
                         </div>
                     </div>
                     <div class="col-12">
@@ -290,12 +290,12 @@
                 </form>
 
                 <ng-container>
-                    <hr />          
+                    <hr />
                     <div class="d-flex justify-content-end">
                       <button class="btn btn-icon btn-primary ml-3" (click)="submitForm()" [placement]="'top'" ngbTooltip="Guardar cliente">
                         <i class="fa fa-save"></i>
                       </button>
-                    </div>          
+                    </div>
                 </ng-container>
 
             </div>
