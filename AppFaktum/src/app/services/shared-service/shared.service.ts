@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedService {
   private collapseSidebar = new BehaviorSubject<boolean>(true);
-  private sucursalEmpresaData = new BehaviorSubject<any>(true);
+  private sucursalEmpresaData = new BehaviorSubject<any>(undefined);
   private clienteEmpresaData = new BehaviorSubject<any>(true);
   collapseSidebarListener$ = this.collapseSidebar.asObservable();
   sucursalEmpresaDataListener$ = this.sucursalEmpresaData.asObservable();

@@ -649,7 +649,7 @@ export class DetalleEmpresaComponent implements OnInit {
 
   verSucursal(value: ISucursal): void {
     this.sharedService.addSucursalEmpresaData(value);
-    this.router.navigate(['/gestion-sucursal/detalle-sucursal']);
+    this.router.navigate(['/gestion-sucursal/editar-sucursal']);
   }
 
 }

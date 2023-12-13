@@ -4,16 +4,19 @@ import { GestionSucursalRoutingModule } from './routes/gestion-sucursal-routing.
 import { DetalleSucursalComponent } from './detalle-sucursal/detalle-sucursal.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { EditarSucursalComponent } from './editar-sucursal/editar-sucursal.component';
+import { TableModule } from 'primeng/table';
 
 
 
 @NgModule({
-  declarations: [DetalleSucursalComponent],
+  declarations: [DetalleSucursalComponent, EditarSucursalComponent],
   imports: [
     CommonModule,
     GestionSucursalRoutingModule,
     SharedModule,
-    NgbModule
+    NgbModule,
+    TableModule
   ]
 })
 export class GestionSucursalModule { }
