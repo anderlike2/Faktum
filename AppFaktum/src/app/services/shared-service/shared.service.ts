@@ -8,9 +8,11 @@ export class SharedService {
   private collapseSidebar = new BehaviorSubject<boolean>(true);
   private sucursalEmpresaData = new BehaviorSubject<any>(undefined);
   private clienteEmpresaData = new BehaviorSubject<any>(true);
+  private sucursalClienteData = new BehaviorSubject<any>(true);
   collapseSidebarListener$ = this.collapseSidebar.asObservable();
   sucursalEmpresaDataListener$ = this.sucursalEmpresaData.asObservable();
   clienteEmpresaDataListener$ = this.clienteEmpresaData.asObservable();
+  sucursalClienteDataListener$ = this.sucursalClienteData.asObservable();
 
   collapseSidebarValue$ = this.collapseSidebar;
 
@@ -26,5 +28,9 @@ export class SharedService {
 
   addClienteEmpresaData(data: any) {
     this.clienteEmpresaData.next(data);
+  }
+
+  addSucursalClienteData(data: any) {
+    this.sucursalClienteData.next(data);
   }
 }

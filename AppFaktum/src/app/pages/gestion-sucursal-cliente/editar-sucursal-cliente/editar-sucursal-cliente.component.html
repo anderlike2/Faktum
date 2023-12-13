@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="sucursalClienteCollapsed = !sucursalClienteCollapsed" [attr.aria-expanded]="!sucursalClienteCollapsed" aria-controls="collapseSucursalCliente">
+                  <h5 class="font-weight-bold mb-0">Sucursal cliente</h5>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': sucursalClienteCollapsed, 'fa-chevron-down': !sucursalClienteCollapsed }"></i>
+                </div>
+            </div>
+            <hr>
+            <div id="collapseSucursalCliente" [ngbCollapse]="sucursalClienteCollapsed">
+
+            </div>
+        </app-card>
+
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="preciosSucursalClienteCollapsed = !preciosSucursalClienteCollapsed" [attr.aria-expanded]="!preciosSucursalClienteCollapsed" aria-controls="collapsePreciosSucursalCliente">
+                  <h5 class="font-weight-bold mb-0">Lista Precios</h5>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': preciosSucursalClienteCollapsed, 'fa-chevron-down': !preciosSucursalClienteCollapsed }"></i>
+                </div>
+            </div>
+            <hr>
+            <div id="collapsePreciosSucursalCliente" [ngbCollapse]="preciosSucursalClienteCollapsed">
+
+            </div>
+        </app-card>
+    </div>
+</div>

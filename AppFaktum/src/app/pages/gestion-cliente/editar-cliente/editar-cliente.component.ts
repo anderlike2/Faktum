@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ICliente } from 'src/app/models/cliente.model';
 import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
@@ -58,7 +59,7 @@ export class EditarClienteComponent implements OnInit {
   seletedContratoCliente: any;
 
   constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService,
-    private sharedService: SharedService, private generalService: GeneralService) { }
+    private sharedService: SharedService, private generalService: GeneralService, private router: Router) { }
 
   ngOnInit(): void {
     this.init();
@@ -319,6 +320,11 @@ export class EditarClienteComponent implements OnInit {
       next: (response) => {
         this.listCiudades = response;
       }})
+  }
+
+  verSucursalCliente(value:ISucursalCliente): void{
+    this.sharedService.addSucursalClienteData(value);
+    this.router.navigate(['./gestion-sucursal-cliente/editar-sucursal-cliente']);
   }
 
 }

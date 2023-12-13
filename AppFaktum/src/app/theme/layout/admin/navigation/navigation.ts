@@ -33,6 +33,21 @@ const NavigationItems = [
     icon: 'feather icon-align-left',
     children: [
       {
+        id: 'usuario',
+        title: 'Usuario ',
+        type: 'collapse',
+        icon: 'fas fa-briefcase',
+        children: [
+          {
+            id: 'detalle-usuario',
+            title: 'Crear usuario',
+            type: 'item',
+            url: '/gestion-usuario/detalle-usuario',
+            external: false
+          }
+        ]
+      },
+      {
         id: 'empresa',
         title: 'Empresa',
         type: 'collapse',
@@ -53,22 +68,7 @@ const NavigationItems = [
             external: false
           }
         ]
-      },
-      {
-        id: 'usuario',
-        title: 'Usuario ',
-        type: 'collapse',
-        icon: 'fas fa-briefcase',
-        children: [
-          {
-            id: 'detalle-usuario',
-            title: 'Crear usuario',
-            type: 'item',
-            url: '/gestion-usuario/detalle-usuario',
-            external: false
-          }
-        ]
-      },
+      },      
       {
         id: 'sucursal',
         title: 'Sucursal',
