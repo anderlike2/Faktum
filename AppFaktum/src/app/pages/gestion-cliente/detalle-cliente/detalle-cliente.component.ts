@@ -299,13 +299,13 @@ export class DetalleClienteComponent implements OnInit {
       next: (response) => {
         if (!response?.success) {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
-          }else{
+        }else{
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
            this.clienteFormGroup.disable();
            this.cargarInformacionCliente(this.informacionCliente.id);
            this.cargarInformacionSucursalesCliente(this.informacionCliente.id);
            this.cargarInformacionContratosCliente(this.informacionCliente.id);
-          }
+        }
       }
     });
   }

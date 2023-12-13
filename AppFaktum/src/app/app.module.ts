@@ -35,7 +35,6 @@ import { CambiarEmpresaComponent } from './pages/modals/cambiar-empresa/cambiar-
 
 import { TableModule } from 'primeng/table';
 import { CrearSucursalComponent } from './pages/modals/crear-sucursal/crear-sucursal.component';
-import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-cliente.component';
 
 @NgModule({
   declarations: [
@@ -55,8 +54,7 @@ import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-client
     ToggleFullScreenDirective,
     LoginComponent,
     CambiarEmpresaComponent,
-    CrearSucursalComponent,
-    CrearClienteComponent
+    CrearSucursalComponent
   ],
   imports: [
     BrowserModule,

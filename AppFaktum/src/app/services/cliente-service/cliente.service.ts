@@ -82,4 +82,13 @@ export class ClienteService {
       data
     );
   }
+
+  crearCliente(data: ICliente): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Cliente/CrearCliente`;
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
+
 }
