@@ -1,21 +1,14 @@
-﻿using DomainLayer.Models;
+﻿
+using DomainLayer.Models;
 
-namespace RepositoryLayer.IRepository
+namespace ServiceLayer.IService
 {
     /// <summary>
     /// Anderson Benavides
-    /// Interface para el manejo de la tabla Ciudad
+    /// Interfaz para el manejo de la tabla ciudad
     /// </summary>
-    public interface ICiudadRepository
+    public interface ICiudadService
     {
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
-        /// Metodo para consultar la tabla
-        /// </summary>
-        /// <returns>Task<Result></returns>
-        Task<Result> ConsultarTabla();
-
         /// <summary>
         /// Katary
         /// Anderson Benavides

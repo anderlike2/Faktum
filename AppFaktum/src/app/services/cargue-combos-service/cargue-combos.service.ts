@@ -120,4 +120,19 @@ export class CargueCombosService {
         })) as IListCombo[])
     );
   }
+
+  obtenerListaCiudadesDepto(idDepto: number): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Ciudad/ConsultarCiudadesDepto?idDepto=${idDepto}`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.ciudNombre,
+          codigo: item.ciudCodigo
+        })) as IListCombo[])
+    );
+  }
+
 }

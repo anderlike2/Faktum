@@ -66,5 +66,42 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la ciudades de un departamento
+        /// </summary>
+        /// <param name="idDepto"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarCiudadesDepto(int idDepto)
+        {
+            Result oRespuesta = new Result();
+            List<CiudadModel>? lstResult = new List<CiudadModel>();
+
+            try
+            {
+                lstResult = await objContext.Ciudad.Where(x => x.Estado == 1 && x.CiudDepto.Id.Equals(idDepto)).ToListAsync();
+
+                oRespuesta.Success = true;
+                if (lstResult.Count > 0)
+                {
+
+                    oRespuesta.Data = mapper.Map<List<CiudadDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<CiudadDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

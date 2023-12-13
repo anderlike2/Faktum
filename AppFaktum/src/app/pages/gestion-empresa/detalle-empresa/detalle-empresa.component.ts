@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { LoaderService } from 'src/app/services/loader-service/loader.service';
+import { CrearClienteComponent } from '../../modals/crear-cliente/crear-cliente.component';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -59,8 +60,7 @@ export class DetalleEmpresaComponent implements OnInit {
     { field: 'clieSegundoNom', header: 'Segundo nombre' },
     { field: 'clieApellidos', header: 'Apellidos' },
     { field: 'clieCorreo', header: 'Correo' },
-    { field: 'clieCelular', header: 'Teléfono' },
-    { field: '', header: 'Opciones' }
+    { field: 'clieCelular', header: 'Teléfono' }
   ];
 
   constructor(
@@ -565,11 +565,6 @@ export class DetalleEmpresaComponent implements OnInit {
       ? 'Campo obligatorio' : '';
   }
 
-  editarForm(): void {
-    this.empresaFormGroup.enable();
-    this.edicionEmpresa = true;
-  }
-
   cancelarEdicion(): void {
     this.cargarInfoEmpresa();
   }
@@ -642,9 +637,20 @@ export class DetalleEmpresaComponent implements OnInit {
     modalSucursal.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
+  abrirModalCrearCliente(): void {
+    const modalCliente = this.modalService.open(
+      CrearClienteComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalCliente.componentInstance.empresaID = this.dataEmpresa.id;
+  }
+
   verCliente(value:IClienteEmpresa): void{
     this.sharedService.addClienteEmpresaData(value);
-    this.router.navigate(['./gestion-cliente/detalle-cliente']);
+    this.router.navigate(['./gestion-cliente/editar-cliente']);
   }
 
   verSucursal(value: ISucursal): void {

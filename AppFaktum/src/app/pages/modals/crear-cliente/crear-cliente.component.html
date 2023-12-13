@@ -1,0 +1,300 @@
+<div class="modal-header">
+    <h5 class="modal-title">Crear cliente</h5>
+</div>
+
+<div class="modal-body">
+
+    <form [formGroup]="clienteFormGroup" class="d-flex flex-column">
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Primer nombre</label>
+                      <input formControlName="cliePrimerNom" type="text" class="form-control" placeholder="Primer nombre">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Segundo nombre</label>
+                      <input formControlName="clieSegundoNom" type="text" class="form-control" placeholder="Segundo nombre">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Apellidos</label>
+                      <input formControlName="clieApellidos" type="text" class="form-control" placeholder="Apellidos">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">País</label>
+                      <select formControlName="cliePaisId" class="form-control">
+                        <ng-container *ngFor="let item of listPaises">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Departamento</label>
+                      <select formControlName="clieDeptoId" class="form-control" (change)="cargarCiudadesDepto($event.target.value)">
+                        <ng-container *ngFor="let item of listDeptos">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="">Ciudad</label>
+                    <select formControlName="clieCiudadId" class="form-control">
+                      <ng-container *ngFor="let item of listCiudades">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Nit</label>
+                      <input formControlName="clieNit" type="text" class="form-control" placeholder="Nit">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">DV</label>
+                      <input formControlName="clieDv" type="text" class="form-control" placeholder="Dígito de verificación">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Empresa</label>
+                      <select formControlName="clieEmpresaId" class="form-control">
+                        <ng-container *ngFor="let item of listEmpresas">
+                          <option [value]="item.id">{{item.emprNombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Ciuu</label>
+                      <input formControlName="clieCiuu" type="text" class="form-control" placeholder="Ciuu">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Id rep legal</label>
+                      <input formControlName="clieIdReprLegal" type="text" class="form-control" placeholder="Id representante legal">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Representante Legal</label>
+                      <input formControlName="clieReprLegal" type="text" class="form-control" placeholder="Representante Legal">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Celular</label>
+                      <input formControlName="clieCelular" type="text" class="form-control" placeholder="Celular">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Teléfono fijo</label>
+                      <input formControlName="clieTelFijo" type="text" class="form-control" placeholder="Teléfono fijo">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Contacto</label>
+                      <input formControlName="clieContacto" type="text" class="form-control" placeholder="Contacto">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Correo</label>
+                      <input formControlName="clieCorreo" type="text" class="form-control" placeholder="Correo">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Correo facturación</label>
+                      <input formControlName="clieCorreoFact" type="text" class="form-control" placeholder="Correo facturación">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Página web</label>
+                      <input formControlName="cliePaginaWeb" type="text" class="form-control" placeholder="Página web">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Dirección</label>
+                      <input formControlName="clieDireccion" type="text" class="form-control" placeholder="Dirección">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Cobertura</label>
+                      <input formControlName="clieCobertura" type="text" class="form-control" placeholder="Cobertura">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Desc global</label>
+                      <input formControlName="clieDescGlobal" type="text" class="form-control" placeholder="Desc global">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Días pago</label>
+                      <input formControlName="clieDiasPago" type="text" class="form-control" placeholder="Días pago">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Estado operación</label>
+                      <input formControlName="clieEstadoOperacion" type="text" class="form-control" placeholder="Estado Operación">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Jurídica</label>
+                      <input formControlName="clieJuridica" type="text" class="form-control" placeholder="Jurídica">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Régimen</label>
+                      <select formControlName="clieRegimenId" class="form-control">
+                        <ng-container *ngFor="let item of listRegimenes">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Responsabilidad fiscal</label>
+                      <select formControlName="clieRespFiscalId" class="form-control">
+                        <ng-container *ngFor="let item of listResponsabilidadesFiscales">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Responsabilidad tributaria</label>
+                      <select formControlName="clieRespTributariaId" class="form-control">
+                        <ng-container *ngFor="let item of listResponsabilidadesTributarias">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Tipo cliente</label>
+                      <select formControlName="clieTipoClienteId" class="form-control">
+                        <ng-container *ngFor="let item of listTipoClientes">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Tipo id</label>
+                      <select formControlName="clieTipoIdId" class="form-control">
+                        <ng-container *ngFor="let item of listTipoIds">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Clase jurídica</label>
+                      <select formControlName="clieClasJuridicaId" class="form-control">
+                        <ng-container *ngFor="let item of listClasesJuridicas">
+                          <option [value]="item.valor">{{item.nombre}}</option>
+                        </ng-container>
+                      </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Localidad</label>
+                      <input formControlName="clieLocalidad" type="text" class="form-control" placeholder="Localidad">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                      <label for="">Razón social</label>
+                      <input formControlName="clieRazonSocial" type="text" class="form-control" placeholder="Razón social">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar sucursal" (click)="guardarCliente()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>

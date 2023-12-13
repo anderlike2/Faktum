@@ -1,0 +1,369 @@
+<div class="row">
+    <div class="col-sm-12">
+      <app-card [hidHeader]="true" [options]="false">
+        <div class="d-flex align-items-center justify-content-between" role="button">
+            <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="clienteCollapsed = !clienteCollapsed" [attr.aria-expanded]="!clienteCollapsed" aria-controls="collapseCliente">
+              <h5 class="font-weight-bold mb-0">Cliente</h5>
+              <i class="fa" [ngClass]="{'fa-chevron-up': clienteCollapsed, 'fa-chevron-down': !clienteCollapsed }"></i>
+            </div>
+        </div>
+        <hr>
+
+        <div id="collapseCliente" [ngbCollapse]="clienteCollapsed">
+            <div class="d-flex flex-row justify-content-end" *ngIf="!edicionCliente">
+              <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Activar edición" (click)="editarForm()">
+                <i class="fa fa-edit"></i>
+              </button>
+            </div>
+            <form [formGroup]="clienteFormGroup" class="d-flex flex-column">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Primer nombre</label>
+                              <input formControlName="primerNombre" type="text" class="form-control" placeholder="Primer nombre">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Segundo nombre</label>
+                              <input formControlName="segundoNombre" type="text" class="form-control" placeholder="Segundo nombre">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Apellidos</label>
+                              <input formControlName="apellidos" type="text" class="form-control" placeholder="Apellidos">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">País</label>
+                              <select formControlName="paisId" class="form-control">
+                                <ng-container *ngFor="let item of listPaises">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Departamento</label>
+                              <select formControlName="deptoId" class="form-control" (change)="cargarCiudadesDepto($event.target.value)">
+                                <ng-container *ngFor="let item of listDeptos">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                          <div class="form-group">
+                            <label for="">Ciudad</label>
+                            <select formControlName="ciudadId" class="form-control">
+                              <ng-container *ngFor="let item of listCiudades">
+                                <option [value]="item.valor">{{item.nombre}}</option>
+                              </ng-container>
+                            </select>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Nit</label>
+                              <input formControlName="nit" type="text" class="form-control" placeholder="Nit">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">DV</label>
+                              <input formControlName="dv" type="text" class="form-control" placeholder="Dígito de verificación">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Empresa</label>
+                              <select formControlName="empresaId" class="form-control">
+                                <ng-container *ngFor="let item of listEmpresas">
+                                  <option [value]="item.id">{{item.emprNombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Ciuu</label>
+                              <input formControlName="ciuu" type="text" class="form-control" placeholder="Ciuu">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Id rep legal</label>
+                              <input formControlName="idRepLegal" type="text" class="form-control" placeholder="Id representante legal">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Representante Legal</label>
+                              <input formControlName="representanteLegal" type="text" class="form-control" placeholder="Representante Legal">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Celular</label>
+                              <input formControlName="celular" type="text" class="form-control" placeholder="Celular">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Teléfono fijo</label>
+                              <input formControlName="telefonoFijo" type="text" class="form-control" placeholder="Teléfono fijo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Contacto</label>
+                              <input formControlName="contacto" type="text" class="form-control" placeholder="Contacto">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Correo</label>
+                              <input formControlName="correo" type="text" class="form-control" placeholder="Correo">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Correo facturación</label>
+                              <input formControlName="correoFacturacion" type="text" class="form-control" placeholder="Correo facturación">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Página web</label>
+                              <input formControlName="paginaWeb" type="text" class="form-control" placeholder="Página web">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Dirección</label>
+                              <input formControlName="direccion" type="text" class="form-control" placeholder="Dirección">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Cobertura</label>
+                              <input formControlName="cobertura" type="text" class="form-control" placeholder="Cobertura">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Desc global</label>
+                              <input formControlName="descGlobal" type="text" class="form-control" placeholder="Desc global">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Días pago</label>
+                              <input formControlName="diasPago" type="text" class="form-control" placeholder="Días pago">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Estado operación</label>
+                              <input formControlName="estadoOperacion" type="text" class="form-control" placeholder="Estado Operación">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Jurídica</label>
+                              <input formControlName="juridica" type="text" class="form-control" placeholder="Jurídica">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Régimen</label>
+                              <select formControlName="regimenId" class="form-control">
+                                <ng-container *ngFor="let item of listRegimenes">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Responsabilidad fiscal</label>
+                              <select formControlName="respFiscalId" class="form-control">
+                                <ng-container *ngFor="let item of listResponsabilidadesFiscales">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Responsabilidad tributaria</label>
+                              <select formControlName="respTributariaId" class="form-control">
+                                <ng-container *ngFor="let item of listResponsabilidadesTributarias">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Tipo cliente</label>
+                              <select formControlName="tipoClienteId" class="form-control">
+                                <ng-container *ngFor="let item of listTipoClientes">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Tipo id</label>
+                              <select formControlName="tipoIdId" class="form-control">
+                                <ng-container *ngFor="let item of listTipoIds">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Clase jurídica</label>
+                              <select formControlName="clasJuridicaId" class="form-control">
+                                <ng-container *ngFor="let item of listClasesJuridicas">
+                                  <option [value]="item.valor">{{item.nombre}}</option>
+                                </ng-container>
+                              </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Localidad</label>
+                              <input formControlName="localidad" type="text" class="form-control" placeholder="Localidad">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                              <label for="">Razón social</label>
+                              <input formControlName="razonSocial" type="text" class="form-control" placeholder="Razón social">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ng-container *ngIf="edicionCliente">
+                <hr />
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                    <i class="fa fa-ban"></i>
+                  </button>
+                  <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar cliente" (click)="actualizarCliente()">
+                    <i class="fa fa-save"></i>
+                  </button>
+                </div>
+            </ng-container>
+        </div>
+      </app-card>
+
+      <app-card [hidHeader]="true" [options]="false">
+        <div class="d-flex align-items-center justify-content-between" role="button">
+            <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="sucursalClienteCollapsed = !sucursalClienteCollapsed" [attr.aria-expanded]="!sucursalClienteCollapsed" aria-controls="collapseSucursalCliente">
+              <h5 class="font-weight-bold mb-0">Sucursales Cliente</h5>
+              <i class="fa" [ngClass]="{'fa-chevron-up': sucursalClienteCollapsed, 'fa-chevron-down': !sucursalClienteCollapsed }"></i>
+            </div>
+        </div>
+        <hr>
+        <div id="collapseSucursalCliente" [ngbCollapse]="sucursalClienteCollapsed">
+            <p-table [columns]="colsSucursalesCliente" [value]="listSucursalesCliente" selectionMode="single" [(selection)]="seletedSucursalCliente" [scrollable]="true" [rows]="10">
+                    <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr style="height:34px" [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+      </app-card>
+
+      <app-card [hidHeader]="true" [options]="false">
+        <div class="d-flex align-items-center justify-content-between" role="button">
+            <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="contratoCollapsed = !contratoCollapsed" [attr.aria-expanded]="!contratoCollapsed" aria-controls="collapseContratos">
+              <h5 class="font-weight-bold mb-0">Contratos Cliente</h5>
+              <i class="fa" [ngClass]="{'fa-chevron-up': contratoCollapsed, 'fa-chevron-down': !contratoCollapsed }"></i>
+            </div>
+        </div>
+        <hr>
+        <div id="collapseContratos" [ngbCollapse]="contratoCollapsed">
+            <p-table [columns]="colsContratosCliente" [value]="listContratosCliente" selectionMode="single" [(selection)]="seletedContratoCliente" [scrollable]="true" [rows]="10">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                    </tr>
+                    </ng-template>
+
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr style="height:34px" [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+      </app-card>
+
+    </div>
+</div>

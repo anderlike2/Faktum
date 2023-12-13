@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GestionClienteRoutingModule } from './routes/gestion-cliente-routing.module';
 import { GestionClienteComponent } from './gestion-cliente.component';
 import { DetalleClienteComponent } from './detalle-cliente/detalle-cliente.component';
-import { CrearClienteComponent } from './crear-cliente/crear-cliente.component';
+import { EditarClienteComponent } from './editar-cliente/editar-cliente.component';
 import { SharedModule } from '../../theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
@@ -13,7 +13,7 @@ import { TableModule } from 'primeng/table';
   declarations: [
     GestionClienteComponent,
     DetalleClienteComponent,
-    CrearClienteComponent
+    EditarClienteComponent
   ],
   imports: [
     CommonModule,

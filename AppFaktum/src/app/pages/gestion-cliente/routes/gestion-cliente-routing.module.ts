@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetalleClienteComponent } from '../detalle-cliente/detalle-cliente.component';
-import { CrearClienteComponent } from '../crear-cliente/crear-cliente.component';
+import { EditarClienteComponent } from '../editar-cliente/editar-cliente.component';
 
 const gestionClienteRoutes: Routes = [
   {
@@ -9,8 +9,8 @@ const gestionClienteRoutes: Routes = [
     component: DetalleClienteComponent
   },
   {
-    path: 'crear-cliente',
-    component: CrearClienteComponent
+    path: 'editar-cliente',
+    component: EditarClienteComponent
   }
 ];
 

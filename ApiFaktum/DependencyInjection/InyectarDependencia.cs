@@ -89,6 +89,7 @@ namespace DependencyInjection
             services.AddScoped(typeof(IListaPreciosService), typeof(ListaPreciosService));
             services.AddScoped(typeof(IResolucionService), typeof(ResolucionService));
             services.AddScoped(typeof(IFormatoImpresionService), typeof(FormatoImpresionService));
+            services.AddScoped(typeof(ICiudadService), typeof(CiudadService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 

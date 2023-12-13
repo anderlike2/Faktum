@@ -96,13 +96,6 @@ const NavigationItems = [
             type: 'item',
             url: '/gestion-cliente/detalle-cliente',
             external: false
-          },
-          {
-            id: 'crear-cliente',
-            title: 'Crear cliente',
-            type: 'item',
-            url: '/gestion-cliente/crear-cliente',
-            external: false
           }
         ]
       }

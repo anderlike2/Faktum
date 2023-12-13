@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICliente } from 'src/app/models/cliente.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
@@ -14,12 +15,15 @@ import { GeneralService } from 'src/app/services/general-service/general.service
   styleUrls: ['./crear-cliente.component.scss']
 })
 export class CrearClienteComponent implements OnInit {
+
+  @Input() empresaID: number;
   
   clienteFormGroup: FormGroup;
   fb = new FormBuilder();
 
   listPaises: IListCombo[] = [];
   listDeptos: IListCombo[] = [];
+  listCiudades: IListCombo[] = [];
   listEmpresas: IEmpresa[] = [];
   listRegimenes: IListCombo[] = [];
   listResponsabilidadesFiscales: IListCombo[] = [];
@@ -31,7 +35,7 @@ export class CrearClienteComponent implements OnInit {
   clienteCollapsed: boolean = false;
 
   constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService,
-    private generalService: GeneralService) { }
+    private generalService: GeneralService, private modalRef: NgbActiveModal) { }
 
   ngOnInit(): void {
     this.init();
@@ -138,7 +142,15 @@ export class CrearClienteComponent implements OnInit {
     });
   }
 
-  submitForm(): void {
+  cargarCiudadesDepto(idDepto: number): void{
+    this.cargueCombosService.obtenerListaCiudadesDepto(idDepto)
+    .subscribe({
+      next: (response) => {
+        this.listCiudades = response;
+      }})
+  }
+
+  guardarCliente(): void {
     if (this.clienteFormGroup.invalid) {
       this.clienteFormGroup.markAllAsTouched();
       return;
@@ -153,12 +165,15 @@ export class CrearClienteComponent implements OnInit {
         if (!response?.success) {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
+           this.cerrarModal();
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
-           this.clienteFormGroup.reset();
         }
       }
     });
+  }
 
+  cerrarModal() {
+    this.modalRef.close();
   }
 
 }
