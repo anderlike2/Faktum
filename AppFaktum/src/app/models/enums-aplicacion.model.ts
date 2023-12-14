@@ -6,13 +6,15 @@ export enum TipoListEnum {
   PAIS= 'pais',
   DEPARTAMENTO= 'depto',
   ROL= 'rol',
+  COBERTURA = 'cobertura',
+  MODALIDAD_PAGO = 'modalidadPago'
 }
 
 export enum TiposMensajeEnum {
   WARNINNG = 'warning',
   SUCCESS = 'success',
   QUESTION = 'question',
-  ERROR = 'error'  
+  ERROR = 'error'
 }
 
 export enum GeneralesEnum {

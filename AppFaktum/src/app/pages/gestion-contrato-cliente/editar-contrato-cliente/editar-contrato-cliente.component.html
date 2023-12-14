@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [hidHeader]="true" [options]="false">
+
+      <div class="d-flex align-items-center justify-content-between" role="button">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="contratoCollapsed = !contratoCollapsed" [attr.aria-expanded]="!contratoCollapsed" aria-controls="collapseContratoCliente">
+          <h5 class="font-weight-bold mb-0">Contrato cliente</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': contratoCollapsed, 'fa-chevron-down': !contratoCollapsed }"></i>
+        </div>
+
+      </div>
+
+        <hr>
+
+        <div id="collapseContratoCliente" [ngbCollapse]="contratoCollapsed">
+
+          <div class="d-flex flex-row justify-content-end" *ngIf="!edicionContratoCliente">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Activar edición" (click)="editarForm()">
+              <i class="fa fa-edit"></i>
+            </button>
+          </div>
+
+          <form [formGroup]="contratoClienteFormGroup">
+
+            <div class="col-12">
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Nombre contrato</label>
+                    <input formControlName="cosaContrato" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Nit cliente</label>
+                    <input formControlName="cosaNitCliente" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Póliza</label>
+                    <input formControlName="cosaPoliza" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Cobertura</label>
+                    <select formControlName="cosaCobeId" class="form-control">
+                      <ng-container *ngFor="let item of listaCobertura">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Empresa</label>
+                    <select formControlName="cosaEmpresaId" class="form-control">
+                      <ng-container *ngFor="let item of listaEmpresas">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Modalidad pago</label>
+                    <select formControlName="cosaMopaId" class="form-control">
+                      <ng-container *ngFor="let item of listaModalidadPago">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+
+          <ng-container *ngIf="edicionContratoCliente">
+
+            <hr />
+
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                <i class="fa fa-ban"></i>
+              </button>
+              <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar contrato cliente" (click)="guardarContratoCliente()">
+                <i class="fa fa-save"></i>
+              </button>
+            </div>
+
+          </ng-container>
+
+        </div>
+
+    </app-card>
+
+  </div>
+</div>

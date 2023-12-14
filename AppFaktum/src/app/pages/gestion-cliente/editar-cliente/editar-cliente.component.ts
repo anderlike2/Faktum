@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICliente } from 'src/app/models/cliente.model';
 import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
@@ -11,6 +12,7 @@ import { CargueCombosService } from 'src/app/services/cargue-combos-service/carg
 import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
+import { CrearContratoClienteComponent } from '../../modals/crear-contrato-cliente/crear-contrato-cliente.component';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -59,7 +61,8 @@ export class EditarClienteComponent implements OnInit {
   seletedContratoCliente: any;
 
   constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService,
-    private sharedService: SharedService, private generalService: GeneralService, private router: Router) { }
+    private sharedService: SharedService, private generalService: GeneralService, private router: Router,
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.init();
@@ -100,7 +103,7 @@ export class EditarClienteComponent implements OnInit {
       estadoOperacion: [ { value: '', disabled: false }, [  ] ],
       juridica: [ { value: '', disabled: false }, [  ] ],
       localidad: [ { value: '', disabled: false }, [  ] ],
-      idRepLegal: [ { value: '', disabled: false }, [  ] ],      
+      idRepLegal: [ { value: '', disabled: false }, [  ] ],
       representanteLegal: [ { value: '', disabled: false }, [  ] ],
       paisId: [ { value: '', disabled: false }, [  ] ],
       deptoId: [ { value: '', disabled: false }, [  ] ],
@@ -216,7 +219,7 @@ export class EditarClienteComponent implements OnInit {
             clasJuridicaId: response.clieClasJuridicaId,
             razonSocial: response.clieRazonSocial
           });
-    
+
           this.clienteFormGroup.disable();
           this.edicionCliente = false;
         }
@@ -325,6 +328,22 @@ export class EditarClienteComponent implements OnInit {
   verSucursalCliente(value:ISucursalCliente): void{
     this.sharedService.addSucursalClienteData(value);
     this.router.navigate(['./gestion-sucursal-cliente/editar-sucursal-cliente']);
+  }
+
+  verContratoCliente(value:IContratoCliente): void{
+    this.sharedService.addContratoClienteData(value);
+    this.router.navigate(['./gestion-contrato-cliente/editar-contrato-cliente']);
+  }
+
+  abrirModalCrearContrato(): void {
+    const modalCliente = this.modalService.open(
+      CrearContratoClienteComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalCliente.componentInstance.clienteID = this.informacionCliente.id;
   }
 
 }

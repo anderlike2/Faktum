@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
+import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
@@ -14,6 +15,7 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 export class DetalleClienteComponent implements OnInit {
 
   clienteCollapsed: boolean = false;
+
   listClientesEmpresaObs: Observable<IClienteEmpresa[]>;
   dataEmpresa: IEmpresa;
 

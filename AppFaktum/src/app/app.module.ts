@@ -37,6 +37,7 @@ import { TableModule } from 'primeng/table';
 import { CrearSucursalComponent } from './pages/modals/crear-sucursal/crear-sucursal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-cliente.component';
+import { CrearContratoClienteComponent } from './pages/modals/crear-contrato-cliente/crear-contrato-cliente.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-client
     CambiarEmpresaComponent,
     CrearSucursalComponent,
     HomeComponent,
-    CrearClienteComponent
+    CrearClienteComponent,
+    CrearContratoClienteComponent
   ],
   imports: [
     BrowserModule,
