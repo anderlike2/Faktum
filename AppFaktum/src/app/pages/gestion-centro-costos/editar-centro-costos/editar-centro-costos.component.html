@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [hidHeader]="true" [options]="false">
+
+      <div class="d-flex align-items-center justify-content-between" role="button">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="centroCostosCollapsed = !centroCostosCollapsed" [attr.aria-expanded]="!centroCostosCollapsed" aria-controls="collapseCentroCostos">
+          <h5 class="font-weight-bold mb-0">Centro de costos</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': centroCostosCollapsed, 'fa-chevron-down': !centroCostosCollapsed }"></i>
+        </div>
+
+      </div>
+
+        <hr>
+
+        <div id="collapseCentroCostos" [ngbCollapse]="centroCostosCollapsed">
+
+          <div class="d-flex flex-row justify-content-end" *ngIf="!centroCostosCollapsed">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Activar edición" (click)="editarForm()">
+              <i class="fa fa-edit"></i>
+            </button>
+          </div>
+
+          <form [formGroup]="centroCostosFormGroup">
+
+            <div class="col-12">
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input formControlName="ccosNombre" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Código</label>
+                    <input formControlName="ccosCodigo" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+
+          <ng-container *ngIf="edicionCentroCostos">
+
+            <hr />
+
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                <i class="fa fa-ban"></i>
+              </button>
+              <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar contrato cliente" (click)="guardarCentroCostos()">
+                <i class="fa fa-save"></i>
+              </button>
+            </div>
+
+          </ng-container>
+
+        </div>
+
+    </app-card>
+
+  </div>
+</div>

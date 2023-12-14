@@ -60,6 +60,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-centro-costos',
+        loadChildren: () => import('./pages/gestion-centro-costos/gestion-centro-costos.module').then(m => m.GestionCentroCostosModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

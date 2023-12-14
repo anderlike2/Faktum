@@ -7,7 +7,8 @@ export enum TipoListEnum {
   DEPARTAMENTO= 'depto',
   ROL= 'rol',
   COBERTURA = 'cobertura',
-  MODALIDAD_PAGO = 'modalidadPago'
+  MODALIDAD_PAGO = 'modalidadPago',
+  TIPO_DESCUENTO = 'tipoDescuento'
 }
 
 export enum TiposMensajeEnum {

@@ -17,6 +17,9 @@ import { ISucursal } from 'src/app/models/sucursal.model';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { LoaderService } from 'src/app/services/loader-service/loader.service';
 import { CrearClienteComponent } from '../../modals/crear-cliente/crear-cliente.component';
+import { ICentroCostos } from 'src/app/models/centro-costos.model';
+import { CrearCentroCostosComponent } from '../../modals/crear-centro-costos/crear-centro-costos.component';
+import { CentroCostosService } from 'src/app/services/centro-costos-service/centro-costos.service';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -36,6 +39,7 @@ export class DetalleEmpresaComponent implements OnInit {
   listClasJuridica: IListCombo[] = [];
   listSucursalesEmpresaObs: Observable<ISucursalEmpresa[]>;
   listClientesEmpresaObs: Observable<IClienteEmpresa[]>;
+  listCentroCostosEmpresaObs: Observable<ICentroCostos[]>;
   edicionEmpresa: boolean = false;
 
   dataEmpresa: IEmpresa;
@@ -46,6 +50,7 @@ export class DetalleEmpresaComponent implements OnInit {
   empresaCollapsed: boolean = true;
   clienteCollapsed: boolean = true;
   sucursalCollapsed: boolean = true;
+  centroCostoCollapsed: boolean = true;
 
   colsSucursalesEmpresa: any[] = [
     { field: 'sucuNombre', header: 'Nombre' },
@@ -63,10 +68,16 @@ export class DetalleEmpresaComponent implements OnInit {
     { field: 'clieCelular', header: 'Teléfono' }
   ];
 
+  colsCentroCostosEmpresa: any[] = [
+    { field: 'ccosNombre', header: 'Nombre' },
+    { field: 'ccosCodigo', header: 'Código' }
+  ];
+
   constructor(
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
     private detalleEmpresaService: DetalleEmpresaService,
+    private centroCostosService: CentroCostosService,
     private sharedService: SharedService,
     private modalService: NgbModal,
     private router: Router,
@@ -136,6 +147,9 @@ export class DetalleEmpresaComponent implements OnInit {
 
     this.listClientesEmpresaObs =
       this.detalleEmpresaService.obtenerInformacionClientesEmpresaId(this.dataEmpresa.id);
+
+    this.listCentroCostosEmpresaObs =
+      this.centroCostosService.obtenerCentroCostosPorEmpresaId(this.dataEmpresa.id);
   }
 
   cargarInfoEmpresa(): void {
@@ -648,6 +662,17 @@ export class DetalleEmpresaComponent implements OnInit {
     modalCliente.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
+  abrirModalCrearCentroCostos(): void {
+    const modalCentroCostos = this.modalService.open(
+      CrearCentroCostosComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalCentroCostos.componentInstance.empresaID = this.dataEmpresa.id;
+  }
+
   verCliente(value:IClienteEmpresa): void{
     this.sharedService.addClienteEmpresaData(value);
     this.router.navigate(['./gestion-cliente/editar-cliente']);
@@ -656,6 +681,11 @@ export class DetalleEmpresaComponent implements OnInit {
   verSucursal(value: ISucursal): void {
     this.sharedService.addSucursalEmpresaData(value);
     this.router.navigate(['/gestion-sucursal/editar-sucursal']);
+  }
+
+  verCentroCostos(value: ICentroCostos): void {
+    this.sharedService.addCentroCostosData(value);
+    this.router.navigate(['/gestion-centro-costos/editar-centro-costos']);
   }
 
 }
