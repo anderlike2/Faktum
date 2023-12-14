@@ -747,6 +747,10 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("EmprLocalidad")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmprLogo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("EmprMail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1194,7 +1198,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FormEmpresaId")
+                    b.Property<int?>("FormEmpresaId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("FormNombre")

@@ -14,7 +14,5 @@ namespace DomainLayer.Models
         //Referencias
         [Required]
         public virtual ICollection<EmpresaModel>? JuriEmpresas { get; set; }
-        [Required]
-        public virtual ICollection<ClasJuridicaModel>? JuriClasesJuridicas { get; set; }
     }
 }

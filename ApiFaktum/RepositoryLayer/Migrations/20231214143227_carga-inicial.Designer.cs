@@ -12,8 +12,8 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231205013811_carga_inicial")]
-    partial class carga_inicial
+    [Migration("20231214143227_carga-inicial")]
+    partial class cargainicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -749,6 +749,10 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("EmprLocalidad")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("EmprLogo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("EmprMail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1196,7 +1200,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("FormEmpresaId")
+                    b.Property<int?>("FormEmpresaId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("FormNombre")

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DomainLayer.Dtos
 {
@@ -30,6 +31,7 @@ namespace DomainLayer.Dtos
         public string? EmprRepLegal { get; set; }        
         public string? EmprTelefono { get; set; }        
         public string? EmprHabilitacion { get; set; }
+        public string? EmprLogo { get; set; }
 
         //Referencias
         public int EmprTipoClienteId { get; set; }

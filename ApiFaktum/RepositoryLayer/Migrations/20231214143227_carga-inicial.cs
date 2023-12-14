@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class carga_inicial : Migration
+    public partial class cargainicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -575,6 +575,7 @@ namespace RepositoryLayer.Migrations
                     EmprRepLegal = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmprTelefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmprHabilitacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmprLogo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmprTipoClienteId = table.Column<int>(type: "int", nullable: false),
                     EmprTipoIdId = table.Column<int>(type: "int", nullable: false),
                     EmprRespTributId = table.Column<int>(type: "int", nullable: false),

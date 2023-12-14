@@ -55,6 +55,8 @@ namespace DomainLayer.Models
         public string? EmprTelefono { get; set; }       
         [Required]
         public string? EmprHabilitacion { get; set; }
+        [Required]
+        public string? EmprLogo { get; set; }
 
         //Referencias        
         [Required]
