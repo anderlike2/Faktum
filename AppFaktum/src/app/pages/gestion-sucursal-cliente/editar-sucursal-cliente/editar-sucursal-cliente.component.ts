@@ -126,7 +126,7 @@ export class EditarSucursalClienteComponent implements OnInit {
     formData.fechaModificacion = this.informacionSucursalCliente.fechaModificacion;
     formData.suclClienteId = this.informacionSucursalCliente.suclClienteId;
 
-    this.sucursalClienteService.actualizarCliente(formData)
+    this.sucursalClienteService.actualizarSucursalCliente(formData)
     .subscribe({
       next: (response) => {
         if (!response?.success) {

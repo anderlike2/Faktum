@@ -13,6 +13,7 @@ import { ClienteService } from 'src/app/services/cliente-service/cliente.service
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { CrearContratoClienteComponent } from '../../modals/crear-contrato-cliente/crear-contrato-cliente.component';
+import { CrearSucursalClienteComponent } from '../../modals/crear-sucursal-cliente/crear-sucursal-cliente.component';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -342,8 +343,17 @@ export class EditarClienteComponent implements OnInit {
         backdrop: false
       }
     );
-
     modalCliente.componentInstance.clienteID = this.informacionCliente.id;
+  }
+
+  abrirModalCrearSucursalCliente(): void {
+    const modalSucursalCliente = this.modalService.open(
+      CrearSucursalClienteComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+    modalSucursalCliente.componentInstance.clienteID = this.informacionCliente.id;
   }
 
 }

@@ -316,29 +316,34 @@
         </div>
         <hr>
         <div id="collapseSucursalCliente" [ngbCollapse]="sucursalClienteCollapsed">
-            <p-table [columns]="colsSucursalesCliente" [value]="listSucursalesCliente" selectionMode="single" [(selection)]="seletedSucursalCliente" [scrollable]="true" [rows]="10">
-                    <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <th *ngFor="let col of columns">
-                            {{col.header}}
-                        </th>
-                        <th></th>
-                    </tr>
-                    </ng-template>
+          <div class="d-flex justify-content-end m-2">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear sucursal cliente" (click)="abrirModalCrearSucursalCliente()">
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <p-table [columns]="colsSucursalesCliente" [value]="listSucursalesCliente" selectionMode="single" [(selection)]="seletedSucursalCliente" [scrollable]="true" [rows]="10">
+                  <ng-template pTemplate="header" let-columns>
+                  <tr>
+                      <th *ngFor="let col of columns">
+                          {{col.header}}
+                      </th>
+                      <th></th>
+                  </tr>
+                  </ng-template>
 
-                    <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr style="height:34px" [pSelectableRow]="rowData">
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
-                        </td>
-                        <td>
-                          <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver Sucursal Cliente" (click)="verSucursalCliente(rowData)">
-                            <i class="fa fa-search"></i>
-                          </button>
-                        </td>
-                    </tr>
-                </ng-template>
-            </p-table>
+                  <ng-template pTemplate="body" let-rowData let-columns="columns">
+                  <tr style="height:34px" [pSelectableRow]="rowData">
+                      <td *ngFor="let col of columns">
+                          {{rowData[col.field]}}
+                      </td>
+                      <td>
+                        <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver Sucursal Cliente" (click)="verSucursalCliente(rowData)">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </td>
+                  </tr>
+              </ng-template>
+          </p-table>
         </div>
       </app-card>
 

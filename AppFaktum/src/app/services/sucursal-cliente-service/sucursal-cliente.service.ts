@@ -26,7 +26,15 @@ export class SucursalClienteService {
     );
   }
 
-  actualizarCliente(data: ISucursalCliente): Observable<any> {
+  crearSucursalCliente(data: ISucursalCliente): Observable<any> {
+    const url = `${this.environment.faktumUrl}/SucursalCliente/CrearSucursalCliente`;
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
+
+  actualizarSucursalCliente(data: ISucursalCliente): Observable<any> {
     const url = `${this.environment.faktumUrl}/SucursalCliente/ActualizarSucursalCliente`;
     return this.httpClient.post(
       url,
