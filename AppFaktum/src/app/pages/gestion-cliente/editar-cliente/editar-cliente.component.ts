@@ -248,7 +248,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   cancelarEdicion(): void {
-    this.cargarInformacionCliente(3);
+    this.cargarInformacionCliente(this.informacionCliente.id);
   }
 
   actualizarCliente(): void{

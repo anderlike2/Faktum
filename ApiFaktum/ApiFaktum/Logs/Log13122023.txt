@@ -1,0 +1,12 @@
+
+------------------------------------------------------------------------------------
+miércoles, 13 de diciembre de 2023 7:53:22.02 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 13 de diciembre de 2023 7:54:12.75 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+miércoles, 13 de diciembre de 2023 7:54:57.71 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.

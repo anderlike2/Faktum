@@ -153,5 +153,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la sucursal por id
+        /// </summary>
+        /// <param name="idSucursalCliente"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarSucursalClienteId(int idSucursalCliente)
+        {
+            Result oRespuesta = new Result();
+            SucursalClienteModel? result = new SucursalClienteModel();
+
+            try
+            {
+                result =
+                    await objContext.SucursalCliente.FirstOrDefaultAsync(x => x.Id.Equals(idSucursalCliente));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<SucursalClienteDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<SucursalClienteDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }
