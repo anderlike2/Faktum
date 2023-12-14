@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objProductoRepository.EliminarProducto(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar un producto por id
+        /// </summary>
+        /// <param name="idProducto"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarProductoId(int idProducto)
+        {
+            return objProductoRepository.ConsultarProductoId(idProducto);
+        }
     }
 }

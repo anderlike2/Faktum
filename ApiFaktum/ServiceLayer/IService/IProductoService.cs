@@ -44,5 +44,14 @@ namespace ServiceLayer.IService
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarProducto(ProductoDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar un producto por id
+        /// </summary>
+        /// <param name="idProducto"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarProductoId(int idProducto);
     }
 }

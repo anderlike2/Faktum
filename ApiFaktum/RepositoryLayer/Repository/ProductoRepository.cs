@@ -152,5 +152,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar un producto por id
+        /// </summary>
+        /// <param name="idProducto"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarProductoId(int idProducto)
+        {
+            Result oRespuesta = new Result();
+            ProductoModel? result = new ProductoModel();
+
+            try
+            {
+                result =
+                    await objContext.Producto.FirstOrDefaultAsync(x => x.Id.Equals(idProducto));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<ProductoDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ProductoDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }
