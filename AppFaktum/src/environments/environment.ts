@@ -7,8 +7,8 @@ export const environment = {
 
   key: 'ZX$JMv6ddlOiCId5PxHpTdEg97&g5w4Zl4GOX#RN5EyYxA5q@vp0gJ!$CX3HSXba$ofXi64rrdHqlO4DQt&vUe0ibIYs%2Yz0*Bv',
   apiKey: 'h%DY7tPw*MG22lBMdcnSSSTCJR9S#JfnY5hfYH1D26z9QhFnI#',
-
   faktumUrl: 'https://localhost:7107/api',
+  keyAes: '0123456789abcdef'
 };
 
 /*

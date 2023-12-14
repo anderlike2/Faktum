@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import swal from 'sweetalert2';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { IUsuario } from 'src/app/models/usuario.model';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
     private loginService: LoginService,
     private authService: AuthService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -77,6 +79,8 @@ export class LoginComponent implements OnInit {
     }
 
     const formValue = this.loginFormGroup.getRawValue();
+    //const encrypt = this.generalService.encrypt(formValue.clave);
+    //const decrypt = this.generalService.decrypt(encrypt);
 
     const formBody: ILogin = {
       usuario: formValue.usuario,

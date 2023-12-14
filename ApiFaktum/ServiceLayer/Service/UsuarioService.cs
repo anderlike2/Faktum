@@ -3,6 +3,9 @@ using DomainLayer.Dtos;
 using DomainLayer.Models;
 using RepositoryLayer.IRepository;
 using ServiceLayer.IService;
+using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace ServiceLayer.Service
 {
@@ -48,6 +51,14 @@ namespace ServiceLayer.Service
         /// <returns>Task<Result></returns>
         public async Task<Result> ValidarLogin(UsuarioFiltroDto objModel)
         {
+            //byte[] encrypted = ManejoEncriptacion.EncryptAES("Admin1980");
+            //string s = System.Text.Encoding.UTF8.GetString(encrypted, 0, encrypted.Length);
+            //string y = ManejoEncriptacion.DecryptAES(encrypted);
+            //byte[] t1 = ManejoEncriptacion.Encrypt("Admin1980");
+            //string t3 = ManejoEncriptacion.Decrypt2(t1);
+
+            string decryptedText = ManejoEncriptacion.DecryptAES(Encoding.ASCII.GetBytes(objModel.UsuaPassword));
+
             Result oRespuesta = new Result();
 
             Task<Result> informacionUsuario = objUsuarioRepository.ConsultarUsuario(objModel);
