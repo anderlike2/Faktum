@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -22,11 +23,13 @@ export class CrearSucursalComponent implements OnInit {
   listCentroCostos: IListCombo[] = [];
   listDeptos: IListCombo[] = [];
   listCiudades: IListCombo[] = [];
+  listFormatosImpresion: IListCombo[] = [];
 
   constructor(
     private detalleEmpresaService: DetalleEmpresaService,
     private cargueCombosService: CargueCombosService,
-    private modalRef: NgbActiveModal
+    private modalRef: NgbActiveModal,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -52,7 +55,12 @@ export class CrearSucursalComponent implements OnInit {
         this.listDeptos = response;
       }
     });
-
+    this.cargueCombosService.obtenerListaFormatosImpresionEmpresa(this.empresaID)
+    .subscribe({
+      next: (response) => {
+        this.listFormatosImpresion = response;
+      }
+    });
   }
 
   initForm(): void {
@@ -128,6 +136,10 @@ export class CrearSucursalComponent implements OnInit {
       sucuCentroCostosId: [ { value: '', disabled: false }, [
         Validators.required
       ]
+    ],
+      sucuFormatoImpresionId: [ { value: '', disabled: false }, [
+        Validators.required
+      ]
     ]
     };
 
@@ -152,9 +164,13 @@ export class CrearSucursalComponent implements OnInit {
     dataBody.sucuPrincipal = 0;
 
     this.detalleEmpresaService.crearSucursal(dataBody).subscribe({
-      next: (response: any) => {
-        this.modalRef.close();
-        swal.fire(``, response.message, 'success');
+      next: (response: any) => {        
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        }else{
+          this.modalRef.close();
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+        }
       }
     });
   }

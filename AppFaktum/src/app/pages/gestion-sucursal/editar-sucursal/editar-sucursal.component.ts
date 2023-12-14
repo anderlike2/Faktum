@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import swal from 'sweetalert2';
 
@@ -23,11 +25,15 @@ export class EditarSucursalComponent implements OnInit {
   fb = new FormBuilder();
 
   listCentroCostos: IListCombo[] = [];
+  listFormatosImpresion: IListCombo[] = [];
+  listDeptos: IListCombo[] = [];
+  listCiudades: IListCombo[] = [];
 
   constructor(
     private detalleEmpresaService: DetalleEmpresaService,
     private cargueCombosService: CargueCombosService,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +50,10 @@ export class EditarSucursalComponent implements OnInit {
 
     this.initForm();
     this.cargarListaCombox();
+
+    if(this.sucursalData.sucuDepto != undefined && this.sucursalData.sucuDepto != null && this.sucursalData.sucuDepto != "")
+            this.cargarCiudadesDepto(Number(this.sucursalData.sucuDepto));
+
     this.cargarDataForm();
   }
 
@@ -55,7 +65,18 @@ export class EditarSucursalComponent implements OnInit {
         this.listCentroCostos = response;
       }
     });
-
+    this.cargueCombosService.obtenerListaFormatosImpresionEmpresa(this.sucursalData.sucuEmpresaId)
+    .subscribe({
+      next: (response) => {
+        this.listFormatosImpresion = response;
+      }
+    });
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.DEPARTAMENTO)
+    .subscribe({
+      next: (response) => {
+        this.listDeptos = response;
+      }
+    });
   }
 
   cargarDataForm(): void {
@@ -148,6 +169,10 @@ export class EditarSucursalComponent implements OnInit {
       sucuCentroCostosId: [ { value: '', disabled: false }, [
         Validators.required
       ]
+    ],
+      sucuFormatoImpresionId: [ { value: '', disabled: false }, [
+        Validators.required
+      ]
     ]
     };
 
@@ -174,11 +199,23 @@ export class EditarSucursalComponent implements OnInit {
     dataBody.fechaModificacion = this.sucursalData.fechaModificacion;
 
     this.detalleEmpresaService.actualizarSucursal(dataBody).subscribe({
-      next: (response: any) => {
-        this.sucursalFormGroup.disable();
-        swal.fire(``, response.message, 'success');
+      next: (response: any) => {        
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        }else{
+          this.sucursalFormGroup.disable();
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+        }
       }
     });
+  }
+
+  cargarCiudadesDepto(idDepto: number): void{
+    this.cargueCombosService.obtenerListaCiudadesDepto(idDepto)
+    .subscribe({
+      next: (response) => {
+        this.listCiudades = response;
+      }})
   }
 
 }

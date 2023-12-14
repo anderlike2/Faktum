@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objSucursalRepository.EliminarSucursal(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la sucursal por id
+        /// </summary>
+        /// <param name="idSucursal"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarSucursalId(int idSucursal)
+        {
+            return objSucursalRepository.ConsultarSucursalId(idSucursal);
+        }
     }
 }

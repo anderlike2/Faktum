@@ -125,18 +125,6 @@
       </div>
 
       <div class="row">
-        <!-- <div class="col-6">
-          <div class="form-group">
-            <label for="">Empresa</label>
-            <select formControlName="sucuEmpresaId" class="form-control"></select>
-          </div>
-        </div> -->
-        <!-- <div class="col-6">
-          <div class="form-group">
-            <label for="">Formato impreso</label>
-            <select formControlName="sucuFormatoImpresionId" class="form-control"></select>
-          </div>
-        </div> -->
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda factura</label>
@@ -152,12 +140,20 @@
       </div>
 
       <div class="row">
-
-
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda nota debito</label>
             <input formControlName="sucuLeyendaNotaDebito" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="">Formato impresión</label>
+            <select formControlName="sucuFormatoImpresionId" class="form-control">
+              <ng-container *ngFor="let item of listFormatosImpresion">
+                <option [value]="item.valor">{{ item.nombre }}</option>
+              </ng-container>
+            </select>
           </div>
         </div>
       </div>

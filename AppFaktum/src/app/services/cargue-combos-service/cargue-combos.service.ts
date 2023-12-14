@@ -135,4 +135,18 @@ export class CargueCombosService {
     );
   }
 
+  obtenerListaFormatosImpresionEmpresa(empresaID: number): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/FormatoImpresion/ConsultarFormatosImpresionEmpresa?idEmpresa=${empresaID}`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.formNombre,
+          codigo: item.formCodigo
+        })) as IListCombo[])
+    );
+  }
+
 }
