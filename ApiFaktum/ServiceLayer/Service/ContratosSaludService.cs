@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objContratosSaludRepository.EliminarContratoSalud(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el contrato por id
+        /// </summary>
+        /// <param name="idContrato"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarContratoId(int idContrato)
+        {
+            return objContratosSaludRepository.ConsultarContratoId(idContrato);
+        }
     }
 }

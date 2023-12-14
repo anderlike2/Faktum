@@ -152,5 +152,35 @@ namespace ApiFaktum.Controllers
             }
             return Ok(oRespuesta);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el contrato por id
+        /// </summary>
+        /// <param name="idContrato"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarContratoId")]
+        public async Task<IActionResult> ConsultarContratoId(int idContrato)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarContratoId(idContrato);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
     }
 }

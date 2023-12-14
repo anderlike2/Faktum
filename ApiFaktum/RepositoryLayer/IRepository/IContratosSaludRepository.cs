@@ -44,5 +44,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarContratoSalud(ContratoSaludDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el contrato por id
+        /// </summary>
+        /// <param name="idContrato"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarContratoId(int idContrato);
     }
 }

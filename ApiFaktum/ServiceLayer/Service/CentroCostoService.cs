@@ -76,5 +76,17 @@ namespace ServiceLayer.Service
         {
             return objCentroCostoRepository.EliminarCentroCosto(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el centro de costo por id
+        /// </summary>
+        /// <param name="idCentroCosto"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarCentroCostoId(int idCentroCosto)
+        {
+            return objCentroCostoRepository.ConsultarCentroCostoId(idCentroCosto);
+        }
     }
 }

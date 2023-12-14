@@ -153,5 +153,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el contrato por id
+        /// </summary>
+        /// <param name="idContrato"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarContratoId(int idContrato)
+        {
+            Result oRespuesta = new Result();
+            ContratoSaludModel? result = new ContratoSaludModel();
+
+            try
+            {
+                result =
+                    await objContext.ContratoSalud.FirstOrDefaultAsync(x => x.Id.Equals(idContrato));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<ContratoSaludDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ContratoSaludDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

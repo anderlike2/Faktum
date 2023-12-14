@@ -152,5 +152,35 @@ namespace ApiFaktum.Controllers
             }
             return Ok(oRespuesta);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el centro de costo por id
+        /// </summary>
+        /// <param name="idCentroCosto"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarCentroCostoId")]
+        public async Task<IActionResult> ConsultarCentroCostoId(int idCentroCosto)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarCentroCostoId(idCentroCosto);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
     }
 }

@@ -149,5 +149,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el centro de costo por id
+        /// </summary>
+        /// <param name="idCentroCosto"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarCentroCostoId(int idCentroCosto)
+        {
+            Result oRespuesta = new Result();
+            CentroCostoModel? result = new CentroCostoModel();
+
+            try
+            {
+                result =
+                    await objContext.CentroCosto.FirstOrDefaultAsync(x => x.Id.Equals(idCentroCosto));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<CentroCostoDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<CentroCostoDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

@@ -44,5 +44,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarCentroCosto(CentroCostoDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el centro de costo por id
+        /// </summary>
+        /// <param name="idCentroCosto"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarCentroCostoId(int idCentroCosto);
     }
 }
