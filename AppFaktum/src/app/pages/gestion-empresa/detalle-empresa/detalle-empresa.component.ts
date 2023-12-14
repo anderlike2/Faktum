@@ -20,6 +20,9 @@ import { CrearClienteComponent } from '../../modals/crear-cliente/crear-cliente.
 import { ICentroCostos } from 'src/app/models/centro-costos.model';
 import { CrearCentroCostosComponent } from '../../modals/crear-centro-costos/crear-centro-costos.component';
 import { CentroCostosService } from 'src/app/services/centro-costos-service/centro-costos.service';
+import { CrearFormatoImpresionComponent } from '../../modals/crear-formato-impresion/crear-formato-impresion.component';
+import { IFormatoImpresion } from 'src/app/models/formato-impresion.model';
+import { FormatoImpresionService } from 'src/app/services/formato-impresion-service/formato-impresion.service';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -40,6 +43,7 @@ export class DetalleEmpresaComponent implements OnInit {
   listSucursalesEmpresaObs: Observable<ISucursalEmpresa[]>;
   listClientesEmpresaObs: Observable<IClienteEmpresa[]>;
   listCentroCostosEmpresaObs: Observable<ICentroCostos[]>;
+  listFormatosImpresionObs: Observable<IFormatoImpresion[]>;
   edicionEmpresa: boolean = false;
 
   dataEmpresa: IEmpresa;
@@ -51,6 +55,7 @@ export class DetalleEmpresaComponent implements OnInit {
   clienteCollapsed: boolean = true;
   sucursalCollapsed: boolean = true;
   centroCostoCollapsed: boolean = true;
+  formatoImpresionCollapsed: boolean = true;
 
   colsSucursalesEmpresa: any[] = [
     { field: 'sucuNombre', header: 'Nombre' },
@@ -73,6 +78,11 @@ export class DetalleEmpresaComponent implements OnInit {
     { field: 'ccosCodigo', header: 'Código' }
   ];
 
+  colsFormatosImpresionEmpresa: any[] = [
+    { field: 'formNombre', header: 'Nombre' },
+    { field: 'formCodigo', header: 'Código' }
+  ];
+
   constructor(
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
@@ -81,7 +91,7 @@ export class DetalleEmpresaComponent implements OnInit {
     private sharedService: SharedService,
     private modalService: NgbModal,
     private router: Router,
-    private loaderService: LoaderService
+    private formatoImpresionService: FormatoImpresionService
   ) { }
 
   ngOnInit(): void {
@@ -150,6 +160,9 @@ export class DetalleEmpresaComponent implements OnInit {
 
     this.listCentroCostosEmpresaObs =
       this.centroCostosService.obtenerCentroCostosPorEmpresaId(this.dataEmpresa.id);
+
+    this.listFormatosImpresionObs =
+      this.formatoImpresionService.obtenerFormatosImpresionPorEmpresaId(this.dataEmpresa.id);
   }
 
   cargarInfoEmpresa(): void {
@@ -673,6 +686,17 @@ export class DetalleEmpresaComponent implements OnInit {
     modalCentroCostos.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
+  abrirModalFormatosImpresion(): void {
+    const modalFormatosImpresion = this.modalService.open(
+      CrearFormatoImpresionComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalFormatosImpresion.componentInstance.empresaID = this.dataEmpresa.id;
+  }
+
   verCliente(value:IClienteEmpresa): void{
     this.sharedService.addClienteEmpresaData(value);
     this.router.navigate(['./gestion-cliente/editar-cliente']);
@@ -686,6 +710,11 @@ export class DetalleEmpresaComponent implements OnInit {
   verCentroCostos(value: ICentroCostos): void {
     this.sharedService.addCentroCostosData(value);
     this.router.navigate(['/gestion-centro-costos/editar-centro-costos']);
+  }
+
+  verFormatoImpresion(value: IFormatoImpresion): void {
+    this.sharedService.addFormatoImpresionData(value);
+    this.router.navigate(['/gestion-formato-impresion/editar-formato-impresion']);
   }
 
 }

@@ -57,7 +57,7 @@ namespace ServiceLayer.Service
             //byte[] t1 = ManejoEncriptacion.Encrypt("Admin1980");
             //string t3 = ManejoEncriptacion.Decrypt2(t1);
 
-            string decryptedText = ManejoEncriptacion.DecryptAES(Encoding.ASCII.GetBytes(objModel.UsuaPassword));
+            //string decryptedText = ManejoEncriptacion.DecryptAES(Encoding.ASCII.GetBytes(objModel.UsuaPassword));
 
             Result oRespuesta = new Result();
 

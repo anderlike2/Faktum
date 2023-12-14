@@ -65,6 +65,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-formato-impresion',
+        loadChildren: () => import('./pages/gestion-formato-impresion/gestion-formato-impresion.module').then(m => m.GestionFormatoImpresionModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

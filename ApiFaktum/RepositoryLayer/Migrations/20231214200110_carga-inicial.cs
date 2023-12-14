@@ -35,7 +35,6 @@ namespace RepositoryLayer.Migrations
                     JuriCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JuriNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     JuriEstadoOperacion = table.Column<int>(type: "int", nullable: false),
-                    ClasJuridicaModelId = table.Column<int>(type: "int", nullable: true),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -43,12 +42,6 @@ namespace RepositoryLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ClasJuridica", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ClasJuridica_ClasJuridica_ClasJuridicaModelId",
-                        column: x => x.ClasJuridicaModelId,
-                        principalTable: "ClasJuridica",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -1561,11 +1554,6 @@ namespace RepositoryLayer.Migrations
                 name: "IX_Ciudad_CiudDeptoId",
                 table: "Ciudad",
                 column: "CiudDeptoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ClasJuridica_ClasJuridicaModelId",
-                table: "ClasJuridica",
-                column: "ClasJuridicaModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cliente_ClieCiudadId",

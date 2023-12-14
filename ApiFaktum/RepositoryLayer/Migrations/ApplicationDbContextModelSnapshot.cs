@@ -133,9 +133,6 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("ClasJuridicaModelId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
@@ -158,8 +155,6 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClasJuridicaModelId");
 
                     b.ToTable("ClasJuridica");
                 });
@@ -2502,14 +2497,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("CiudDepto");
                 });
 
-            modelBuilder.Entity("DomainLayer.Models.ClasJuridicaModel", b =>
-                {
-                    b.HasOne("DomainLayer.Models.ClasJuridicaModel", null)
-                        .WithMany("JuriClasesJuridicas")
-                        .HasForeignKey("ClasJuridicaModelId")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("DomainLayer.Models.ClienteModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.CiudadModel", "ClieCiudad")
@@ -3184,8 +3171,6 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ClasJuridicaModel", b =>
                 {
-                    b.Navigation("JuriClasesJuridicas");
-
                     b.Navigation("JuriEmpresas");
                 });
 

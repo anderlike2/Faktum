@@ -1,4 +1,5 @@
 ﻿using Commun.Logger;
+using DomainLayer.Dtos;
 using DomainLayer.Models;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.IService;
@@ -47,6 +48,126 @@ namespace ApiFaktum.Controllers
             try
             {
                 var vRespuesta = await objService.ConsultarFormatosImpresionEmpresa(idEmpresa);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para crear un formato de impresion
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("CrearFormatoImpresion")]
+        public async Task<IActionResult> CrearFormatoImpresion([FromBody] FormatoImpresionDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.CrearFormatoImpresion(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar un formato de impresion
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ActualizarFormatoImpresion")]
+        public async Task<IActionResult> ActualizarFormatoImpresion([FromBody] FormatoImpresionDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ActualizarFormatoImpresion(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para borrar un formato de impresion
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("EliminarFormatoImpresion")]
+        public async Task<IActionResult> EliminarFormatoImpresion([FromBody] FormatoImpresionDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.EliminarFormatoImpresion(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar el formato de impresion por id
+        /// </summary>
+        /// <param name="idFormatoImpresion"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarFormatoImpresionId")]
+        public async Task<IActionResult> ConsultarFormatoImpresionId(int idFormatoImpresion)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarFormatoImpresionId(idFormatoImpresion);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

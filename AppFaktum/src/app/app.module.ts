@@ -39,6 +39,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-cliente.component';
 import { CrearContratoClienteComponent } from './pages/modals/crear-contrato-cliente/crear-contrato-cliente.component';
 import { CrearCentroCostosComponent } from './pages/modals/crear-centro-costos/crear-centro-costos.component';
+import { CrearFormatoImpresionComponent } from './pages/modals/crear-formato-impresion/crear-formato-impresion.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { CrearCentroCostosComponent } from './pages/modals/crear-centro-costos/c
     HomeComponent,
     CrearClienteComponent,
     CrearContratoClienteComponent,
-    CrearCentroCostosComponent
+    CrearCentroCostosComponent,
+    CrearFormatoImpresionComponent
   ],
   imports: [
     BrowserModule,

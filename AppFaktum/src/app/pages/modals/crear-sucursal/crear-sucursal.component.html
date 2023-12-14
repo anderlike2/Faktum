@@ -26,13 +26,21 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Departamento</label>
-            <input formControlName="sucuDepto" class="form-control">
+            <select formControlName="sucuDepto" class="form-control" (change)="cargarCiudadesDepto($event.target.value)">
+              <ng-container *ngFor="let item of listDeptos">
+                <option [value]="item.valor">{{item.nombre}}</option>
+              </ng-container>
+            </select>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Ciudad</label>
-            <input formControlName="sucuCiudad" class="form-control">
+            <select formControlName="sucuCiudad" class="form-control">
+              <ng-container *ngFor="let item of listCiudades">
+                <option [value]="item.valor">{{item.nombre}}</option>
+              </ng-container>
+            </select>
           </div>
         </div>
       </div>

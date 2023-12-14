@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h5 class="modal-title">Crear formato impresión</h5>
+</div>
+<div class="modal-body">
+
+    <form [formGroup]="formatoImpresionFormGroup">
+        <div class="col-12">
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="">Nombre</label>
+                  <input formControlName="formNombre" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="">Código</label>
+                  <input formControlName="formCodigo" type="text"  class="form-control">
+                </div>
+              </div>
+            </div>
+      
+          </div>
+    </form>  
+
+</div>
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar formato impresión" (click)="guardarFormatoImpresion()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>
+  
