@@ -112,13 +112,13 @@
 
         <app-card [hidHeader]="true" [options]="false">
             <div class="d-flex align-items-center justify-content-between" role="button">
-                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="preciosSucursalClienteCollapsed = !preciosSucursalClienteCollapsed" [attr.aria-expanded]="!preciosSucursalClienteCollapsed" aria-controls="collapsePreciosSucursalCliente">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="listaPreciosSucursalClienteCollapsed = !listaPreciosSucursalClienteCollapsed" [attr.aria-expanded]="!listaPreciosSucursalClienteCollapsed" aria-controls="collapsePreciosSucursalCliente">
                   <h5 class="font-weight-bold mb-0">Lista Precios</h5>
-                  <i class="fa" [ngClass]="{'fa-chevron-up': preciosSucursalClienteCollapsed, 'fa-chevron-down': !preciosSucursalClienteCollapsed }"></i>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': listaPreciosSucursalClienteCollapsed, 'fa-chevron-down': !listaPreciosSucursalClienteCollapsed }"></i>
                 </div>
             </div>
             <hr>
-            <div id="collapsePreciosSucursalCliente" [ngbCollapse]="preciosSucursalClienteCollapsed">
+            <div id="collapsePreciosSucursalCliente" [ngbCollapse]="listaPreciosSucursalClienteCollapsed">
 
             </div>
         </app-card>

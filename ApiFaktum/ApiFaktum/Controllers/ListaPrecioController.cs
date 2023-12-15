@@ -152,5 +152,35 @@ namespace ApiFaktum.Controllers
             }
             return Ok(oRespuesta);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la lista de precios por di
+        /// </summary>
+        /// <param name="idListaPrecio"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarListaPrecioId")]
+        public async Task<IActionResult> ConsultarListaPrecioId(int idListaPrecio)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarListaPrecioId(idListaPrecio);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
     }
 }

@@ -28,13 +28,10 @@ namespace DomainLayer.Models
         public virtual CentroCostoModel? ProdCentroCosto { get; set; }        
         [Required]
         public virtual ReteFuenteModel? ProdCodReteFuente { get; set; }
-        [Required]
         public virtual CumModel? ProdCum { get; set; }
-        [Required]
         public virtual CupModel? ProdCup { get; set; }
         [Required]
         public virtual EmpresaModel? ProdEmpresa { get; set; }
-        [Required]
         public virtual IumModel? ProdIum { get; set; }
         [Required]
         public virtual TipoCupModel? ProdTipoCup { get; set; }
@@ -43,8 +40,7 @@ namespace DomainLayer.Models
         [Required]
         public virtual TipoArchivoRipsModel? ProdTipoRips { get; set; }
         [Required]
-        public virtual UnidadModel? ProdUnidad { get; set; }        
-        [Required]
+        public virtual UnidadModel? ProdUnidad { get; set; }     
         public virtual OtroProductoModel? ProdOtroProducto { get; set; }
         [Required]
         public virtual ICollection<ListaPrecioModel>? ProdListaPrecios { get; set; }
@@ -52,14 +48,14 @@ namespace DomainLayer.Models
         //Referencias para consultas FK
         public virtual int ProdCentroCostoId { get; set; }
         public virtual int ProdCodReteFuenteId { get; set; }
-        public virtual int ProdCumId { get; set; }
-        public virtual int ProdCupId { get; set; }
+        public virtual int? ProdCumId { get; set; }
+        public virtual int? ProdCupId { get; set; }
         public virtual int ProdEmpresaId { get; set; }
-        public virtual int ProdIumId { get; set; }
+        public virtual int? ProdIumId { get; set; }
         public virtual int ProdTipoCupId { get; set; }
         public virtual int ProdTipoImpuestoId { get; set; }
         public virtual int ProdTipoRipsId { get; set; }
         public virtual int ProdUnidadId { get; set; }
-        public virtual int ProdOtroProductoId { get; set; }
+        public virtual int? ProdOtroProductoId { get; set; }
     }
 }

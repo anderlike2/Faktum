@@ -42,6 +42,7 @@ import { CrearCentroCostosComponent } from './pages/modals/crear-centro-costos/c
 import { CrearFormatoImpresionComponent } from './pages/modals/crear-formato-impresion/crear-formato-impresion.component';
 import { CrearSucursalClienteComponent } from './pages/modals/crear-sucursal-cliente/crear-sucursal-cliente.component';
 import { CrearUnidadComponent } from './pages/modals/crear-unidad/crear-unidad.component';
+import { CrearListaPrecioComponent } from './pages/modals/crear-lista-precio/crear-lista-precio.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { CrearUnidadComponent } from './pages/modals/crear-unidad/crear-unidad.c
     CrearCentroCostosComponent,
     CrearFormatoImpresionComponent,
     CrearSucursalClienteComponent,
-    CrearUnidadComponent
+    CrearUnidadComponent,
+    CrearListaPrecioComponent
   ],
   imports: [
     BrowserModule,

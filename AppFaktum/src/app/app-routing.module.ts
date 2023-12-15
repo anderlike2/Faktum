@@ -75,6 +75,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-lista-precio',
+        loadChildren: () => import('./pages/gestion-lista-precio/gestion-lista-precio.module').then(m => m.GestionListaPrecioModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

@@ -153,5 +153,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la lista de precios por di
+        /// </summary>
+        /// <param name="idListaPrecio"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarListaPrecioId(int idListaPrecio)
+        {
+            Result oRespuesta = new Result();
+            ListaPrecioModel? result = new ListaPrecioModel();
+
+            try
+            {
+                result =
+                    await objContext.ListaPrecio.FirstOrDefaultAsync(x => x.Id.Equals(idListaPrecio));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<ListaPrecioDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ListaPrecioDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

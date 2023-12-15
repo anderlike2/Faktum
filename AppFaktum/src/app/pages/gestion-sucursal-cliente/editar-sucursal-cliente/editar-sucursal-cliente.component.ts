@@ -24,7 +24,7 @@ export class EditarSucursalClienteComponent implements OnInit {
   listCiudades: IListCombo[] = [];
 
   sucursalClienteCollapsed: boolean = true;
-  preciosSucursalClienteCollapsed: boolean = true;
+  listaPreciosSucursalClienteCollapsed: boolean = true;
 
   constructor(private cargueCombosService: CargueCombosService, private sharedService: SharedService,
     private sucursalClienteService: SucursalClienteService, private generalService: GeneralService) { }

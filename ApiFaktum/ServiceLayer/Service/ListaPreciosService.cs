@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objListaPreciosRepository.EliminarListaPrecio(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la lista de precios por di
+        /// </summary>
+        /// <param name="idListaPrecio"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarListaPrecioId(int idListaPrecio)
+        {
+            return objListaPreciosRepository.ConsultarListaPrecioId(idListaPrecio);
+        }
     }
 }
