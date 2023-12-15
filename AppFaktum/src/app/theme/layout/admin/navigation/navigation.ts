@@ -28,7 +28,7 @@ export interface Navigation extends NavigationItem {
 const NavigationItems = [
   {
     id: 'navigation',
-    title: 'menu Faktum',
+    title: '',
     type: 'group',
     icon: 'feather icon-align-left',
     children: [
@@ -55,7 +55,7 @@ const NavigationItems = [
         children: [
           {
             id: 'detalle-empresa',
-            title: 'Empresa detalle',
+            title: 'Ver detalle',
             type: 'item',
             url: '/gestion-empresa/detalle-empresa',
             external: false
@@ -77,7 +77,7 @@ const NavigationItems = [
         children: [
           {
             id: 'detalle-sucursal',
-            title: 'Sucursal detalle',
+            title: 'Ver detalle',
             type: 'item',
             url: '/gestion-sucursal/detalle-sucursal',
             external: false
@@ -92,7 +92,7 @@ const NavigationItems = [
         children: [
           {
             id: 'detalle-cliente',
-            title: 'Cliente detalle',
+            title: 'Ver detalle',
             type: 'item',
             url: '/gestion-cliente/detalle-cliente',
             external: false
