@@ -70,6 +70,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-unidad',
+        loadChildren: () => import('./pages/gestion-unidad/gestion-unidad.module').then(m => m.GestionUnidadModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

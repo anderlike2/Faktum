@@ -23,7 +23,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbModalRef, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -41,6 +41,7 @@ import { CrearContratoClienteComponent } from './pages/modals/crear-contrato-cli
 import { CrearCentroCostosComponent } from './pages/modals/crear-centro-costos/crear-centro-costos.component';
 import { CrearFormatoImpresionComponent } from './pages/modals/crear-formato-impresion/crear-formato-impresion.component';
 import { CrearSucursalClienteComponent } from './pages/modals/crear-sucursal-cliente/crear-sucursal-cliente.component';
+import { CrearUnidadComponent } from './pages/modals/crear-unidad/crear-unidad.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { CrearSucursalClienteComponent } from './pages/modals/crear-sucursal-cli
     CrearContratoClienteComponent,
     CrearCentroCostosComponent,
     CrearFormatoImpresionComponent,
-    CrearSucursalClienteComponent
+    CrearSucursalClienteComponent,
+    CrearUnidadComponent
   ],
   imports: [
     BrowserModule,

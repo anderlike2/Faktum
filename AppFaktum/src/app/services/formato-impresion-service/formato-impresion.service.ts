@@ -16,8 +16,8 @@ export class FormatoImpresionService {
     private httpClient: HttpClient
   ) { }
 
-  obtenerFormatosImpresionPorEmpresaId(empresaID: number): Observable<IFormatoImpresion[]> {
-    const url = `${this.environment.faktumUrl}/FormatoImpresion/ConsultarFormatosImpresionEmpresa?idEmpresa=${empresaID}`;
+  obtenerFormatosImpresionPorEmpresaId(empresaId: number): Observable<IFormatoImpresion[]> {
+    const url = `${this.environment.faktumUrl}/FormatoImpresion/ConsultarFormatosImpresionEmpresa?idEmpresa=${empresaId}`;
     return this.httpClient.get<IResponse<IFormatoImpresion[]>>(
       url
     ).pipe(
@@ -27,8 +27,8 @@ export class FormatoImpresionService {
     );
   }
 
-  obtenerFormatoImpresionPorId(centroCostosID: number): Observable<IResponse<IFormatoImpresion>> {
-    const url = `${this.environment.faktumUrl}/FormatoImpresion/ConsultarFormatoImpresionId?idFormatoImpresion=${centroCostosID}`;
+  obtenerFormatoImpresionPorId(formatoImpresionId: number): Observable<IResponse<IFormatoImpresion>> {
+    const url = `${this.environment.faktumUrl}/FormatoImpresion/ConsultarFormatoImpresionId?idFormatoImpresion=${formatoImpresionId}`;
     return this.httpClient.get<IResponse<IFormatoImpresion>>(
       url
     )
@@ -36,7 +36,6 @@ export class FormatoImpresionService {
 
   crearFormatoImpresion(data: IFormatoImpresion): Observable<any> {
     const url = `${this.environment.faktumUrl}/FormatoImpresion/CrearFormatoImpresion`;
-
     return this.httpClient.post(
       url,
       data
@@ -45,7 +44,6 @@ export class FormatoImpresionService {
 
   actualizarFormatoImpresion(data: IFormatoImpresion): Observable<any> {
     const url = `${this.environment.faktumUrl}/FormatoImpresion/ActualizarFormatoImpresion`;
-
     return this.httpClient.post(
       url,
       data

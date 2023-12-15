@@ -7,8 +7,6 @@
         public string? UnidNombre { get; set; }
 
         //Referencias
-        public EmpresaDto? UnidEmpresa { get; set; }
-        public List<ProductoDto>? UnidProductos { get; set; }
-        public List<DetalleFactDto>? UnidDetFacturas { get; set; }
+        public int? UnidEmpresaId { get; set; }
     }
 }

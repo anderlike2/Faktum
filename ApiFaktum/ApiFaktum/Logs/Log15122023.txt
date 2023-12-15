@@ -1,0 +1,12 @@
+
+------------------------------------------------------------------------------------
+viernes, 15 de diciembre de 2023 7:13:30.42 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+viernes, 15 de diciembre de 2023 7:13:55.95 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+viernes, 15 de diciembre de 2023 7:17:20.00 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.

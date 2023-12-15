@@ -82,8 +82,6 @@ export class EditarFormatoImpresionComponent implements OnInit {
 
     dataBody.id = this.formatoImpresionData.id;
     dataBody.estado = this.formatoImpresionData.estado;
-
-    // toca hablar de estos dos
     dataBody.formEmpresaId = this.formatoImpresionData.formEmpresaId;
     dataBody.fechaCreacion = this.formatoImpresionData.fechaCreacion;
     dataBody.fechaModificacion = this.formatoImpresionData.fechaModificacion;
