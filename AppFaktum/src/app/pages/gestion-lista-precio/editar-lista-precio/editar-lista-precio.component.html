@@ -1,1 +1,77 @@
-<p>editar-lista-precio works!</p>
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="listaPrecioCollapsed = !listaPrecioCollapsed" [attr.aria-expanded]="!listaPrecioCollapsed" aria-controls="collapseListaPrecio">
+                  <h5 class="font-weight-bold mb-0">Formato de impresión</h5>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': listaPrecioCollapsed, 'fa-chevron-down': !listaPrecioCollapsed }"></i>
+                </div>
+            </div>
+            <hr>
+            <div id="collapseListaPrecio" [ngbCollapse]="listaPrecioCollapsed">
+                <div class="d-flex flex-row justify-content-end" *ngIf="!listaPrecioCollapsed">
+                    <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Editar" (click)="editarForm()">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                </div>
+                <form [formGroup]="listaFormatoFormGroup">
+                    <div class="col-12">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label for="">Nombre</label>
+                              <input formControlName="liprNombre" type="text" class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label for="">Descripción</label>
+                              <input formControlName="liprDescripcion" type="text"  class="form-control">
+                            </div>
+                          </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="">Descuento</label>
+                                <input formControlName="liprDescuento" type="text" class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="">Valor</label>
+                                <input formControlName="liprValor" type="text"  class="form-control">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-6">
+                              <div class="form-group">
+                                <label for="">Estado operación</label>
+                                <input formControlName="liprEstadoOperacion" type="text" class="form-control">
+                              </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                  <label for="">Producto</label>
+                                 
+                                </div>
+                              </div>
+                          </div>     
+                      </div>
+                </form>
+                <ng-container *ngIf="edicionListaPrecio">
+                    <hr />        
+                    <div class="d-flex justify-content-end">
+                      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                        <i class="fa fa-ban"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar lista precio" (click)="guardarListaPrecio()">
+                        <i class="fa fa-save"></i>
+                      </button>
+                    </div>        
+                </ng-container>
+            </div>
+        </app-card>
+    </div>
+</div>

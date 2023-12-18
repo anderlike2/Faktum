@@ -3,10 +3,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { ISucursalCliente } from 'src/app/models/sucursal-cliente.model';
+import { IListaPrecio } from 'src/app/models/lista-precio.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { SucursalClienteService } from 'src/app/services/sucursal-cliente-service/sucursal-cliente.service';
+import { ListaPrecioService } from 'src/app/services/lista-precio-service/lista-precio.service';
+import { CrearListaPrecioComponent } from '../../modals/crear-lista-precio/crear-lista-precio.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-sucursal-cliente',
@@ -22,12 +27,23 @@ export class EditarSucursalClienteComponent implements OnInit {
   informacionSucursalCliente: ISucursalCliente;
   listDeptos: IListCombo[] = [];
   listCiudades: IListCombo[] = [];
+  listListaPrecio: IListaPrecio[] = [];
 
   sucursalClienteCollapsed: boolean = true;
   listaPreciosSucursalClienteCollapsed: boolean = true;
 
+  colsListaPrecio: any[] = [
+    { field: 'liprNombre', header: 'Nombre' },
+    { field: 'liprDescripcion', header: 'Descripción' },
+    { field: 'liprDescuento', header: 'Descuento' },
+    { field: 'liprNombre', header: 'Nombre' },
+    { field: 'liprValor', header: 'Valor' }
+  ];
+  seletedListaPrecio: any;
+
   constructor(private cargueCombosService: CargueCombosService, private sharedService: SharedService,
-    private sucursalClienteService: SucursalClienteService, private generalService: GeneralService) { }
+    private sucursalClienteService: SucursalClienteService, private generalService: GeneralService, private modalService: NgbModal,
+    private router: Router, private listaPrecioService: ListaPrecioService) { }
 
   ngOnInit(): void {
     this.init();
@@ -43,6 +59,7 @@ export class EditarSucursalClienteComponent implements OnInit {
     this.initForm();
     this.cargarComboListas();
     this.cargarInformacionSucursalCliente(this.informacionSucursalCliente.id);
+    this.cargarInformacionListaPrecio(this.informacionSucursalCliente.id);
   }
 
   initForm(): void {
@@ -140,4 +157,27 @@ export class EditarSucursalClienteComponent implements OnInit {
     });
   }
 
+  cargarInformacionListaPrecio(idSucursalCliente: number): void{
+    this.listaPrecioService.obtenerListaPreciosSucursalClienteId(idSucursalCliente)
+    .subscribe({
+      next: (response) => {
+        this.listListaPrecio = response;
+      }
+    });
+  }
+
+  abrirModalCrearListaPrecio(): void {
+    const modalSucursalCliente = this.modalService.open(
+      CrearListaPrecioComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+    modalSucursalCliente.componentInstance.clienteID = this.informacionSucursalCliente.id;
+  }
+
+  verContratoCliente(value:IListaPrecio): void{
+    this.sharedService.addLstaPrecioData(value);
+    this.router.navigate(['./gestion-lista-precio/editar-lista-precio']);
+  }
 }

@@ -13,6 +13,7 @@ export class SharedService {
   private centroCostosData = new BehaviorSubject<any>(undefined);
   private formatoImpresionData = new BehaviorSubject<any>(undefined);
   private unidadData = new BehaviorSubject<any>(undefined);
+  private listaPrecioData = new BehaviorSubject<any>(undefined);
   collapseSidebarListener$ = this.collapseSidebar.asObservable();
   sucursalEmpresaDataListener$ = this.sucursalEmpresaData.asObservable();
   clienteEmpresaDataListener$ = this.clienteEmpresaData.asObservable();
@@ -21,6 +22,7 @@ export class SharedService {
   centroCostosDataListener$ = this.centroCostosData.asObservable();
   formatoImpresionDataListener$ = this.formatoImpresionData.asObservable();
   unidadDataListener$ = this.unidadData.asObservable();
+  listaPrecioDataListener$ = this.listaPrecioData.asObservable();
 
   collapseSidebarValue$ = this.collapseSidebar;
 
@@ -56,5 +58,9 @@ export class SharedService {
 
   addUnidadData(data: any) {
     this.unidadData.next(data);
+  }
+
+  addLstaPrecioData(data: any) {
+    this.listaPrecioData.next(data);
   }
 }

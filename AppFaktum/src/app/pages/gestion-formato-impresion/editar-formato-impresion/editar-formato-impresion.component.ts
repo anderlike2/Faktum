@@ -21,7 +21,7 @@ export class EditarFormatoImpresionComponent implements OnInit {
   formatoImpresionFormGroup: FormGroup;
   fb = new FormBuilder();
 
-  constructor( private formatoImpresionService: FormatoImpresionService,
+  constructor(private formatoImpresionService: FormatoImpresionService,
     private sharedService: SharedService,
     private generalService: GeneralService) { }
 

@@ -1,0 +1,20 @@
+
+------------------------------------------------------------------------------------
+lunes, 18 de diciembre de 2023 10:34:45.49 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+lunes, 18 de diciembre de 2023 10:38:15.31 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+lunes, 18 de diciembre de 2023 10:38:32.18 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+lunes, 18 de diciembre de 2023 10:38:45.45 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+lunes, 18 de diciembre de 2023 10:40:15.64 a. m.
+An error occurred while saving the entity changes. See the inner exception for details.

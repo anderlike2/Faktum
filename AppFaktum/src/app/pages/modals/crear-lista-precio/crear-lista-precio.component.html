@@ -1,1 +1,61 @@
-<p>crear-lista-precio works!</p>
+<div class="modal-header">
+    <h5 class="modal-title">Crear lista precio</h5>
+</div>
+<div class="modal-body">
+    <form [formGroup]="listaPrecioFormGroup">
+        <div class="col-12">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="">Nombre</label>
+                  <input formControlName="liprNombre" type="text" class="form-control">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="">Descripción</label>
+                  <input formControlName="liprDescripcion" type="text"  class="form-control">
+                </div>
+              </div>
+            </div> 
+            <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Descuento</label>
+                    <input formControlName="liprDescuento" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Valor</label>
+                    <input formControlName="liprValor" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Estado operación</label>
+                    <input formControlName="liprEstadoOperacion" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                      <label for="">Producto</label>
+                      
+                    </div>
+                  </div>
+              </div>     
+          </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar lista precio" (click)="guardarListaPrecio()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>
