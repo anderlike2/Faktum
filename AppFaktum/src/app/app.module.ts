@@ -43,6 +43,7 @@ import { CrearFormatoImpresionComponent } from './pages/modals/crear-formato-imp
 import { CrearSucursalClienteComponent } from './pages/modals/crear-sucursal-cliente/crear-sucursal-cliente.component';
 import { CrearUnidadComponent } from './pages/modals/crear-unidad/crear-unidad.component';
 import { CrearListaPrecioComponent } from './pages/modals/crear-lista-precio/crear-lista-precio.component';
+import { CrearProductoComponent } from './pages/modals/crear-producto/crear-producto.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { CrearListaPrecioComponent } from './pages/modals/crear-lista-precio/cre
     CrearFormatoImpresionComponent,
     CrearSucursalClienteComponent,
     CrearUnidadComponent,
-    CrearListaPrecioComponent
+    CrearListaPrecioComponent,
+    CrearProductoComponent
   ],
   imports: [
     BrowserModule,

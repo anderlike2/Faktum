@@ -26,6 +26,9 @@ import { FormatoImpresionService } from 'src/app/services/formato-impresion-serv
 import { IUnidad } from 'src/app/models/unidad.model';
 import { UnidadService } from 'src/app/services/unidad-service/unidad.service';
 import { CrearUnidadComponent } from '../../modals/crear-unidad/crear-unidad.component';
+import { IProducto } from 'src/app/models/producto.model';
+import { CrearProductoComponent } from '../../modals/crear-producto/crear-producto.component';
+import { ProductoService } from 'src/app/services/producto-service/producto.service';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -48,6 +51,7 @@ export class DetalleEmpresaComponent implements OnInit {
   listCentroCostosEmpresaObs: Observable<ICentroCostos[]>;
   listFormatosImpresionObs: Observable<IFormatoImpresion[]>;
   listUnidadesObs: Observable<IUnidad[]>;
+  listProductoObs: Observable<IProducto[]>;
   edicionEmpresa: boolean = false;
 
   dataEmpresa: IEmpresa;
@@ -61,6 +65,7 @@ export class DetalleEmpresaComponent implements OnInit {
   centroCostoCollapsed: boolean = true;
   formatoImpresionCollapsed: boolean = true;
   unidadCollapsed: boolean = true;
+  productoCollapsed: boolean = true;
 
   colsSucursalesEmpresa: any[] = [
     { field: 'sucuNombre', header: 'Nombre' },
@@ -94,6 +99,13 @@ export class DetalleEmpresaComponent implements OnInit {
     { field: 'unidCodigo', header: 'Código' }
   ];
 
+  colsProducto: any[] = [
+    { field: 'prodNombreTecnico', header: 'Nombre técnico' },
+    { field: 'prodMarca', header: 'Marca' },
+    { field: 'prodCodigo', header: 'Código' },
+    { field: 'prodValor', header: 'Valor' }
+  ];
+
   constructor(
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
@@ -103,7 +115,8 @@ export class DetalleEmpresaComponent implements OnInit {
     private modalService: NgbModal,
     private router: Router,
     private formatoImpresionService: FormatoImpresionService,
-    private unidadService: UnidadService
+    private unidadService: UnidadService,
+    private productoService: ProductoService
   ) { }
 
   ngOnInit(): void {
@@ -178,6 +191,9 @@ export class DetalleEmpresaComponent implements OnInit {
 
     this.listUnidadesObs =
       this.unidadService.obtenerUnidadesPorEmpresaId(this.dataEmpresa.id);
+
+    this.listProductoObs =
+      this.productoService.obtenerProductosPorEmpresaid(this.dataEmpresa.id);
   }
 
   cargarInfoEmpresa(): void {
@@ -723,6 +739,18 @@ export class DetalleEmpresaComponent implements OnInit {
 
     modalUnidades.componentInstance.empresaID = this.dataEmpresa.id;
   }
+
+  abrirModalCrearProducto(): void {
+    const modalProducto = this.modalService.open(
+      CrearProductoComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalProducto.componentInstance.empresaID = this.dataEmpresa.id;
+  }
+
   verCliente(value:IClienteEmpresa): void{
     this.sharedService.addClienteEmpresaData(value);
     this.router.navigate(['./gestion-cliente/editar-cliente']);
@@ -746,6 +774,10 @@ export class DetalleEmpresaComponent implements OnInit {
   verUnidad(value: IUnidad): void {
     this.sharedService.addUnidadData(value);
     this.router.navigate(['/gestion-unidad/editar-unidad']);
+  }
+
+  verProducto(): void {
+    this.router.navigate(['/gestion-producto/editar-producto']);
   }
 
 }

@@ -149,4 +149,46 @@ export class CargueCombosService {
     );
   }
 
+  obtenerListaReteFuente(): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Maestras/ConsultarTablaRetefuente`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.reteNombre,
+          codigo: item.Rete_1
+        })) as IListCombo[])
+    );
+  }
+
+  obtenerListaTablaCum(): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Maestras/ConsultarTablaCum`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.cumsNombre,
+          codigo: item.cumsCodigo
+        })) as IListCombo[])
+    );
+  }
+
+  obtenerListaTablaImpuestos(): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Maestras/ConsultarTablaImpuesto`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.impuNombre,
+          codigo: item.impuCodigo
+        })) as IListCombo[])
+    );
+  }
+
 }

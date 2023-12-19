@@ -1,0 +1,243 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card [hidHeader]="true" [options]="false">
+
+      <div class="d-flex align-items-center justify-content-between" role="button">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="productoCollapsed = !productoCollapsed" [attr.aria-expanded]="!productoCollapsed" aria-controls="collapseProducto">
+          <h5 class="font-weight-bold mb-0">Producto</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': productoCollapsed, 'fa-chevron-down': !productoCollapsed }"></i>
+        </div>
+
+      </div>
+
+        <hr>
+
+        <div id="collapseProducto" [ngbCollapse]="productoCollapsed">
+
+          <div class="d-flex flex-row justify-content-end" *ngIf="!productoCollapsed">
+            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Editar" (click)="editarForm()">
+              <i class="fa fa-edit"></i>
+            </button>
+          </div>
+
+          <form [formGroup]="productoFormGroup">
+
+            <div class="col-12">
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Nombre factura</label>
+                    <input formControlName="prodNombreFactura" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Nombre técnico</label>
+                    <input formControlName="prodNombreTecnico" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Código</label>
+                    <input formControlName="prodCodigo" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Unidad homologa</label>
+                    <input formControlName="prodUnidadHomologa" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Marca</label>
+                    <input formControlName="prodMarca" type="text" class="form-control">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Modelo</label>
+                    <input formControlName="prodModelo" type="text"  class="form-control">
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Valor</label>
+                    <input formControlName="prodValor" type="text" class="form-control">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Centro de costo</label>
+                    <select formControlName="prodCentroCostoId" class="form-control">
+                      <ng-container *ngFor="let item of listaCentroCostos">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Código retención en la fuente</label>
+                    <select formControlName="prodCodReteFuenteId" class="form-control">
+                      <ng-container *ngFor="let item of listaCodRetencionFuente">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="row"> -->
+                <fieldset class="form-group">
+                  <div class="row">
+                    <label for="inputPassword3" class="col-12 col-form-label">Concepto</label>
+                    <div class="col-12">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="concepto-1" value="cups" checked>
+                        <label class="form-check-label" for="concepto-1">CUPS</label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="concepto-2" value="medicamentos">
+                        <label class="form-check-label" for="concepto-2">MEDICAMENTOS</label>
+                      </div>
+                      <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="gridRadios" id="concepto-3" value="otros">
+                        <label class="form-check-label" for="concepto-3">OTROS PRODUCTOS</label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+              <!-- </div> -->
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">CUPS</label>
+                    <select formControlName="prodCupId" class="form-control">
+                      <ng-container *ngFor="let item of listaCups">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">CUMS</label>
+                    <select formControlName="prodCumId" class="form-control">
+                      <ng-container *ngFor="let item of listaCums">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">IUM</label>
+                    <select formControlName="prodIumId" class="form-control">
+                      <ng-container *ngFor="let item of listaIums">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Otros productos</label>
+                    <select formControlName="prodOtroProductoId" class="form-control">
+                      <ng-container *ngFor="let item of listaOtroProducto">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Tipo impuesto</label>
+                    <select formControlName="prodTipoImpuestoId" class="form-control">
+                      <ng-container *ngFor="let item of listaTipoImpuesto">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Tipo rips</label>
+                    <select formControlName="prodTipoRipsId" class="form-control">
+                      <ng-container *ngFor="let item of listaTipoRips">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Unidad</label>
+                    <select formControlName="prodUnidadId" class="form-control">
+                      <ng-container *ngFor="let item of listaUnidad">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Tipo cup</label>
+                    <select formControlName="prodTipoCupId" class="form-control">
+                      <ng-container *ngFor="let item of listaTipoCups">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </form>
+
+          <ng-container *ngIf="edicionCentroCostos">
+
+            <hr />
+
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                <i class="fa fa-ban"></i>
+              </button>
+              <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar producto" (click)="guardarProducto()">
+                <i class="fa fa-save"></i>
+              </button>
+            </div>
+
+          </ng-container>
+
+        </div>
+
+    </app-card>
+
+  </div>
+</div>
