@@ -44,7 +44,7 @@ namespace RepositoryLayer.Repository
 
             try
             {
-                lstResult = await objContext.Cum.Where(x => x.Estado != 1).ToListAsync();
+                lstResult = await objContext.Cum.Where(x => x.Estado == 1).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)
