@@ -14,14 +14,14 @@
         //Referencias
         public int ProdCentroCostoId { get; set; }
         public int ProdCodReteFuenteId { get; set; }
-        public int ProdCumId { get; set; }
-        public int ProdCupId { get; set; }
+        public int? ProdCumId { get; set; }
+        public int? ProdCupId { get; set; }
         public int ProdEmpresaId { get; set; }
-        public int ProdIumId { get; set; }
+        public int? ProdIumId { get; set; }
         public int ProdTipoCupId { get; set; }
         public int ProdTipoImpuestoId { get; set; }
         public int ProdTipoRipsId { get; set; }
         public int ProdUnidadId { get; set; }
-        public int ProdOtroProductoId { get; set; }
+        public int? ProdOtroProductoId { get; set; }
     }
 }
