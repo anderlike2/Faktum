@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { map } from 'rxjs/operators';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
-import { IProducto } from 'src/app/models/producto.model';
+import { IProducto, tipoConceptoEnum } from 'src/app/models/producto.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { CentroCostosService } from 'src/app/services/centro-costos-service/centro-costos.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
@@ -36,6 +37,16 @@ export class EditarProductoComponent implements OnInit {
   listaUnidad: IListCombo[] = [];
   listaOtroProducto: IListCombo[] = [];
 
+  listaOpcionesMap: { [key: string]: () => void } = {
+    [tipoConceptoEnum.CUPS]: this.seleccionCups.bind(this),
+    [tipoConceptoEnum.MEDICAMENTOS]: this.seleccionMedicamentos.bind(this),
+    [tipoConceptoEnum.OTROS_PRODUCTOS]: this.seleccionOtroProducto.bind(this)
+  }
+
+  get tipoConcepto() {
+    return tipoConceptoEnum;
+  }
+
   constructor(
     private productoService: ProductoService,
     private centroCostosService: CentroCostosService,
@@ -54,19 +65,126 @@ export class EditarProductoComponent implements OnInit {
 
     this.initForm();
     this.cargarListaCombox();
+    this.iniConcepto();
   }
 
   cargarListaCombox(): void {
 
+    this.centroCostosService.obtenerCentroCostosPorEmpresaId(this.productoData.prodEmpresaId)
+    .pipe(
+      map((response) =>
+        response.map((item) => ({
+          valor: item.id,
+          nombre: item.ccosNombre,
+          codigo: item.ccosCodigo
+        })) as IListCombo[]
+      )
+    )
+    .subscribe({
+      next: (response) => this.listaCentroCostos = response
+    });
+
+    this.cargueCombosService.obtenerListaReteFuente().subscribe({
+      next: (response) => this.listaCodRetencionFuente = response
+    });
+
+    this.cargueCombosService.obtenerListaTablaImpuestos().subscribe({
+      next: (response) => this.listaTipoImpuesto = response
+    });
+
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.TIPO_ARCHIVO_RIPS).subscribe({
+      next: (response) => this.listaTipoRips = response
+    });
+
+    this.cargueCombosService.obtenerListaUnidadesEmpresa(this.productoData.prodEmpresaId).subscribe({
+      next: (response) => this.listaUnidad = response
+    });
+
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.TIPO_CUPS).subscribe({
+      next: (response) => this.listaTipoCups = response
+    });
+
+  }
+
+  iniConcepto(): void {
+    this.productoFormGroup.get('concepto').valueChanges.subscribe({
+      next: (value) => {
+        const fn = this.listaOpcionesMap[value];
+
+        if(fn) {
+          fn();
+        }
+      }
+    });
+  }
+
+  seleccionCups(): void {
+    this.productoFormGroup.get('prodCupId').enable();
+    this.productoFormGroup.get('prodCumId').disable();
+    this.productoFormGroup.get('prodIumId').disable();
+    this.productoFormGroup.get('prodOtroProductoId').disable();
+
+    this.listaCums = [];
+    this.listaCups = [];
+    this.listaIums = [];
+    this.listaOtroProducto = [];
+
+    this.productoFormGroup.get('prodCupId').reset();
+
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.CUPS).subscribe({
+      next: (response) => this.listaCups = response
+    });
+  }
+
+  seleccionMedicamentos(): void {
+    this.productoFormGroup.get('prodCupId').disable();
+    this.productoFormGroup.get('prodCumId').enable();
+    this.productoFormGroup.get('prodIumId').enable();
+    this.productoFormGroup.get('prodOtroProductoId').disable();
+
+    this.listaCums = [];
+    this.listaCups = [];
+    this.listaIums = [];
+    this.listaOtroProducto = [];
+
+    this.productoFormGroup.get('prodCumId').reset();
+    this.productoFormGroup.get('prodIumId').reset();
+
+    this.cargueCombosService.obtenerListaTablaCum().subscribe({
+      next: (response) => this.listaCums = response
+    });
+
+    this.cargueCombosService.obtenerListaTablaIum().subscribe({
+      next: (response) => this.listaIums = response
+    });
+
+  }
+
+  seleccionOtroProducto(): void {
+    this.productoFormGroup.get('prodCupId').disable();
+    this.productoFormGroup.get('prodCumId').disable();
+    this.productoFormGroup.get('prodIumId').disable();
+    this.productoFormGroup.get('prodOtroProductoId').enable();
+
+    this.listaCums = [];
+    this.listaCups = [];
+    this.listaIums = [];
+    this.listaOtroProducto = [];
+
+    this.productoFormGroup.get('prodOtroProductoId').reset();
+
+    this.cargueCombosService.obtenerListaOtroProductoPorEmpresa(this.productoData.prodEmpresaId).subscribe({
+      next: (response) => this.listaOtroProducto = response
+    });
   }
 
   obtenerProducto(data: IProducto): void {
-    this.centroCostosService.obtenerCentroCostosPorId(data?.id)
+    this.productoService.obtenerProductoPorId(data?.id)
     .subscribe({
       next: (response) => {
         if(response?.success) {
-          // this.productoData = response.data;
-          // this.cargarDataForm(response.data);
+          this.productoData = response.data;
+          this.cargarDataForm(response.data);
         }
       }
     });
@@ -131,15 +249,15 @@ export class EditarProductoComponent implements OnInit {
           Validators.required
         ]
       ],
-      prodCumId: [ { value: '', disabled: false }, [
+      prodCumId: [ { value: null, disabled: true }, [
           Validators.required
         ]
       ],
-      prodCupId: [ { value: '', disabled: false }, [
+      prodCupId: [ { value: null, disabled: true }, [
           Validators.required
         ]
       ],
-      prodIumId: [ { value: '', disabled: false }, [
+      prodIumId: [ { value: null, disabled: true }, [
           Validators.required
         ]
       ],
@@ -159,10 +277,14 @@ export class EditarProductoComponent implements OnInit {
           Validators.required
         ]
       ],
-      prodOtroProductoId: [ { value: '', disabled: false }, [
+      prodOtroProductoId: [ { value: null, disabled: true }, [
           Validators.required
         ]
       ],
+      concepto: [ { value: '', disabled: false }, [
+          Validators.required
+        ]
+      ]
     };
 
     this.productoFormGroup = this.fb.group(formControls);
@@ -175,23 +297,21 @@ export class EditarProductoComponent implements OnInit {
       return;
     }
 
-    const dataBody: IProducto = this.productoFormGroup.getRawValue();
+    const dataBody: IProducto = this.productoFormGroup.value;
 
-    // dataBody.id = this.centroCostosData.id;
-    // dataBody.estado = this.centroCostosData.estado;
+    dataBody.id = this.productoData.id;
+    dataBody.estado = this.productoData.estado;
 
-    // // toca hablar de estos dos
-    // dataBody.ccosEmpresaId = this.centroCostosData.ccosEmpresaId;
-    // dataBody.fechaCreacion = this.centroCostosData.fechaCreacion;
-    // dataBody.fechaModificacion = this.centroCostosData.fechaModificacion;
+    dataBody.prodEmpresaId = this.productoData.prodEmpresaId;
+    dataBody.fechaCreacion = this.productoData.fechaCreacion;
+    dataBody.fechaModificacion = this.productoData.fechaModificacion;
 
     this.productoService.actualizarProducto(dataBody).subscribe({
       next: (response: any) => {
         if (!response?.success) {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
-          this.productoFormGroup.disable();
-           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }
     });

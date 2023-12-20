@@ -27,6 +27,13 @@ export class ProductoService {
     );
   }
 
+  obtenerProductoPorId(productoId: number): Observable<IResponse<IProducto>> {
+    const url = `${this.environment.faktumUrl}/Producto/ConsultarProductoId?idProducto=${productoId}`;
+    return this.httpClient.get<IResponse<IProducto>>(
+      url
+    );
+  }
+
   crearProducto(data: IProducto): Observable<any> {
     const url = `${this.environment.faktumUrl}/Producto/CrearProducto`;
 

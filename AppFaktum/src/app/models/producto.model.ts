@@ -23,3 +23,9 @@ export interface IProducto {
   fechaCreacion: string;
   fechaModificacion: string | null;
 }
+
+export enum tipoConceptoEnum {
+  CUPS = 'cups',
+  MEDICAMENTOS = 'medicamentos',
+  OTROS_PRODUCTOS = 'otros'
+}

@@ -8,7 +8,10 @@ export enum TipoListEnum {
   ROL= 'rol',
   COBERTURA = 'cobertura',
   MODALIDAD_PAGO = 'modalidadPago',
-  TIPO_DESCUENTO = 'tipoDescuento'
+  TIPO_DESCUENTO = 'tipoDescuento',
+  CUPS = 'cups',
+  TIPO_ARCHIVO_RIPS = 'tipoArchivoRips',
+  TIPO_CUPS = 'tipoCups',
 }
 
 export enum TiposMensajeEnum {

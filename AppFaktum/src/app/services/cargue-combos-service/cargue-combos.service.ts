@@ -177,6 +177,34 @@ export class CargueCombosService {
     );
   }
 
+  obtenerListaTablaIum(): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Maestras/ConsultarTablaIum`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.iumNombre,
+          codigo: item.iumCodigo
+        })) as IListCombo[])
+    );
+  }
+
+  obtenerListaOtroProductoPorEmpresa(empresaId: number): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/OtroProducto/ConsultarOtrosProductosEmpresa?idEmpresa=${empresaId}`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.otprNombre,
+          codigo: item.otprCodigo
+        })) as IListCombo[])
+    );
+  }
+
   obtenerListaTablaImpuestos(): Observable<IListCombo[]> {
     return this.httpClient.get<any>(
       `${this.environment.faktumUrl}/Maestras/ConsultarTablaImpuesto`
@@ -187,6 +215,20 @@ export class CargueCombosService {
           valor: item.id,
           nombre: item.impuNombre,
           codigo: item.impuCodigo
+        })) as IListCombo[])
+    );
+  }
+
+  obtenerListaUnidadesEmpresa(empresaId: number): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Unidad/ConsultarUnidadesEmpresa?idEmpresa=${empresaId}`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.unidNombre,
+          codigo: item.unidCodigo
         })) as IListCombo[])
     );
   }
