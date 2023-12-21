@@ -173,10 +173,10 @@ export class EditarSucursalClienteComponent implements OnInit {
         backdrop: false
       }
     );
-    modalSucursalCliente.componentInstance.clienteID = this.informacionSucursalCliente.id;
+    modalSucursalCliente.componentInstance.sucursalClienteID = this.informacionSucursalCliente.id;
   }
 
-  verContratoCliente(value:IListaPrecio): void{
+  verListaPrecio(value:IListaPrecio): void{
     this.sharedService.addLstaPrecioData(value);
     this.router.navigate(['./gestion-lista-precio/editar-lista-precio']);
   }

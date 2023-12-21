@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map } from 'rxjs/operators';
+import { IEmpresa } from 'src/app/models/empresa.model';
 import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { IListCombo } from 'src/app/models/general.model';
 import { IListaPrecio } from 'src/app/models/lista-precio.model';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { ListaPrecioService } from 'src/app/services/lista-precio-service/lista-precio.service';
+import { ProductoService } from 'src/app/services/producto-service/producto.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
+import { StorageService } from 'src/app/services/storage-service/storage.service';
 
 @Component({
   selector: 'app-editar-lista-precio',
@@ -17,21 +22,42 @@ export class EditarListaPrecioComponent implements OnInit {
   edicionListaPrecio: boolean = false;
 
   listaPrecioData: IListaPrecio;
+  dataEmpresa: IEmpresa;
+  listProductoObs: IListCombo[] = [];
 
   listaFormatoFormGroup: FormGroup;
   fb = new FormBuilder();
 
   constructor(private listaPrecioService: ListaPrecioService,
     private sharedService: SharedService,
-    private generalService: GeneralService) { }
+    private generalService: GeneralService,
+    private storageService: StorageService,
+    private productoService: ProductoService) { }
 
   ngOnInit(): void {
+    this.dataEmpresa = this.storageService.getEmpresaActivaStorage();
     this.init();
   }
 
   init(): void {
-    this.sharedService.listaPrecioDataListener$.subscribe(this.obtenerListaPrecio.bind(this));
+    this.cargarListaCombobox();
+    this.sharedService.listaPrecioDataListener$.subscribe(this.obtenerListaPrecio.bind(this));    
     this.initForm();
+  }
+
+  cargarListaCombobox(): void {
+    this.productoService.obtenerProductosPorEmpresaid(this.dataEmpresa.id).pipe(
+        map((response) =>
+          response.map((item) => ({
+            valor: item.id,
+            nombre: item.prodNombreTecnico,
+            codigo: item.prodCodigo
+          })) as IListCombo[]
+        )
+      )
+      .subscribe({
+        next: (response) => this.listProductoObs = response
+      });
   }
 
   obtenerListaPrecio(data: IListaPrecio): void {
@@ -76,7 +102,7 @@ export class EditarListaPrecioComponent implements OnInit {
     this.cargarDataForm(this.listaPrecioData);
   }
 
-  guardarFormatoImpresion(): void {
+  guardarListaPrecio(): void {
     if (this.listaFormatoFormGroup.invalid) {
       this.listaFormatoFormGroup.markAllAsTouched();
       return;
