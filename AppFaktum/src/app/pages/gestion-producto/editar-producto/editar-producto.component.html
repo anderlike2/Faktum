@@ -100,23 +100,30 @@
                     </select>
                   </div>
                 </div>
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="">Lista precios</label>
+                    <input formControlName="prodListaPrecio" type="text" class="form-control">
+                  </div>
+                </div>
               </div>
 
               <!-- <div class="row"> -->
                 <fieldset class="form-group">
                   <div class="row">
-                    <label for="inputPassword3" class="col-12 col-form-label">Concepto</label>
+                    <label for="input-concepto" class="col-12 col-form-label">Concepto</label>
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="concepto-1" value="cups" checked>
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-1" [value]="tipoConcepto.CUPS">
                         <label class="form-check-label" for="concepto-1">CUPS</label>
                       </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="concepto-2" value="medicamentos">
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-2" [value]="tipoConcepto.MEDICAMENTOS">
                         <label class="form-check-label" for="concepto-2">MEDICAMENTOS</label>
                       </div>
-                      <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="concepto-3" value="otros">
+                      <div class="custom-control custom-radio custom-control-inline">
+                        <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-3" [value]="tipoConcepto.OTROS_PRODUCTOS">
                         <label class="form-check-label" for="concepto-3">OTROS PRODUCTOS</label>
                       </div>
                     </div>
@@ -220,7 +227,7 @@
 
           </form>
 
-          <ng-container *ngIf="edicionCentroCostos">
+          <ng-container *ngIf="edicionProducto">
 
             <hr />
 

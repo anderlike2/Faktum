@@ -776,7 +776,8 @@ export class DetalleEmpresaComponent implements OnInit {
     this.router.navigate(['/gestion-unidad/editar-unidad']);
   }
 
-  verProducto(): void {
+  verProducto(value: IProducto): void {
+    this.sharedService.addProductoData(value);
     this.router.navigate(['/gestion-producto/editar-producto']);
   }
 
