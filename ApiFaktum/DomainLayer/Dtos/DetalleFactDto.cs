@@ -32,12 +32,12 @@ namespace DomainLayer.Dtos
         [Column(TypeName = "decimal(18,2)")]
         public decimal DetaValRf { get; set; }
 
-        //Referencias
-        public EmpresaDto? DetaEmpresa { get; set; }
-        public FacturaDto? DetaFactura { get; set; }
-        public ReteFuenteDto? DetaRetefuente { get; set; }
-        public ImpuestoDto? DetaTipoImpuesto { get; set; }
-        public UnidadDto? DetaUnidad { get; set; }
-        public ListaPrecioDto? DetaListaPrecios { get; set; }
+        //Referencias para consultas
+        public int DetaEmpresaId { get; set; }
+        public int DetaFacturaId { get; set; }
+        public int DetaRetefuenteId { get; set; }
+        public int DetaTipoImpuestoId { get; set; }
+        public int DetaUnidadId { get; set; }
+        public int DetaListaPreciosId { get; set; }
     }
 }

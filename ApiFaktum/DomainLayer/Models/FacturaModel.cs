@@ -116,5 +116,22 @@ namespace DomainLayer.Models
         [Required]
         public virtual ClienteModel? FactCliente { get; set; }
 
+        //Referencias para consultas
+        public virtual int FactClaseFacturaId { get; set; }
+        public virtual int FactCoberturaId { get; set; }
+        public virtual int FactCondicionVentaId { get; set; }
+        public virtual int FactEmpresaId { get; set; }
+        public virtual int FactEstadoDianId { get; set; }
+        public virtual int FactFormaPagoId { get; set; }
+        public virtual int FactFormatoImpresionId { get; set; }
+        public virtual int FactMonedaId { get; set; }
+        public virtual int FactSaludTipoId { get; set; }
+        public virtual int FactTipoDescuentoId { get; set; }
+        public virtual int FactTipoDocElectrId { get; set; }
+        public virtual int FactListaPreciosId { get; set; }
+        public virtual int FactNotaDebitoId { get; set; }
+        public virtual int FactNotaCreditoId { get; set; }
+        public virtual int FactClienteId { get; set; }
+
     }
 }

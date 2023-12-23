@@ -47,22 +47,21 @@ namespace DomainLayer.Dtos
         public string? FactValTotRetefuente { get; set; }
         public string? FactVendedor { get; set; }
 
-        //Referencias
-        public ClaseFacturaDto? FactClaseFactura { get; set; }
-        public CoberturaDto? FactCobertura { get; set; }
-        public CondicionVentaDto? FactCondicionVenta { get; set; }
-        public EmpresaDto? FactEmpresa { get; set; }
-        public EstadoDianFacturaDto? FactEstadoDian { get; set; }
-        public FormaPagoDto? FactFormaPago { get; set; }
-        public FormatoImpresionDto? FactFormatoImpresion { get; set; }
-        public MonedaDto? FactMoneda { get; set; }
-        public FactSaludTipoDto? FactSaludTipo { get; set; }
-        public TipoDescuentoDto? FactTipoDescuento { get; set; }
-        public TipoDocElectrDto? FactTipoDocElectr { get; set; }
-        public List<DetalleFactDto>? FactDetFacturas { get; set; }
-        public ListaPrecioDto? FactListaPrecios { get; set; }
-        public NotaDebitoDto? FactNotaDebito { get; set; }
-        public NotaCreditoDto? FactNotaCredito { get; set; }
-        public ClienteDto? FactCliente { get; set; }
+        //Referencias para consultas
+        public int FactClaseFacturaId { get; set; }
+        public int FactCoberturaId { get; set; }
+        public int FactCondicionVentaId { get; set; }
+        public int FactEmpresaId { get; set; }
+        public int FactEstadoDianId { get; set; }
+        public int FactFormaPagoId { get; set; }
+        public int FactFormatoImpresionId { get; set; }
+        public int FactMonedaId { get; set; }
+        public int FactSaludTipoId { get; set; }
+        public int FactTipoDescuentoId { get; set; }
+        public int FactTipoDocElectrId { get; set; }
+        public int FactListaPreciosId { get; set; }
+        public int FactNotaDebitoId { get; set; }
+        public int FactNotaCreditoId { get; set; }
+        public int FactClienteId { get; set; }
     }
 }
