@@ -7,20 +7,16 @@ namespace DomainLayer.Models
     {
         [Required]
         public DateTime? FactFechaTrm { get; set;}
-        [Required]
-        public long FactCompartidos { get; set;}
+        public long? FactCompartidos { get; set;}
         [Required]
         public long FactContador { get; set; }
-        [Required]
         public string? FactContrato { get; set; }
-        [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactCopago { get; set; }
+        public decimal? FactCopago { get; set; }
         [Required]
         public string? FactCufe { get; set; }
-        [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactCuotaRecupera { get; set; }
+        public decimal? FactCuotaRecupera { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal FactDescGlobal{ get; set; }
@@ -30,16 +26,13 @@ namespace DomainLayer.Models
         public int FactEstadoOperacion { get; set; }
         [Required]
         public DateTime? FactFecha { get; set; }
-        [Required]
         public DateTime? FactFechaFinal { get; set; }
-        [Required]
         public DateTime? FactFechaInicio { get; set; }
         [Required]
         public DateTime? FactFechaVence { get; set; }
         [Required]
         public string? FactModalidadPago { get; set; }
-        [Required]
-        public long FactModeradora { get; set; }
+        public long? FactModeradora { get; set; }
         [Required]
         public string? FactNumero { get; set; }
         [Required]
@@ -48,7 +41,6 @@ namespace DomainLayer.Models
         public string? FactOperador { get; set; }
         [Required]
         public string? FactOrden { get; set; }
-        [Required]
         public string? FactPoliza { get; set; }
         [Required]
         public string? FactPorcIva { get; set; }
