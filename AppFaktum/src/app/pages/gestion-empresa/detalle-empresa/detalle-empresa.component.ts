@@ -623,6 +623,11 @@ export class DetalleEmpresaComponent implements OnInit {
       ? 'Campo obligatorio' : '';
   }
 
+  editarForm(): void {
+    this.empresaFormGroup.enable();
+    this.edicionEmpresa = true;
+  }
+
   cancelarEdicion(): void {
     this.cargarInfoEmpresa();
   }

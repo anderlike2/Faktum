@@ -20,27 +20,51 @@
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Nombre</label>
-                              <input formControlName="liprNombre" type="text" class="form-control">
+                              <input formControlName="liprNombre" type="text" class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  listaFormatoFormGroup.controls.liprNombre.invalid &&
+                                  listaFormatoFormGroup.controls.liprNombre.touched
+                              }">
+                              <div class="invalid-feedback"> {{ liprNombreErrorMensaje }} </div>
                             </div>
                           </div>
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Descripción</label>
-                              <input formControlName="liprDescripcion" type="text"  class="form-control">
+                              <input formControlName="liprDescripcion" type="text"  class="form-control"
+                              [ngClass]="{
+                                'is-invalid':
+                                  listaFormatoFormGroup.controls.liprDescripcion.invalid &&
+                                  listaFormatoFormGroup.controls.liprDescripcion.touched
+                              }">
+                              <div class="invalid-feedback"> {{ liprDescripcionErrorMensaje }} </div>
                             </div>
                           </div>
-                        </div> 
+                        </div>
                         <div class="row">
                             <div class="col-6">
                               <div class="form-group">
                                 <label for="">Descuento</label>
-                                <input formControlName="liprDescuento" type="text" class="form-control">
+                                <input formControlName="liprDescuento" type="text" class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    listaFormatoFormGroup.controls.liprDescuento.invalid &&
+                                    listaFormatoFormGroup.controls.liprDescuento.touched
+                                }">
+                                <div class="invalid-feedback"> {{ liprDescuentoErrorMensaje }} </div>
                               </div>
                             </div>
                             <div class="col-6">
                               <div class="form-group">
                                 <label for="">Valor</label>
-                                <input formControlName="liprValor" type="text"  class="form-control">
+                                <input formControlName="liprValor" type="text"  class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    listaFormatoFormGroup.controls.liprValor.invalid &&
+                                    listaFormatoFormGroup.controls.liprValor.touched
+                                }">
+                                <div class="invalid-feedback"> {{ liprValorErrorMensaje }} </div>
                               </div>
                             </div>
                           </div>
@@ -48,24 +72,36 @@
                             <div class="col-6">
                               <div class="form-group">
                                 <label for="">Estado operación</label>
-                                <input formControlName="liprEstadoOperacion" type="text" class="form-control">
+                                <input formControlName="liprEstadoOperacion" type="text" class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    listaFormatoFormGroup.controls.liprEstadoOperacion.invalid &&
+                                    listaFormatoFormGroup.controls.liprEstadoOperacion.touched
+                                }">
+                                <div class="invalid-feedback"> {{ liprEstadoOperacionErrorMensaje }} </div>
                               </div>
                             </div>
                             <div class="col-6">
                               <div class="form-group">
                                 <label for="">Producto</label>
-                                <select formControlName="liprProductoId" class="form-control">
+                                <select formControlName="liprProductoId" class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    listaFormatoFormGroup.controls.liprProductoId.invalid &&
+                                    listaFormatoFormGroup.controls.liprProductoId.touched
+                                }">
                                   <ng-container *ngFor="let item of listProductoObs">
                                     <option [value]="item.valor">{{ item.nombre }}</option>
                                   </ng-container>
                                 </select>
+                                <div class="invalid-feedback"> {{ liprProductoIdErrorMensaje }} </div>
                               </div>
                             </div>
-                          </div>     
+                          </div>
                       </div>
                 </form>
                 <ng-container *ngIf="edicionListaPrecio">
-                    <hr />        
+                    <hr />
                     <div class="d-flex justify-content-end">
                       <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
                         <i class="fa fa-ban"></i>
@@ -73,7 +109,7 @@
                       <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar lista precio" (click)="guardarListaPrecio()">
                         <i class="fa fa-save"></i>
                       </button>
-                    </div>        
+                    </div>
                 </ng-container>
             </div>
         </app-card>

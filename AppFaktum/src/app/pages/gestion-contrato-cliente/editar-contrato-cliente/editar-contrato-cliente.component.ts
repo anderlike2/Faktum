@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
@@ -142,6 +142,48 @@ export class EditarContratoClienteComponent implements OnInit {
     };
 
     this.contratoClienteFormGroup = this.fb.group(formControls);
+  }
+
+  get cosaContratoErrorMensaje(): string {
+    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaContrato') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : '';
+  }
+
+  get cosaNitClienteErrorMensaje(): string {
+    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaNitCliente') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : '';
+  }
+
+  get cosaPolizaErrorMensaje(): string {
+    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaPoliza') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : '';
+  }
+
+  get cosaCobeIdErrorMensaje(): string {
+    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaCobeId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : '';
+  }
+
+  get cosaEmpresaIdErrorMensaje(): string {
+    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaEmpresaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : '';
+  }
+
+  get cosaMopaIdErrorMensaje(): string {
+    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaMopaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : '';
   }
 
 

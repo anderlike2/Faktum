@@ -85,6 +85,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'factura',
+        loadChildren: () => import('./pages/gestion-factura/gestion-factura.module').then(m => m.GestionFacturaModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

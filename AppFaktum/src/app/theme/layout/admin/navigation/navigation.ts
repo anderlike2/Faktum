@@ -68,7 +68,7 @@ const NavigationItems = [
             external: false
           }
         ]
-      },      
+      },
       {
         id: 'sucursal',
         title: 'Sucursal',
@@ -95,6 +95,21 @@ const NavigationItems = [
             title: 'Ver detalle',
             type: 'item',
             url: '/gestion-cliente/detalle-cliente',
+            external: false
+          }
+        ]
+      },
+      {
+        id: 'factura',
+        title: 'Factura',
+        type: 'collapse',
+        icon: 'fas fa-portrait',
+        children: [
+          {
+            id: 'crear-factura',
+            title: 'Crear factura',
+            type: 'item',
+            url: '/factura/crear-factura',
             external: false
           }
         ]

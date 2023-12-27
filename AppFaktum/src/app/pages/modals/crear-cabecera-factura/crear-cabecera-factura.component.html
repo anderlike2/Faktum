@@ -1,0 +1,256 @@
+<div class="modal-header">
+  <h5 class="modal-title">Encabezado factura</h5>
+</div>
+<div class="modal-body">
+
+  <form>
+
+    <fieldset class="form-group">
+      <div class="row">
+        <label for="input-concepto" class="col-12 col-form-label">Documento</label>
+        <div class="col-12">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-1" [value]="listaDocumento.COMERCIAL">
+            <label class="form-check-label" for="concepto-1">CUPS</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-2" [value]="listaDocumento.SECTOR_SALUD">
+            <label class="form-check-label" for="concepto-2">MEDICAMENTOS</label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Tipo documento</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Tipo operación</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Fecha inicio</label>
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <div class="input-group-append">
+              <button class="btn btn-secondary calendar">
+                <i class="far fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Fecha final</label>
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <div class="input-group-append">
+              <button class="btn btn-secondary calendar">
+                <i class="far fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Sucursal</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Centro de costos</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Cliente</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Sucursal cliente</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Contrato</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Póliza cliente</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Resolución sucursal</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Tipo moneda</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Fecha TRM</label>
+          <div class="input-group">
+            <input type="text" class="form-control">
+            <div class="input-group-append">
+              <button class="btn btn-secondary calendar">
+                <i class="far fa-calendar"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">TRM</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Descuento global</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Tipo otro descuento</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Lista de precios</label>
+          <select class="form-control">
+            <ng-container *ngFor="let item of []">
+              <option [value]="item.valor">{{item.nombre}}</option>
+            </ng-container>
+          </select>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Total copago</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Total cuota moderadora</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Total cuota recuperación</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label for="">Total pago compartido</label>
+          <input type="text" class="form-control">
+        </div>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+<div class="modal-footer">
+  <div class="d-flex justify-content-end m-2">
+    <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+      <i class="fa fa-ban"></i>
+    </button>
+    <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar encabezado factura" (click)="guardarEncabezado()">
+      <i class="fa fa-save"></i>
+    </button>
+  </div>
+</div>

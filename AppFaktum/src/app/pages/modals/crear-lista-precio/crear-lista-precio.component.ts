@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -55,6 +55,42 @@ export class CrearListaPrecioComponent implements OnInit {
     };
 
     this.listaPrecioFormGroup = this.fb.group(formControls);
+  }
+
+  get liprNombreErrorMensaje(): string {
+    const form: AbstractControl = this.listaPrecioFormGroup.get('liprNombre') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get liprDescripcionErrorMensaje(): string {
+    const form: AbstractControl = this.listaPrecioFormGroup.get('liprDescripcion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get liprDescuentoErrorMensaje(): string {
+    const form: AbstractControl = this.listaPrecioFormGroup.get('liprDescuento') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get liprValorErrorMensaje(): string {
+    const form: AbstractControl = this.listaPrecioFormGroup.get('liprValor') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get liprEstadoOperacionErrorMensaje(): string {
+    const form: AbstractControl = this.listaPrecioFormGroup.get('liprEstadoOperacion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get liprProductoIdErrorMensaje(): string {
+    const form: AbstractControl = this.listaPrecioFormGroup.get('liprProductoId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
   cargarListaCombobox(): void {

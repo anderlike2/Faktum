@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { map } from 'rxjs/operators';
 import { ICentroCostos } from 'src/app/models/centro-costos.model';
@@ -182,6 +182,102 @@ export class CrearProductoComponent implements OnInit {
     };
 
     this.productoFormGroup = this.fb.group(formControls);
+  }
+
+  get prodNombreFacturaErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodNombreFactura') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodNombreTecnicoErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodNombreTecnico') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodCodigoErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodCodigo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodUnidadHomologaErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodUnidadHomologa') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodMarcaErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodMarca') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodModeloErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodModelo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodValorErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodValor') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodListaPrecioErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodListaPrecio') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodCentroCostoIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodCentroCostoId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodCodReteFuenteIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodCodReteFuenteId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodCumIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodCumId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodCupIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodCupId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodIumIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodIumId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodTipoCupIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodTipoCupId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodTipoImpuestoIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodTipoImpuestoId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodTipoRipsIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodTipoRipsId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodUnidadIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodUnidadId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get prodOtroProductoIdErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodOtroProductoId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+  get conceptoErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('concepto') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
   iniConcepto(): void {

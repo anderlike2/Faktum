@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
@@ -179,6 +179,120 @@ export class EditarSucursalComponent implements OnInit {
     this.sucursalFormGroup = this.fb.group(formControls);
   }
 
+  get sucuNombreErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuNombre') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuDeptoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuDepto') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuCelularErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuCelular') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuCiudadErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuCiudad') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuCodigoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuCodigo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuContactoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuContacto') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuDireccionErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuDireccion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuEstadoOperacionErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuEstadoOperacion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuHabilitacionErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuHabilitacion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuLeyendaFacturaErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuLeyendaFactura') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuLeyendaNotaCreditoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuLeyendaNotaCredito') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuLeyendaNotaDebitoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuLeyendaNotaDebito') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuListPrecioErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuListPrecio') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuMailErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuMail') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuObservacionesErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuObservaciones') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuReteIcaErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuReteIca') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuTelefonoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuTelefono') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuCentroCostosIdErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuCentroCostosId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get sucuFormatoImpresionIdErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuFormatoImpresionId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
 
   guardarSucursal(): void {
     if (this.sucursalFormGroup.invalid) {
@@ -199,7 +313,7 @@ export class EditarSucursalComponent implements OnInit {
     dataBody.fechaModificacion = this.sucursalData.fechaModificacion;
 
     this.detalleEmpresaService.actualizarSucursal(dataBody).subscribe({
-      next: (response: any) => {        
+      next: (response: any) => {
         if (!response?.success) {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{

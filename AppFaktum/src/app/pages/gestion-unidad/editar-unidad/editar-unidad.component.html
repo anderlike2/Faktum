@@ -5,7 +5,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="unidadCollapsed = !unidadCollapsed" [attr.aria-expanded]="!unidadCollapsed" aria-controls="collapseUnidad">
                   <h5 class="font-weight-bold mb-0">Unidad</h5>
                   <i class="fa" [ngClass]="{'fa-chevron-up': unidadCollapsed, 'fa-chevron-down': !unidadCollapsed }"></i>
-                </div>        
+                </div>
             </div>
             <hr>
             <div id="collapseUnidad" [ngbCollapse]="unidadCollapsed">
@@ -21,30 +21,57 @@
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Nombre</label>
-                              <input formControlName="unidNombre" type="text" class="form-control">
+                              <input
+                                formControlName="unidNombre"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    unidadFormGroup.controls.unidNombre.invalid &&
+                                    unidadFormGroup.controls.unidNombre.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ unidNombreErrorMensaje }} </div>
                             </div>
                           </div>
-                        </div>          
+                        </div>
                     </div>
                     <div class="col-12">
                         <div class="row">
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Código Dian</label>
-                              <input formControlName="unidCodigoDian" type="text" class="form-control">
+                              <input
+                                formControlName="unidCodigoDian"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    unidadFormGroup.controls.unidCodigoDian.invalid &&
+                                    unidadFormGroup.controls.unidCodigoDian.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ unidCodigoDianErrorMensaje }} </div>
                             </div>
                           </div>
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Código</label>
-                              <input formControlName="unidCodigo" type="text"  class="form-control">
+                              <input
+                                formControlName="unidCodigo"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    unidadFormGroup.controls.unidCodigo.invalid &&
+                                    unidadFormGroup.controls.unidCodigo.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ unidCodigoErrorMensaje }} </div>
                             </div>
                           </div>
-                        </div>          
+                        </div>
                     </div>
                 </form>
                 <ng-container *ngIf="edicionUnidad">
-                    <hr />        
+                    <hr />
                     <div class="d-flex justify-content-end">
                       <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
                         <i class="fa fa-ban"></i>
@@ -52,7 +79,7 @@
                       <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar unidad" (click)="guardarUnidad()">
                         <i class="fa fa-save"></i>
                       </button>
-                    </div>        
+                    </div>
                 </ng-container>
 
             </div>

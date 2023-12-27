@@ -11,13 +11,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Nombre sucursal</label>
-            <input formControlName="sucuNombre" type="text" class="form-control">
+            <input formControlName="sucuNombre" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuNombre.invalid &&
+                sucursalFormGroup.controls.sucuNombre.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuNombreErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Código sucursal</label>
-            <input formControlName="sucuCodigo" type="text"  class="form-control">
+            <input formControlName="sucuCodigo" type="text"  class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuCodigo.invalid &&
+                sucursalFormGroup.controls.sucuCodigo.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuCodigoErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -26,21 +38,33 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Departamento</label>
-            <select formControlName="sucuDepto" class="form-control" (change)="cargarCiudadesDepto($event.target.value)">
+            <select formControlName="sucuDepto" class="form-control" (change)="cargarCiudadesDepto($event.target.value)"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuDepto.invalid &&
+                sucursalFormGroup.controls.sucuDepto.touched
+            }">
               <ng-container *ngFor="let item of listDeptos">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ sucuDeptoErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Ciudad</label>
-            <select formControlName="sucuCiudad" class="form-control">
+            <select formControlName="sucuCiudad" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuCiudad.invalid &&
+                sucursalFormGroup.controls.sucuCiudad.touched
+            }">
               <ng-container *ngFor="let item of listCiudades">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ sucuCiudadErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -49,13 +73,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Dirección</label>
-            <input formControlName="sucuDireccion" type="text" class="form-control">
+            <input formControlName="sucuDireccion" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuDireccion.invalid &&
+                sucursalFormGroup.controls.sucuDireccion.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuDireccionErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Teléfono</label>
-            <input formControlName="sucuTelefono" type="text" class="form-control">
+            <input formControlName="sucuTelefono" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuTelefono.invalid &&
+                sucursalFormGroup.controls.sucuTelefono.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuTelefonoErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -64,13 +100,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Celular</label>
-            <input formControlName="sucuCelular" type="text" class="form-control">
+            <input formControlName="sucuCelular" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuCelular.invalid &&
+                sucursalFormGroup.controls.sucuCelular.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuCelularErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Correo electrónico</label>
-            <input formControlName="sucuMail" type="text" class="form-control">
+            <input formControlName="sucuMail" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuMail.invalid &&
+                sucursalFormGroup.controls.sucuMail.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuMailErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -79,13 +127,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Contacto</label>
-            <input formControlName="sucuContacto" type="text" class="form-control">
+            <input formControlName="sucuContacto" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuContacto.invalid &&
+                sucursalFormGroup.controls.sucuContacto.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuContactoErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Lista de precios</label>
-            <input formControlName="sucuListPrecio" type="text" class="form-control">
+            <input formControlName="sucuListPrecio" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuListPrecio.invalid &&
+                sucursalFormGroup.controls.sucuListPrecio.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuListPrecioErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -94,13 +154,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Sucursal habilitación</label>
-            <input formControlName="sucuHabilitacion" type="text" class="form-control">
+            <input formControlName="sucuHabilitacion" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuHabilitacion.invalid &&
+                sucursalFormGroup.controls.sucuHabilitacion.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuHabilitacionErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Estado operación</label>
-            <input formControlName="sucuEstadoOperacion" type="text" class="form-control">
+            <input formControlName="sucuEstadoOperacion" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuEstadoOperacion.invalid &&
+                sucursalFormGroup.controls.sucuEstadoOperacion.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuEstadoOperacionErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -109,17 +181,29 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Sucursal Rete ICA</label>
-            <input formControlName="sucuReteIca" type="text" class="form-control">
+            <input formControlName="sucuReteIca" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuReteIca.invalid &&
+                sucursalFormGroup.controls.sucuReteIca.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuReteIcaErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Centro de costos</label>
-            <select formControlName="sucuCentroCostosId" class="form-control">
+            <select formControlName="sucuCentroCostosId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuCentroCostosId.invalid &&
+                sucursalFormGroup.controls.sucuCentroCostosId.touched
+            }">
               <ng-container *ngFor="let item of listCentroCostos">
                 <option [value]="item.valor">{{ item.nombre }}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ sucuCentroCostosIdErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -128,13 +212,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda factura</label>
-            <input formControlName="sucuLeyendaFactura" type="text" class="form-control">
+            <input formControlName="sucuLeyendaFactura" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuLeyendaFactura.invalid &&
+                sucursalFormGroup.controls.sucuLeyendaFactura.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuLeyendaFacturaErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda nota credito</label>
-            <input formControlName="sucuLeyendaNotaCredito" type="text" class="form-control">
+            <input formControlName="sucuLeyendaNotaCredito" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuLeyendaNotaCredito.invalid &&
+                sucursalFormGroup.controls.sucuLeyendaNotaCredito.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuLeyendaNotaCreditoErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -143,17 +239,29 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Leyenda nota debito</label>
-            <input formControlName="sucuLeyendaNotaDebito" type="text" class="form-control">
+            <input formControlName="sucuLeyendaNotaDebito" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuLeyendaNotaDebito.invalid &&
+                sucursalFormGroup.controls.sucuLeyendaNotaDebito.touched
+            }">
+            <div class="invalid-feedback"> {{ sucuLeyendaNotaDebitoErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Formato impresión</label>
-            <select formControlName="sucuFormatoImpresionId" class="form-control">
+            <select formControlName="sucuFormatoImpresionId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuFormatoImpresionId.invalid &&
+                sucursalFormGroup.controls.sucuFormatoImpresionId.touched
+            }">
               <ng-container *ngFor="let item of listFormatosImpresion">
                 <option [value]="item.valor">{{ item.nombre }}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ sucuFormatoImpresionIdErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -164,7 +272,13 @@
         <div class="col-12">
           <div class="form-group">
             <label>Oberservación</label>
-            <textarea formControlName="sucuObservaciones" class="form-control" cols="30" rows="4"></textarea>
+            <textarea formControlName="sucuObservaciones" class="form-control" cols="30" rows="4"
+            [ngClass]="{
+              'is-invalid':
+                sucursalFormGroup.controls.sucuObservaciones.invalid &&
+                sucursalFormGroup.controls.sucuObservaciones.touched
+            }"></textarea>
+            <div class="invalid-feedback"> {{ sucuObservacionesErrorMensaje }} </div>
           </div>
         </div>
       </div>

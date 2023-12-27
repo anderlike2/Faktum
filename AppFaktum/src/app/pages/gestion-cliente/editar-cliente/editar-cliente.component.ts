@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ICliente } from 'src/app/models/cliente.model';
@@ -88,38 +88,266 @@ export class EditarClienteComponent implements OnInit {
       primerNombre: [ { value: '', disabled: false }, [  ] ],
       segundoNombre: [ { value: '', disabled: false }, [  ] ],
       apellidos: [ { value: '', disabled: false }, [  ] ],
-      nit: [ { value: '', disabled: false }, [  ] ],
-      dv: [ { value: '', disabled: false }, [  ] ],
+      nit: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+       ] ],
+      dv: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+       ] ],
       ciuu: [ { value: '', disabled: false }, [  ] ],
-      celular: [ { value: '', disabled: false }, [  ] ],
+      celular: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
       telefonoFijo: [ { value: '', disabled: false }, [  ] ],
-      contacto: [ { value: '', disabled: false }, [  ] ],
-      correo: [ { value: '', disabled: false }, [  ] ],
-      correoFacturacion: [ { value: '', disabled: false }, [  ] ],
+      contacto: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      correo: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.email
+       ] ],
+      correoFacturacion: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.email
+       ] ],
       paginaWeb: [ { value: '', disabled: false }, [  ] ],
-      direccion: [ { value: '', disabled: false }, [  ] ],
-      cobertura: [ { value: '', disabled: false }, [  ] ],
-      descGlobal: [ { value: '', disabled: false }, [  ] ],
-      diasPago: [ { value: '', disabled: false }, [  ] ],
-      estadoOperacion: [ { value: '', disabled: false }, [  ] ],
-      juridica: [ { value: '', disabled: false }, [  ] ],
+      direccion: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      cobertura: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      descGlobal: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+       ] ],
+      diasPago: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+       ] ],
+      estadoOperacion: [ { value: '', disabled: false }, [
+        Validators.required,
+        Validators.pattern('[0-9]+')
+       ] ],
+      juridica: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
       localidad: [ { value: '', disabled: false }, [  ] ],
-      idRepLegal: [ { value: '', disabled: false }, [  ] ],
-      representanteLegal: [ { value: '', disabled: false }, [  ] ],
-      paisId: [ { value: '', disabled: false }, [  ] ],
-      deptoId: [ { value: '', disabled: false }, [  ] ],
-      ciudadId: [ { value: '', disabled: false }, [  ] ],
-      empresaId: [ { value: '', disabled: false }, [  ] ],
-      regimenId: [ { value: '', disabled: false }, [  ] ],
-      respFiscalId: [ { value: '', disabled: false }, [  ] ],
-      respTributariaId: [ { value: '', disabled: false }, [  ] ],
-      tipoClienteId: [ { value: '', disabled: false }, [  ] ],
-      tipoIdId: [ { value: '', disabled: false }, [  ] ],
-      clasJuridicaId: [ { value: '', disabled: false }, [  ] ],
-      razonSocial: [ { value: '', disabled: false }, [  ] ]
+      idRepLegal: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      representanteLegal: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      paisId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      deptoId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      ciudadId: [ { value: '', disabled: false }, [
+        Validators.required
+      ] ],
+      empresaId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      regimenId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      respFiscalId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      respTributariaId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      tipoClienteId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      tipoIdId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      clasJuridicaId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      razonSocial: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ]
     }
 
     this.clienteFormGroup = this.fb.group(formControls);
+  }
+
+  get nitErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('nit') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
+      : '';
+  }
+
+  get dvErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('dv') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
+      : '';
+  }
+
+  get celularErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('celular') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get contactoErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('contacto') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get correoErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('correo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('email')
+      ? 'Correo no valido'
+      : '';;
+  }
+
+  get correoFacturacionErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('correoFacturacion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('email')
+      ? 'Correo no valido'
+      : '';
+  }
+
+  get direccionErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('direccion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get coberturaErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('cobertura') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get descGlobalErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('descGlobal') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
+      : '';
+  }
+
+  get diasPagoErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('diasPago') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
+      : '';
+  }
+
+  get estadoOperacionErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('estadoOperacion') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
+      : '';
+  }
+
+  get juridicaErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('juridica') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get idRepLegalErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('idRepLegal') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get representanteLegalErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('representanteLegal') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get paisIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('paisId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get deptoIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('deptoId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get ciudadIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('ciudadId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get empresaIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('empresaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get regimenIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('regimenId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get respFiscalIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('respFiscalId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get respTributariaIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('respTributariaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get tipoClienteIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('tipoClienteId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get tipoIdIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('tipoIdId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get clasJuridicaIdErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('clasJuridicaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get razonSocialErrorMensaje(): string {
+    const form: AbstractControl = this.clienteFormGroup.get('razonSocial') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
   cargarComboListas(): void {

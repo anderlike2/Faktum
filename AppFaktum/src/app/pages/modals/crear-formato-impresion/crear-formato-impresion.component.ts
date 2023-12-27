@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormatoImpresionService } from 'src/app/services/formato-impresion-service/formato-impresion.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
@@ -37,6 +37,18 @@ export class CrearFormatoImpresionComponent implements OnInit {
     };
 
     this.formatoImpresionFormGroup = this.fb.group(formControls);
+  }
+
+  get formNombreErrorMensaje(): string {
+    const form: AbstractControl = this.formatoImpresionFormGroup.get('formNombre') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get formCodigoErrorMensaje(): string {
+    const form: AbstractControl = this.formatoImpresionFormGroup.get('formCodigo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
   guardarFormatoImpresion(): void {

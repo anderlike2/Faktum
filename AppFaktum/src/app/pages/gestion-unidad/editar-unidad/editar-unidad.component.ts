@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IUnidad } from 'src/app/models/unidad.model';
 import { GeneralService } from 'src/app/services/general-service/general.service';
@@ -54,6 +54,24 @@ export class EditarUnidadComponent implements OnInit {
     };
 
     this.unidadFormGroup = this.fb.group(formControls);
+  }
+
+  get unidNombreErrorMensaje(): string {
+    const form: AbstractControl = this.unidadFormGroup.get('unidNombre') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get unidCodigoDianErrorMensaje(): string {
+    const form: AbstractControl = this.unidadFormGroup.get('unidCodigoDian') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get unidCodigoErrorMensaje(): string {
+    const form: AbstractControl = this.unidadFormGroup.get('unidCodigo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
   cargarDataForm(data: IUnidad): void {

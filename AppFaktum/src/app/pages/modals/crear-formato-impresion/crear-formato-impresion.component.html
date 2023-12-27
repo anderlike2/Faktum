@@ -10,19 +10,37 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Nombre</label>
-                  <input formControlName="formNombre" type="text" class="form-control">
+                  <input
+                    formControlName="formNombre"
+                    type="text"
+                    [ngClass]="{
+                      'is-invalid':
+                        formatoImpresionFormGroup.controls.formNombre.invalid &&
+                        formatoImpresionFormGroup.controls.formNombre.touched
+                    }"
+                    class="form-control">
+                  <div class="invalid-feedback"> {{ formNombreErrorMensaje }} </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Código</label>
-                  <input formControlName="formCodigo" type="text"  class="form-control">
+                  <input
+                    formControlName="formCodigo"
+                    type="text"
+                    [ngClass]="{
+                      'is-invalid':
+                        formatoImpresionFormGroup.controls.formCodigo.invalid &&
+                        formatoImpresionFormGroup.controls.formCodigo.touched
+                    }"
+                    class="form-control">
+                  <div class="invalid-feedback"> {{ formCodigoErrorMensaje }} </div>
                 </div>
               </div>
             </div>
-      
+
           </div>
-    </form>  
+    </form>
 
 </div>
 <div class="modal-footer">
@@ -35,4 +53,4 @@
       </button>
     </div>
 </div>
-  
+

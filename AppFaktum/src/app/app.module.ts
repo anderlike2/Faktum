@@ -23,7 +23,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDatepickerModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -44,6 +44,11 @@ import { CrearSucursalClienteComponent } from './pages/modals/crear-sucursal-cli
 import { CrearUnidadComponent } from './pages/modals/crear-unidad/crear-unidad.component';
 import { CrearListaPrecioComponent } from './pages/modals/crear-lista-precio/crear-lista-precio.component';
 import { CrearProductoComponent } from './pages/modals/crear-producto/crear-producto.component';
+import { CrearCabeceraFacturaComponent } from './pages/modals/crear-cabecera-factura/crear-cabecera-factura.component';
+import { TextMaskModule } from 'angular2-text-mask';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
   declarations: [
@@ -72,7 +77,8 @@ import { CrearProductoComponent } from './pages/modals/crear-producto/crear-prod
     CrearSucursalClienteComponent,
     CrearUnidadComponent,
     CrearListaPrecioComponent,
-    CrearProductoComponent
+    CrearProductoComponent,
+    CrearCabeceraFacturaComponent
   ],
   imports: [
     BrowserModule,
@@ -82,10 +88,13 @@ import { CrearProductoComponent } from './pages/modals/crear-producto/crear-prod
     NgbDropdownModule,
     NgbTooltipModule,
     NgbButtonsModule,
+    NgbDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    TextMaskModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [
     TableModule

@@ -5,7 +5,7 @@
                 <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="formatoImpresionCollapsed = !formatoImpresionCollapsed" [attr.aria-expanded]="!formatoImpresionCollapsed" aria-controls="collapseFormatoImpresion">
                   <h5 class="font-weight-bold mb-0">Formato de impresión</h5>
                   <i class="fa" [ngClass]="{'fa-chevron-up': formatoImpresionCollapsed, 'fa-chevron-down': !formatoImpresionCollapsed }"></i>
-                </div>        
+                </div>
             </div>
             <hr>
             <div id="collapseFormatoImpresion" [ngbCollapse]="formatoImpresionCollapsed">
@@ -20,20 +20,38 @@
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Nombre</label>
-                              <input formControlName="formNombre" type="text" class="form-control">
+                              <input
+                                formControlName="formNombre"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    formatoImpresionFormGroup.controls.formNombre.invalid &&
+                                    formatoImpresionFormGroup.controls.formNombre.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ formNombreErrorMensaje }} </div>
                             </div>
                           </div>
                           <div class="col-6">
                             <div class="form-group">
                               <label for="">Código</label>
-                              <input formControlName="formCodigo" type="text"  class="form-control">
+                              <input
+                                formControlName="formCodigo"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    formatoImpresionFormGroup.controls.formCodigo.invalid &&
+                                    formatoImpresionFormGroup.controls.formCodigo.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ formCodigoErrorMensaje }} </div>
                             </div>
                           </div>
-                        </div>          
+                        </div>
                       </div>
                 </form>
                 <ng-container *ngIf="edicionFormatoImpresion">
-                    <hr />        
+                    <hr />
                     <div class="d-flex justify-content-end">
                       <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
                         <i class="fa fa-ban"></i>
@@ -41,7 +59,7 @@
                       <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar contrato cliente" (click)="guardarFormatoImpresion()">
                         <i class="fa fa-save"></i>
                       </button>
-                    </div>        
+                    </div>
                 </ng-container>
             </div>
         </app-card>

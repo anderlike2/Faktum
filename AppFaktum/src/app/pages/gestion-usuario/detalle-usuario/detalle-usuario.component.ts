@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { IListCombo } from 'src/app/models/general.model';
@@ -22,7 +22,7 @@ export class DetalleUsuarioComponent implements OnInit {
 
   listEmpresas: IEmpresa[] = [];
   listRoles: IListCombo[] = [];
-  
+
   constructor(private storageService: StorageService, private empresaService: EmpresaService,
     private cargueCombosService: CargueCombosService, private usuarioService: UsuarioService,
     private generalService: GeneralService) { }
@@ -34,18 +34,6 @@ export class DetalleUsuarioComponent implements OnInit {
   init(): void {
     this.initForm();
     this.cargarCombobox();
-  }
-
-  initForm(): void {
-    const formControls: { [key: string]: any } = {
-      usuaUsuario: [ { value: '', disabled: false }, [  ] ],
-      usuaPassword: [ { value: '', disabled: false }, [  ] ],
-      usuaPasswordConfirm: [ { value: '', disabled: false }, [  ] ],
-      usuaEmpresaId: [ { value: '', disabled: false }, [  ] ],
-      usuaRolId: [ { value: '', disabled: false }, [  ] ]
-    }
-
-    this.usuarioFormGroup = this.fb.group(formControls);
   }
 
   cargarCombobox() {
@@ -63,6 +51,59 @@ export class DetalleUsuarioComponent implements OnInit {
       }
     });
   }
+
+  initForm(): void {
+    const formControls: { [key: string]: any } = {
+      usuaUsuario: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      usuaPassword: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      usuaPasswordConfirm: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      usuaEmpresaId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ],
+      usuaRolId: [ { value: '', disabled: false }, [
+        Validators.required
+       ] ]
+    }
+
+    this.usuarioFormGroup = this.fb.group(formControls);
+  }
+
+  get usuaUsuarioErrorMensaje(): string {
+    const form: AbstractControl = this.usuarioFormGroup.get('usuaUsuario') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get usuaPasswordErrorMensaje(): string {
+    const form: AbstractControl = this.usuarioFormGroup.get('usuaPassword') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get usuaPasswordConfirmErrorMensaje(): string {
+    const form: AbstractControl = this.usuarioFormGroup.get('usuaPasswordConfirm') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get usuaEmpresaIdErrorMensaje(): string {
+    const form: AbstractControl = this.usuarioFormGroup.get('usuaEmpresaId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get usuaRolIdErrorMensaje(): string {
+    const form: AbstractControl = this.usuarioFormGroup.get('usuaRolId') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
 
   guardarUsuario(): void {
     if (this.usuarioFormGroup.invalid) {

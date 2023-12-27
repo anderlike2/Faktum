@@ -11,13 +11,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Nombre factura</label>
-            <input formControlName="prodNombreFactura" type="text" class="form-control">
+            <input formControlName="prodNombreFactura" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodNombreFactura.invalid &&
+                productoFormGroup.controls.prodNombreFactura.touched
+            }">
+            <div class="invalid-feedback"> {{ prodNombreFacturaErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Nombre técnico</label>
-            <input formControlName="prodNombreTecnico" type="text"  class="form-control">
+            <input formControlName="prodNombreTecnico" type="text"  class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodNombreTecnico.invalid &&
+                productoFormGroup.controls.prodNombreTecnico.touched
+            }">
+            <div class="invalid-feedback"> {{ prodNombreTecnicoErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -26,13 +38,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Código</label>
-            <input formControlName="prodCodigo" type="text" class="form-control">
+            <input formControlName="prodCodigo" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodCodigo.invalid &&
+                productoFormGroup.controls.prodCodigo.touched
+            }">
+            <div class="invalid-feedback"> {{ prodCodigoErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Unidad homologa</label>
-            <input formControlName="prodUnidadHomologa" type="text"  class="form-control">
+            <input formControlName="prodUnidadHomologa" type="text"  class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodUnidadHomologa.invalid &&
+                productoFormGroup.controls.prodUnidadHomologa.touched
+            }">
+            <div class="invalid-feedback"> {{ prodUnidadHomologaErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -41,13 +65,25 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Marca</label>
-            <input formControlName="prodMarca" type="text" class="form-control">
+            <input formControlName="prodMarca" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodMarca.invalid &&
+                productoFormGroup.controls.prodMarca.touched
+            }">
+            <div class="invalid-feedback"> {{ prodMarcaErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Modelo</label>
-            <input formControlName="prodModelo" type="text"  class="form-control">
+            <input formControlName="prodModelo" type="text"  class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodModelo.invalid &&
+                productoFormGroup.controls.prodModelo.touched
+            }">
+            <div class="invalid-feedback"> {{ prodModeloErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -56,18 +92,30 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Valor</label>
-            <input formControlName="prodValor" type="text" class="form-control">
+            <input formControlName="prodValor" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodValor.invalid &&
+                productoFormGroup.controls.prodValor.touched
+            }">
+            <div class="invalid-feedback"> {{ prodValorErrorMensaje }} </div>
           </div>
         </div>
 
         <div class="col-6">
           <div class="form-group">
             <label for="">Centro de costo</label>
-            <select formControlName="prodCentroCostoId" class="form-control">
+            <select formControlName="prodCentroCostoId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodCentroCostoId.invalid &&
+                productoFormGroup.controls.prodCentroCostoId.touched
+            }">
               <ng-container *ngFor="let item of listaCentroCostos">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodCentroCostoIdErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -76,18 +124,30 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Código retención en la fuente</label>
-            <select formControlName="prodCodReteFuenteId" class="form-control">
+            <select formControlName="prodCodReteFuenteId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodCodReteFuenteId.invalid &&
+                productoFormGroup.controls.prodCodReteFuenteId.touched
+            }">
               <ng-container *ngFor="let item of listaCodRetencionFuente">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodCodReteFuenteIdErrorMensaje }} </div>
           </div>
         </div>
 
         <div class="col-6">
           <div class="form-group">
             <label for="">Lista precios</label>
-            <input formControlName="prodListaPrecio" type="text" class="form-control">
+            <input formControlName="prodListaPrecio" type="text" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodListaPrecio.invalid &&
+                productoFormGroup.controls.prodListaPrecio.touched
+            }">
+            <div class="invalid-feedback"> {{ prodListaPrecioErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -98,18 +158,34 @@
             <label for="input-concepto" class="col-12 col-form-label">Concepto</label>
             <div class="col-12">
               <div class="custom-control custom-radio custom-control-inline">
-                <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-1" [value]="tipoConcepto.CUPS">
+                <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-1" [value]="tipoConcepto.CUPS"
+                [ngClass]="{
+                  'is-invalid':
+                    productoFormGroup.controls.concepto.invalid &&
+                    productoFormGroup.controls.concepto.touched
+                }">
                 <label class="form-check-label" for="concepto-1">CUPS</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-2" [value]="tipoConcepto.MEDICAMENTOS">
+                <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-2" [value]="tipoConcepto.MEDICAMENTOS"
+                [ngClass]="{
+                  'is-invalid':
+                    productoFormGroup.controls.concepto.invalid &&
+                    productoFormGroup.controls.concepto.touched
+                }">
                 <label class="form-check-label" for="concepto-2">MEDICAMENTOS</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-3" [value]="tipoConcepto.OTROS_PRODUCTOS">
+                <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-3" [value]="tipoConcepto.OTROS_PRODUCTOS"
+                [ngClass]="{
+                  'is-invalid':
+                    productoFormGroup.controls.concepto.invalid &&
+                    productoFormGroup.controls.concepto.touched
+                }">
                 <label class="form-check-label" for="concepto-3">OTROS PRODUCTOS</label>
               </div>
             </div>
+            <div class="invalid-feedback"> {{ conceptoErrorMensaje }} </div>
           </div>
         </fieldset>
       <!-- </div> -->
@@ -118,21 +194,33 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">CUPS</label>
-            <select formControlName="prodCupId" class="form-control">
+            <select formControlName="prodCupId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodCupId.invalid &&
+                productoFormGroup.controls.prodCupId.touched
+            }">
               <ng-container *ngFor="let item of listaCups">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodCupIdErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">CUMS</label>
-            <select formControlName="prodCumId" class="form-control">
+            <select formControlName="prodCumId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodCumId.invalid &&
+                productoFormGroup.controls.prodCumId.touched
+            }">
               <ng-container *ngFor="let item of listaCums">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodCumIdErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -141,21 +229,33 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">IUM</label>
-            <select formControlName="prodIumId" class="form-control">
+            <select formControlName="prodIumId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodIumId.invalid &&
+                productoFormGroup.controls.prodIumId.touched
+            }">
               <ng-container *ngFor="let item of listaIums">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodIumIdErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Otros productos</label>
-            <select formControlName="prodOtroProductoId" class="form-control">
+            <select formControlName="prodOtroProductoId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodOtroProductoId.invalid &&
+                productoFormGroup.controls.prodOtroProductoId.touched
+            }">
               <ng-container *ngFor="let item of listaOtroProducto">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodOtroProductoIdErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -164,21 +264,33 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Tipo impuesto</label>
-            <select formControlName="prodTipoImpuestoId" class="form-control">
+            <select formControlName="prodTipoImpuestoId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodTipoImpuestoId.invalid &&
+                productoFormGroup.controls.prodTipoImpuestoId.touched
+            }">
               <ng-container *ngFor="let item of listaTipoImpuesto">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodTipoImpuestoIdErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Tipo rips</label>
-            <select formControlName="prodTipoRipsId" class="form-control">
+            <select formControlName="prodTipoRipsId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodTipoRipsId.invalid &&
+                productoFormGroup.controls.prodTipoRipsId.touched
+            }">
               <ng-container *ngFor="let item of listaTipoRips">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodTipoRipsIdErrorMensaje }} </div>
           </div>
         </div>
       </div>
@@ -187,21 +299,33 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Unidad</label>
-            <select formControlName="prodUnidadId" class="form-control">
+            <select formControlName="prodUnidadId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodUnidadId.invalid &&
+                productoFormGroup.controls.prodUnidadId.touched
+            }">
               <ng-container *ngFor="let item of listaUnidad">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodUnidadIdErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Tipo cup</label>
-            <select formControlName="prodTipoCupId" class="form-control">
+            <select formControlName="prodTipoCupId" class="form-control"
+            [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.prodTipoCupId.invalid &&
+                productoFormGroup.controls.prodTipoCupId.touched
+            }">
               <ng-container *ngFor="let item of listaTipoCups">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ prodTipoCupIdErrorMensaje }} </div>
           </div>
         </div>
       </div>

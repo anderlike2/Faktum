@@ -1,0 +1,564 @@
+<div class="row">
+  <div class="col-12">
+
+    <app-card [hidHeader]="true" [options]="false">
+
+      <div class="d-flex align-items-center justify-content-between" role="button">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="facturaCollapsed = !facturaCollapsed" [attr.aria-expanded]="!facturaCollapsed" aria-controls="collapseFactura">
+          <h5 class="font-weight-bold mb-0">Crear factura</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': facturaCollapsed, 'fa-chevron-down': !facturaCollapsed }"></i>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div id="collapseFactura" [ngbCollapse]="facturaCollapsed">
+
+        <form>
+
+          <fieldset class="form-group">
+            <div class="row">
+              <label for="input-concepto" class="col-12 col-form-label">Documento</label>
+              <div class="col-12">
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-1" [value]="listaDocumento.COMERCIAL">
+                  <label class="form-check-label" for="concepto-1">COMERCIAL</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input class="form-check-input" type="radio" formControlName="concepto" id="concepto-2" [value]="listaDocumento.SECTOR_SALUD">
+                  <label class="form-check-label" for="concepto-2">SECTOR SALUD</label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Tipo documento</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Estado operación</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Número</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Cufe</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Fecha inicio</label>
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary calendar">
+                      <i class="far fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Fecha final</label>
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary calendar">
+                      <i class="far fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Sucursal</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Centro de costos</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Clase factura</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Vendedor</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Cliente</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Sucursal cliente</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Contrato</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Póliza cliente</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Despacho</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Contador</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Resolución sucursal</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Tipo moneda</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Fecha TRM</label>
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary calendar">
+                      <i class="far fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">TRM</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Operador</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Orden</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Descuento global</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Tipo otro descuento</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Porcentaje IVA</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Lista de precios</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total copago</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total cuota moderadora</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total cuota recuperación</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total pago compartido</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Cobertura</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Condición venta</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Estado DIAN</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Forma pago</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Formato impresión</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Tipo descuento</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Nota debito</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Nota credito</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Tipo salud</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of []">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Recepción</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Remisión</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor total retefuente</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Subtotal</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total rete ICA</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total IVA</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor anticipo</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor descuento</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor</label>
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Fecha vence</label>
+                <div class="input-group">
+                  <input type="text" class="form-control">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary calendar">
+                      <i class="far fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-12">
+              <div class="form-group">
+                <label for="">Observación</label>
+                <textarea class="form-control" rows="3"></textarea>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </app-card>
+
+
+    <app-card [hidHeader]="true" [options]="false">
+
+      <div class="d-flex align-items-center justify-content-between" role="button">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="detalleFacturaCollapsed = !detalleFacturaCollapsed" [attr.aria-expanded]="!detalleFacturaCollapsed" aria-controls="collapseDetalleFactura">
+          <h5 class="font-weight-bold mb-0">Detalle factura</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': detalleFacturaCollapsed, 'fa-chevron-down': !detalleFacturaCollapsed }"></i>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <div id="collapseDetalleFactura" [ngbCollapse]="detalleFacturaCollapsed">
+
+        <p-table [columns]="colsDetalleFactura" [value]="detalleFacturaObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
+          <ng-template pTemplate="header" let-columns>
+              <tr>
+                  <th *ngFor="let col of columns">
+                      {{col.header}}
+                  </th>
+                  <!-- <th></th> -->
+              </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr style="height:34px" [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+                <!-- <td>
+                  <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver producto" (click)="verProducto(rowData)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </td> -->
+              </tr>
+          </ng-template>
+        </p-table>
+
+      </div>
+
+    </app-card>
+
+  </div>
+</div>

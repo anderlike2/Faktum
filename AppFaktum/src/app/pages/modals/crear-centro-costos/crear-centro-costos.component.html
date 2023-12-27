@@ -11,13 +11,31 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Nombre</label>
-            <input formControlName="ccosNombre" type="text" class="form-control">
+            <input
+              formControlName="ccosNombre"
+              type="text"
+              [ngClass]="{
+                'is-invalid':
+                  centroCostosFormGroup.controls.ccosNombre.invalid &&
+                  centroCostosFormGroup.controls.ccosNombre.touched
+              }"
+              class="form-control">
+            <div class="invalid-feedback"> {{ ccosNombreErrorMensaje }} </div>
           </div>
         </div>
         <div class="col-6">
           <div class="form-group">
             <label for="">Código</label>
-            <input formControlName="ccosCodigo" type="text"  class="form-control">
+            <input
+              formControlName="ccosCodigo"
+              type="text"
+              [ngClass]="{
+                'is-invalid':
+                  centroCostosFormGroup.controls.ccosCodigo.invalid &&
+                  centroCostosFormGroup.controls.ccosCodigo.touched
+              }"
+              class="form-control">
+            <div class="invalid-feedback"> {{ ccosCodigoErrorMensaje }} </div>
           </div>
         </div>
       </div>

@@ -8,27 +8,51 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Nombre</label>
-                  <input formControlName="liprNombre" type="text" class="form-control">
+                  <input formControlName="liprNombre" type="text" class="form-control"
+                  [ngClass]="{
+                    'is-invalid':
+                      listaPrecioFormGroup.controls.liprNombre.invalid &&
+                      listaPrecioFormGroup.controls.liprNombre.touched
+                  }">
+                  <div class="invalid-feedback"> {{ liprNombreErrorMensaje }} </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Descripción</label>
-                  <input formControlName="liprDescripcion" type="text"  class="form-control">
+                  <input formControlName="liprDescripcion" type="text"  class="form-control"
+                  [ngClass]="{
+                    'is-invalid':
+                      listaPrecioFormGroup.controls.liprDescripcion.invalid &&
+                      listaPrecioFormGroup.controls.liprDescripcion.touched
+                  }">
+                  <div class="invalid-feedback"> {{ liprDescripcionErrorMensaje }} </div>
                 </div>
               </div>
-            </div> 
+            </div>
             <div class="row">
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">Descuento</label>
-                    <input formControlName="liprDescuento" type="text" class="form-control">
+                    <input formControlName="liprDescuento" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        listaPrecioFormGroup.controls.liprDescuento.invalid &&
+                        listaPrecioFormGroup.controls.liprDescuento.touched
+                    }">
+                    <div class="invalid-feedback"> {{ liprDescuentoErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">Valor</label>
-                    <input formControlName="liprValor" type="text"  class="form-control">
+                    <input formControlName="liprValor" type="text"  class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        listaPrecioFormGroup.controls.liprValor.invalid &&
+                        listaPrecioFormGroup.controls.liprValor.touched
+                    }">
+                    <div class="invalid-feedback"> {{ liprValorErrorMensaje }} </div>
                   </div>
                 </div>
               </div>
@@ -36,20 +60,32 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">Estado operación</label>
-                    <input formControlName="liprEstadoOperacion" type="text" class="form-control">
+                    <input formControlName="liprEstadoOperacion" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        listaPrecioFormGroup.controls.liprEstadoOperacion.invalid &&
+                        listaPrecioFormGroup.controls.liprEstadoOperacion.touched
+                    }">
+                    <div class="invalid-feedback"> {{ liprEstadoOperacionErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">Producto</label>
-                    <select formControlName="liprProductoId" class="form-control">
+                    <select formControlName="liprProductoId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        listaPrecioFormGroup.controls.liprProductoId.invalid &&
+                        listaPrecioFormGroup.controls.liprProductoId.touched
+                    }">
                       <ng-container *ngFor="let item of listProductoObs">
                         <option [value]="item.valor">{{ item.nombre }}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ liprProductoIdErrorMensaje }} </div>
                   </div>
                 </div>
-              </div>     
+              </div>
           </div>
     </form>
 </div>

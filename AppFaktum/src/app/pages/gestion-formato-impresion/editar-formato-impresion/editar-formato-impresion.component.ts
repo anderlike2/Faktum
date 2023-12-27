@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IFormatoImpresion } from 'src/app/models/formato-impresion.model';
 import { FormatoImpresionService } from 'src/app/services/formato-impresion-service/formato-impresion.service';
@@ -53,6 +53,18 @@ export class EditarFormatoImpresionComponent implements OnInit {
     };
 
     this.formatoImpresionFormGroup = this.fb.group(formControls);
+  }
+
+  get formNombreErrorMensaje(): string {
+    const form: AbstractControl = this.formatoImpresionFormGroup.get('formNombre') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get formCodigoErrorMensaje(): string {
+    const form: AbstractControl = this.formatoImpresionFormGroup.get('formCodigo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
   cargarDataForm(data: IFormatoImpresion): void {

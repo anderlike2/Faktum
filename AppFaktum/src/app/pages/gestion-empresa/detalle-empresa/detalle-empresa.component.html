@@ -29,7 +29,13 @@
 
                   <div class="form-group">
                     <label for="">Nombre empresa</label>
-                    <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre empresa">
+                    <input formControlName="nombre" type="text" class="form-control" placeholder="Nombre empresa"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.nombre.invalid &&
+                        empresaFormGroup.controls.nombre.touched
+                    }">
+                    <div class="invalid-feedback"> {{ nombreErrorMensaje }} </div>
                   </div>
 
                 </div>
@@ -37,7 +43,13 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>Nit</label>
-                    <input formControlName="nit" type="text" class="form-control" placeholder="nit">
+                    <input formControlName="nit" type="text" class="form-control" placeholder="nit"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.nit.invalid &&
+                        empresaFormGroup.controls.nit.touched
+                    }">
+                    <div class="invalid-feedback"> {{ nitErrorMensaje }} </div>
                   </div>
 
                 </div>
@@ -45,7 +57,13 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label>DV</label>
-                    <input formControlName="dv" type="text" class="form-control" placeholder="digito verificación">
+                    <input formControlName="dv" type="text" class="form-control" placeholder="digito verificación"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.dv.invalid &&
+                        empresaFormGroup.controls.dv.touched
+                    }">
+                    <div class="invalid-feedback"> {{ dvErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -56,19 +74,37 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Departamento</label>
-                    <input formControlName="departamento" type="text" class="form-control" placeholder="Departamento">
+                    <input formControlName="departamento" type="text" class="form-control" placeholder="Departamento"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.departamento.invalid &&
+                        empresaFormGroup.controls.departamento.touched
+                    }">
+                    <div class="invalid-feedback"> {{ departamentoErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Ciudad</label>
-                    <input formControlName="ciudad" type="text" class="form-control" placeholder="Ciudad">
+                    <input formControlName="ciudad" type="text" class="form-control" placeholder="Ciudad"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.ciudad.invalid &&
+                        empresaFormGroup.controls.ciudad.touched
+                    }">
+                    <div class="invalid-feedback"> {{ ciudadErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Dirección</label>
-                    <input formControlName="direccion" type="text" class="form-control">
+                    <input formControlName="direccion" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.direccion.invalid &&
+                        empresaFormGroup.controls.direccion.touched
+                    }">
+                    <div class="invalid-feedback"> {{ direccionErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -79,21 +115,39 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Teléfono</label>
-                    <input formControlName="telefono" type="text" class="form-control">
+                    <input formControlName="telefono" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.telefono.invalid &&
+                        empresaFormGroup.controls.telefono.touched
+                    }">
+                    <div class="invalid-feedback"> {{ telefonoErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Correo electrónico</label>
-                    <input formControlName="correo" type="text" class="form-control">
+                    <input formControlName="correo" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.correo.invalid &&
+                        empresaFormGroup.controls.correo.touched
+                    }">
+                    <div class="invalid-feedback"> {{ correoErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Sitio web</label>
-                    <input formControlName="paginaWeb" type="text" class="form-control">
+                    <input formControlName="paginaWeb" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.paginaWeb.invalid &&
+                        empresaFormGroup.controls.paginaWeb.touched
+                    }">
+                    <div class="invalid-feedback"> {{ paginaWebErrorMensaje }} </div>
                   </div>
 
                 </div>
@@ -105,21 +159,39 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Nombre representante legal</label>
-                    <input formControlName="repLegal" type="text" class="form-control">
+                    <input formControlName="repLegal" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.repLegal.invalid &&
+                        empresaFormGroup.controls.repLegal.touched
+                    }">
+                    <div class="invalid-feedback"> {{ repLegalErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Documento representante legal</label>
-                    <input formControlName="docRepLegal" type="text" class="form-control">
+                    <input formControlName="docRepLegal" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.docRepLegal.invalid &&
+                        empresaFormGroup.controls.docRepLegal.touched
+                    }">
+                    <div class="invalid-feedback"> {{ docRepLegalErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Contacto empresa</label>
-                    <input formControlName="contacto" type="text" class="form-control">
+                    <input formControlName="contacto" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.contacto.invalid &&
+                        empresaFormGroup.controls.contacto.touched
+                    }">
+                    <div class="invalid-feedback"> {{ contactoErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -130,23 +202,41 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Empresa CIUU</label>
-                    <input formControlName="empreCiuu" type="text" class="form-control">
+                    <input formControlName="empreCiuu" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.empreCiuu.invalid &&
+                        empresaFormGroup.controls.empreCiuu.touched
+                    }">
+                    <div class="invalid-feedback"> {{ empreCiuuErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Localidad empresa</label>
-                    <input formControlName="empreLocalidad" type="text" class="form-control">
+                    <input formControlName="empreLocalidad" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.empreLocalidad.invalid &&
+                        empresaFormGroup.controls.empreLocalidad.touched
+                    }">
+                    <div class="invalid-feedback"> {{ empreLocalidadErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Regimen empresa</label>
-                    <select formControlName="regimenId" class="form-control">
+                    <select formControlName="regimenId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.regimenId.invalid &&
+                        empresaFormGroup.controls.regimenId.touched
+                    }">
                       <ng-container *ngFor="let item of ListRegEmpresa">
                         <option [value]="item.valor">{{item.nombre}}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ regimenIdErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -156,23 +246,41 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Recepción</label>
-                    <input formControlName="recepcion" type="text" class="form-control">
+                    <input formControlName="recepcion" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.recepcion.invalid &&
+                        empresaFormGroup.controls.recepcion.touched
+                    }">
+                    <div class="invalid-feedback"> {{ recepcionErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Porcentaje retención ICA</label>
-                    <input formControlName="porcRetIca" type="text" class="form-control">
+                    <input formControlName="porcRetIca" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.porcRetIca.invalid &&
+                        empresaFormGroup.controls.porcRetIca.touched
+                    }">
+                    <div class="invalid-feedback"> {{ porcRetIcaErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Responsable fiscal</label>
-                    <select formControlName="respFiscalId" class="form-control">
+                    <select formControlName="respFiscalId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.respFiscalId.invalid &&
+                        empresaFormGroup.controls.respFiscalId.touched
+                    }">
                       <ng-container *ngFor="let item of listRespFiscal">
                         <option [value]="item.valor">{{item.nombre}}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ respFiscalIdErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -183,27 +291,45 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Responsable tributario</label>
-                    <select formControlName="respTributId" class="form-control">
+                    <select formControlName="respTributId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.respTributId.invalid &&
+                        empresaFormGroup.controls.respTributId.touched
+                    }">
                       <ng-container *ngFor="let item of listRespTributaria">
                         <option [value]="item.valor">{{item.nombre}}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ respTributIdErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Tipo cliente</label>
-                    <select formControlName="tipoClienteId" class="form-control">
+                    <select formControlName="tipoClienteId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.tipoClienteId.invalid &&
+                        empresaFormGroup.controls.tipoClienteId.touched
+                    }">
                       <ng-container *ngFor="let item of listTipoCliente">
                         <option [value]="item.valor">{{item.nombre}}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ tipoClienteIdErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Factura contador</label>
-                    <input formControlName="emprFactContador" type="text" class="form-control">
+                    <input formControlName="emprFactContador" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.emprFactContador.invalid &&
+                        empresaFormGroup.controls.emprFactContador.touched
+                    }">
+                    <div class="invalid-feedback"> {{ emprFactContadorErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -214,19 +340,37 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Leyenda en factura</label>
-                    <input formControlName="leyEnFactura" type="text" class="form-control">
+                    <input formControlName="leyEnFactura" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.leyEnFactura.invalid &&
+                        empresaFormGroup.controls.leyEnFactura.touched
+                    }">
+                    <div class="invalid-feedback"> {{ leyEnFacturaErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Leyenda en nota credito</label>
-                    <input formControlName="leyEnNotaCredito" type="text" class="form-control">
+                    <input formControlName="leyEnNotaCredito" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.leyEnNotaCredito.invalid &&
+                        empresaFormGroup.controls.leyEnNotaCredito.touched
+                    }">
+                    <div class="invalid-feedback"> {{ leyEnNotaCreditoErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Leyenda en noda debito</label>
-                    <input formControlName="leyEnNotaDebito" type="text" class="form-control">
+                    <input formControlName="leyEnNotaDebito" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.leyEnNotaDebito.invalid &&
+                        empresaFormGroup.controls.leyEnNotaDebito.touched
+                    }">
+                    <div class="invalid-feedback"> {{ leyEnNotaDebitoErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -237,25 +381,43 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">tipo</label>
-                    <select formControlName="tipoId" class="form-control">
+                    <select formControlName="tipoId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.tipoId.invalid &&
+                        empresaFormGroup.controls.tipoId.touched
+                    }">
                       <ng-container *ngFor="let item of listTipoId">
                         <option [value]="item.valor">{{item.nombre}}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ tipoIdErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Formato impreso</label>
-                    <input formControlName="formatoImp" type="text" class="form-control">
+                    <input formControlName="formatoImp" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.formatoImp.invalid &&
+                        empresaFormGroup.controls.formatoImp.touched
+                    }">
+                    <div class="invalid-feedback"> {{ formatoImpErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Habilitación</label>
-                    <input formControlName="empreHabilitacion" type="text" class="form-control">
+                    <input formControlName="empreHabilitacion" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.empreHabilitacion.invalid &&
+                        empresaFormGroup.controls.empreHabilitacion.touched
+                    }">
+                    <div class="invalid-feedback"> {{ empreHabilitacionErrorMensaje }} </div>
                   </div>
                 </div>
               </div>
@@ -265,25 +427,43 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Clase juridica</label>
-                    <select formControlName="emprClasJuridicaId" class="form-control">
+                    <select formControlName="emprClasJuridicaId" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.emprClasJuridicaId.invalid &&
+                        empresaFormGroup.controls.emprClasJuridicaId.touched
+                    }">
                       <ng-container *ngFor="let item of listClasJuridica">
                         <option [value]="item.valor">{{item.nombre}}</option>
                       </ng-container>
                     </select>
+                    <div class="invalid-feedback"> {{ emprClasJuridicaErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Celular</label>
-                    <input formControlName="emprCelular" type="text" class="form-control">
+                    <input formControlName="emprCelular" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.emprCelular.invalid &&
+                        empresaFormGroup.controls.emprCelular.touched
+                    }">
+                    <div class="invalid-feedback"> {{ emprCelularErrorMensaje }} </div>
                   </div>
                 </div>
 
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Días pago</label>
-                    <input formControlName="emprDiasPago" type="text" class="form-control">
+                    <input formControlName="emprDiasPago" type="text" class="form-control"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.emprDiasPago.invalid &&
+                        empresaFormGroup.controls.emprDiasPago.touched
+                    }">
+                    <div class="invalid-feedback"> {{ emprDiasPagoErrorMensaje }} </div>
                   </div>
                 </div>
 
@@ -294,7 +474,13 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     <label for="">Observación</label>
-                    <textarea formControlName="observacion" class="form-control" name="" id="" cols="30" rows="5"></textarea>
+                    <textarea formControlName="observacion" class="form-control" name="" id="" cols="30" rows="5"
+                    [ngClass]="{
+                      'is-invalid':
+                        empresaFormGroup.controls.observacion.invalid &&
+                        empresaFormGroup.controls.observacion.touched
+                    }"></textarea>
+                    <div class="invalid-feedback"> {{ observacionErrorMensaje }} </div>
                   </div>
                 </div>
               </div>

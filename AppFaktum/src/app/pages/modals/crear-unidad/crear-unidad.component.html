@@ -10,26 +10,53 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Nombre</label>
-                  <input formControlName="unidNombre" type="text" class="form-control">
+                  <input
+                    formControlName="unidNombre"
+                    type="text"
+                    [ngClass]="{
+                      'is-invalid':
+                        unidadFormGroup.controls.unidNombre.invalid &&
+                        unidadFormGroup.controls.unidNombre.touched
+                    }"
+                    class="form-control">
+                    <div class="invalid-feedback"> {{ unidNombreErrorMensaje }} </div>
                 </div>
               </div>
-            </div>      
+            </div>
         </div>
         <div class="col-12">
             <div class="row">
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Código Dian</label>
-                  <input formControlName="unidCodigoDian" type="text" class="form-control">
+                  <input
+                    formControlName="unidCodigoDian"
+                    type="text"
+                    [ngClass]="{
+                      'is-invalid':
+                        unidadFormGroup.controls.unidCodigoDian.invalid &&
+                        unidadFormGroup.controls.unidCodigoDian.touched
+                    }"
+                    class="form-control">
+                    <div class="invalid-feedback"> {{ unidCodigoDianErrorMensaje }} </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="">Código</label>
-                  <input formControlName="unidCodigo" type="text"  class="form-control">
+                  <input
+                    formControlName="unidCodigo"
+                    type="text"
+                    [ngClass]="{
+                      'is-invalid':
+                        unidadFormGroup.controls.unidCodigo.invalid &&
+                        unidadFormGroup.controls.unidCodigo.touched
+                    }"
+                    class="form-control">
+                    <div class="invalid-feedback"> {{ unidCodigoErrorMensaje }} </div>
                 </div>
               </div>
-            </div>      
+            </div>
         </div>
 
     </form>

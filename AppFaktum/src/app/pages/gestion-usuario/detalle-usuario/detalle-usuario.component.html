@@ -7,20 +7,50 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                              <label for="">Nombre de usuario</label>
-                              <input formControlName="usuaUsuario" type="text" class="form-control" placeholder="Nombre de usuario">
+                              <label>Nombre de usuario</label>
+                              <input
+                                formControlName="usuaUsuario"
+                                type="text"
+                                class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    usuarioFormGroup.controls.usuaUsuario.invalid &&
+                                    usuarioFormGroup.controls.usuaUsuario.touched
+                                }"
+                                placeholder="Nombre de usuario">
+                              <div class="invalid-feedback"> {{ usuaUsuarioErrorMensaje }} </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                              <label for="">Contraseña</label>
-                              <input formControlName="usuaPassword" type="password" class="form-control" placeholder="Contraseña">
+                              <label>Contraseña</label>
+                              <input
+                                formControlName="usuaPassword"
+                                type="password"
+                                class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    usuarioFormGroup.controls.usuaPassword.invalid &&
+                                    usuarioFormGroup.controls.usuaPassword.touched
+                                }"
+                                placeholder="Contraseña">
+                                <div class="invalid-feedback"> {{ usuaPasswordErrorMensaje }} </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                              <label for="">Confirmar contraseña</label>
-                              <input formControlName="usuaPasswordConfirm" type="password" class="form-control" placeholder="Confirmar contraseña">
+                              <label>Confirmar contraseña</label>
+                              <input
+                                formControlName="usuaPasswordConfirm"
+                                type="password"
+                                class="form-control"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    usuarioFormGroup.controls.usuaPasswordConfirm.invalid &&
+                                    usuarioFormGroup.controls.usuaPasswordConfirm.touched
+                                }"
+                                placeholder="Confirmar contraseña">
+                                <div class="invalid-feedback"> {{ usuaPasswordConfirmErrorMensaje }} </div>
                             </div>
                         </div>
                     </div>
@@ -29,22 +59,38 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                              <label for="">Empresa</label>
-                              <select formControlName="usuaEmpresaId" class="form-control">
+                              <label>Empresa</label>
+                              <select
+                                formControlName="usuaEmpresaId"
+                                [ngClass]="{
+                                  'is-invalid':
+                                    usuarioFormGroup.controls.usuaEmpresaId.invalid &&
+                                    usuarioFormGroup.controls.usuaEmpresaId.touched
+                                }"
+                                class="form-control">
                                 <ng-container *ngFor="let item of listEmpresas">
                                   <option [value]="item.id">{{item.emprNombre}}</option>
                                 </ng-container>
                               </select>
+                              <div class="invalid-feedback"> {{ usuaEmpresaIdErrorMensaje }} </div>
                             </div>
                         </div>
                         <div class="col-md-4">
                           <div class="form-group">
                             <label for="">Rol</label>
-                            <select formControlName="usuaRolId" class="form-control">
+                            <select
+                              formControlName="usuaRolId"
+                              [ngClass]="{
+                                'is-invalid':
+                                  usuarioFormGroup.controls.usuaRolId.invalid &&
+                                  usuarioFormGroup.controls.usuaRolId.touched
+                              }"
+                              class="form-control">
                               <ng-container *ngFor="let item of listRoles">
                                 <option [value]="item.valor">{{item.nombre}}</option>
                               </ng-container>
                             </select>
+                            <div class="invalid-feedback"> {{ usuaRolIdErrorMensaje }} </div>
                           </div>
                       </div>
                       <div class="col-md-4 alinear-vertical">

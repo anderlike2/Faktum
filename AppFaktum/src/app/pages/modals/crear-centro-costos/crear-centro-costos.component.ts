@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
@@ -53,6 +53,18 @@ export class CrearCentroCostosComponent implements OnInit {
     };
 
     this.centroCostosFormGroup = this.fb.group(formControls);
+  }
+
+  get ccosNombreErrorMensaje(): string {
+    const form: AbstractControl = this.centroCostosFormGroup.get('ccosNombre') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get ccosCodigoErrorMensaje(): string {
+    const form: AbstractControl = this.centroCostosFormGroup.get('ccosCodigo') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
   }
 
 
