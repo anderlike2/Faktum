@@ -215,7 +215,7 @@ export class EditarClienteComponent implements OnInit {
       ? 'Campo obligatorio'
       : form.hasError('email')
       ? 'Correo no valido'
-      : '';;
+      : '';
   }
 
   get correoFacturacionErrorMensaje(): string {

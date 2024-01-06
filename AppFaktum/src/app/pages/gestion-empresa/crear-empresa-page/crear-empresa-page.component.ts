@@ -104,13 +104,15 @@ export class CrearEmpresaPageComponent implements OnInit {
       emprNit: [
         { value: '', disabled: false },
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]+')
         ]
       ],
       emprDv: [
         { value: '', disabled: false },
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]+')
         ]
       ],
       emprDepto: [
@@ -140,7 +142,8 @@ export class CrearEmpresaPageComponent implements OnInit {
       emprMail: [
         { value: '', disabled: false },
         [
-          Validators.required
+          Validators.required,
+          Validators.email
         ]
       ],
       emprPagWeb: [
@@ -260,7 +263,8 @@ export class CrearEmpresaPageComponent implements OnInit {
       emprFactContador: [
         { value: '', disabled: false },
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]+')
         ]
       ],
       emprClasJuridicaId: [
@@ -278,7 +282,8 @@ export class CrearEmpresaPageComponent implements OnInit {
       emprDiasPago: [
         { value: '', disabled: false },
         [
-          Validators.required
+          Validators.required,
+          Validators.pattern('[0-9]+')
         ]
       ]
     };
@@ -296,12 +301,16 @@ export class CrearEmpresaPageComponent implements OnInit {
     const form: AbstractControl = this.empresaFormGroup.get('emprNit') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
       : '';
   }
   get emprDvErrorMensaje(): string {
     const form: AbstractControl = this.empresaFormGroup.get('emprDv') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
       : '';
   }
   get emprDeptoErrorMensaje(): string {
@@ -332,6 +341,8 @@ export class CrearEmpresaPageComponent implements OnInit {
     const form: AbstractControl = this.empresaFormGroup.get('emprMail') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
+      : form.hasError('email')
+      ? 'Correo no valido'
       : '';
   }
   get emprPagWebErrorMensaje(): string {
@@ -446,6 +457,8 @@ export class CrearEmpresaPageComponent implements OnInit {
     const form: AbstractControl = this.empresaFormGroup.get('emprFactContador') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
       : '';
   }
   get emprClasJuridicaIdErrorMensaje(): string {
@@ -464,6 +477,8 @@ export class CrearEmpresaPageComponent implements OnInit {
     const form: AbstractControl = this.empresaFormGroup.get('emprDiasPago') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
+      : form.hasError('pattern')
+      ? 'Este campo sólo acepta números enteros'
       : '';
   }
 
