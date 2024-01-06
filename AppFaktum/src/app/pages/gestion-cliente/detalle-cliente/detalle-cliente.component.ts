@@ -7,6 +7,8 @@ import { IEmpresa } from 'src/app/models/empresa.model';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { CrearClienteComponent } from '../../modals/crear-cliente/crear-cliente.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-detalle-cliente',
   templateUrl: './detalle-cliente.component.html',
@@ -31,7 +33,8 @@ export class DetalleClienteComponent implements OnInit {
     private detalleEmpresaService: DetalleEmpresaService,
     private sharedService: SharedService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +45,17 @@ export class DetalleClienteComponent implements OnInit {
   cargarTabla(): void {
     this.listClientesEmpresaObs =
       this.detalleEmpresaService.obtenerInformacionClientesEmpresaId(this.dataEmpresa.id);
+  }
+
+  abrirModalCrearCliente(): void {
+    const modalCliente = this.modalService.open(
+      CrearClienteComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalCliente.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
   verCliente(value: IClienteEmpresa): void {

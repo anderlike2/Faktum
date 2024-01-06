@@ -5,8 +5,15 @@
   <div class="m-header">
     <a href="javascript:" class="mobile-menu" id="mobile-collapse" (click)="navCollapse()"><span></span></a>
     <a [routerLink]="['/home']" class="b-brand h-100 w-100 justify-content-center">
-      <img id="main-logo" src="assets/images/faktum-logo-trans.png" alt="" class="logo h-100 w-auto">
-      <img src="assets/images/logo-icon.png" alt="" class="logo-thumb">
+      <!-- <img id="main-logo" [src]="imgLogo" alt="" class="logo h-100 w-auto"> -->
+      <div class="d-flex w-100 h-100 pr-4 gap-10 justify-content-center align-items-center">
+        <img id="main-logo" [src]="imgLogo" alt="" class="logo h-100 w-auto">
+        <div class="d-flex flex-column">
+          <span>{{infoEmpresa.empresa}}</span>
+          <span>{{ infoEmpresa.nit }} {{ infoEmpresa.dv }}</span>
+        </div>
+      </div>
+      <!-- <img src="assets/images/logo-icon.png" alt="" class="logo-thumb"> -->
     </a>
     <a class="mob-toggler" [ngClass]="{'on' : this.menuClass}" href="javascript:" (click)="toggleMobOption()"><i class="feather icon-more-vertical"></i></a>
   </div>

@@ -1,0 +1,12 @@
+.dropzone__content {
+  width: 100%;
+  height: inherit;
+}
+
+::ng-deep.ngx-file-drop__drop-zone {
+  border-color: rgba(0, 0, 0, .5) !important;
+}
+
+::ng-deep.ngx-file-drop__content {
+  color: #495057 !important;
+}

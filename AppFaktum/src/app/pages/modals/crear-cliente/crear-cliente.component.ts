@@ -388,6 +388,8 @@ export class CrearClienteComponent implements OnInit {
     dataBody.id = 0;
     dataBody.estado = 1;
 
+    dataBody.clieEmpresaId = this.empresaID;
+
     this.clienteService.crearCliente(dataBody).subscribe({
       next: (response) => {
         if (!response?.success) {

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
-import { IEmpresa } from 'src/app/models/empresa.model';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { IEmpresa, ILogoTablaEmpresa } from 'src/app/models/empresa.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { EmpresaService } from 'src/app/services/empresa-service/empresa.service';
 import swal from 'sweetalert2';
+import { NgxFileDropEntry } from 'ngx-file-drop';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-crear-empresa-page',
@@ -24,11 +26,20 @@ export class CrearEmpresaPageComponent implements OnInit {
   ListRegEmpresa: IListCombo[] = [];
   listClasJuridica: IListCombo[] = [];
 
+  fileNameUpload = '';
+  capturedImage;
+
+  maxBytes = 30 * 1024;
+  maxSignature = 45 * 1024;
+
   empresaCollapsed: boolean = false;
+
+  imagenEmpresa: ILogoTablaEmpresa[] = [];
 
   constructor(
     private empresaService: EmpresaService,
-    private cargueCombosService: CargueCombosService
+    private cargueCombosService: CargueCombosService,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -456,6 +467,59 @@ export class CrearEmpresaPageComponent implements OnInit {
       : '';
   }
 
+  getExtension(name: string): string {
+    const arr = name.split('.');
+    return arr[arr.length - 1].toLowerCase();
+  }
+
+  dropped(files: NgxFileDropEntry[]) {
+    const droppedFile = files[0];
+    if (droppedFile.fileEntry.isFile) {
+      const fileEntry = droppedFile.fileEntry as any;
+      fileEntry.file((file: File) => {
+          const reader = new FileReader();
+          const extension = this.getExtension(file.name);
+          if (extension === 'png' || extension === 'jpg' || extension === 'jpeg') {
+              reader.readAsDataURL(file);
+              this.fileNameUpload = file.name;
+              reader.onload = () => {
+                  if (file.size > this.maxBytes) {
+                    this.generalService.mostrarMensajeAlerta(
+                      `El logo ${file.name} supera el tamaño maximo permitido`,
+                      TiposMensajeEnum.ERROR,
+                      GeneralesEnum.BTN_ACEPTAR
+                      );
+                  } else {
+                      this.capturedImage = reader.result;
+
+                      const logoEmpresa: ILogoTablaEmpresa = {
+                        imagen: reader.result,
+                        nombre: file.name,
+                        tamano: file.size
+                      }
+
+                      this.imagenEmpresa = [logoEmpresa];
+                      // this.uploadImageAsset = reader.result;
+                      // this.uploadImage[0].setAttribute('style', 'background-image: url(' + this.uploadImageAsset + '); background-size: contain;');
+                  }
+              };
+          }
+          else {
+            this.generalService.mostrarMensajeAlerta(
+              `El tipo de archivo ${this.getExtension(file.name)} no es permitido.`,
+              TiposMensajeEnum.ERROR,
+              GeneralesEnum.BTN_ACEPTAR
+              );
+          }
+      });
+  }
+  }
+
+  borrarImagen(fila: any): void {
+    this.imagenEmpresa = [];
+    this.capturedImage = '';
+  }
+
   submitForm(): void {
 
     if (this.empresaFormGroup.invalid) {
@@ -463,13 +527,24 @@ export class CrearEmpresaPageComponent implements OnInit {
       return;
     }
 
+    if (this.imagenEmpresa.length === 0) {
+      this.generalService.mostrarMensajeAlerta(
+        `La carga de la imagen es requerida.`,
+        TiposMensajeEnum.ERROR,
+        GeneralesEnum.BTN_ACEPTAR
+      );
+      return;
+    }
+
     const dataBody: IEmpresa = this.empresaFormGroup.getRawValue();
     dataBody.id = 0;
     dataBody.estado = 1;
+    dataBody.emprLogo = this.imagenEmpresa[0].imagen as string;
 
     this.empresaService.crearEmpresa(dataBody).subscribe({
       next: (response) => {
         this.empresaFormGroup.reset();
+        this.imagenEmpresa = [];
         swal.fire(``, 'La empresa fue creada de forma exitosa.', 'success');
       }
     });

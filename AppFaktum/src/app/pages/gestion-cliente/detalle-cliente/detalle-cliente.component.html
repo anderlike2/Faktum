@@ -7,6 +7,13 @@
     </div>
     <hr>
     <div id="collapseCliente" [ngbCollapse]="clienteCollapsed">
+
+      <div class="d-flex justify-content-end m-2">
+        <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear cliente"  (click)="abrirModalCrearCliente()">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+
         <p-table [columns]="colsClientesEmpresa" [value]="listClientesEmpresaObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
             <ng-template pTemplate="header" let-columns>
                 <tr>

@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col-sm-12">
+
+    <app-card [hidHeader]="true" [options]="false">
+      <div class="d-flex align-items-center justify-content-between" role="button">
+        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="formatoImpresionCollapsed = !formatoImpresionCollapsed" [attr.aria-expanded]="!formatoImpresionCollapsed" aria-controls="collapseFormatoImpresion">
+          <h5 class="font-weight-bold mb-0">Formatos de impresión</h5>
+          <i class="fa" [ngClass]="{'fa-chevron-up': formatoImpresionCollapsed, 'fa-chevron-down': !formatoImpresionCollapsed }"></i>
+        </div>
+      </div>
+      <hr>
+      <div id="collapseFormatoImpresion" [ngbCollapse]="formatoImpresionCollapsed">
+        <div class="d-flex justify-content-end m-2">
+          <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear centro de costos"  (click)="abrirModalFormatosImpresion()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <p-table [columns]="colsFormatosImpresionEmpresa" [value]="listFormatosImpresionObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
+          <ng-template pTemplate="header" let-columns>
+              <tr>
+                  <th *ngFor="let col of columns">
+                      {{col.header}}
+                  </th>
+                  <th></th>
+              </tr>
+              </ng-template>
+
+              <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr style="height:34px" [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+                <td>
+                  <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver formato impresión" (click)="verFormatoImpresion(rowData)">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </app-card>
+
+  </div>
+</div>

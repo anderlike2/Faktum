@@ -7,6 +7,8 @@ import { ISucursal } from 'src/app/models/sucursal.model';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
+import { CrearSucursalComponent } from '../../modals/crear-sucursal/crear-sucursal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-detalle-sucursal',
@@ -33,7 +35,8 @@ export class DetalleSucursalComponent implements OnInit {
     private detalleEmpresaService: DetalleEmpresaService,
     private sharedService: SharedService,
     private storageService: StorageService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +47,17 @@ export class DetalleSucursalComponent implements OnInit {
   cargarTabla(): void {
     this.listSucursalesEmpresaObs =
       this.detalleEmpresaService.obtenerInformacionSucursalesEmpresaId(this.dataEmpresa.id);
+  }
+
+  abrirModalCrearSucursal(): void {
+    const modalSucursal = this.modalService.open(
+      CrearSucursalComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalSucursal.componentInstance.empresaID = this.dataEmpresa.id;
   }
 
   verSucursal(value: ISucursal): void {

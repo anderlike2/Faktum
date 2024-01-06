@@ -160,7 +160,7 @@
     transition: all 0.3s ease-in-out;
 
     .m-header {
-        width: $Menu-width;
+        width: auto;
         position: relative;
         height: $header-height;
         display: inline-flex;

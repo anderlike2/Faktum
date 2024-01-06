@@ -66,7 +66,28 @@ const NavigationItems = [
             type: 'item',
             url: '/gestion-empresa/crear-empresa',
             external: false
-          }
+          },
+          {
+            id: 'centro-costos',
+            title: 'Centro costos',
+            type: 'item',
+            url: '/gestion-empresa/centro-costos',
+            external: false
+          },
+          {
+            id: 'formatos-impresion',
+            title: 'Formatos impresión',
+            type: 'item',
+            url: '/gestion-empresa/formatos-impresion',
+            external: false
+          },
+          {
+            id: 'unidades',
+            title: 'Unidad',
+            type: 'item',
+            url: '/gestion-empresa/unidad',
+            external: false
+          },
         ]
       },
       {
@@ -95,6 +116,21 @@ const NavigationItems = [
             title: 'Ver detalle',
             type: 'item',
             url: '/gestion-cliente/detalle-cliente',
+            external: false
+          }
+        ]
+      },
+      {
+        id: 'producto',
+        title: 'Producto',
+        type: 'collapse',
+        icon: 'fas fa-briefcase',
+        children: [
+          {
+            id: 'detalle-producto',
+            title: 'Ver detalle',
+            type: 'item',
+            url: '/gestion-producto/detalle-producto',
             external: false
           }
         ]

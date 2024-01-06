@@ -46,65 +46,11 @@ export class DetalleEmpresaComponent implements OnInit {
   listTipoCliente: IListCombo[] = [];
   ListRegEmpresa: IListCombo[] = [];
   listClasJuridica: IListCombo[] = [];
-  listSucursalesEmpresaObs: Observable<ISucursalEmpresa[]>;
-  listClientesEmpresaObs: Observable<IClienteEmpresa[]>;
-  listCentroCostosEmpresaObs: Observable<ICentroCostos[]>;
-  listFormatosImpresionObs: Observable<IFormatoImpresion[]>;
-  listUnidadesObs: Observable<IUnidad[]>;
-  listProductoObs: Observable<IProducto[]>;
   edicionEmpresa: boolean = false;
 
   dataEmpresa: IEmpresa;
 
-  seletedSucursalEmpresa: any;
-  seletedClientesEmpresa: any;
-
-  empresaCollapsed: boolean = true;
-  clienteCollapsed: boolean = true;
-  sucursalCollapsed: boolean = true;
-  centroCostoCollapsed: boolean = true;
-  formatoImpresionCollapsed: boolean = true;
-  unidadCollapsed: boolean = true;
-  productoCollapsed: boolean = true;
-
-  colsSucursalesEmpresa: any[] = [
-    { field: 'sucuNombre', header: 'Nombre' },
-    { field: 'sucuCodigo', header: 'Código' },
-    { field: 'sucuContacto', header: 'Contacto' },
-    { field: 'sucuMail', header: 'Correo' },
-    { field: 'sucuTelefono', header: 'Teléfono' }
-  ];
-
-  colsClientesEmpresa: any[] = [
-    { field: 'cliePrimerNom', header: 'Primer nombre' },
-    { field: 'clieSegundoNom', header: 'Segundo nombre' },
-    { field: 'clieApellidos', header: 'Apellidos' },
-    { field: 'clieCorreo', header: 'Correo' },
-    { field: 'clieCelular', header: 'Teléfono' }
-  ];
-
-  colsCentroCostosEmpresa: any[] = [
-    { field: 'ccosNombre', header: 'Nombre' },
-    { field: 'ccosCodigo', header: 'Código' }
-  ];
-
-  colsFormatosImpresionEmpresa: any[] = [
-    { field: 'formNombre', header: 'Nombre' },
-    { field: 'formCodigo', header: 'Código' }
-  ];
-
-  colsUnidades: any[] = [
-    { field: 'unidNombre', header: 'Nombre' },
-    { field: 'unidCodigoDian', header: 'Código Dian' },
-    { field: 'unidCodigo', header: 'Código' }
-  ];
-
-  colsProducto: any[] = [
-    { field: 'prodNombreTecnico', header: 'Nombre técnico' },
-    { field: 'prodMarca', header: 'Marca' },
-    { field: 'prodCodigo', header: 'Código' },
-    { field: 'prodValor', header: 'Valor' }
-  ];
+  empresaCollapsed: boolean = false;
 
   constructor(
     private storageService: StorageService,
@@ -177,23 +123,7 @@ export class DetalleEmpresaComponent implements OnInit {
   }
 
   cargarTablas(): void {
-    this.listSucursalesEmpresaObs =
-      this.detalleEmpresaService.obtenerInformacionSucursalesEmpresaId(this.dataEmpresa.id);
 
-    this.listClientesEmpresaObs =
-      this.detalleEmpresaService.obtenerInformacionClientesEmpresaId(this.dataEmpresa.id);
-
-    this.listCentroCostosEmpresaObs =
-      this.centroCostosService.obtenerCentroCostosPorEmpresaId(this.dataEmpresa.id);
-
-    this.listFormatosImpresionObs =
-      this.formatoImpresionService.obtenerFormatosImpresionPorEmpresaId(this.dataEmpresa.id);
-
-    this.listUnidadesObs =
-      this.unidadService.obtenerUnidadesPorEmpresaId(this.dataEmpresa.id);
-
-    this.listProductoObs =
-      this.productoService.obtenerProductosPorEmpresaid(this.dataEmpresa.id);
   }
 
   cargarInfoEmpresa(): void {
@@ -687,103 +617,6 @@ export class DetalleEmpresaComponent implements OnInit {
       }
     });
 
-  }
-
-  abrirModalCrearSucursal(): void {
-    const modalSucursal = this.modalService.open(
-      CrearSucursalComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-
-    modalSucursal.componentInstance.empresaID = this.dataEmpresa.id;
-  }
-
-  abrirModalCrearCliente(): void {
-    const modalCliente = this.modalService.open(
-      CrearClienteComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-
-    modalCliente.componentInstance.empresaID = this.dataEmpresa.id;
-  }
-
-  abrirModalCrearCentroCostos(): void {
-    const modalCentroCostos = this.modalService.open(
-      CrearCentroCostosComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-
-    modalCentroCostos.componentInstance.empresaID = this.dataEmpresa.id;
-  }
-
-  abrirModalFormatosImpresion(): void {
-    const modalFormatosImpresion = this.modalService.open(
-      CrearFormatoImpresionComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-
-    modalFormatosImpresion.componentInstance.empresaID = this.dataEmpresa.id;
-  }
-
-
-  abrirUnidades(): void {
-    const modalUnidades= this.modalService.open(
-      CrearUnidadComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-
-    modalUnidades.componentInstance.empresaID = this.dataEmpresa.id;
-  }
-
-  abrirModalCrearProducto(): void {
-    const modalProducto = this.modalService.open(
-      CrearProductoComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-
-    modalProducto.componentInstance.empresaID = this.dataEmpresa.id;
-  }
-
-  verCliente(value:IClienteEmpresa): void{
-    this.sharedService.addClienteEmpresaData(value);
-    this.router.navigate(['./gestion-cliente/editar-cliente']);
-  }
-
-  verSucursal(value: ISucursal): void {
-    this.sharedService.addSucursalEmpresaData(value);
-    this.router.navigate(['/gestion-sucursal/editar-sucursal']);
-  }
-
-  verCentroCostos(value: ICentroCostos): void {
-    this.sharedService.addCentroCostosData(value);
-    this.router.navigate(['/gestion-centro-costos/editar-centro-costos']);
-  }
-
-  verFormatoImpresion(value: IFormatoImpresion): void {
-    this.sharedService.addFormatoImpresionData(value);
-    this.router.navigate(['/gestion-formato-impresion/editar-formato-impresion']);
-  }
-
-  verUnidad(value: IUnidad): void {
-    this.sharedService.addUnidadData(value);
-    this.router.navigate(['/gestion-unidad/editar-unidad']);
-  }
-
-  verProducto(value: IProducto): void {
-    this.sharedService.addProductoData(value);
-    this.router.navigate(['/gestion-producto/editar-producto']);
   }
 
 }
