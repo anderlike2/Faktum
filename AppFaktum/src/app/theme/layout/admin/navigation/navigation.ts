@@ -88,6 +88,13 @@ const NavigationItems = [
             url: '/gestion-empresa/unidad',
             external: false
           },
+          {
+            id: 'otros-productos',
+            title: 'Otros productos',
+            type: 'item',
+            url: '/gestion-empresa/otros-productos',
+            external: false
+          },
         ]
       },
       {

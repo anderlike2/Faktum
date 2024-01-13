@@ -85,6 +85,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-otro-producto',
+        loadChildren: () => import('./pages/gestion-otro-producto/gestion-otro-producto.module').then(m => m.GestionOtroProductoModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

@@ -1,0 +1,67 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="otroProductoCollapsed = !otroProductoCollapsed" [attr.aria-expanded]="!otroProductoCollapsed" aria-controls="collapseUnidad">
+                  <h5 class="font-weight-bold mb-0">Otro producto</h5>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': otroProductoCollapsed, 'fa-chevron-down': !otroProductoCollapsed }"></i>
+                </div>
+            </div>
+            <hr>
+            <div id="collapseUnidad" [ngbCollapse]="otroProductoCollapsed">
+                <div class="d-flex flex-row justify-content-end" *ngIf="!otroProductoCollapsed">
+                    <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Editar" (click)="editarForm()">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                </div>
+                <form [formGroup]="otroProductoFormGroup">
+                    <div class="col-12">
+                        <div class="row">
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label for="">Código</label>
+                              <input
+                                formControlName="otprCodigo"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                  otroProductoFormGroup.controls.otprCodigo.invalid &&
+                                  otroProductoFormGroup.controls.otprCodigo.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ otprCodigoErrorMensaje }} </div>
+                            </div>
+                          </div>
+                          <div class="col-6">
+                            <div class="form-group">
+                              <label for="">Nombre</label>
+                              <input
+                                formControlName="otprNombre"
+                                type="text"
+                                [ngClass]="{
+                                  'is-invalid':
+                                  otroProductoFormGroup.controls.otprNombre.invalid &&
+                                  otroProductoFormGroup.controls.otprNombre.touched
+                                }"
+                                class="form-control">
+                              <div class="invalid-feedback"> {{ otprNombreErrorMensaje }} </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </form>
+                <ng-container *ngIf="edicionOtroProducto">
+                    <hr />
+                    <div class="d-flex justify-content-end">
+                      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                        <i class="fa fa-ban"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar otro producto" (click)="guardarOtroProducto()">
+                        <i class="fa fa-save"></i>
+                      </button>
+                    </div>
+                </ng-container>
+            </div>
+        </app-card>
+    </div>
+</div>

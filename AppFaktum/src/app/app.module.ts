@@ -46,7 +46,8 @@ import { CrearProductoComponent } from './pages/modals/crear-producto/crear-prod
 import { CrearCabeceraFacturaComponent } from './pages/modals/crear-cabecera-factura/crear-cabecera-factura.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
-import { MostrarInformacionComponent } from './pages/modals/mostrar-informacion/mostrar-informacion.component'
+import { MostrarInformacionComponent } from './pages/modals/mostrar-informacion/mostrar-informacion.component';
+import { CrearOtroProductoComponent } from './pages/modals/crear-otro-producto/crear-otro-producto.component'
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -78,7 +79,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CrearListaPrecioComponent,
     CrearProductoComponent,
     CrearCabeceraFacturaComponent,
-    MostrarInformacionComponent
+    MostrarInformacionComponent,
+    CrearOtroProductoComponent
   ],
   imports: [
     BrowserModule,

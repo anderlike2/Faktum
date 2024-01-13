@@ -5,6 +5,7 @@ import { CrearEmpresaPageComponent } from '../crear-empresa-page/crear-empresa-p
 import { CentroCostosComponent } from '../centro-costos/centro-costos.component';
 import { FormatosImpresionComponent } from '../formatos-impresion/formatos-impresion.component';
 import { UnidadesComponent } from '../unidades/unidades.component';
+import { OtrosProductosComponent } from '../otros-productos/otros-productos.component';
 
 const gestionEmpresaRoutes: Routes = [
   {
@@ -26,6 +27,10 @@ const gestionEmpresaRoutes: Routes = [
   {
     path: 'unidad',
     component: UnidadesComponent
+  },
+  {
+    path: 'otros-productos',
+    component: OtrosProductosComponent
   }
 ];
 

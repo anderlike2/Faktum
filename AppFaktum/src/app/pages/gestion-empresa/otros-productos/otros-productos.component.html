@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="otroProductoCollapsed = !otroProductoCollapsed" [attr.aria-expanded]="!otroProductoCollapsed" aria-controls="collapseOtroProducto">
+                    <h5 class="font-weight-bold mb-0">Otros productos</h5>
+                    <i class="fa" [ngClass]="{'fa-chevron-up': otroProductoCollapsed, 'fa-chevron-down': !otroProductoCollapsed }"></i>
+                </div>
+            </div>
+            <hr>
+            <div id="collapseOtroProducto" [ngbCollapse]="otroProductoCollapsed">
+                <div class="d-flex justify-content-end m-2">
+                    <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear otro producto"  (click)="abrirOtrosProductos()">
+                      <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+                <p-table [columns]="colsOtrosProductos" [value]="listOtrosProductosObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns">
+                                {{col.header}}
+                            </th>
+                            <th></th>
+                        </tr>
+                        </ng-template>
+          
+                        <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr style="height:34px" [pSelectableRow]="rowData">
+                          <td *ngFor="let col of columns">
+                              {{rowData[col.field]}}
+                          </td>
+                          <td>
+                            <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver otro producto" (click)="verOtroProducto(rowData)">
+                              <i class="fa fa-search"></i>
+                            </button>
+                          </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </app-card>
+    </div>
+</div>

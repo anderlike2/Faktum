@@ -78,4 +78,8 @@ export class DetalleProductoComponent implements OnInit {
     modalDetalle.componentInstance.informacionMostrar = value.prodNombreTecnico;
   }
 
+  obtenerNombreConcepto(value: IProducto){
+    return value.prodCupId != null ? 'CUPS' : (value.prodOtroProductoId != null ? 'OTROS PRODUCTOS' : 'MEDICAMENTOS');
+  }
+
 }

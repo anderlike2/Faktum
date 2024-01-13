@@ -11,7 +11,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { CentroCostosComponent } from './centro-costos/centro-costos.component';
 import { FormatosImpresionComponent } from './formatos-impresion/formatos-impresion.component';
 import { UnidadesComponent } from './unidades/unidades.component';
-
+import { OtrosProductosComponent } from './otros-productos/otros-productos.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { UnidadesComponent } from './unidades/unidades.component';
     CrearEmpresaPageComponent,
     CentroCostosComponent,
     FormatosImpresionComponent,
-    UnidadesComponent
+    UnidadesComponent,
+    OtrosProductosComponent
   ],
   imports: [
     CommonModule,

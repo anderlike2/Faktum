@@ -35,7 +35,7 @@
                 <tr style="height:34px" [pSelectableRow]="rowData">
                   <td *ngFor="let col of columns">                      
                       <ng-container *ngIf="col.header == 'Concepto'">
-                        ***
+                        {{obtenerNombreConcepto(rowData)}}
                       </ng-container>
                       <ng-container *ngIf="col.header != 'Concepto'">
                         {{rowData[col.field]}}
