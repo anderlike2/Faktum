@@ -22,8 +22,7 @@ export class CambiarEmpresaComponent implements OnInit {
   cols: any[] = [
     { field: 'emprNombre', header: 'Empresa' },
     { field: 'emprNit', header: 'Nit' },
-    { field: 'emprRepLegal', header: 'Rep. legal' },
-    { field: 'emprCiudad', header: 'Ciudad' }
+    { field: 'emprRepLegal', header: 'Rep. legal' }
   ];
 
   constructor(

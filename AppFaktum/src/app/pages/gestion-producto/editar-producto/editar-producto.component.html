@@ -27,7 +27,7 @@
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="">Nombre factura</label>
+                    <label for="">Descripción</label>
                     <input formControlName="prodNombreFactura" type="text" class="form-control">
                   </div>
                 </div>
@@ -92,19 +92,15 @@
               <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="">Código retención en la fuente</label>
-                    <select formControlName="prodCodReteFuenteId" class="form-control">
-                      <ng-container *ngFor="let item of listaCodRetencionFuente">
-                        <option [value]="item.valor">{{item.nombre}}</option>
-                      </ng-container>
-                    </select>
+                    <label for="">Retención en la fuente</label>
+                    <input formControlName="prodPorcReteFuente" type="text" class="form-control">
                   </div>
                 </div>
 
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="">Lista precios</label>
-                    <input formControlName="prodListaPrecio" type="text" class="form-control">
+                    <label for="">Iva</label>
+                    <input formControlName="prodPorcIva" type="text" class="form-control">
                   </div>
                 </div>
               </div>

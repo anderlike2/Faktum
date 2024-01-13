@@ -46,7 +46,7 @@ namespace RepositoryLayer.Repository
             try
             {
                 lstResult =
-                    await objContext.ContratoSalud.Where(x => x.Estado == 1 && x.CosaClieId.Id.Equals(idCliente)).ToListAsync();
+                    await objContext.ContratoSalud.Where(x => x.Estado == 1 && x.CosaClie.Id.Equals(idCliente)).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)

@@ -68,8 +68,6 @@ namespace DomainLayer.Models
         [Required]
         public virtual ICollection<FacturaModel>? ClieFacturas { get; set; }
         [Required]
-        public virtual ICollection<SucursalClienteModel>? ClieSucursalesCliente { get; set; }
-        [Required]
         public virtual ICollection<ContratoSaludModel>? ClieContratosSalud { get; set; }
        
 

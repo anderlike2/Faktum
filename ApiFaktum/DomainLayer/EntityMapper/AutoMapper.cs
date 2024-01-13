@@ -98,9 +98,6 @@ namespace DomainLayer.EntityMapper
             CreateMap<ClaseFacturaModel, ClaseFacturaDto>().ReverseMap();
             CreateMap<ClaseFacturaDto, ClaseFacturaModel>();
 
-            CreateMap<NumeracionResolucionModel, NumeracionResolucionDto>().ReverseMap();
-            CreateMap<NumeracionResolucionDto, NumeracionResolucionModel>();
-
             CreateMap<LocalidadModel, LocalidadDto>().ReverseMap();
             CreateMap<LocalidadDto, LocalidadModel>();
 
@@ -139,9 +136,6 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<SucursalModel, SucursalDto>().ReverseMap();
             CreateMap<SucursalDto, SucursalModel>();
-
-            CreateMap<SucursalClienteModel, SucursalClienteDto>().ReverseMap();
-            CreateMap<SucursalClienteDto, SucursalClienteModel>();
 
             CreateMap<ClienteModel, ClienteDto>().ReverseMap();
             CreateMap<ClienteDto, ClienteModel>();

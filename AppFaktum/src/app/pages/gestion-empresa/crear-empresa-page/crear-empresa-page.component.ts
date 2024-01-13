@@ -25,11 +25,13 @@ export class CrearEmpresaPageComponent implements OnInit {
   listTipoCliente: IListCombo[] = [];
   ListRegEmpresa: IListCombo[] = [];
   listClasJuridica: IListCombo[] = [];
+  listDeptos: IListCombo[] = [];
+  listCiudades: IListCombo[] = [];
 
   fileNameUpload = '';
   capturedImage;
 
-  maxBytes = 30 * 1024;
+  maxBytes = 300 * 1024;
   maxSignature = 45 * 1024;
 
   empresaCollapsed: boolean = false;
@@ -91,6 +93,13 @@ export class CrearEmpresaPageComponent implements OnInit {
       }
     });
 
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.DEPARTAMENTO)
+    .subscribe({
+      next: (response) => {
+        this.listDeptos = response;
+      }
+    });
+
   }
 
   initForm(): void {
@@ -115,13 +124,13 @@ export class CrearEmpresaPageComponent implements OnInit {
           Validators.pattern('[0-9]+')
         ]
       ],
-      emprDepto: [
+      emprDeptoId: [
         { value: '', disabled: false },
         [
           Validators.required
         ]
       ],
-      emprCiudad: [
+      emprCiudadId: [
         { value: '', disabled: false },
         [
           Validators.required
@@ -314,13 +323,13 @@ export class CrearEmpresaPageComponent implements OnInit {
       : '';
   }
   get emprDeptoErrorMensaje(): string {
-    const form: AbstractControl = this.empresaFormGroup.get('emprDepto') as AbstractControl;
+    const form: AbstractControl = this.empresaFormGroup.get('emprDeptoId') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
       : '';
   }
   get emprCiudadErrorMensaje(): string {
-    const form: AbstractControl = this.empresaFormGroup.get('emprCiudad') as AbstractControl;
+    const form: AbstractControl = this.empresaFormGroup.get('emprCiudadId') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
       : '';
@@ -500,7 +509,7 @@ export class CrearEmpresaPageComponent implements OnInit {
               reader.onload = () => {
                   if (file.size > this.maxBytes) {
                     this.generalService.mostrarMensajeAlerta(
-                      `El logo ${file.name} supera el tamaño maximo permitido`,
+                      `El logo ${file.name} supera el tamaño máximo permitido`,
                       TiposMensajeEnum.ERROR,
                       GeneralesEnum.BTN_ACEPTAR
                       );
@@ -566,4 +575,11 @@ export class CrearEmpresaPageComponent implements OnInit {
 
   }
 
+  cargarCiudadesDepto(idDepto: number): void{
+    this.cargueCombosService.obtenerListaCiudadesDepto(idDepto)
+    .subscribe({
+      next: (response) => {
+        this.listCiudades = response;
+      }})
+  }
 }

@@ -40,13 +40,13 @@ import { CrearClienteComponent } from './pages/modals/crear-cliente/crear-client
 import { CrearContratoClienteComponent } from './pages/modals/crear-contrato-cliente/crear-contrato-cliente.component';
 import { CrearCentroCostosComponent } from './pages/modals/crear-centro-costos/crear-centro-costos.component';
 import { CrearFormatoImpresionComponent } from './pages/modals/crear-formato-impresion/crear-formato-impresion.component';
-import { CrearSucursalClienteComponent } from './pages/modals/crear-sucursal-cliente/crear-sucursal-cliente.component';
 import { CrearUnidadComponent } from './pages/modals/crear-unidad/crear-unidad.component';
 import { CrearListaPrecioComponent } from './pages/modals/crear-lista-precio/crear-lista-precio.component';
 import { CrearProductoComponent } from './pages/modals/crear-producto/crear-producto.component';
 import { CrearCabeceraFacturaComponent } from './pages/modals/crear-cabecera-factura/crear-cabecera-factura.component';
 import { TextMaskModule } from 'angular2-text-mask';
-import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+import { MostrarInformacionComponent } from './pages/modals/mostrar-informacion/mostrar-informacion.component'
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -74,11 +74,11 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CrearContratoClienteComponent,
     CrearCentroCostosComponent,
     CrearFormatoImpresionComponent,
-    CrearSucursalClienteComponent,
     CrearUnidadComponent,
     CrearListaPrecioComponent,
     CrearProductoComponent,
-    CrearCabeceraFacturaComponent
+    CrearCabeceraFacturaComponent,
+    MostrarInformacionComponent
   ],
   imports: [
     BrowserModule,

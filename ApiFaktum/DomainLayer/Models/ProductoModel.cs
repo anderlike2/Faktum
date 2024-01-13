@@ -8,8 +8,6 @@ namespace DomainLayer.Models
         [Required]
         public string? ProdCodigo { get; set; }
         [Required]
-        public int ProdListaPrecio { get; set; }
-        [Required]
         public string? ProdMarca { get; set; }
         [Required]
         public string? ProdModelo { get; set; }
@@ -22,12 +20,14 @@ namespace DomainLayer.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal ProdValor { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ProdPorcReteFuente { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal ProdPorcIva { get; set; }
 
         //Referencias
         [Required]
-        public virtual CentroCostoModel? ProdCentroCosto { get; set; }        
-        [Required]
-        public virtual ReteFuenteModel? ProdCodReteFuente { get; set; }
+        public virtual CentroCostoModel? ProdCentroCosto { get; set; }  
         public virtual CumModel? ProdCum { get; set; }
         public virtual CupModel? ProdCup { get; set; }
         [Required]
@@ -47,7 +47,6 @@ namespace DomainLayer.Models
 
         //Referencias para consultas FK
         public virtual int ProdCentroCostoId { get; set; }
-        public virtual int ProdCodReteFuenteId { get; set; }
         public virtual int? ProdCumId { get; set; }
         public virtual int? ProdCupId { get; set; }
         public virtual int ProdEmpresaId { get; set; }

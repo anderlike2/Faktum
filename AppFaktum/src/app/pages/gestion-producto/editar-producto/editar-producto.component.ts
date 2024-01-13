@@ -293,7 +293,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
           Validators.required
         ]
       ],
-      prodListaPrecio: [ { value: '', disabled: false }, [
+      prodPorcIva: [ { value: '', disabled: false }, [
           Validators.required
         ]
       ],
@@ -301,7 +301,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
           Validators.required
         ]
       ],
-      prodCodReteFuenteId: [ { value: '', disabled: false }, [
+      prodPorcReteFuente: [ { value: '', disabled: false }, [
           Validators.required
         ]
       ],

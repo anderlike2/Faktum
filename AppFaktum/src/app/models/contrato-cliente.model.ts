@@ -2,7 +2,7 @@ export interface IContratoCliente{
     cosaContrato: string;
     cosaNitCliente: string;
     cosaPoliza: string;
-    cosaClieIdId: number;
+    cosaClieId: number;
     cosaCobeId: number;
     cosaEmpresaId: number;
     cosaMopaId: number;

@@ -7,13 +7,11 @@ import { IContratoCliente } from 'src/app/models/contrato-cliente.model';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
-import { ISucursalCliente } from 'src/app/models/sucursal-cliente.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { CrearContratoClienteComponent } from '../../modals/crear-contrato-cliente/crear-contrato-cliente.component';
-import { CrearSucursalClienteComponent } from '../../modals/crear-sucursal-cliente/crear-sucursal-cliente.component';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -37,26 +35,15 @@ export class EditarClienteComponent implements OnInit {
   listTipoIds: IListCombo[] = [];
   listClasesJuridicas: IListCombo[] = [];
   informacionCliente: ICliente;
-  listSucursalesCliente: ISucursalCliente[] = [];
   listContratosCliente: IContratoCliente[] = [];
 
   clienteCollapsed: boolean = true;
   sucursalClienteCollapsed: boolean = true;
   contratoCollapsed: boolean = true;
-
-  colsSucursalesCliente: any[] = [
-    { field: 'suclNombre', header: 'Nombre' },
-    { field: 'suclCodigo', header: 'Código' },
-    { field: 'suclContacto', header: 'Contacto' },
-    { field: 'suclCorreo', header: 'Correo' },
-    { field: 'suclDiasPago', header: 'Días pago' },
-    { field: 'suclTelefono', header: 'Teléfono' }
-  ];
   seletedSucursalCliente: any;
 
   colsContratosCliente: any[] = [
     { field: 'cosaContrato', header: 'Contrato' },
-    { field: 'cosaNitCliente', header: 'Nit Cliente' },
     { field: 'cosaPoliza', header: 'Póliza' }
   ];
   seletedContratoCliente: any;
@@ -79,7 +66,6 @@ export class EditarClienteComponent implements OnInit {
     this.initForm();
     this.cargarComboListas();
     this.cargarInformacionCliente(this.informacionCliente.id);
-    this.cargarInformacionSucursalesCliente(this.informacionCliente.id);
     this.cargarInformacionContratosCliente(this.informacionCliente.id);
   }
 
@@ -456,15 +442,6 @@ export class EditarClienteComponent implements OnInit {
     });
   }
 
-  cargarInformacionSucursalesCliente(idCliente: number): void{
-    this.clienteService.obtenerInformacionSucursalesClienteId(idCliente)
-    .subscribe({
-      next: (response) => {
-        this.listSucursalesCliente = response;
-      }
-    });
-  }
-
   cargarInformacionContratosCliente(idCliente: number): void{
     this.clienteService.obtenerInformacionContratosClienteId(idCliente)
     .subscribe({
@@ -539,7 +516,6 @@ export class EditarClienteComponent implements OnInit {
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
            this.clienteFormGroup.disable();
            this.cargarInformacionCliente(this.informacionCliente.id);
-           this.cargarInformacionSucursalesCliente(this.informacionCliente.id);
            this.cargarInformacionContratosCliente(this.informacionCliente.id);
         }
       }
@@ -552,11 +528,6 @@ export class EditarClienteComponent implements OnInit {
       next: (response) => {
         this.listCiudades = response;
       }})
-  }
-
-  verSucursalCliente(value:ISucursalCliente): void{
-    this.sharedService.addSucursalClienteData(value);
-    this.router.navigate(['./gestion-sucursal-cliente/editar-sucursal-cliente']);
   }
 
   verContratoCliente(value:IContratoCliente): void{
@@ -572,16 +543,6 @@ export class EditarClienteComponent implements OnInit {
       }
     );
     modalCliente.componentInstance.clienteID = this.informacionCliente.id;
-  }
-
-  abrirModalCrearSucursalCliente(): void {
-    const modalSucursalCliente = this.modalService.open(
-      CrearSucursalClienteComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-    modalSucursalCliente.componentInstance.clienteID = this.informacionCliente.id;
   }
 
 }

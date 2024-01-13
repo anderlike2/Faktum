@@ -4,7 +4,7 @@
 
       <div class="d-flex align-items-center justify-content-between" role="button">
         <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="contratoCollapsed = !contratoCollapsed" [attr.aria-expanded]="!contratoCollapsed" aria-controls="collapseContratoCliente">
-          <h5 class="font-weight-bold mb-0">Contrato cliente</h5>
+          <h5 class="font-weight-bold mb-0">Contrato cliente para {{nombreCliente}} {{apellidoCliente}} con nit No. {{nitCliente}}</h5>
           <i class="fa" [ngClass]="{'fa-chevron-up': contratoCollapsed, 'fa-chevron-down': !contratoCollapsed }"></i>
         </div>
 
@@ -39,14 +39,18 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="">Nit cliente</label>
-                    <input formControlName="cosaNitCliente" type="text"  class="form-control"
+                    <label for="">Modalidad pago</label>
+                    <select formControlName="cosaMopaId" class="form-control"
                     [ngClass]="{
                       'is-invalid':
-                        contratoClienteFormGroup.controls.cosaNitCliente.invalid &&
-                        contratoClienteFormGroup.controls.cosaNitCliente.touched
+                        contratoClienteFormGroup.controls.cosaMopaId.invalid &&
+                        contratoClienteFormGroup.controls.cosaMopaId.touched
                     }">
-                    <div class="invalid-feedback"> {{ cosaNitClienteErrorMensaje }} </div>
+                      <ng-container *ngFor="let item of listaModalidadPago">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
+                    <div class="invalid-feedback"> {{ cosaMopaIdErrorMensaje }} </div>
                   </div>
                 </div>
               </div>
@@ -81,42 +85,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="">Empresa</label>
-                    <select formControlName="cosaEmpresaId" class="form-control"
-                    [ngClass]="{
-                      'is-invalid':
-                        contratoClienteFormGroup.controls.cosaEmpresaId.invalid &&
-                        contratoClienteFormGroup.controls.cosaEmpresaId.touched
-                    }">
-                      <ng-container *ngFor="let item of listaEmpresas">
-                        <option [value]="item.valor">{{item.nombre}}</option>
-                      </ng-container>
-                    </select>
-                    <div class="invalid-feedback"> {{ cosaEmpresaIdErrorMensaje }} </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="">Modalidad pago</label>
-                    <select formControlName="cosaMopaId" class="form-control"
-                    [ngClass]="{
-                      'is-invalid':
-                        contratoClienteFormGroup.controls.cosaMopaId.invalid &&
-                        contratoClienteFormGroup.controls.cosaMopaId.touched
-                    }">
-                      <ng-container *ngFor="let item of listaModalidadPago">
-                        <option [value]="item.valor">{{item.nombre}}</option>
-                      </ng-container>
-                    </select>
-                    <div class="invalid-feedback"> {{ cosaMopaIdErrorMensaje }} </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
           </form>

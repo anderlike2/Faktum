@@ -18,7 +18,6 @@ namespace ServiceLayer.Service
         private readonly IClasJuridicaRepository objClasJuridicaRepository;
         private readonly IImpuestoRepository objImpuestoRepository;
         private readonly ICiudadRepository objCiudadRepository;
-        private readonly INumeracionResolucionRepository objNumeracionResolucionRepository;
         private readonly IDeptoRepository objDeptoRepository;
 
         /// <summary>
@@ -39,7 +38,7 @@ namespace ServiceLayer.Service
         /// <returns></returns>
         public MaestrasService(IMaestrasRepository _objMaestrasRepository, IReteFuenteRepository _objReteFuenteRepository, ICumRepository _objCumRepository, 
             IRegimenRepository _objRegimenRepository, IIumRepository _objIumRepository, IClasJuridicaRepository _objClasJuridicaRepository, 
-            IImpuestoRepository _objImpuestoRepository, ICiudadRepository _objCiudadRepository, INumeracionResolucionRepository _objNumeracionResolucionRepository,
+            IImpuestoRepository _objImpuestoRepository, ICiudadRepository _objCiudadRepository,
             IDeptoRepository _obDeptoRepository)
         {
             this.objMaestrasRepository = _objMaestrasRepository;
@@ -50,7 +49,6 @@ namespace ServiceLayer.Service
             this.objClasJuridicaRepository = _objClasJuridicaRepository;
             this.objImpuestoRepository = _objImpuestoRepository;
             this.objCiudadRepository = _objCiudadRepository;
-            this.objNumeracionResolucionRepository = _objNumeracionResolucionRepository;
             this.objDeptoRepository = _obDeptoRepository;
         }
 
@@ -141,17 +139,6 @@ namespace ServiceLayer.Service
         public Task<Result> ConsultarTablaCiudad()
         {
             return objCiudadRepository.ConsultarTabla();
-        }
-
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
-        /// Metodo para consultar la tabla de NumeracionResolucion
-        /// </summary>
-        /// <returns>Task<Result></returns>
-        public Task<Result> ConsultarTablaNumeracionResolucion()
-        {
-            return objNumeracionResolucionRepository.ConsultarTabla();
         }
 
         /// <summary>

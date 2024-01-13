@@ -50,11 +50,6 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
-        path: 'gestion-sucursal-cliente',
-        loadChildren: () => import('./pages/gestion-sucursal-cliente/gestion-sucursal-cliente.module').then(m => m.GestionSucursalClienteModule),
-        canActivate: [LoginGuard]
-      },
-      {
         path: 'gestion-contrato-cliente',
         loadChildren: () => import('./pages/gestion-contrato-cliente/gestion-contrato-cliente.module').then(m => m.GestionContratoClienteModule),
         canActivate: [LoginGuard]

@@ -76,14 +76,6 @@ namespace ServiceLayer.IService
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar la tabla de NumeracionResolucion
-        /// </summary>
-        /// <returns>Task<Result></returns>
-        Task<Result> ConsultarTablaNumeracionResolucion();
-
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
         /// Metodo para consultar la tabla de Depto
         /// </summary>
         /// <returns>Task<Result></returns>

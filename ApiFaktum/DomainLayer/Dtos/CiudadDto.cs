@@ -7,5 +7,6 @@
 
         //Referencias
         public int? CiudDeptoId { get; set; }
+        public int? CiudEmpresaId { get; set; }
     }
 }

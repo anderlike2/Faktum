@@ -14,5 +14,7 @@ namespace DomainLayer.Models
         public virtual DeptoModel? CiudDepto { get; set; }
         [Required]
         public virtual ICollection<ClienteModel>? CiudClientes { get; set; }
+        [Required]
+        public virtual ICollection<EmpresaModel>? CiudEmpresas { get; set; }
     }
 }

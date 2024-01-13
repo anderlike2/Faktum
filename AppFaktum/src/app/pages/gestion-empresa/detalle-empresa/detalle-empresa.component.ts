@@ -46,6 +46,8 @@ export class DetalleEmpresaComponent implements OnInit {
   listTipoCliente: IListCombo[] = [];
   ListRegEmpresa: IListCombo[] = [];
   listClasJuridica: IListCombo[] = [];
+  listDeptos: IListCombo[] = [];
+  listCiudades: IListCombo[] = [];
   edicionEmpresa: boolean = false;
 
   dataEmpresa: IEmpresa;
@@ -73,6 +75,8 @@ export class DetalleEmpresaComponent implements OnInit {
     this.initForm();
     this.cargarComboListas();
     this.cargarInfoEmpresa();
+    if(this.dataEmpresa.emprDeptoId != undefined && this.dataEmpresa.emprDeptoId != null && this.dataEmpresa.emprDeptoId != "")
+            this.cargarCiudadesDepto(Number(this.dataEmpresa.emprDeptoId));
     this.cargarTablas();
   }
 
@@ -120,6 +124,13 @@ export class DetalleEmpresaComponent implements OnInit {
       }
     });
 
+    this.cargueCombosService.obtenerListaTablaMaestro(TipoListEnum.DEPARTAMENTO)
+    .subscribe({
+      next: (response) => {
+        this.listDeptos = response;
+      }
+    });
+
   }
 
   cargarTablas(): void {
@@ -136,8 +147,8 @@ export class DetalleEmpresaComponent implements OnInit {
         nombre: this.dataEmpresa.emprNombre,
         nit: this.dataEmpresa.emprNit,
         dv: this.dataEmpresa.emprDv,
-        departamento: this.dataEmpresa.emprDepto,
-        ciudad: this.dataEmpresa.emprCiudad,
+        departamento: this.dataEmpresa.emprDeptoId,
+        ciudad: this.dataEmpresa.emprCiudadId,
         direccion: this.dataEmpresa.emprDireccion,
         telefono: this.dataEmpresa.emprTelefono,
         correo: this.dataEmpresa.emprMail,
@@ -595,8 +606,8 @@ export class DetalleEmpresaComponent implements OnInit {
       emprNombre: formData.nombre,
       emprNit: formData.nit,
       emprDv: formData.dv,
-      emprDepto: formData.departamento,
-      emprCiudad: formData.ciudad,
+      emprDeptoId: formData.departamento,
+      emprCiudadId: formData.ciudad,
       emprDireccion: formData.direccion,
       emprTelefono: formData.telefono,
       emprMail: formData.correo,
@@ -636,7 +647,14 @@ export class DetalleEmpresaComponent implements OnInit {
         swal.fire(``, response.message, 'success');
       }
     });
+  }
 
+  cargarCiudadesDepto(idDepto: number): void{
+    this.cargueCombosService.obtenerListaCiudadesDepto(idDepto)
+    .subscribe({
+      next: (response) => {
+        this.listCiudades = response;
+      }})
   }
 
 }

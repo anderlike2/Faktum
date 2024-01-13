@@ -2,10 +2,10 @@ export interface IEmpresa {
   id?: number;
   emprFactContador: number;
   emprCelular: string;
-  emprCiudad: string;
+  emprCiudadId: string;
   emprCiuu: string;
   emprContacto: string;
-  emprDepto: string;
+  emprDeptoId: string;
   emprDiasPago: number;
   emprDireccion: string;
   emprDv: string;

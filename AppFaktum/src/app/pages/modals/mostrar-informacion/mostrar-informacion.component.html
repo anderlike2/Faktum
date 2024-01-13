@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h5 class="modal-title">Detalle de información</h5>
+</div>
+
+<div class="modal-body">
+    <form class="d-flex flex-column">
+        <span>{{informacionMostrarModal}}</span>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+    </div>
+</div>

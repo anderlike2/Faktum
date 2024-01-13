@@ -61,7 +61,6 @@ namespace DependencyInjection
             services.AddScoped(typeof(IClasJuridicaRepository), typeof(ClasJuridicaRepository));
             services.AddScoped(typeof(IImpuestoRepository), typeof(ImpuestoRepository));
             services.AddScoped(typeof(ICiudadRepository), typeof(CiudadRepository));
-            services.AddScoped(typeof(INumeracionResolucionRepository), typeof(NumeracionResolucionRepository));
             services.AddScoped(typeof(IDeptoRepository), typeof(DeptoRepository));
             services.AddScoped(typeof(IRolRepository), typeof(RolRepository));
             services.AddScoped(typeof(IEmpresaRepository), typeof(EmpresaRepository));
@@ -70,7 +69,6 @@ namespace DependencyInjection
             services.AddScoped(typeof(IUsuarioEmpresaRepository), typeof(UsuarioEmpresaRepository));
             services.AddScoped(typeof(IRolUsuarioRepository), typeof(RolUsuarioRepository));
             services.AddScoped(typeof(IClienteRepository), typeof(ClienteRepository));
-            services.AddScoped(typeof(ISucursalClienteRepository), typeof(SucursalClienteRepository));
             services.AddScoped(typeof(IContratosSaludRepository), typeof(ContratosSaludRepository));
             services.AddScoped(typeof(IProductoRepository), typeof(ProductoRepository));
             services.AddScoped(typeof(IListaPreciosRepository), typeof(ListaPreciosRepository));
@@ -87,7 +85,6 @@ namespace DependencyInjection
             services.AddScoped(typeof(ISucursalService), typeof(SucursalService));
             services.AddScoped(typeof(ICentroCostoService), typeof(CentroCostoService));
             services.AddScoped(typeof(IClienteService), typeof(ClienteService));
-            services.AddScoped(typeof(ISucursalClienteService), typeof(SucursalClienteService));
             services.AddScoped(typeof(IContratosSaludService), typeof(ContratosSaludService));
             services.AddScoped(typeof(IProductoService), typeof(ProductoService));
             services.AddScoped(typeof(IListaPreciosService), typeof(ListaPreciosService));

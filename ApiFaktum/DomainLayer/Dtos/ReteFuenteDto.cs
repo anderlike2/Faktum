@@ -10,7 +10,6 @@ namespace DomainLayer.Dtos
         public decimal? RetePorcentaje { get; set; }
 
         //Referencias
-        public List<ProductoDto>? ReteProductos { get; set; }
         public List<DetalleFactDto>? ReteDetFacturas { get; set; }
     }
 }

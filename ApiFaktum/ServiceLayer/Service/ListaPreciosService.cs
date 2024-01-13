@@ -28,18 +28,6 @@ namespace ServiceLayer.Service
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar la lista de precios de una sucursal cliente
-        /// </summary>
-        /// <param name="idSucursalCliente"></param>
-        /// <returns>Task<Result></returns>
-        public Task<Result> ConsultarListaPreciosSucursalesCliente(int idSucursalCliente)
-        {
-            return objListaPreciosRepository.ConsultarListaPreciosSucursalesCliente(idSucursalCliente);
-        }
-
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
         /// Metodo para crear una lista de precios
         /// </summary>
         /// <param name="objModel"></param>

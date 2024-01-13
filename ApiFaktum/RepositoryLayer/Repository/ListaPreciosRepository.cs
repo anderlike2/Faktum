@@ -34,44 +34,6 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar la lista de precios de una sucursal cliente
-        /// </summary>
-        /// <param name="idSucursalCliente"></param>
-        /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarListaPreciosSucursalesCliente(int idSucursalCliente)
-        {
-            Result oRespuesta = new Result();
-            List<ListaPrecioModel>? lstResult = new List<ListaPrecioModel>();
-
-            try
-            {
-                lstResult =
-                    await objContext.ListaPrecio.Where(x => x.Estado == 1 && x.LiprSucursalCliente.Id.Equals(idSucursalCliente)).ToListAsync();
-
-                oRespuesta.Success = true;
-                if (lstResult.Count > 0)
-                {
-
-                    oRespuesta.Data = mapper.Map<List<ListaPrecioDto>>(lstResult);
-                    oRespuesta.Message = Constantes.msjConsultaExitosa;
-                }
-                else
-                {
-                    oRespuesta.Data = new List<ListaPrecioDto>();
-                    oRespuesta.Message = Constantes.msjNoHayRegistros;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-
-            return oRespuesta;
-        }
-
-        /// <summary>
-        /// Katary
-        /// Anderson Benavides
         /// Metodo para crear una lista de precios
         /// </summary>
         /// <param name="objModel"></param>

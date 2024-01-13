@@ -25,7 +25,6 @@ export class CrearProductoComponent implements OnInit {
 
   listaListPrecios: IListCombo[] = [];
   listaCentroCostos: IListCombo[] = [];
-  listaCodRetencionFuente: IListCombo[] = [];
   listaCums: IListCombo[] = [];
   listaCups: IListCombo[] = [];
   listaIums: IListCombo[] = [];
@@ -79,10 +78,6 @@ export class CrearProductoComponent implements OnInit {
       next: (response) => this.listaCentroCostos = response
     });
 
-    this.cargueCombosService.obtenerListaReteFuente().subscribe({
-      next: (response) => this.listaCodRetencionFuente = response
-    });
-
     this.cargueCombosService.obtenerListaTablaImpuestos().subscribe({
       next: (response) => this.listaTipoImpuesto = response
     });
@@ -131,7 +126,7 @@ export class CrearProductoComponent implements OnInit {
           Validators.required
         ]
       ],
-      prodListaPrecio: [ { value: '', disabled: false }, [
+      prodPorcIva: [ { value: '', disabled: false }, [
           Validators.required
         ]
       ],
@@ -139,7 +134,7 @@ export class CrearProductoComponent implements OnInit {
           Validators.required
         ]
       ],
-      prodCodReteFuenteId: [ { value: '', disabled: false }, [
+      prodPorcReteFuente: [ { value: '', disabled: false }, [
           Validators.required
         ]
       ],
@@ -219,8 +214,8 @@ export class CrearProductoComponent implements OnInit {
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
-  get prodListaPrecioErrorMensaje(): string {
-    const form: AbstractControl = this.productoFormGroup.get('prodListaPrecio') as AbstractControl;
+  get prodPorcIvaErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodPorcIva') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
@@ -229,8 +224,8 @@ export class CrearProductoComponent implements OnInit {
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
-  get prodCodReteFuenteIdErrorMensaje(): string {
-    const form: AbstractControl = this.productoFormGroup.get('prodCodReteFuenteId') as AbstractControl;
+  get prodPorcReteFuenteErrorMensaje(): string {
+    const form: AbstractControl = this.productoFormGroup.get('prodPorcReteFuente') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }

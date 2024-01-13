@@ -7,6 +7,7 @@ import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/en
 import { IListCombo } from 'src/app/models/general.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
+import { ClienteService } from 'src/app/services/cliente-service/cliente.service';
 import { ContratoClienteService } from 'src/app/services/contrato-cliente-service/contrato-cliente.service';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
@@ -30,12 +31,17 @@ export class EditarContratoClienteComponent implements OnInit {
   listaCobertura: IListCombo[] = [];
   listaEmpresas: IListCombo[] = [];
   listaModalidadPago: IListCombo[] = [];
+  nombreCliente: string;
+  apellidoCliente: string;
+  nitCliente: string;
+  idEmpresaCliente: number;
 
   constructor(
     private contratoClienteService: ContratoClienteService,
     private cargueCombosService: CargueCombosService,
     private sharedService: SharedService,
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private clienteService: ClienteService
   ) { }
 
   ngOnInit(): void {
@@ -90,6 +96,7 @@ export class EditarContratoClienteComponent implements OnInit {
       next: (response) => {
         if(response?.success) {
           this.contratoClienteData = response.data;
+          this.cargarInformacionCliente(data?.cosaClieId);
           this.cargarDataForm(response.data);
         }
       }
@@ -119,19 +126,11 @@ export class EditarContratoClienteComponent implements OnInit {
         Validators.required
         ]
       ],
-      cosaNitCliente: [ { value: '', disabled: false }, [
-          Validators.required
-        ]
-      ],
       cosaPoliza: [ { value: '', disabled: false }, [
           Validators.required
         ]
       ],
       cosaCobeId: [ { value: '', disabled: false }, [
-          Validators.required
-        ]
-      ],
-      cosaEmpresaId: [ { value: '', disabled: false }, [
           Validators.required
         ]
       ],
@@ -151,13 +150,6 @@ export class EditarContratoClienteComponent implements OnInit {
       : '';
   }
 
-  get cosaNitClienteErrorMensaje(): string {
-    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaNitCliente') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio'
-      : '';
-  }
-
   get cosaPolizaErrorMensaje(): string {
     const form: AbstractControl = this.contratoClienteFormGroup.get('cosaPoliza') as AbstractControl;
     return form.hasError('required')
@@ -167,13 +159,6 @@ export class EditarContratoClienteComponent implements OnInit {
 
   get cosaCobeIdErrorMensaje(): string {
     const form: AbstractControl = this.contratoClienteFormGroup.get('cosaCobeId') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio'
-      : '';
-  }
-
-  get cosaEmpresaIdErrorMensaje(): string {
-    const form: AbstractControl = this.contratoClienteFormGroup.get('cosaEmpresaId') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio'
       : '';
@@ -199,7 +184,8 @@ export class EditarContratoClienteComponent implements OnInit {
     dataBody.estado = this.contratoClienteData.estado;
 
     // toca hablar de estos dos
-    dataBody.cosaClieIdId = this.contratoClienteData.id;
+    dataBody.cosaClieId = this.contratoClienteData.cosaClieId;
+    dataBody.cosaEmpresaId = this.idEmpresaCliente;
     dataBody.fechaCreacion = this.contratoClienteData.fechaCreacion;
     dataBody.fechaModificacion = this.contratoClienteData.fechaModificacion;
 
@@ -210,6 +196,20 @@ export class EditarContratoClienteComponent implements OnInit {
         }else{
           this.contratoClienteFormGroup.disable();
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+        }
+      }
+    });
+  }
+
+  cargarInformacionCliente(idCliente: number): void{
+    this.clienteService.obtenerInformacionClienteId(idCliente)
+    .subscribe({
+      next: (response) => {
+        if(response != null){
+          this.nombreCliente = response.cliePrimerNom;
+          this.apellidoCliente = response.clieApellidos;
+          this.nitCliente = response.clieNit;
+          this.idEmpresaCliente = response.clieEmpresaId;
         }
       }
     });

@@ -12,8 +12,8 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231214200110_carga-inicial")]
-    partial class cargainicial
+    [Migration("20240113155534_FKCosaClie")]
+    partial class FKCosaClie
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -416,7 +416,7 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CosaClieIdId")
+                    b.Property<int>("CosaClieId")
                         .HasColumnType("int");
 
                     b.Property<int>("CosaCobeId")
@@ -431,10 +431,6 @@ namespace RepositoryLayer.Migrations
 
                     b.Property<int>("CosaMopaId")
                         .HasColumnType("int");
-
-                    b.Property<string>("CosaNitCliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CosaPoliza")
                         .IsRequired()
@@ -452,7 +448,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CosaClieIdId");
+                    b.HasIndex("CosaClieId");
 
                     b.HasIndex("CosaCobeId");
 
@@ -685,9 +681,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmprCiudad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EmprCiudadId")
+                        .HasColumnType("int");
 
                     b.Property<string>("EmprCiuu")
                         .HasColumnType("nvarchar(max)");
@@ -699,9 +694,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("EmprDepto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("EmprDeptoId")
+                        .HasColumnType("int");
 
                     b.Property<int>("EmprDiasPago")
                         .HasColumnType("int");
@@ -810,7 +804,11 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EmprCiudadId");
+
                     b.HasIndex("EmprClasJuridicaId");
+
+                    b.HasIndex("EmprDeptoId");
 
                     b.HasIndex("EmprRegimenId");
 
@@ -940,7 +938,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("FactCoberturaId")
                         .HasColumnType("int");
 
-                    b.Property<long>("FactCompartidos")
+                    b.Property<long?>("FactCompartidos")
                         .HasColumnType("bigint");
 
                     b.Property<int>("FactCondicionVentaId")
@@ -950,17 +948,16 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("bigint");
 
                     b.Property<string>("FactContrato")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("FactCopago")
+                    b.Property<decimal?>("FactCopago")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("FactCufe")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("FactCuotaRecupera")
+                    b.Property<decimal?>("FactCuotaRecupera")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("FactDescGlobal")
@@ -984,11 +981,9 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FactFechaFinal")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FactFechaInicio")
-                        .IsRequired()
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FactFechaTrm")
@@ -1012,7 +1007,7 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("FactModeradora")
+                    b.Property<long?>("FactModeradora")
                         .HasColumnType("bigint");
 
                     b.Property<int>("FactMonedaId")
@@ -1041,7 +1036,6 @@ namespace RepositoryLayer.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FactPoliza")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FactPorcIva")
@@ -1332,8 +1326,6 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("LiprProductoId");
 
-                    b.HasIndex("LiprSucursalClienteId");
-
                     b.ToTable("ListaPrecio");
                 });
 
@@ -1538,36 +1530,6 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("NotaDebito");
                 });
 
-            modelBuilder.Entity("DomainLayer.Models.NumeracionResolucionModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("FechaCreacion")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("NureCodigo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("NureNumeracionActual")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("NumeracionResolucion");
-                });
-
             modelBuilder.Entity("DomainLayer.Models.OtroProductoModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1656,23 +1618,20 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("ProdCentroCostoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProdCodReteFuenteId")
-                        .HasColumnType("int");
-
                     b.Property<string>("ProdCodigo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProdCumId")
+                    b.Property<int?>("ProdCumId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProdCupId")
+                    b.Property<int?>("ProdCupId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProdEmpresaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProdIumId")
+                    b.Property<int?>("ProdIumId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProdListaPrecio")
@@ -1694,8 +1653,14 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProdOtroProductoId")
+                    b.Property<int?>("ProdOtroProductoId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("ProdPorcIva")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ProdPorcReteFuente")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ProdTipoCupId")
                         .HasColumnType("int");
@@ -1719,8 +1684,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ProdCentroCostoId");
-
-                    b.HasIndex("ProdCodReteFuenteId");
 
                     b.HasIndex("ProdCumId");
 
@@ -1799,6 +1762,10 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ResoCodigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<long>("ResoConsActual")
                         .HasColumnType("bigint");
 
@@ -1817,7 +1784,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime>("ResoFecheExpide")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ResoNumeracionResolucionId")
+                    b.Property<int>("ResoNumeracionActual")
                         .HasColumnType("int");
 
                     b.Property<string>("ResoPrefijo")
@@ -1836,8 +1803,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ResoEmpresaId");
-
-                    b.HasIndex("ResoNumeracionResolucionId");
 
                     b.HasIndex("ResoSucursalId");
 
@@ -2005,69 +1970,6 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("RousUsuarioId");
 
                     b.ToTable("RolUsuario");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("FechaCreacion")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SuclCiudad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SuclClienteId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SuclCodigo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuclContacto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuclCorreo")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuclDepto")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SuclDiasPago")
-                        .HasColumnType("int");
-
-                    b.Property<string>("SuclListaPrecio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuclNombre")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuclTelefono")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SuclClienteId");
-
-                    b.ToTable("SucursalCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
@@ -2388,7 +2290,8 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UnidEmpresaId")
+                    b.Property<int?>("UnidEmpresaId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("UnidNombre")
@@ -2584,9 +2487,9 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ContratoSaludModel", b =>
                 {
-                    b.HasOne("DomainLayer.Models.ClienteModel", "CosaClieId")
+                    b.HasOne("DomainLayer.Models.ClienteModel", "CosaClie")
                         .WithMany("ClieContratosSalud")
-                        .HasForeignKey("CosaClieIdId")
+                        .HasForeignKey("CosaClieId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -2608,7 +2511,7 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("CosaClieId");
+                    b.Navigation("CosaClie");
 
                     b.Navigation("CosaCobe");
 
@@ -2670,9 +2573,21 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.EmpresaModel", b =>
                 {
+                    b.HasOne("DomainLayer.Models.CiudadModel", "EmprCiudad")
+                        .WithMany("CiudEmpresas")
+                        .HasForeignKey("EmprCiudadId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("DomainLayer.Models.ClasJuridicaModel", "EmprClasJuridica")
                         .WithMany("JuriEmpresas")
                         .HasForeignKey("EmprClasJuridicaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.DeptoModel", "EmprDepto")
+                        .WithMany("DeptoEmpresas")
+                        .HasForeignKey("EmprDeptoId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -2706,7 +2621,11 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.Navigation("EmprCiudad");
+
                     b.Navigation("EmprClasJuridica");
+
+                    b.Navigation("EmprDepto");
 
                     b.Navigation("EmprRegimen");
 
@@ -2880,15 +2799,7 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DomainLayer.Models.SucursalClienteModel", "LiprSucursalCliente")
-                        .WithMany("SuclListaPrecios")
-                        .HasForeignKey("LiprSucursalClienteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("LiprProducto");
-
-                    b.Navigation("LiprSucursalCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.LocalidadModel", b =>
@@ -2967,23 +2878,15 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DomainLayer.Models.ReteFuenteModel", "ProdCodReteFuente")
-                        .WithMany("ReteProductos")
-                        .HasForeignKey("ProdCodReteFuenteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DomainLayer.Models.CumModel", "ProdCum")
                         .WithMany("CumsProductos")
                         .HasForeignKey("ProdCumId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DomainLayer.Models.CupModel", "ProdCup")
                         .WithMany("CupsProductos")
                         .HasForeignKey("ProdCupId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DomainLayer.Models.EmpresaModel", "ProdEmpresa")
                         .WithMany("EmprProductos")
@@ -2994,14 +2897,12 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.IumModel", "ProdIum")
                         .WithMany("IumProductos")
                         .HasForeignKey("ProdIumId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DomainLayer.Models.OtroProductoModel", "ProdOtroProducto")
                         .WithMany("OtprProductos")
                         .HasForeignKey("ProdOtroProductoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("DomainLayer.Models.TipoCupModel", "ProdTipoCup")
                         .WithMany("TicuProductos")
@@ -3028,8 +2929,6 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("ProdCentroCosto");
-
-                    b.Navigation("ProdCodReteFuente");
 
                     b.Navigation("ProdCum");
 
@@ -3058,12 +2957,6 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DomainLayer.Models.NumeracionResolucionModel", "ResoNumeracionResolucion")
-                        .WithMany("NureResoluciones")
-                        .HasForeignKey("ResoNumeracionResolucionId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DomainLayer.Models.SucursalModel", "ResoSucursal")
                         .WithMany("SucuResoluciones")
                         .HasForeignKey("ResoSucursalId")
@@ -3077,8 +2970,6 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("ResoEmpresa");
-
-                    b.Navigation("ResoNumeracionResolucion");
 
                     b.Navigation("ResoSucursal");
 
@@ -3102,17 +2993,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("RousRol");
 
                     b.Navigation("RousUsuario");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
-                {
-                    b.HasOne("DomainLayer.Models.ClienteModel", "SuclCliente")
-                        .WithMany("ClieSucursalesCliente")
-                        .HasForeignKey("SuclClienteId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("SuclCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
@@ -3164,6 +3044,8 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.CiudadModel", b =>
                 {
                     b.Navigation("CiudClientes");
+
+                    b.Navigation("CiudEmpresas");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ClaseFacturaModel", b =>
@@ -3181,8 +3063,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("ClieContratosSalud");
 
                     b.Navigation("ClieFacturas");
-
-                    b.Navigation("ClieSucursalesCliente");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.CoberturaModel", b =>
@@ -3219,6 +3099,8 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("DeptoCiudades");
 
                     b.Navigation("DeptoClientes");
+
+                    b.Navigation("DeptoEmpresas");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.EmpresaModel", b =>
@@ -3318,11 +3200,6 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("NodbFacturas");
                 });
 
-            modelBuilder.Entity("DomainLayer.Models.NumeracionResolucionModel", b =>
-                {
-                    b.Navigation("NureResoluciones");
-                });
-
             modelBuilder.Entity("DomainLayer.Models.OtroProductoModel", b =>
                 {
                     b.Navigation("OtprProductos");
@@ -3362,18 +3239,11 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.ReteFuenteModel", b =>
                 {
                     b.Navigation("ReteDetFacturas");
-
-                    b.Navigation("ReteProductos");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RolModel", b =>
                 {
                     b.Navigation("RolRolesUsuario");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.SucursalClienteModel", b =>
-                {
-                    b.Navigation("SuclListaPrecios");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>

@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-6">
           <div class="form-group">
-            <label for="">Nombre factura</label>
+            <label for="">Descripción</label>
             <input formControlName="prodNombreFactura" type="text" class="form-control"
             [ngClass]="{
               'is-invalid':
@@ -123,31 +123,27 @@
       <div class="row">
         <div class="col-6">
           <div class="form-group">
-            <label for="">Código retención en la fuente</label>
-            <select formControlName="prodCodReteFuenteId" class="form-control"
+            <label for="">Retención en la fuente</label>
+            <input formControlName="prodPorcReteFuente" type="text" class="form-control"
             [ngClass]="{
               'is-invalid':
-                productoFormGroup.controls.prodCodReteFuenteId.invalid &&
-                productoFormGroup.controls.prodCodReteFuenteId.touched
+              productoFormGroup.controls.prodPorcReteFuente.invalid &&
+              productoFormGroup.controls.prodPorcReteFuente.touched
             }">
-              <ng-container *ngFor="let item of listaCodRetencionFuente">
-                <option [value]="item.valor">{{item.nombre}}</option>
-              </ng-container>
-            </select>
-            <div class="invalid-feedback"> {{ prodCodReteFuenteIdErrorMensaje }} </div>
+            <div class="invalid-feedback"> {{ prodPorcReteFuenteErrorMensaje }} </div>
           </div>
         </div>
 
         <div class="col-6">
           <div class="form-group">
-            <label for="">Lista precios</label>
-            <input formControlName="prodListaPrecio" type="text" class="form-control"
+            <label for="">Iva</label>
+            <input formControlName="prodPorcIva" type="text" class="form-control"
             [ngClass]="{
               'is-invalid':
-                productoFormGroup.controls.prodListaPrecio.invalid &&
-                productoFormGroup.controls.prodListaPrecio.touched
+              productoFormGroup.controls.prodPorcIva.invalid &&
+              productoFormGroup.controls.prodPorcIva.touched
             }">
-            <div class="invalid-feedback"> {{ prodListaPrecioErrorMensaje }} </div>
+            <div class="invalid-feedback"> {{ prodPorcIvaErrorMensaje }} </div>
           </div>
         </div>
       </div>

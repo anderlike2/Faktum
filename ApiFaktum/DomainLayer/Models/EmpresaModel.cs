@@ -10,13 +10,9 @@ namespace DomainLayer.Models
         public int EmprFactContador { get; set; }
         [Required]
         public string? EmprCelular { get; set; }
-        [Required]
-        public string? EmprCiudad { get; set; }
         public string? EmprCiuu { get; set; }        
         [Required]
         public string? EmprContacto { get; set; }
-        [Required]
-        public string? EmprDepto{ get; set; }
         [Required]
         public int EmprDiasPago { get; set; }
         [Required]
@@ -72,6 +68,10 @@ namespace DomainLayer.Models
         [Required]
         public virtual ClasJuridicaModel? EmprClasJuridica { get; set; }
         [Required]
+        public virtual CiudadModel? EmprCiudad { get; set; }
+        [Required]
+        public virtual DeptoModel? EmprDepto { get; set; }
+        [Required]
         public virtual ICollection<ProductoModel>? EmprProductos { get; set; }
         [Required]
         public virtual ICollection<CentroCostoModel>? EmprCentroCostos { get; set; }
@@ -107,5 +107,7 @@ namespace DomainLayer.Models
         public virtual int EmprRegimenId { get; set; }
         public virtual int EmprRespFiscalId { get; set; }
         public virtual int EmprClasJuridicaId { get; set; }
+        public virtual int EmprCiudadId { get; set; }
+        public virtual int EmprDeptoId { get; set; }
     }
 }

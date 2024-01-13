@@ -15,5 +15,7 @@ namespace DomainLayer.Models
         public virtual ICollection<CiudadModel>? DeptoCiudades { get; set; }
         [Required]
         public virtual ICollection<ClienteModel>? DeptoClientes { get; set; }
+        [Required]
+        public virtual ICollection<EmpresaModel>? DeptoEmpresas { get; set; }
     }
 }

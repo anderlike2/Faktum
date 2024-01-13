@@ -8,6 +8,7 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 import { CrearProductoComponent } from '../../modals/crear-producto/crear-producto.component';
 import { IProducto } from 'src/app/models/producto.model';
 import { Observable } from 'rxjs';
+import { MostrarInformacionComponent } from '../../modals/mostrar-informacion/mostrar-informacion.component';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -22,10 +23,10 @@ export class DetalleProductoComponent implements OnInit {
   listProductoObs: Observable<IProducto[]>;
 
   colsProducto: any[] = [
-    { field: 'prodNombreTecnico', header: 'Nombre técnico' },
-    { field: 'prodMarca', header: 'Marca' },
     { field: 'prodCodigo', header: 'Código' },
-    { field: 'prodValor', header: 'Valor' }
+    { field: 'prodNombreFactura', header: 'Descripción' },    
+    { field: 'prodValor', header: 'Valor' },
+    { field: '', header: 'Concepto' }
   ];
 
   constructor(
@@ -64,6 +65,17 @@ export class DetalleProductoComponent implements OnInit {
   verProducto(value: IProducto): void {
     this.sharedService.addProductoData(value);
     this.router.navigate(['/gestion-producto/editar-producto']);
+  }
+
+  verNombreTecnico(value: IProducto): void {
+    const modalDetalle = this.modalService.open(
+      MostrarInformacionComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+
+    modalDetalle.componentInstance.informacionMostrar = value.prodNombreTecnico;
   }
 
 }

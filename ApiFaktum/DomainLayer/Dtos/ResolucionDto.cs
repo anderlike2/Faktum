@@ -10,9 +10,10 @@
         public DateTime ResoFecheExpide { get; set; }
         public string? ResoPrefijo { get; set; }
         public DateTime ResoVigencia { get; set; }
+        public string? ResoCodigo { get; set; }
+        public int ResoNumeracionActual { get; set; }
 
         //Referencias para consultas
-        public int ResoNumeracionResolucionId { get; set; }
         public int ResoEmpresaId { get; set; }
         public int ResoSucursalId { get; set; }
         public int ResoTipoDocId { get; set; }

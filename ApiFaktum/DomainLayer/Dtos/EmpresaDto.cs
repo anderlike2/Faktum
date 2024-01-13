@@ -7,10 +7,8 @@ namespace DomainLayer.Dtos
     {
         public int EmprFactContador { get; set; }
         public string? EmprCelular { get; set; }
-        public string? EmprCiudad { get; set; }
         public string? EmprCiuu { get; set; }        
         public string? EmprContacto { get; set; }
-        public string? EmprDepto { get; set; }
         public int EmprDiasPago { get; set; }
         public string? EmprDireccion { get; set; }
         public string? EmprDv { get; set; }       
@@ -40,5 +38,7 @@ namespace DomainLayer.Dtos
         public int EmprRegimenId { get; set; }
         public int EmprRespFiscalId { get; set; }
         public int EmprClasJuridicaId { get; set; }
+        public int EmprCiudadId { get; set; }
+        public int EmprDeptoId { get; set; }
     }
 }

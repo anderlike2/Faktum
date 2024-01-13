@@ -69,24 +69,32 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Departamento</label>
-                    <input formControlName="emprDepto" type="text" class="form-control" placeholder="Departamento"
+                    <select formControlName="emprDeptoId" class="form-control" (change)="cargarCiudadesDepto($event.target.value)"
                     [ngClass]="{
                       'is-invalid':
-                        empresaFormGroup.controls.emprDepto.invalid &&
-                        empresaFormGroup.controls.emprDepto.touched
+                      empresaFormGroup.controls.emprDeptoId.invalid &&
+                      empresaFormGroup.controls.emprDeptoId.touched
                     }">
+                    <ng-container *ngFor="let item of listDeptos">
+                      <option [value]="item.valor">{{item.nombre}}</option>
+                    </ng-container>
+                  </select>
                     <div class="invalid-feedback"> {{ emprDeptoErrorMensaje }} </div>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <label for="">Ciudad</label>
-                    <input formControlName="emprCiudad" type="text" class="form-control" placeholder="Ciudad"
+                    <select formControlName="emprCiudadId" class="form-control"
                     [ngClass]="{
                       'is-invalid':
-                        empresaFormGroup.controls.emprCiudad.invalid &&
-                        empresaFormGroup.controls.emprCiudad.touched
+                      empresaFormGroup.controls.emprCiudadId.invalid &&
+                      empresaFormGroup.controls.emprCiudadId.touched
                     }">
+                      <ng-container *ngFor="let item of listCiudades">
+                        <option [value]="item.valor">{{item.nombre}}</option>
+                      </ng-container>
+                    </select>
                     <div class="invalid-feedback"> {{ emprCiudadErrorMensaje }} </div>
                   </div>
                 </div>
