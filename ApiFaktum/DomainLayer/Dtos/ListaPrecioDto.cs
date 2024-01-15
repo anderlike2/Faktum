@@ -14,6 +14,5 @@ namespace DomainLayer.Dtos
 
         //Referencias para Consultas
         public int LiprProductoId { get; set; }
-        public int LiprSucursalClienteId { get; set; }
     }
 }

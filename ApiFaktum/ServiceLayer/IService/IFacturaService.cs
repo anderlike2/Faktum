@@ -16,7 +16,7 @@ namespace ServiceLayer.IService
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> CrearFactura(CrearFacturaDto objModel);
+        Task<Result> CrearFactura(FacturaDto objModel);
 
         /// <summary>
         /// Katary
@@ -24,8 +24,16 @@ namespace ServiceLayer.IService
         /// Metodo para crear informacion de un detalle factura
         /// </summary>
         /// <param name="objModel"></param>
-        /// <param name="idFactura"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> CrearDetalleFactura(List<DetalleFactDto> objModel, int idFactura);
+        Task<Result> CrearDetalleFactura(CrearDetalleFacturaDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualiar informacion de una factura
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ActualizarFactura(FacturaDto objModel);
     }
 }

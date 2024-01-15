@@ -41,13 +41,73 @@ namespace ApiFaktum.Controllers
         /// <returns>Task<Result></returns>
         [HttpPost]
         [Route("CrearFactura")]
-        public async Task<IActionResult> CrearFactura([FromBody] CrearFacturaDto objModel)
+        public async Task<IActionResult> CrearFactura([FromBody] FacturaDto objModel)
         {
             Result oRespuesta = new();
 
             try
             {
                 var vRespuesta = await objService.CrearFactura(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para crear informacion de un detalle factura
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("CrearDetalleFactura")]
+        public async Task<IActionResult> CrearDetalleFactura([FromBody] CrearDetalleFacturaDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.CrearDetalleFactura(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar informacion de una factura
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ActualizarFactura")]
+        public async Task<IActionResult> ActualizarFactura([FromBody] FacturaDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ActualizarFactura(objModel);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

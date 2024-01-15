@@ -17,5 +17,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> CrearFactura(FacturaDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar una factura
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ActualizarFactura(FacturaDto objModel);
     }
 }

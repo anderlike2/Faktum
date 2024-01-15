@@ -31,22 +31,25 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> CrearFactura(CrearFacturaDto objModel)
+        public Task<Result> CrearFactura(FacturaDto objModel)
         {
             Result oRespuesta = new Result();
 
-            Task<Result> facturaInsertada = objFacturaRepository.CrearFactura(objModel.Factura);
+            Task<Result> facturaInsertada = objFacturaRepository.CrearFactura(objModel);
             int factura = (int)facturaInsertada.Result.Data;
             if (factura > 0)
             {
-                return CrearDetalleFactura(objModel.DetalleFactura, factura);
+                oRespuesta.Success = true;
+                oRespuesta.Data = factura;
+                oRespuesta.Message = Constantes.msjRegGuardado;
             }
             else
             {
                 oRespuesta.Success = false;
                 oRespuesta.Message = Constantes.msjFacturaNoInsertada;
-                return Task.FromResult(oRespuesta);
-            }            
+                
+            }
+            return Task.FromResult(oRespuesta);
         }
 
         /// <summary>
@@ -55,21 +58,32 @@ namespace ServiceLayer.Service
         /// Metodo para crear informacion de un detalle factura
         /// </summary>
         /// <param name="objModel"></param>
-        /// <param name="idFactura"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> CrearDetalleFactura(List<DetalleFactDto> objModel, int idFactura)
+        public async Task<Result> CrearDetalleFactura(CrearDetalleFacturaDto objModel)
         {
             Result oRespuesta = new();
 
-            foreach (DetalleFactDto item in objModel)
+            foreach (DetalleFactDto item in objModel.DetalleFactura)
             {
-                item.DetaFacturaId = idFactura;
+                item.DetaFacturaId = objModel.IdFactura;
                 await objDetalleFacturaRepository.CrearDetalleFactura(item);
             }
 
             oRespuesta.Success = true;
             oRespuesta.Message = Constantes.msjRegGuardado;
             return await Task.FromResult(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar una factura
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ActualizarFactura(FacturaDto objModel)
+        {
+            return objFacturaRepository.ActualizarFactura(objModel);
         }
     }
 }

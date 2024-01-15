@@ -60,5 +60,34 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar una factura
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ActualizarFactura(FacturaDto objModel)
+        {
+            Result oRespuesta = new Result();
+
+            try
+            {
+                objModel.FechaModificacion = DateTime.UtcNow.ToLocalTime();
+
+                objContext.Update(mapper.Map<FacturaModel>(objModel));
+                await objContext.SaveChangesAsync();
+
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegActualizado;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

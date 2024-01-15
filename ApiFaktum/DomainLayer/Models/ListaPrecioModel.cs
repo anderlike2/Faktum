@@ -28,6 +28,5 @@ namespace DomainLayer.Models
 
         //Referencias para consultas
         public virtual int LiprProductoId { get; set; }
-        public virtual int LiprSucursalClienteId { get; set; }
     }
 }
