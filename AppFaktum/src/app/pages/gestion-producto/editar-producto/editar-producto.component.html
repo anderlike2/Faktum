@@ -15,7 +15,7 @@
         <div id="collapseProducto" [ngbCollapse]="productoCollapsed">
 
           <div class="d-flex flex-row justify-content-end" *ngIf="!productoCollapsed">
-            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Editar" (click)="editarForm()">
+            <button class="btn btn-icon btn-primary" pTooltip="Editar" tooltipPosition="top" (click)="editarForm()">
               <i class="fa fa-edit"></i>
             </button>
           </div>
@@ -228,10 +228,10 @@
             <hr />
 
             <div class="d-flex justify-content-end">
-              <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+              <button class="btn btn-icon btn-danger" pTooltip="Cancelar edición" tooltipPosition="left" (click)="cancelarEdicion()">
                 <i class="fa fa-ban"></i>
               </button>
-              <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar producto" (click)="guardarProducto()">
+              <button class="btn btn-icon btn-primary ml-3" pTooltip="Actualizar producto" tooltipPosition="left" (click)="guardarProducto()">
                 <i class="fa fa-save"></i>
               </button>
             </div>

@@ -85,7 +85,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
 
   init(): void {
     this.initForm();
-    this.sharedService.productoDataListener$.subscribe(this.obtenerProducto.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerProducto.bind(this));
   }
 
   cargarListaCombox(): void {

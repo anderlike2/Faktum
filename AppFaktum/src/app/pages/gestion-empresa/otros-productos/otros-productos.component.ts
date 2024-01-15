@@ -52,10 +52,16 @@ export class OtrosProductosComponent implements OnInit {
     );
 
     modalOtrosProductos.componentInstance.empresaID = this.dataEmpresa.id;
+
+    modalOtrosProductos.result.then((result) => {
+      if (result) {
+        this.cargarTablas();
+      }
+    });
   }
 
   verOtroProducto(value: IOtroProducto): void {
-    this.sharedService.addOtroProductoData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-otro-producto/editar-otro-producto']);
   }
 

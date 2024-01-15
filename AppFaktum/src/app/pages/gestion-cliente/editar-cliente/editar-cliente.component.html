@@ -11,7 +11,7 @@
 
         <div id="collapseCliente" [ngbCollapse]="clienteCollapsed">
             <div class="d-flex flex-row justify-content-end" *ngIf="!edicionCliente">
-              <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Editar" (click)="editarForm()">
+              <button class="btn btn-icon btn-primary" pTooltip="Editar" tooltipPosition="top" (click)="editarForm()">
                 <i class="fa fa-edit"></i>
               </button>
             </div>
@@ -446,10 +446,10 @@
             <ng-container *ngIf="edicionCliente">
                 <hr />
                 <div class="d-flex justify-content-end">
-                  <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cancelar edición" (click)="cancelarEdicion()">
+                  <button class="btn btn-icon btn-danger" pTooltip="Cancelar edición" tooltipPosition="left" (click)="cancelarEdicion()">
                     <i class="fa fa-ban"></i>
                   </button>
-                  <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar cliente" (click)="actualizarCliente()">
+                  <button class="btn btn-icon btn-primary ml-3" pTooltip="Actualizar cliente" tooltipPosition="left" (click)="actualizarCliente()">
                     <i class="fa fa-save"></i>
                   </button>
                 </div>
@@ -468,7 +468,7 @@
         <div id="collapseContratos" [ngbCollapse]="contratoCollapsed">
 
           <div class="d-flex justify-content-end m-2">
-            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear contrato cliente" (click)="abrirModalCrearContrato()">
+            <button class="btn btn-icon btn-primary" pTooltip="Crear contrato cliente" tooltipPosition="left" (click)="abrirModalCrearContrato()">
               <i class="fa fa-plus"></i>
             </button>
           </div>
@@ -479,7 +479,7 @@
                         <th *ngFor="let col of columns">
                             {{col.header}}
                         </th>
-                        <th></th>
+                        <th [style.width.rem]="5"></th>
                     </tr>
                     </ng-template>
 
@@ -488,8 +488,8 @@
                         <td *ngFor="let col of columns">
                             {{rowData[col.field]}}
                         </td>
-                        <td>
-                          <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver contrato cliente" (click)="verContratoCliente(rowData)">
+                        <td [style.width.rem]="5" class="text-center">
+                          <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver contrato cliente" tooltipPosition="left" (click)="verContratoCliente(rowData)">
                             <i class="fa fa-search"></i>
                           </button>
                         </td>

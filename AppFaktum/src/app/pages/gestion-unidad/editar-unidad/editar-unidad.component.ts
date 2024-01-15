@@ -30,7 +30,7 @@ export class EditarUnidadComponent implements OnInit {
   }
 
   init(): void {
-    this.sharedService.unidadDataListener$.subscribe(this.obtenerUnidad.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerUnidad.bind(this));
     this.initForm();
   }
 
@@ -111,6 +111,7 @@ export class EditarUnidadComponent implements OnInit {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
           this.unidadFormGroup.disable();
+          this.edicionUnidad = false;
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }

@@ -36,7 +36,7 @@ export class EditarCentroCostosComponent implements OnInit {
 
   init(): void {
 
-    this.sharedService.centroCostosDataListener$.subscribe(this.obtenerCentroCostos.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerCentroCostos.bind(this));
 
     this.initForm();
     this.cargarListaCombox();
@@ -125,6 +125,7 @@ export class EditarCentroCostosComponent implements OnInit {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
           this.centroCostosFormGroup.disable();
+          this.edicionCentroCostos = false;
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }

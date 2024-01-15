@@ -57,10 +57,16 @@ export class CentroCostosComponent implements OnInit {
     );
 
     modalCentroCostos.componentInstance.empresaID = this.dataEmpresa.id;
+
+    modalCentroCostos.result.then((result) => {
+      if (result) {
+        this.cargarTablas();
+      }
+    })
   }
 
   verCentroCostos(value: ICentroCostos): void {
-    this.sharedService.addCentroCostosData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-centro-costos/editar-centro-costos']);
   }
 

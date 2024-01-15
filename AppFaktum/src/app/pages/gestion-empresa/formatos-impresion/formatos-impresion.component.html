@@ -11,7 +11,7 @@
       <hr>
       <div id="collapseFormatoImpresion" [ngbCollapse]="formatoImpresionCollapsed">
         <div class="d-flex justify-content-end m-2">
-          <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear centro de costos"  (click)="abrirModalFormatosImpresion()">
+          <button class="btn btn-icon btn-primary" pTooltip="Crear formato de impresión" tooltipPosition="left" (click)="abrirModalFormatosImpresion()">
             <i class="fa fa-plus"></i>
           </button>
         </div>
@@ -21,7 +21,7 @@
                   <th *ngFor="let col of columns">
                       {{col.header}}
                   </th>
-                  <th></th>
+                  <th [style.width.rem]="5"></th>
               </tr>
               </ng-template>
 
@@ -30,8 +30,8 @@
                 <td *ngFor="let col of columns">
                     {{rowData[col.field]}}
                 </td>
-                <td>
-                  <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver formato impresión" (click)="verFormatoImpresion(rowData)">
+                <td [style.width.rem]="5" class="text-center">
+                  <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver formato impresión" tooltipPosition="left" (click)="verFormatoImpresion(rowData)">
                     <i class="fa fa-search"></i>
                   </button>
                 </td>

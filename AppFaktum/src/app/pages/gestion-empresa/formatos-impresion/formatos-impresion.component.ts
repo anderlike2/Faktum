@@ -57,10 +57,16 @@ export class FormatosImpresionComponent implements OnInit {
     );
 
     modalFormatosImpresion.componentInstance.empresaID = this.dataEmpresa.id;
+
+    modalFormatosImpresion.result.then((result) => {
+      if (result) {
+        this.cargarTablas();
+      }
+    })
   }
 
   verFormatoImpresion(value: IFormatoImpresion): void {
-    this.sharedService.addFormatoImpresionData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-formato-impresion/editar-formato-impresion']);
   }
 

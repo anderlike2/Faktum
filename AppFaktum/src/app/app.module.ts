@@ -48,6 +48,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MostrarInformacionComponent } from './pages/modals/mostrar-informacion/mostrar-informacion.component';
 import { CrearOtroProductoComponent } from './pages/modals/crear-otro-producto/crear-otro-producto.component'
+import { TooltipModule } from 'primeng/tooltip';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -96,6 +97,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     HttpClientModule,
     TableModule,
     TextMaskModule,
+    TooltipModule,
     NgxMaskModule.forRoot()
   ],
   exports: [

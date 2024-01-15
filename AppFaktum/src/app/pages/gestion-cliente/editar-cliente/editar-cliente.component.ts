@@ -57,7 +57,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   init(): void {
-    this.sharedService.clienteEmpresaDataListener$.subscribe({
+    this.sharedService.editarGeneralDataListener$.subscribe({
       next: (data) => {
         this.informacionCliente = data;
       }
@@ -531,7 +531,7 @@ export class EditarClienteComponent implements OnInit {
   }
 
   verContratoCliente(value:IContratoCliente): void{
-    this.sharedService.addContratoClienteData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['./gestion-contrato-cliente/editar-contrato-cliente']);
   }
 
@@ -543,6 +543,12 @@ export class EditarClienteComponent implements OnInit {
       }
     );
     modalCliente.componentInstance.clienteID = this.informacionCliente.id;
+
+    modalCliente.result.then((result) => {
+      if (result) {
+        this.cargarInformacionContratosCliente(this.informacionCliente.id);
+      }
+    })
   }
 
 }

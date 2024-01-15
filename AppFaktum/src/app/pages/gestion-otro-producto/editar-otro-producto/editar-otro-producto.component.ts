@@ -29,7 +29,7 @@ export class EditarOtroProductoComponent implements OnInit {
   }
 
   init(): void {
-    this.sharedService.otroProductoListener$.subscribe(this.obtenerOtroProducto.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerOtroProducto.bind(this));
     this.initForm();
   }
 
@@ -103,7 +103,8 @@ export class EditarOtroProductoComponent implements OnInit {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
           this.otroProductoFormGroup.disable();
-           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+          this.edicionOtroProducto = false;
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }
     });

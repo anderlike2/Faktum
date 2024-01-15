@@ -12,6 +12,7 @@ import { CentroCostosComponent } from './centro-costos/centro-costos.component';
 import { FormatosImpresionComponent } from './formatos-impresion/formatos-impresion.component';
 import { UnidadesComponent } from './unidades/unidades.component';
 import { OtrosProductosComponent } from './otros-productos/otros-productos.component';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { OtrosProductosComponent } from './otros-productos/otros-productos.compo
     SharedModule,
     NgbModule,
     TableModule,
-    NgxFileDropModule
+    NgxFileDropModule,
+    TooltipModule
   ]
 })
 export class GestionEmpresaModule { }

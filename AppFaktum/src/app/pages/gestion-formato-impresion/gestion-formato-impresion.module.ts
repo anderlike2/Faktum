@@ -5,6 +5,7 @@ import { EditarFormatoImpresionComponent } from './editar-formato-impresion/edit
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [EditarFormatoImpresionComponent],
@@ -13,7 +14,8 @@ import { TableModule } from 'primeng/table';
     GestionFormatoImpresionRoutingModule,
     SharedModule,
     NgbModule,
-    TableModule
+    TableModule,
+    TooltipModule
   ]
 })
 export class GestionFormatoImpresionModule { }

@@ -50,7 +50,7 @@ export class EditarContratoClienteComponent implements OnInit {
 
   init(): void {
 
-    this.sharedService.contratoClienteDataListener$.subscribe(this.obtenerContratoCliente.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerContratoCliente.bind(this));
 
     this.initForm();
     this.cargarListaCombox();
@@ -195,6 +195,7 @@ export class EditarContratoClienteComponent implements OnInit {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
           this.contratoClienteFormGroup.disable();
+          this.edicionContratoCliente = false;
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }

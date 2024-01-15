@@ -24,7 +24,7 @@ export class DetalleProductoComponent implements OnInit {
 
   colsProducto: any[] = [
     { field: 'prodCodigo', header: 'Código' },
-    { field: 'prodNombreFactura', header: 'Descripción' },    
+    { field: 'prodNombreFactura', header: 'Descripción' },
     { field: 'prodValor', header: 'Valor' },
     { field: '', header: 'Concepto' }
   ];
@@ -63,7 +63,7 @@ export class DetalleProductoComponent implements OnInit {
   }
 
   verProducto(value: IProducto): void {
-    this.sharedService.addProductoData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-producto/editar-producto']);
   }
 

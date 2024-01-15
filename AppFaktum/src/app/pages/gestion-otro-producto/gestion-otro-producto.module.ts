@@ -5,6 +5,7 @@ import { EditarOtroProductoComponent } from './editar-otro-producto/editar-otro-
 import { SharedModule } from 'src/app/theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [EditarOtroProductoComponent],
@@ -13,7 +14,8 @@ import { TableModule } from 'primeng/table';
     GestionOtroProductoRoutingModule,
     SharedModule,
     NgbModule,
-    TableModule
+    TableModule,
+    TooltipModule
   ]
 })
 export class GestionOtroProductoModule { }

@@ -58,10 +58,16 @@ export class UnidadesComponent implements OnInit {
     );
 
     modalUnidades.componentInstance.empresaID = this.dataEmpresa.id;
+
+    modalUnidades.result.then((result) => {
+      if (result) {
+        this.cargarTablas();
+      }
+    });
   }
 
   verUnidad(value: IUnidad): void {
-    this.sharedService.addUnidadData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-unidad/editar-unidad']);
   }
 

@@ -1,32 +1,32 @@
-<div class="row">
-  <div class="col-sm-12">
-    <app-card [hidHeader]="true" [options]="false">
+<div class="col-sm-12">
+  <app-card [hidHeader]="true" [options]="false">
 
-      <div class="d-flex align-items-center justify-content-between" role="button">
-        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="centroCostoCollapsed = !centroCostoCollapsed" [attr.aria-expanded]="!centroCostoCollapsed" aria-controls="collapseCentroCostos">
-          <h5 class="font-weight-bold mb-0">Centro de costos</h5>
-          <i class="fa" [ngClass]="{'fa-chevron-up': centroCostoCollapsed, 'fa-chevron-down': !centroCostoCollapsed }"></i>
-        </div>
-
+    <div class="d-flex align-items-center justify-content-between" role="button">
+      <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="centroCostoCollapsed = !centroCostoCollapsed" [attr.aria-expanded]="!centroCostoCollapsed" aria-controls="collapseCentroCostos">
+        <h5 class="font-weight-bold mb-0">Centro de costos</h5>
+        <i class="fa" [ngClass]="{'fa-chevron-up': centroCostoCollapsed, 'fa-chevron-down': !centroCostoCollapsed }"></i>
       </div>
 
-        <hr>
+    </div>
 
-        <div id="collapseCentroCostos" [ngbCollapse]="centroCostoCollapsed">
+      <hr>
 
-          <div class="d-flex justify-content-end m-2">
-            <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear centro de costos"  (click)="abrirModalCrearCentroCostos()">
-              <i class="fa fa-plus"></i>
-            </button>
-          </div>
+      <div id="collapseCentroCostos" [ngbCollapse]="centroCostoCollapsed">
 
+        <div class="d-flex justify-content-end m-2">
+          <button class="btn btn-icon btn-primary" pTooltip="Crear centro de costos" tooltipPosition="left" (click)="abrirModalCrearCentroCostos()">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+
+        <div>
           <p-table [columns]="colsCentroCostosEmpresa" [value]="listCentroCostosEmpresaObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
                         {{col.header}}
                     </th>
-                    <th></th>
+                    <th [style.width.rem]="5"></th>
                 </tr>
                 </ng-template>
 
@@ -35,16 +35,16 @@
                   <td *ngFor="let col of columns">
                       {{rowData[col.field]}}
                   </td>
-                  <td>
-                    <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver centro de costos" (click)="verCentroCostos(rowData)">
+                  <td [style.width.rem]="5" class="text-center">
+                    <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Ver centro de costos" tooltipPosition="left" (click)="verCentroCostos(rowData)">
                       <i class="fa fa-search"></i>
                     </button>
                   </td>
                 </tr>
             </ng-template>
           </p-table>
-
         </div>
-    </app-card>
-  </div>
+
+      </div>
+  </app-card>
 </div>

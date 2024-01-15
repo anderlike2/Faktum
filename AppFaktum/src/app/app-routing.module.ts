@@ -7,6 +7,7 @@ import { LoginGuard } from './shared/login-guard/login.guard'
 import { LogoutGuard } from './shared/logout-guard/logout.guard';
 import { NoEmpresaGuard } from './shared/no-empresa/no-empresa.guard';
 import { HomeComponent } from './pages/home/home.component';
+import { RoutePathEnum } from './models/routes-path.model';
 
 const routes: Routes = [
   {
@@ -30,12 +31,12 @@ const routes: Routes = [
         pathMatch: 'full'
       },
       {
-        path: 'gestion-empresa',
+        path: RoutePathEnum.GESTION_EMPRESA,
         loadChildren: () => import('./pages/gestion-empresa/gestion-empresa.module').then(m => m.GestionEmpresaModule),
         canActivate: [LoginGuard]
       },
       {
-        path: 'gestion-cliente',
+        path: RoutePathEnum.GESTION_CLIENTE,
         loadChildren: () => import('./pages/gestion-cliente/gestion-cliente.module').then(m => m.GestionClienteModule),
         canActivate: [LoginGuard]
       },
@@ -50,7 +51,7 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
-        path: 'gestion-contrato-cliente',
+        path: RoutePathEnum.GESTION_CONTRATO_CLIENTE,
         loadChildren: () => import('./pages/gestion-contrato-cliente/gestion-contrato-cliente.module').then(m => m.GestionContratoClienteModule),
         canActivate: [LoginGuard]
       },
@@ -75,7 +76,7 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
-        path: 'gestion-producto',
+        path: RoutePathEnum.GESTION_PRODUCTO,
         loadChildren: () => import('./pages/gestion-producto/gestion-producto.module').then(m => m.GestionProductoModule),
         canActivate: [LoginGuard]
       },

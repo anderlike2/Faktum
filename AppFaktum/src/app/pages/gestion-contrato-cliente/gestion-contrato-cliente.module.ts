@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/theme/shared/shared.module';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from 'src/app/theme/shared/shared.module';
     GestionContratoClienteRoutingModule,
     SharedModule,
     NgbModule,
-    TableModule
+    TableModule,
+    TooltipModule
   ]
 })
 export class GestionContratoClienteModule { }

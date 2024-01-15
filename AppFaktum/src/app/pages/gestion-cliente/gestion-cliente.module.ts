@@ -7,6 +7,7 @@ import { EditarClienteComponent } from './editar-cliente/editar-cliente.componen
 import { SharedModule } from '../../theme/shared/shared.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { TableModule } from 'primeng/table';
     GestionClienteRoutingModule,
     SharedModule,
     NgbModule,
-    TableModule
+    TableModule,
+    TooltipModule
   ]
 })
 export class GestionClienteModule { }

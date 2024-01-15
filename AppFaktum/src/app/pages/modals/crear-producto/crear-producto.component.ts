@@ -365,15 +365,15 @@ export class CrearProductoComponent implements OnInit {
         if (!response?.success) {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
-           this.cerrarModal();
+           this.cerrarModal(true);
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }
     });
   }
 
-  cerrarModal() {
-    this.modalRef.close();
+  cerrarModal(info?: any) {
+    this.modalRef.close(info);
   }
 
 }

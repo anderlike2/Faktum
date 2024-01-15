@@ -9,7 +9,7 @@
     <div id="collapseCliente" [ngbCollapse]="clienteCollapsed">
 
       <div class="d-flex justify-content-end m-2">
-        <button class="btn btn-icon btn-primary" [placement]="'top'" ngbTooltip="Crear cliente"  (click)="abrirModalCrearCliente()">
+        <button class="btn btn-icon btn-primary" pTooltip="Crear cliente" tooltipPosition="left"  (click)="abrirModalCrearCliente()">
           <i class="fa fa-plus"></i>
         </button>
       </div>
@@ -20,7 +20,7 @@
                     <th *ngFor="let col of columns">
                         {{col.header}}
                     </th>
-                    <th></th>
+                    <th [style.width.rem]="5"></th>
                 </tr>
                 </ng-template>
 
@@ -29,8 +29,8 @@
                     <td *ngFor="let col of columns">
                         {{rowData[col.field]}}
                     </td>
-                    <td>
-                      <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver cliente" (click)="verCliente(rowData)">
+                    <td [style.width.rem]="5" class="text-center">
+                      <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver cliente" tooltipPosition="left" (click)="verCliente(rowData)">
                         <i class="fa fa-search"></i>
                       </button>
                     </td>

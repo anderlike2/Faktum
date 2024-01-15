@@ -56,10 +56,16 @@ export class DetalleClienteComponent implements OnInit {
     );
 
     modalCliente.componentInstance.empresaID = this.dataEmpresa.id;
+
+    modalCliente.result.then((result) => {
+      if (result) {
+        this.cargarTabla();
+      }
+    });
   }
 
   verCliente(value: IClienteEmpresa): void {
-    this.sharedService.addClienteEmpresaData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['./gestion-cliente/editar-cliente']);
   }
 }

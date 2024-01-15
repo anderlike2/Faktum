@@ -6,8 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
 import { EditarProductoComponent } from './editar-producto/editar-producto.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
-
-
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [EditarProductoComponent, DetalleProductoComponent],
@@ -16,7 +15,8 @@ import { DetalleProductoComponent } from './detalle-producto/detalle-producto.co
     GestionProductoRoutingModule,
     SharedModule,
     NgbModule,
-    TableModule
+    TableModule,
+    TooltipModule
   ]
 })
 export class GestionProductoModule { }

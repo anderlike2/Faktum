@@ -30,7 +30,7 @@ export class EditarFormatoImpresionComponent implements OnInit {
   }
 
   init(): void {
-    this.sharedService.formatoImpresionDataListener$.subscribe(this.obtenerFormatoImpresion.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerFormatoImpresion.bind(this));
     this.initForm();
   }
 
@@ -104,6 +104,7 @@ export class EditarFormatoImpresionComponent implements OnInit {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
           this.formatoImpresionFormGroup.disable();
+          this.edicionFormatoImpresion = false;
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }
