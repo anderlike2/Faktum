@@ -12,6 +12,7 @@ import { CentroCostosComponent } from './centro-costos/centro-costos.component';
 import { FormatosImpresionComponent } from './formatos-impresion/formatos-impresion.component';
 import { UnidadesComponent } from './unidades/unidades.component';
 import { OtrosProductosComponent } from './otros-productos/otros-productos.component';
+import { ResolucionesComponent } from './resoluciones/resoluciones.component';
 import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TooltipModule } from 'primeng/tooltip';
     CentroCostosComponent,
     FormatosImpresionComponent,
     UnidadesComponent,
-    OtrosProductosComponent
+    OtrosProductosComponent,
+    ResolucionesComponent
   ],
   imports: [
     CommonModule,

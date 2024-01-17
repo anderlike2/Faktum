@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class IniDataBase : Migration
+    public partial class inidatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -952,6 +952,45 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Resolucion",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ResoAnio = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResoConsActual = table.Column<long>(type: "bigint", nullable: false),
+                    ResoConsFinal = table.Column<long>(type: "bigint", nullable: false),
+                    ResoConsInicial = table.Column<long>(type: "bigint", nullable: false),
+                    ResoEstadoOperacion = table.Column<int>(type: "int", nullable: false),
+                    ResoFechaExpide = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ResoPrefijo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResoVigencia = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ResoCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ResoNumeracionActual = table.Column<int>(type: "int", nullable: false),
+                    ResoEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    ResoTipoDocId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Resolucion", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Resolucion_Empresa_ResoEmpresaId",
+                        column: x => x.ResoEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Resolucion_TipoDocElectr_ResoTipoDocId",
+                        column: x => x.ResoTipoDocId,
+                        principalTable: "TipoDocElectr",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Unidad",
                 columns: table => new
                 {
@@ -1009,7 +1048,7 @@ namespace RepositoryLayer.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CosaContrato = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CosaPoliza = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CosaClieIdId = table.Column<int>(type: "int", nullable: false),
+                    CosaClieId = table.Column<int>(type: "int", nullable: false),
                     CosaCobeId = table.Column<int>(type: "int", nullable: false),
                     CosaEmpresaId = table.Column<int>(type: "int", nullable: false),
                     CosaMopaId = table.Column<int>(type: "int", nullable: false),
@@ -1021,8 +1060,8 @@ namespace RepositoryLayer.Migrations
                 {
                     table.PrimaryKey("PK_ContratoSalud", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ContratoSalud_Cliente_CosaClieIdId",
-                        column: x => x.CosaClieIdId,
+                        name: "FK_ContratoSalud_Cliente_CosaClieId",
+                        column: x => x.CosaClieId,
                         principalTable: "Cliente",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -1101,7 +1140,6 @@ namespace RepositoryLayer.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProdCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProdListaPrecio = table.Column<int>(type: "int", nullable: false),
                     ProdMarca = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProdModelo = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProdNombreFactura = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -1190,47 +1228,30 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Resolucion",
+                name: "ResolucionSucursal",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ResoAnio = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResoConsActual = table.Column<long>(type: "bigint", nullable: false),
-                    ResoConsFinal = table.Column<long>(type: "bigint", nullable: false),
-                    ResoConsInicial = table.Column<long>(type: "bigint", nullable: false),
-                    ResoEstadoOperacion = table.Column<int>(type: "int", nullable: false),
-                    ResoFecheExpide = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ResoPrefijo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResoVigencia = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ResoCodigo = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ResoNumeracionActual = table.Column<int>(type: "int", nullable: false),
-                    ResoEmpresaId = table.Column<int>(type: "int", nullable: false),
-                    ResoSucursalId = table.Column<int>(type: "int", nullable: false),
-                    ResoTipoDocId = table.Column<int>(type: "int", nullable: false),
+                    ResuResolucionId = table.Column<int>(type: "int", nullable: false),
+                    ResuSucursalId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Resolucion", x => x.Id);
+                    table.PrimaryKey("PK_ResolucionSucursal", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Resolucion_Empresa_ResoEmpresaId",
-                        column: x => x.ResoEmpresaId,
-                        principalTable: "Empresa",
+                        name: "FK_ResolucionSucursal_Resolucion_ResuResolucionId",
+                        column: x => x.ResuResolucionId,
+                        principalTable: "Resolucion",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Resolucion_Sucursal_ResoSucursalId",
-                        column: x => x.ResoSucursalId,
+                        name: "FK_ResolucionSucursal_Sucursal_ResuSucursalId",
+                        column: x => x.ResuSucursalId,
                         principalTable: "Sucursal",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Resolucion_TipoDocElectr_ResoTipoDocId",
-                        column: x => x.ResoTipoDocId,
-                        principalTable: "TipoDocElectr",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -1247,7 +1268,6 @@ namespace RepositoryLayer.Migrations
                     LiprNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LiprValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     LiprProductoId = table.Column<int>(type: "int", nullable: false),
-                    LiprSucursalClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1553,9 +1573,9 @@ namespace RepositoryLayer.Migrations
                 column: "ClieTipoIdId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ContratoSalud_CosaClieIdId",
+                name: "IX_ContratoSalud_CosaClieId",
                 table: "ContratoSalud",
-                column: "CosaClieIdId");
+                column: "CosaClieId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ContratoSalud_CosaCobeId",
@@ -1828,14 +1848,19 @@ namespace RepositoryLayer.Migrations
                 column: "ResoEmpresaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Resolucion_ResoSucursalId",
-                table: "Resolucion",
-                column: "ResoSucursalId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Resolucion_ResoTipoDocId",
                 table: "Resolucion",
                 column: "ResoTipoDocId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResolucionSucursal_ResuResolucionId",
+                table: "ResolucionSucursal",
+                column: "ResuResolucionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ResolucionSucursal_ResuSucursalId",
+                table: "ResolucionSucursal",
+                column: "ResuSucursalId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RolUsuario_RousRolId",
@@ -1883,7 +1908,7 @@ namespace RepositoryLayer.Migrations
                 name: "Localidad");
 
             migrationBuilder.DropTable(
-                name: "Resolucion");
+                name: "ResolucionSucursal");
 
             migrationBuilder.DropTable(
                 name: "RolUsuario");
@@ -1899,6 +1924,9 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "ReteFuente");
+
+            migrationBuilder.DropTable(
+                name: "Resolucion");
 
             migrationBuilder.DropTable(
                 name: "Sucursal");

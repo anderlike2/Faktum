@@ -12,8 +12,8 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240113131147_IniDataBase")]
-    partial class IniDataBase
+    [Migration("20240117023001_ini-database")]
+    partial class inidatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -416,7 +416,7 @@ namespace RepositoryLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CosaClieIdId")
+                    b.Property<int>("CosaClieId")
                         .HasColumnType("int");
 
                     b.Property<int>("CosaCobeId")
@@ -448,7 +448,7 @@ namespace RepositoryLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CosaClieIdId");
+                    b.HasIndex("CosaClieId");
 
                     b.HasIndex("CosaCobeId");
 
@@ -1316,9 +1316,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("LiprProductoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LiprSucursalClienteId")
-                        .HasColumnType("int");
-
                     b.Property<decimal>("LiprValor")
                         .HasColumnType("decimal(18,2)");
 
@@ -1634,9 +1631,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<int?>("ProdIumId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProdListaPrecio")
-                        .HasColumnType("int");
-
                     b.Property<string>("ProdMarca")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -1781,7 +1775,7 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("ResoEstadoOperacion")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("ResoFecheExpide")
+                    b.Property<DateTime>("ResoFechaExpide")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ResoNumeracionActual")
@@ -1790,9 +1784,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("ResoPrefijo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ResoSucursalId")
-                        .HasColumnType("int");
 
                     b.Property<int>("ResoTipoDocId")
                         .HasColumnType("int");
@@ -1804,11 +1795,42 @@ namespace RepositoryLayer.Migrations
 
                     b.HasIndex("ResoEmpresaId");
 
-                    b.HasIndex("ResoSucursalId");
-
                     b.HasIndex("ResoTipoDocId");
 
                     b.ToTable("Resolucion");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ResolucionSucursalModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ResuResolucionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResuSucursalId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ResuResolucionId");
+
+                    b.HasIndex("ResuSucursalId");
+
+                    b.ToTable("ResolucionSucursal");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RespFiscalModel", b =>
@@ -2487,9 +2509,9 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("DomainLayer.Models.ContratoSaludModel", b =>
                 {
-                    b.HasOne("DomainLayer.Models.ClienteModel", "CosaClieId")
+                    b.HasOne("DomainLayer.Models.ClienteModel", "CosaClie")
                         .WithMany("ClieContratosSalud")
-                        .HasForeignKey("CosaClieIdId")
+                        .HasForeignKey("CosaClieId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -2511,7 +2533,7 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("CosaClieId");
+                    b.Navigation("CosaClie");
 
                     b.Navigation("CosaCobe");
 
@@ -2957,12 +2979,6 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("DomainLayer.Models.SucursalModel", "ResoSucursal")
-                        .WithMany("SucuResoluciones")
-                        .HasForeignKey("ResoSucursalId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DomainLayer.Models.TipoDocElectrModel", "ResoTipoDoc")
                         .WithMany("TidoResoluciones")
                         .HasForeignKey("ResoTipoDocId")
@@ -2971,9 +2987,26 @@ namespace RepositoryLayer.Migrations
 
                     b.Navigation("ResoEmpresa");
 
-                    b.Navigation("ResoSucursal");
-
                     b.Navigation("ResoTipoDoc");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ResolucionSucursalModel", b =>
+                {
+                    b.HasOne("DomainLayer.Models.ResolucionModel", "ResuResolucion")
+                        .WithMany("ResoResoluciones")
+                        .HasForeignKey("ResuResolucionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.SucursalModel", "ResuSucursal")
+                        .WithMany("SucuResoluciones")
+                        .HasForeignKey("ResuSucursalId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ResuResolucion");
+
+                    b.Navigation("ResuSucursal");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RolUsuarioModel", b =>
@@ -3220,6 +3253,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("RegiClientes");
 
                     b.Navigation("RegiEmpresas");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ResolucionModel", b =>
+                {
+                    b.Navigation("ResoResoluciones");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RespFiscalModel", b =>

@@ -91,6 +91,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: 'gestion-resolucion',
+        loadChildren: () => import('./pages/gestion-resolucion/gestion-resolucion.module').then(m => m.GestionResolucionModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

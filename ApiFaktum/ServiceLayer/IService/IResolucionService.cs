@@ -44,5 +44,14 @@ namespace ServiceLayer.IService
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarResolucion(ResolucionDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la resolucion por id
+        /// </summary>
+        /// <param name="idResolucion"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarResolucionId(int idResolucion);
     }
 }

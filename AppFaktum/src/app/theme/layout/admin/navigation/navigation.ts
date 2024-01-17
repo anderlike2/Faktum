@@ -95,6 +95,13 @@ const NavigationItems = [
             url: '/gestion-empresa/otros-productos',
             external: false
           },
+          {
+            id: 'resoluciones',
+            title: 'Resoluciones',
+            type: 'item',
+            url: '/gestion-empresa/resoluciones',
+            external: false
+          },
         ]
       },
       {

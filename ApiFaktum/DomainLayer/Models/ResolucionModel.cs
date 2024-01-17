@@ -15,7 +15,7 @@ namespace DomainLayer.Models
         [Required]
         public int ResoEstadoOperacion { get; set; }
         [Required]
-        public DateTime ResoFecheExpide { get; set; }
+        public DateTime ResoFechaExpide { get; set; }
         [Required]
         public string? ResoPrefijo { get; set; }
         [Required]
@@ -29,13 +29,12 @@ namespace DomainLayer.Models
         [Required]
         public virtual EmpresaModel? ResoEmpresa { get; set; }
         [Required]
-        public virtual SucursalModel? ResoSucursal { get; set; }
-        [Required]
         public virtual TipoDocElectrModel? ResoTipoDoc { get; set; }
+        [Required]
+        public virtual ICollection<ResolucionSucursalModel>? ResoResoluciones { get; set; }
 
         //Referencias para consultas
         public virtual int ResoEmpresaId { get; set; }
-        public virtual int ResoSucursalId { get; set; }
         public virtual int ResoTipoDocId { get; set; }
     }
 }

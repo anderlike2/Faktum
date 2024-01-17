@@ -1,0 +1,216 @@
+<div class="row">
+    <div class="col-sm-12">
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+                <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="resolucionCollapsed = !resolucionCollapsed" [attr.aria-expanded]="!resolucionCollapsed" aria-controls="collapseResolucion">
+                  <h5 class="font-weight-bold mb-0">Resolución</h5>
+                  <i class="fa" [ngClass]="{'fa-chevron-up': resolucionCollapsed, 'fa-chevron-down': !resolucionCollapsed }"></i>
+                </div>
+            </div>
+            <hr>
+            <div id="collapseResolucion" [ngbCollapse]="resolucionCollapsed">
+                <div class="d-flex flex-row justify-content-end" *ngIf="!resolucionCollapsed">
+                    <button class="btn btn-icon btn-primary" pTooltip="Editar" tooltipPosition="top" (click)="editarForm()">
+                      <i class="fa fa-edit"></i>
+                    </button>
+                </div>
+
+                <form [formGroup]="resolucionFormGroup">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Año</label>
+                                    <input
+                                        formControlName="resoAnio"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoAnio.invalid &&
+                                        resolucionFormGroup.controls.resoAnio.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoAnioErrorMensaje }} </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Estado operación</label>
+                                    <input
+                                        formControlName="resoEstadoOperacion"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoEstadoOperacion.invalid &&
+                                        resolucionFormGroup.controls.resoEstadoOperacion.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoEstadoOperacionErrorMensaje }} </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Tipo doc electr</label>
+                                    <select formControlName="resoTipoDocId" class="form-control"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoTipoDocId.invalid &&
+                                        resolucionFormGroup.controls.resoTipoDocId.touched
+                                        }">
+                                        <ng-container *ngFor="let item of listaTipoDocs">
+                                            <option [value]="item.valor">{{item.nombre}}</option>
+                                        </ng-container>
+                                    </select>
+                                <div class="invalid-feedback"> {{ resoTipoDocIdErrorMensaje }} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Consecutivo actual</label>
+                                    <input
+                                        formControlName="resoConsActual"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoConsActual.invalid &&
+                                        resolucionFormGroup.controls.resoConsActual.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoConsActualErrorMensaje }} </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Consecutivo inicial</label>
+                                    <input
+                                        formControlName="resoConsInicial"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoConsInicial.invalid &&
+                                        resolucionFormGroup.controls.resoConsInicial.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoConsInicialErrorMensaje }} </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Consecutivo final</label>
+                                    <input
+                                        formControlName="resoConsFinal"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoConsFinal.invalid &&
+                                        resolucionFormGroup.controls.resoConsFinal.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoConsFinalErrorMensaje }} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Prefijo</label>
+                                    <input
+                                        formControlName="resoPrefijo"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoPrefijo.invalid &&
+                                        resolucionFormGroup.controls.resoPrefijo.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoPrefijoErrorMensaje }} </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Código</label>
+                                    <input
+                                        formControlName="resoCodigo"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoCodigo.invalid &&
+                                        resolucionFormGroup.controls.resoCodigo.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoCodigoErrorMensaje }} </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Numeración actual</label>
+                                    <input
+                                        formControlName="resoNumeracionActual"
+                                        type="text"
+                                        [ngClass]="{
+                                        'is-invalid':
+                                        resolucionFormGroup.controls.resoNumeracionActual.invalid &&
+                                        resolucionFormGroup.controls.resoNumeracionActual.touched
+                                        }"
+                                        class="form-control">
+                                    <div class="invalid-feedback"> {{ resoNumeracionActualErrorMensaje }} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Fecha expide</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" formControlName="resoFechaExpide">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-secondary calendar">
+                                            <i class="far fa-calendar"></i>
+                                          </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <label for="">Fecha vigencia</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" formControlName="resoVigencia">
+                                        <div class="input-group-append">
+                                          <button class="btn btn-secondary calendar">
+                                            <i class="far fa-calendar"></i>
+                                          </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <ng-container *ngIf="edicionResolucion">
+                    <hr />
+                    <div class="d-flex justify-content-end">
+                      <button class="btn btn-icon btn-danger" pTooltip="Cancelar edición" tooltipPosition="left" (click)="cancelarEdicion()">
+                        <i class="fa fa-ban"></i>
+                      </button>
+                      <button class="btn btn-icon btn-primary ml-3" pTooltip="Actualizar resolución" tooltipPosition="left" (click)="guardarResolucion()">
+                        <i class="fa fa-save"></i>
+                      </button>
+                    </div>
+                </ng-container>
+            </div>
+        </app-card>
+    </div>
+</div>

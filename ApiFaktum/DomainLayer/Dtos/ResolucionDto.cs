@@ -7,7 +7,7 @@
         public long ResoConsFinal { get; set; }
         public long ResoConsInicial { get; set; }
         public int ResoEstadoOperacion { get; set; }
-        public DateTime ResoFecheExpide { get; set; }
+        public DateTime ResoFechaExpide { get; set; }
         public string? ResoPrefijo { get; set; }
         public DateTime ResoVigencia { get; set; }
         public string? ResoCodigo { get; set; }
@@ -15,7 +15,6 @@
 
         //Referencias para consultas
         public int ResoEmpresaId { get; set; }
-        public int ResoSucursalId { get; set; }
         public int ResoTipoDocId { get; set; }
     }
 }

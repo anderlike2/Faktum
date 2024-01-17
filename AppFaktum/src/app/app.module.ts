@@ -49,6 +49,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import { MostrarInformacionComponent } from './pages/modals/mostrar-informacion/mostrar-informacion.component';
 import { CrearOtroProductoComponent } from './pages/modals/crear-otro-producto/crear-otro-producto.component'
 import { TooltipModule } from 'primeng/tooltip';
+import { CrearResolucionComponent } from './pages/modals/crear-resolucion/crear-resolucion.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -81,7 +82,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CrearProductoComponent,
     CrearCabeceraFacturaComponent,
     MostrarInformacionComponent,
-    CrearOtroProductoComponent
+    CrearOtroProductoComponent,
+    CrearResolucionComponent
   ],
   imports: [
     BrowserModule,

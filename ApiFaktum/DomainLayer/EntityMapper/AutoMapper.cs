@@ -151,6 +151,9 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<OtroProductoModel, OtroProductoDto>().ReverseMap();
             CreateMap<OtroProductoDto, OtroProductoModel>();
+
+            CreateMap<ResolucionSucursalModel, ResolucionSucursalDto>().ReverseMap();
+            CreateMap<ResolucionSucursalDto, ResolucionSucursalModel>();
         }
     }
 }

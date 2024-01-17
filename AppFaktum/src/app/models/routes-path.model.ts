@@ -15,5 +15,6 @@ export enum RoutePathEnum {
   EDITAR_CONTRATO_CLIENTE = 'editar-contrato-cliente',
   GESTION_PRODUCTO = 'gestion-producto',
   DETALLE_PRODUCTO = 'detalle-producto',
-  EDITAR_PRODUCTO = 'editar-producto'
+  EDITAR_PRODUCTO = 'editar-producto',
+  EDITAR_RESOLUCION = 'editar-resolucion',
 }

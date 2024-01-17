@@ -12,6 +12,7 @@ export enum TipoListEnum {
   CUPS = 'cups',
   TIPO_ARCHIVO_RIPS = 'tipoArchivoRips',
   TIPO_CUPS = 'tipoCups',
+  TIPO_DOC_ELECTR = 'tipoDocElectr'
 }
 
 export enum TiposMensajeEnum {

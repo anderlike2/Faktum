@@ -50,7 +50,7 @@ namespace DomainLayer.Models
         [Required]
         public virtual FormatoImpresionModel? SucuFormatoImpresion { get; set; }
         [Required]
-        public virtual ICollection<ResolucionModel>? SucuResoluciones { get; set; }
+        public virtual ICollection<ResolucionSucursalModel>? SucuResoluciones { get; set; }
 
         //Para creacion de datos mediante FK
         public virtual int SucuEmpresaId { get; set; }

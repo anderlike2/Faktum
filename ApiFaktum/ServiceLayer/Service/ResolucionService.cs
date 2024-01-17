@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objResolucionRepository.EliminarResolucion(objModel);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la resolucion por id
+        /// </summary>
+        /// <param name="idResolucion"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarResolucionId(int idResolucion)
+        {
+            return objResolucionRepository.ConsultarResolucionId(idResolucion);
+        }
     }
 }

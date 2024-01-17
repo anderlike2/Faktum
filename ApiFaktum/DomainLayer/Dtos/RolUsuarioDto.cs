@@ -1,12 +1,10 @@
-﻿using DomainLayer.Models;
-
-namespace DomainLayer.Dtos
+﻿namespace DomainLayer.Dtos
 {
     public class RolUsuarioDto : BaseDto
     {
         //Referencias
-        public UsuarioModel? RousUsuario { get; set; }
-        public RolModel? RousRol { get; set; }
+        public UsuarioDto? RousUsuario { get; set; }
+        public RolDto? RousRol { get; set; }
 
         //Para consultas
         public int? RousUsuarioId { get; set; }

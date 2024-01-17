@@ -1,0 +1,201 @@
+<div class="modal-header">
+    <h5 class="modal-title">Crear resolución</h5>
+</div>
+<div class="modal-body">
+    <form [formGroup]="resolucionFormGroup">
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Año</label>
+                        <input
+                            formControlName="resoAnio"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoAnio.invalid &&
+                            resolucionFormGroup.controls.resoAnio.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoAnioErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Estado operación</label>
+                        <input
+                            formControlName="resoEstadoOperacion"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoEstadoOperacion.invalid &&
+                            resolucionFormGroup.controls.resoEstadoOperacion.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoEstadoOperacionErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Tipo doc electr</label>
+                        <select formControlName="resoTipoDocId" class="form-control"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoTipoDocId.invalid &&
+                            resolucionFormGroup.controls.resoTipoDocId.touched
+                            }">
+                            <ng-container *ngFor="let item of listaTipoDocs">
+                                <option [value]="item.valor">{{item.nombre}}</option>
+                            </ng-container>
+                        </select>
+                    <div class="invalid-feedback"> {{ resoTipoDocIdErrorMensaje }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Consecutivo actual</label>
+                        <input
+                            formControlName="resoConsActual"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoConsActual.invalid &&
+                            resolucionFormGroup.controls.resoConsActual.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoConsActualErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Consecutivo inicial</label>
+                        <input
+                            formControlName="resoConsInicial"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoConsInicial.invalid &&
+                            resolucionFormGroup.controls.resoConsInicial.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoConsInicialErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Consecutivo final</label>
+                        <input
+                            formControlName="resoConsFinal"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoConsFinal.invalid &&
+                            resolucionFormGroup.controls.resoConsFinal.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoConsFinalErrorMensaje }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Prefijo</label>
+                        <input
+                            formControlName="resoPrefijo"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoPrefijo.invalid &&
+                            resolucionFormGroup.controls.resoPrefijo.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoPrefijoErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Código</label>
+                        <input
+                            formControlName="resoCodigo"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoCodigo.invalid &&
+                            resolucionFormGroup.controls.resoCodigo.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoCodigoErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Numeración actual</label>
+                        <input
+                            formControlName="resoNumeracionActual"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoNumeracionActual.invalid &&
+                            resolucionFormGroup.controls.resoNumeracionActual.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ resoNumeracionActualErrorMensaje }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Fecha expide</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="resoFechaExpide">
+                            <div class="input-group-append">
+                              <button class="btn btn-secondary calendar">
+                                <i class="far fa-calendar"></i>
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="">Fecha vigencia</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" formControlName="resoVigencia">
+                            <div class="input-group-append">
+                              <button class="btn btn-secondary calendar">
+                                <i class="far fa-calendar"></i>
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar resolución" (click)="guardarResolucion()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>

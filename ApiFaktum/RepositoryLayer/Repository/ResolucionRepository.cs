@@ -152,5 +152,43 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la resolucion por id
+        /// </summary>
+        /// <param name="idResolucion"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarResolucionId(int idResolucion)
+        {
+            Result oRespuesta = new Result();
+            ResolucionModel? result = new ResolucionModel();
+
+            try
+            {
+                result =
+                    await objContext.Resolucion.FirstOrDefaultAsync(x => x.Id.Equals(idResolucion));
+
+                oRespuesta.Success = true;
+                if (result != null)
+                {
+
+                    oRespuesta.Data = mapper.Map<ResolucionDto>(result);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ResolucionDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }
