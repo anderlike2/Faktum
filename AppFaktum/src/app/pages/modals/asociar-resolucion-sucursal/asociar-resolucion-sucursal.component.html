@@ -1,0 +1,37 @@
+<div class="modal-header">
+    <h5 class="modal-title">Asociar resolución a sucursal</h5>
+</div>
+<div class="modal-body">
+    <form [formGroup]="resolucionSucursalFormGroup">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Resolución</label>
+                        <select formControlName="resuResolucionId" class="form-control"
+                            [ngClass]="{
+                            'is-invalid':
+                            resolucionSucursalFormGroup.controls.resuResolucionId.invalid &&
+                            resolucionSucursalFormGroup.controls.resuResolucionId.touched
+                            }">
+                            <ng-container *ngFor="let item of listResoluciones">
+                                <option [value]="item.id">{{item.resoAnio}} - {{item.resoPrefijo}}</option>
+                            </ng-container>
+                        </select>
+                        <div class="invalid-feedback"> {{ resuResolucionIdErrorMensaje }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar resolución" (click)="guardarResolucionSucursal()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>

@@ -190,5 +190,58 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar las resoluciones de una sucursal
+        /// </summary>
+        /// <param name="idSucursal"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarResolucionesSucursal(int idSucursal)
+        {
+            Result oRespuesta = new Result();
+            List<ResolucionModel>? lstResult = new List<ResolucionModel>();
+
+            try
+            {
+                lstResult = await (from resu in objContext.ResolucionSucursal
+                                   join res in objContext.Resolucion on resu.ResuResolucion.Id equals res.Id
+                                   where resu.ResuSucursal.Id == idSucursal
+                                   select new ResolucionModel
+                                   {
+                                       Id = resu.Id,
+                                       ResoAnio = res.ResoAnio,
+                                       ResoConsActual = res.ResoConsActual,
+                                       ResoConsFinal = res.ResoConsFinal,
+                                       ResoConsInicial = res.ResoConsInicial,
+                                       ResoEstadoOperacion = res.ResoEstadoOperacion,
+                                       ResoFechaExpide = res.ResoFechaExpide,
+                                       ResoPrefijo = res.ResoPrefijo,
+                                       ResoVigencia = res.ResoVigencia,
+                                       ResoCodigo = res.ResoCodigo,
+                                       ResoNumeracionActual = res.ResoNumeracionActual
+                                   }).ToListAsync();
+
+                oRespuesta.Success = true;
+                if (lstResult.Count > 0)
+                {
+
+                    oRespuesta.Data = mapper.Map<List<ResolucionDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<ResolucionDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

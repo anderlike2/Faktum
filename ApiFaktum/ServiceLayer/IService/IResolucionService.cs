@@ -53,5 +53,14 @@ namespace ServiceLayer.IService
         /// <param name="idResolucion"></param>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarResolucionId(int idResolucion);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar las resoluciones de una sucursal
+        /// </summary>
+        /// <param name="idSucursal"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarResolucionesSucursal(int idSucursal);
     }
 }

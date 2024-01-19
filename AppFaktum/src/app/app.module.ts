@@ -50,6 +50,7 @@ import { MostrarInformacionComponent } from './pages/modals/mostrar-informacion/
 import { CrearOtroProductoComponent } from './pages/modals/crear-otro-producto/crear-otro-producto.component'
 import { TooltipModule } from 'primeng/tooltip';
 import { CrearResolucionComponent } from './pages/modals/crear-resolucion/crear-resolucion.component';
+import { AsociarResolucionSucursalComponent } from './pages/modals/asociar-resolucion-sucursal/asociar-resolucion-sucursal.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -83,7 +84,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CrearCabeceraFacturaComponent,
     MostrarInformacionComponent,
     CrearOtroProductoComponent,
-    CrearResolucionComponent
+    CrearResolucionComponent,
+    AsociarResolucionSucursalComponent
   ],
   imports: [
     BrowserModule,

@@ -2,12 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
+import { IResolucion } from 'src/app/models/resolucion.model';
 import { ISucursal } from 'src/app/models/sucursal.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
+import { ResolucionService } from 'src/app/services/resolucion-service/resolucion.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import swal from 'sweetalert2';
+import { AsociarResolucionSucursalComponent } from '../../modals/asociar-resolucion-sucursal/asociar-resolucion-sucursal.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-editar-sucursal',
@@ -16,8 +21,9 @@ import swal from 'sweetalert2';
 })
 export class EditarSucursalComponent implements OnInit {
 
-  sucursalCollapsed: boolean = false;
+  sucursalCollapsed: boolean = true;
   edicionSucursal: boolean = false;
+  resolucionCollapsed: boolean = true;
 
   sucursalData: ISucursal;
 
@@ -28,12 +34,28 @@ export class EditarSucursalComponent implements OnInit {
   listFormatosImpresion: IListCombo[] = [];
   listDeptos: IListCombo[] = [];
   listCiudades: IListCombo[] = [];
+  listResolucionesSucursal: IResolucion[] = [];
+
+  seletedResolucionSucursal: any;
+
+  colsResolucionesSucursal: any[] = [
+    { field: 'resoAnio', header: 'Año' },
+    { field: 'resoConsActual', header: 'Cons. Actual' },
+    { field: 'resoConsFinal', header: 'Cons. Final' },
+    { field: 'resoConsInicial', header: 'Cons. Inicial' },
+    { field: 'resoVigencia', header: 'Fecha Vigencia' },
+    { field: 'resoCodigo', header: 'Código' },
+    { field: 'resoNumeracionActual', header: 'Numeración Actual' }
+  ];
 
   constructor(
     private detalleEmpresaService: DetalleEmpresaService,
     private cargueCombosService: CargueCombosService,
     private sharedService: SharedService,
-    private generalService: GeneralService
+    private generalService: GeneralService,
+    private resolucionService: ResolucionService,
+    private modalService: NgbModal,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,6 +72,7 @@ export class EditarSucursalComponent implements OnInit {
 
     this.initForm();
     this.cargarListaCombox();
+    this.cargarInformacionResolucionesSucursal(this.sucursalData.id);
 
     if(this.sucursalData.sucuDepto != undefined && this.sucursalData.sucuDepto != null && this.sucursalData.sucuDepto != "")
             this.cargarCiudadesDepto(Number(this.sucursalData.sucuDepto));
@@ -330,6 +353,36 @@ export class EditarSucursalComponent implements OnInit {
       next: (response) => {
         this.listCiudades = response;
       }})
+  }
+
+  cargarInformacionResolucionesSucursal(idSucursal: number): void{
+    this.resolucionService.obtenerResolucionesPorSucursalId(idSucursal)
+    .subscribe({
+      next: (response) => {
+        this.listResolucionesSucursal = response;
+      }
+    });
+  }
+
+  abrirModalCrearResolucionSucursal(): void {
+    const modalCliente = this.modalService.open(
+      AsociarResolucionSucursalComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+    modalCliente.componentInstance.sucursalID = this.sucursalData.id;
+
+    modalCliente.result.then((result) => {
+      if (result) {
+        this.init();
+      }
+    })
+  }
+
+  verResolucionSucursal(value:IResolucion): void{
+    this.sharedService.addResolucionSucursalData(value);
+    this.router.navigate(['./gestion-resolucion-sucursal/editar-resolucion-sucursal']);
   }
 
 }

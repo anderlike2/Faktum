@@ -182,5 +182,35 @@ namespace ApiFaktum.Controllers
             }
             return Ok(oRespuesta);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar las resoluciones de una sucursal
+        /// </summary>
+        /// <param name="idSucursal"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarResolucionesSucursal")]
+        public async Task<IActionResult> ConsultarResolucionesSucursal(int idSucursal)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarResolucionesSucursal(idSucursal);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
     }
 }

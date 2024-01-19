@@ -27,6 +27,7 @@
         public const string msjSucursalCentroCosto= "El centro de costo se encuentra asignado a una sucursal. No es posible eliminar.";
         public const string msjPasswordNoCoincide = "La contraseña no coincide con su confirmación.";
         public const string msjFacturaNoInsertada = "No fue posible guardar la factura, por favor comuníquese con el Adminstrador del sistema.";
+        public const string msjResolucionSucursalExiste = "La resolución ya se encuentra asociada a la sucursal seleccionada";
 
         //TIPOS DE CLASE MAESTRO
         public const string claseFactura = "claseFactura";

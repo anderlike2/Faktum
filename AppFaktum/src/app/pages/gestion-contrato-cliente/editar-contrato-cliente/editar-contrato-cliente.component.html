@@ -4,7 +4,7 @@
 
       <div class="d-flex align-items-center justify-content-between" role="button">
         <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="contratoCollapsed = !contratoCollapsed" [attr.aria-expanded]="!contratoCollapsed" aria-controls="collapseContratoCliente">
-          <h5 class="font-weight-bold mb-0">Contrato cliente para {{nombreCliente}} {{apellidoCliente}} con nit No. {{nitCliente}}</h5>
+          <h5 class="font-weight-bold mb-0">Contrato para {{nombreCliente}} {{apellidoCliente}} con nit No. {{nitCliente}}</h5>
           <i class="fa" [ngClass]="{'fa-chevron-up': contratoCollapsed, 'fa-chevron-down': !contratoCollapsed }"></i>
         </div>
 

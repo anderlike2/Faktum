@@ -49,4 +49,15 @@ export class ResolucionService {
       data
     )
   }
+
+  obtenerResolucionesPorSucursalId(sucursalId: number): Observable<IResolucion[]> {
+    const url = `${this.environment.faktumUrl}/Resolucion/ConsultarResolucionesSucursal?idSucursal=${sucursalId}`;
+    return this.httpClient.get<IResponse<IResolucion[]>>(
+      url
+    ).pipe(
+      map((response) =>
+        response.data as IResolucion[]
+      )
+    );
+  }
 }

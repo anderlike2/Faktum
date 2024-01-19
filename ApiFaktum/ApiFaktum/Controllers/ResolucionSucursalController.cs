@@ -61,5 +61,65 @@ namespace ApiFaktum.Controllers
             }
             return Ok(oRespuesta);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para actualizar informacion de una resolucion por sucursal
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ActualizarResolucionSucursal")]
+        public async Task<IActionResult> ActualizarResolucionSucursal([FromBody] ResolucionSucursalDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ActualizarResolucionSucursal(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la resolucion sucursal por id
+        /// </summary>
+        /// <param name="idResolucionSucursal"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarResolucionSucursalId")]
+        public async Task<IActionResult> ConsultarResolucionSucursalId(int idResolucionSucursal)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarResolucionSucursalId(idResolucionSucursal);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
     }
 }
