@@ -66,7 +66,7 @@ export class ResolucionesComponent implements OnInit {
   }
 
   verResolucion(value: IResolucion): void {
-    this.sharedService.addResolucionData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-resolucion/editar-resolucion']);
   }
 

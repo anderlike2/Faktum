@@ -33,7 +33,7 @@ export class EditarResolucionComponent implements OnInit {
   }
 
   init(): void {
-    this.sharedService.resolucionListener$.subscribe(this.obtenerResolucion.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerResolucion.bind(this));
     this.cargarListaCombox();
     this.initForm();
   }
