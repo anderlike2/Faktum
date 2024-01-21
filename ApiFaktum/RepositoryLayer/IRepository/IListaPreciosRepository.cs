@@ -44,5 +44,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="idListaPrecio"></param>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarListaPrecioId(int idListaPrecio);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la lista de precios por producto
+        /// </summary>
+        /// <param name="idProducto"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarListaPrecioProducto(int idProducto);
     }
 }

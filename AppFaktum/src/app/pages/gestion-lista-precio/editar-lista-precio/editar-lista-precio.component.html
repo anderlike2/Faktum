@@ -81,22 +81,6 @@
                                 <div class="invalid-feedback"> {{ liprEstadoOperacionErrorMensaje }} </div>
                               </div>
                             </div>
-                            <div class="col-6">
-                              <div class="form-group">
-                                <label for="">Producto</label>
-                                <select formControlName="liprProductoId" class="form-control"
-                                [ngClass]="{
-                                  'is-invalid':
-                                    listaFormatoFormGroup.controls.liprProductoId.invalid &&
-                                    listaFormatoFormGroup.controls.liprProductoId.touched
-                                }">
-                                  <ng-container *ngFor="let item of listProductoObs">
-                                    <option [value]="item.valor">{{ item.nombre }}</option>
-                                  </ng-container>
-                                </select>
-                                <div class="invalid-feedback"> {{ liprProductoIdErrorMensaje }} </div>
-                              </div>
-                            </div>
                           </div>
                       </div>
                 </form>

@@ -72,5 +72,17 @@ namespace ServiceLayer.Service
         {
             return objListaPreciosRepository.ConsultarListaPrecioId(idListaPrecio);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la lista de precios por producto
+        /// </summary>
+        /// <param name="idProducto"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarListaPrecioProducto(int idProducto)
+        {
+            return objListaPreciosRepository.ConsultarListaPrecioProducto(idProducto);
+        }
     }
 }

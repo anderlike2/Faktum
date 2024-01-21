@@ -16,17 +16,6 @@ export class ListaPrecioService {
     private httpClient: HttpClient
   ) { }
 
-  obtenerListaPreciosSucursalClienteId(sucursalClienteId: number): Observable<IListaPrecio[]> {
-    const url = `${this.environment.faktumUrl}/ListaPrecio/ConsultarListaPreciosSucursalesCliente?idSucursalCliente=${sucursalClienteId}`;
-    return this.httpClient.get<IResponse<IListaPrecio[]>>(
-      url
-    ).pipe(
-      map((response) =>
-        response.data as IListaPrecio[]
-      )
-    );
-  }
-
   obtenerListaPrecioPorId(idListaPrecio: number): Observable<IResponse<IListaPrecio>> {
     const url = `${this.environment.faktumUrl}/ListaPrecio/ConsultarListaPrecioId?idListaPrecio=${idListaPrecio}`;
     return this.httpClient.get<IResponse<IListaPrecio>>(
@@ -48,5 +37,16 @@ export class ListaPrecioService {
       url,
       data
     )
+  }
+
+  obtenerListaPrecioPorProducto(idProducto: number): Observable<IListaPrecio[]> {
+    const url = `${this.environment.faktumUrl}/ListaPrecio/ConsultarListaPrecioProducto?idProducto=${idProducto}`;
+    return this.httpClient.get<IResponse<IListaPrecio[]>>(
+      url
+    ).pipe(
+      map((response) =>
+        response.data as IListaPrecio[]
+      )
+    );
   }
 }

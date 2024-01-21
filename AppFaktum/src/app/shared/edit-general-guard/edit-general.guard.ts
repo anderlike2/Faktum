@@ -19,6 +19,7 @@ export class EditGeneralGuard implements CanActivate {
     [RoutePathEnum.EDITAR_CONTRATO_CLIENTE]: '/' + [RoutePathEnum.GESTION_CLIENTE, RoutePathEnum.DETALLE_CLIENTE].join('/'),
     [RoutePathEnum.EDITAR_PRODUCTO]: '/' + [RoutePathEnum.GESTION_PRODUCTO, RoutePathEnum.DETALLE_PRODUCTO].join('/'),
     [RoutePathEnum.EDITAR_RESOLUCION]: '/' + [RoutePathEnum.GESTION_EMPRESA, RoutePathEnum.RESOLUCIONES].join('/'),
+    [RoutePathEnum.EDITAR_LISTA_PRECIO]: '/' + [RoutePathEnum.GESTION_PRODUCTO, RoutePathEnum.DETALLE_PRODUCTO].join('/'),
   };
 
 

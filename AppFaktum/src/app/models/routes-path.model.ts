@@ -19,4 +19,5 @@ export enum RoutePathEnum {
   EDITAR_RESOLUCION = 'editar-resolucion',
   EDITAR_RESOLUCION_SUCURSAL = 'editar-resolucion-sucursal',
   RESOLUCIONES = 'resoluciones',
+  EDITAR_LISTA_PRECIO = 'editar-lista-precio',
 }

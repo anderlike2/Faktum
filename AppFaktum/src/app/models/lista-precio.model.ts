@@ -6,7 +6,6 @@ export interface IListaPrecio {
     liprNombre: string;
     liprValor: number;
     liprProductoId: number;
-    liprSucursalClienteId: number;
     estado: number;
     fechaCreacion: string;
     fechaModificacion: string | null;

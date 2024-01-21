@@ -53,5 +53,14 @@ namespace ServiceLayer.IService
         /// <param name="idProducto"></param>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarProductoId(int idProducto);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar las listas de precios de un producto
+        /// </summary>
+        /// <param name="idProducto"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarListasPreciosProducto(int idProducto);
     }
 }

@@ -23,7 +23,6 @@ export class EditarListaPrecioComponent implements OnInit {
 
   listaPrecioData: IListaPrecio;
   dataEmpresa: IEmpresa;
-  listProductoObs: IListCombo[] = [];
 
   listaFormatoFormGroup: FormGroup;
   fb = new FormBuilder();
@@ -40,24 +39,8 @@ export class EditarListaPrecioComponent implements OnInit {
   }
 
   init(): void {
-    this.cargarListaCombobox();
-    this.sharedService.listaPrecioDataListener$.subscribe(this.obtenerListaPrecio.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerListaPrecio.bind(this));
     this.initForm();
-  }
-
-  cargarListaCombobox(): void {
-    this.productoService.obtenerProductosPorEmpresaid(this.dataEmpresa.id).pipe(
-        map((response) =>
-          response.map((item) => ({
-            valor: item.id,
-            nombre: item.prodNombreTecnico,
-            codigo: item.prodCodigo
-          })) as IListCombo[]
-        )
-      )
-      .subscribe({
-        next: (response) => this.listProductoObs = response
-      });
   }
 
   obtenerListaPrecio(data: IListaPrecio): void {
@@ -78,8 +61,7 @@ export class EditarListaPrecioComponent implements OnInit {
       liprDescripcion: [ { value: '', disabled: false }, [ Validators.required ] ],
       liprDescuento: [ { value: '', disabled: false }, [ Validators.required ] ],
       liprValor: [ { value: '', disabled: false }, [ Validators.required ] ],
-      liprEstadoOperacion: [ { value: '', disabled: false }, [ Validators.required ] ],
-      liprProductoId: [ { value: '', disabled: false }, [ Validators.required ] ]
+      liprEstadoOperacion: [ { value: '', disabled: false }, [ Validators.required ] ]
     };
 
     this.listaFormatoFormGroup = this.fb.group(formControls);
@@ -115,12 +97,6 @@ export class EditarListaPrecioComponent implements OnInit {
       ? 'Campo obligatorio' : '';
   }
 
-  get liprProductoIdErrorMensaje(): string {
-    const form: AbstractControl = this.listaFormatoFormGroup.get('liprProductoId') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
   cargarDataForm(data: IListaPrecio): void {
     this.listaFormatoFormGroup.disable();
     this.edicionListaPrecio = false;
@@ -148,7 +124,7 @@ export class EditarListaPrecioComponent implements OnInit {
 
     dataBody.id = this.listaPrecioData.id;
     dataBody.estado = this.listaPrecioData.estado;
-    dataBody.liprSucursalClienteId = this.listaPrecioData.liprSucursalClienteId;
+    dataBody.liprProductoId = this.listaPrecioData.liprProductoId;
     dataBody.fechaCreacion = this.listaPrecioData.fechaCreacion;
     dataBody.fechaModificacion = this.listaPrecioData.fechaModificacion;
 
