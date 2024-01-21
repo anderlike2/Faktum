@@ -41,13 +41,15 @@
                         {{rowData[col.field]}}
                       </ng-container>
                   </td>
-                  <td [style.width.rem]="10" class="text-center">
+                  <td [style.width.rem]="5" class="text-center">
                     <button class="btn btn-icon btn-dark icon-detail-style icon-margin" pTooltip="Ver producto" tooltipPosition="bottom" (click)="verProducto(rowData)">
                       <i class="fa fa-search"></i>
-                    </button>
+                    </button>                   
+                  </td>
+                  <td [style.width.rem]="5" class="text-center">
                     <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver nombre técnico" tooltipPosition="bottom" (click)="verNombreTecnico(rowData)">
                       <i class="fa fa-align-justify"></i>
-                    </button>
+                    </button>                  
                   </td>
                 </tr>
             </ng-template>

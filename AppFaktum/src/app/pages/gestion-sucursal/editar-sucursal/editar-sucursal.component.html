@@ -354,9 +354,14 @@
                       {{rowData[col.field]}}
                   </td>
                   <td [style.width.rem]="5" class="text-center">
-                    <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver resolucion sucursal" tooltipPosition="left" (click)="verResolucionSucursal(rowData)">
+                    <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver resolución sucursal" tooltipPosition="left" (click)="verResolucionSucursal(rowData)">
                       <i class="fa fa-search"></i>
                     </button>
+                  </td>
+                  <td [style.width.rem]="5" class="text-center">
+                    <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar resolución sucursal" tooltipPosition="left">
+                      <i class="fa fa-trash"></i>
+                    </button>                   
                   </td>
               </tr>
           </ng-template>
