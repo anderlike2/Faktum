@@ -23,7 +23,7 @@ import { ToggleFullScreenDirective } from './theme/shared/full-screen/toggle-ful
 
 /* Menu Items */
 import { NavigationItem } from './theme/layout/admin/navigation/navigation';
-import { NgbButtonsModule, NgbDatepickerModule, NgbDropdownModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbButtonsModule, NgbDateParserFormatter, NgbDatepickerI18n, NgbDatepickerModule, NgbDropdownModule, NgbTooltipModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -51,6 +51,10 @@ import { CrearOtroProductoComponent } from './pages/modals/crear-otro-producto/c
 import { TooltipModule } from 'primeng/tooltip';
 import { CrearResolucionComponent } from './pages/modals/crear-resolucion/crear-resolucion.component';
 import { AsociarResolucionSucursalComponent } from './pages/modals/asociar-resolucion-sucursal/asociar-resolucion-sucursal.component';
+import { DocumentoOpcionesComponent } from './pages/modals/documento-opciones/documento-opciones.component';
+import { CustomDatepickerI18n } from './shared/Internationalization/datepicker/custom-datepicker-i18n';
+import { AgregarProductoComponent } from './pages/modals/agregar-producto/agregar-producto.component';
+import { CustomDateParserFormatter } from './shared/datepicker/custom-date-parser-formatter';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -85,7 +89,9 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     MostrarInformacionComponent,
     CrearOtroProductoComponent,
     CrearResolucionComponent,
-    AsociarResolucionSucursalComponent
+    AsociarResolucionSucursalComponent,
+    DocumentoOpcionesComponent,
+    AgregarProductoComponent
   ],
   imports: [
     BrowserModule,
@@ -102,6 +108,7 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     TableModule,
     TextMaskModule,
     TooltipModule,
+    NgbTypeaheadModule,
     NgxMaskModule.forRoot()
   ],
   exports: [
@@ -127,6 +134,14 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
       provide: ErrorHandler,
       useClass: AppErrorHandler
     },
+    {
+      provide: NgbDatepickerI18n,
+      useClass: CustomDatepickerI18n
+    },
+    {
+      provide: NgbDateParserFormatter,
+      useClass: CustomDateParserFormatter
+    }
   ],
   bootstrap: [AppComponent]
 })

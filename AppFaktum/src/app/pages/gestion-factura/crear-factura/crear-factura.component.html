@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-12">
+  <div class="col-12" *ngIf="tipoDocumento">
 
     <app-card [hidHeader]="true" [options]="false">
 
@@ -13,11 +13,11 @@
 
       <hr>
 
-      <div id="collapseFactura" [ngbCollapse]="facturaCollapsed">
+      <div id="collapseFactura" [ngbCollapse]="facturaCollapsed" >
 
-        <form>
+        <form [formGroup]="encabezadoFormGroup">
 
-          <fieldset class="form-group">
+          <!-- <fieldset class="form-group">
             <div class="row">
               <label for="input-concepto" class="col-12 col-form-label">Documento</label>
               <div class="col-12">
@@ -33,7 +33,7 @@
                 </div>
               </div>
             </div>
-          </fieldset>
+          </fieldset> -->
 
           <!-- <div class="btn-group btn-group-toggle" ngbRadioGroup formControlName="concepto">
             <label class="btn btn-prima" ngbButtonLabel><input type="radio" ngbButton name="options" id="option1" value="1" checked> Active</label>
@@ -60,42 +60,19 @@
           <div class="row">
             <div class="col-4">
               <div class="form-group">
-                <label for="">Tipo documento</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Estado operación</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Número</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Cufe</label>
-                <input type="text" class="form-control">
+                <label for="">Operador</label>
+                <input type="text" class="form-control" formControlName="factOperador">
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Fecha inicio</label>
                 <div class="input-group">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="factFechaInicio" ngbDatepicker #ds="ngbDatepicker">
                   <div class="input-group-append">
-                    <button class="btn btn-secondary calendar">
+                    <button class="btn btn-secondary calendar" (click)="ds.toggle()"
+                      [disabled]="encabezadoFormGroup.get('factFechaInicio').disabled"
+                    >
                       <i class="far fa-calendar"></i>
                     </button>
                   </div>
@@ -106,56 +83,44 @@
               <div class="form-group">
                 <label for="">Fecha final</label>
                 <div class="input-group">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="factFechaFinal" ngbDatepicker #de="ngbDatepicker">
                   <div class="input-group-append">
-                    <button class="btn btn-secondary calendar">
+                    <button class="btn btn-secondary calendar" (click)="de.toggle()"
+                      [disabled]="encabezadoFormGroup.get('factFechaFinal').disabled"
+                    >
                       <i class="far fa-calendar"></i>
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Número</label>
+                <input type="text" class="form-control" formControlName="factNumero">
+              </div>
+            </div>
+
             <div class="col-4">
               <div class="form-group">
                 <label for="">Sucursal</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
+                <input type="text" class="form-control" formControlName="factSucursal">
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Centro de costos</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
+                <label for="">Cufe</label>
+                <input type="text" class="form-control" formControlName="factCufe">
               </div>
             </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Clase factura</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
             <div class="col-4">
               <div class="form-group">
-                <label for="">Vendedor</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
+                <label for="">Tipo</label>
+                <select class="form-control" formControlName="factTipoDocElectrId">
+                  <option selected></option>
+                  <ng-container *ngFor="let item of listaTipoDocElectr">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
@@ -163,9 +128,10 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Cliente</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
+                <label for="">Formato impresión</label>
+                <select class="form-control" formControlName="factFormatoImpresionId">
+                  <option selected></option>
+                  <ng-container *ngFor="let item of listaFormatoImpresion">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
@@ -173,74 +139,80 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Sucursal cliente</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
+                <label for="">Orden</label>
+                <input type="text" class="form-control" formControlName="factOrden">
               </div>
             </div>
-          </div>
 
-          <div class="row">
             <div class="col-4">
               <div class="form-group">
-                <label for="">Contrato</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
+                <label for="">fecha</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" formControlName="factFecha" ngbDatepicker #df="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary calendar" (click)="df.toggle()">
+                      <i class="far fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Póliza cliente</label>
-                <input type="text" class="form-control">
+                <label for="">Fecha vence</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" formControlName="factFechaVence" ngbDatepicker #dv="ngbDatepicker">
+                  <div class="input-group-append">
+                    <button class="btn btn-secondary calendar" (click)="dv.toggle()">
+                      <i class="far fa-calendar"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Recepción</label>
+                <input type="text" class="form-control" formControlName="factRecepcion">
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Remisión</label>
+                <input type="text" class="form-control" formControlName="factRemision">
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Despacho</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="factDespacho">
               </div>
             </div>
-          </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Estado</label>
+                <input type="text" class="form-control" formControlName="factEstadoOperacion">
+              </div>
+            </div>
 
-          <div class="row">
             <div class="col-4">
               <div class="form-group">
-                <label for="">Contador</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Resolución sucursal</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
+                <label for="">Moneda</label>
+                <select class="form-control" formControlName="factMonedaId">
+                  <ng-container *ngFor="let item of listaMoneda">
+                    <option [value]="item.valor">{{item.codigo}}</option>
                   </ng-container>
                 </select>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Tipo moneda</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-4">
-              <div class="form-group">
                 <label for="">Fecha TRM</label>
                 <div class="input-group">
-                  <input type="text" class="form-control">
+                  <input type="text" class="form-control" formControlName="factFechaTrm" ngbDatepicker #dt="ngbDatepicker">
                   <div class="input-group-append">
-                    <button class="btn btn-secondary calendar">
+                    <button class="btn btn-secondary calendar" (click)="dt.toggle()">
                       <i class="far fa-calendar"></i>
                     </button>
                   </div>
@@ -250,130 +222,25 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="">TRM</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="factTrm">
               </div>
             </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Operador</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-          </div>
 
-          <div class="row">
             <div class="col-4">
               <div class="form-group">
-                <label for="">Orden</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Descuento global</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Tipo otro descuento</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
+                <label for="">Condición de venta</label>
+                <select class="form-control" formControlName="factCondicionVentaId">
+                  <ng-container *ngFor="let item of listaCondicionVenta">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
               </div>
             </div>
-          </div>
-
-          <div class="row">
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Porcentaje IVA</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Lista de precios</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Total copago</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Total cuota moderadora</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Total cuota recuperación</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Total pago compartido</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-          </div>
-
-          <div class="row">
-
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Cobertura</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Condición venta</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Estado DIAN</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row">
-
             <div class="col-4">
               <div class="form-group">
                 <label for="">Forma pago</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
+                <select class="form-control" formControlName="factFormaPagoId">
+                  <ng-container *ngFor="let item of listaFormaPago">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
@@ -381,18 +248,9 @@
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Formato impresión</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Tipo descuento</label>
-                <select class="form-control">
+                <label for="">Lista precios</label>
+                <select class="form-control" formControlName="factListaPreciosId">
+                  <option value="0" selected>0 - Genérica</option>
                   <ng-container *ngFor="let item of []">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
@@ -400,125 +258,93 @@
               </div>
             </div>
 
-          </div>
-
-          <div class="row">
-
             <div class="col-4">
               <div class="form-group">
-                <label for="">Nota debito</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
+                <label for="">Cliente</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="factClienteId"
+                  [ngbTypeahead]="search"
+                  [inputFormatter]="formatterInput"
+                  [resultFormatter]="formatterResult"
+                  [editable]="false"
+                  (blur)="onBlurFormat()"
+                />
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Nota credito</label>
-                <select class="form-control">
-                  <ng-container *ngFor="let item of []">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
+                <label for="">Vendedor</label>
+                <input type="text" class="form-control" formControlName="factVendedor">
               </div>
             </div>
+
+            <ng-container *ngIf="sectorSaludOpt">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="">Contrato</label>
+                  <input type="text" class="form-control" formControlName="factContrato">
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="sectorSaludOpt">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="">Poliza</label>
+                  <input type="text" class="form-control" formControlName="factPoliza">
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="sectorSaludOpt">
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="">Total cuota moderadora</label>
+                  <input type="text" class="form-control" formControlName="factModeradora">
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="">Total cuota recuperación</label>
+                  <input type="text" class="form-control" formControlName="factCuotaRecupera">
+                </div>
+              </div>
+
+              <div class="col-4">
+                <div class="form-group">
+                  <label for="">Total pago compartido</label>
+                  <input type="text" class="form-control" formControlName="factCompartidos">
+                </div>
+              </div>
+            </ng-container>
+
             <div class="col-4">
               <div class="form-group">
                 <label for="">Tipo salud</label>
                 <select class="form-control">
-                  <ng-container *ngFor="let item of []">
+                  <ng-container *ngFor="let item of listaSaludTipo">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Clase factura</label>
+                <select class="form-control">
+                  <ng-container *ngFor="let item of listaClaseFactura">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
               </div>
             </div>
 
-          </div>
-
-          <div class="row">
-
             <div class="col-4">
               <div class="form-group">
-                <label for="">Recepción</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Remisión</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Valor total retefuente</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Subtotal</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Total rete ICA</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Total IVA</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Valor anticipo</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Valor descuento</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Valor</label>
-                <input type="text" class="form-control">
-              </div>
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Fecha vence</label>
-                <div class="input-group">
-                  <input type="text" class="form-control">
-                  <div class="input-group-append">
-                    <button class="btn btn-secondary calendar">
-                      <i class="far fa-calendar"></i>
-                    </button>
-                  </div>
-                </div>
+                <label for="">Contador</label>
+                <input type="text" class="form-control" formControlName="factContador">
               </div>
             </div>
 
@@ -529,13 +355,24 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="">Observación</label>
-                <textarea class="form-control" rows="3"></textarea>
+                <textarea class="form-control" rows="3" formControlName="factObservaciones"></textarea>
               </div>
             </div>
 
           </div>
 
         </form>
+
+        <hr />
+
+        <div class="d-flex justify-content-end">
+          <!-- <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Guardar info" (click)="cancelarEdicion()">
+            <i class="fa fa-ban"></i>
+          </button> -->
+          <button class="btn btn-icon btn-primary ml-3" pTooltip="Guardar info" tooltipPosition="left" (click)="guardarCabecera()">
+            <i class="fa fa-save"></i>
+          </button>
+        </div>
 
       </div>
 
@@ -555,6 +392,12 @@
       <hr>
 
       <div id="collapseDetalleFactura" [ngbCollapse]="detalleFacturaCollapsed">
+
+        <div class="d-flex justify-content-start m-2">
+          <button class="btn btn-icon btn-primary" pTooltip="Agregar producto" tooltipPosition="right" (click)="agregarProducto()" >
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
 
         <p-table [columns]="colsDetalleFactura" [value]="detalleFacturaObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
           <ng-template pTemplate="header" let-columns>
@@ -581,6 +424,81 @@
         </p-table>
 
       </div>
+
+    </app-card>
+
+    <app-card [hidHeader]="true" [options]="false">
+
+      <form>
+
+        <div class="row">
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Subtotal</label>
+              <input type="text" class="form-control" formControlName="factSubtotal">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Descuento</label>
+              <input type="text" class="form-control" formControlName="factDescGlobal">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Valor descuento</label>
+              <input type="text" class="form-control" formControlName="factValorDescuento">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">% IVA</label>
+              <input type="text" class="form-control" formControlName="factPorcIva">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Valor IVA</label>
+              <input type="text" class="form-control" formControlName="factTotalIva">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Total rete. ICA</label>
+              <input type="text" class="form-control" formControlName="factTotalReteIca">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Total rete. Fuente</label>
+              <input type="text" class="form-control" formControlName="factValTotRetefuente">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Valor anticipo</label>
+              <input type="text" class="form-control" formControlName="factValAnticipo">
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Total a pagar</label>
+              <input type="text" class="form-control" formControlName="factValor">
+            </div>
+          </div>
+
+        </div>
+
+      </form>
 
     </app-card>
 

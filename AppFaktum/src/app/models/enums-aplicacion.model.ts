@@ -12,7 +12,13 @@ export enum TipoListEnum {
   CUPS = 'cups',
   TIPO_ARCHIVO_RIPS = 'tipoArchivoRips',
   TIPO_CUPS = 'tipoCups',
-  TIPO_DOC_ELECTR = 'tipoDocElectr'
+  TIPO_DOC_ELECTR = 'tipoDocElectr',
+  CLASE_FACTURA = 'claseFactura',
+  CONDICION_VENTA = 'condicionVenta',
+  ESTADO_DIAN_FACTURA = 'estadoDianFactura',
+  FORMA_PAGO = 'formaPago',
+  MONEDA = 'moneda',
+  FACT_SALUD_TIPO = 'factSaludTipo',
 }
 
 export enum TiposMensajeEnum {

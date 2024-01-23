@@ -233,4 +233,18 @@ export class CargueCombosService {
     );
   }
 
+  obtenerListaPreciosProducto(productoId: number): Observable<IListCombo[]> {
+    return this.httpClient.get<any>(
+      `${this.environment.faktumUrl}/Producto/ConsultarListasPreciosProducto?idProducto=${productoId}`
+    )
+    .pipe(
+      map((response) =>
+        response.data?.map((item) => ({
+          valor: item.id,
+          nombre: item.nombre,
+          codigo: item.codigo
+        })) as IListCombo[])
+    );
+  }
+
 }

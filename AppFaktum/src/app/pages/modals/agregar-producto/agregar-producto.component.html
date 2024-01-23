@@ -1,0 +1,252 @@
+<div class="modal-header">
+  <h5 class="modal-title">Producto</h5>
+</div>
+<div class="modal-body">
+
+  <form [formGroup]="productoFormGroup">
+
+    <div class="col-12">
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Producto</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaDescripcion"
+              [ngbTypeahead]="search"
+              [inputFormatter]="formatterInput"
+              [resultFormatter]="formatterResult"
+              [editable]="false"
+              (blur)="onBlurFormat()"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Código</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaFactCodigo"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Marca</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="marca"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Modelo</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="modelo"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Orden de compra</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaOrdenCompra"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Remisión</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaRemision"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Unidad medida</label>
+            <select class="form-control" formControlName="detaUnidadId" >
+              <ng-container *ngFor="let item of listaUnidadMedida">
+                <option [value]="item.valor">{{item.nombre}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Cantidad</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaCantidad"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Valor</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaValorUnitario"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>% Descuento</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaPorDescuento"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>% Iva</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaPorcIva"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Valor Iva</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaIva"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>% rete. fuente</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaPorcCrf"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Valor rete. fuente</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaValRf"
+            />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Valor rete. Ica</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaValReteIca"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Lista precio</label>
+            <select class="form-control" formControlName="detaListaPreciosId" >
+              <ng-container *ngFor="let item of listaPrecioLista">
+                <option [value]="item.valor">{{item.nombre}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Tipo impuesto</label>
+            <select class="form-control" formControlName="detaTipoImpuestoId" >
+              <ng-container *ngFor="let item of listaTipoImpuesto">
+                <option [value]="item.valor">{{item.nombre}}</option>
+              </ng-container>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="form-group">
+            <label>Total</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaValor"
+            />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
+
+<div class="modal-footer">
+  <div class="d-flex justify-content-end m-2">
+    <button class="btn btn-icon btn-danger" pTooltip="Cerrar modal" tooltipPosition="top" (click)="cerrarModal()">
+      <i class="fa fa-ban"></i>
+    </button>
+    <button class="btn btn-icon btn-primary ml-3" pTooltip="Agregar producto" tooltipPosition="top" >
+      <i class="fa fa-save"></i>
+    </button>
+  </div>
+</div>
