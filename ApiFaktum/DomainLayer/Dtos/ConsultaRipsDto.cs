@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer.Models
+namespace DomainLayer.Dtos
 {
-    public class ConsultaRips : BaseEntity
+    public class ConsultaRipsDto : BaseDto
     {
         public int? CoRiId { get; set; }
         public string? CoRiPrestador { get; set; }
@@ -33,6 +31,5 @@ namespace DomainLayer.Models
         public string? CoRiTipoPagoModerador { get; set; }
         public string? CoRiValorPagoModerador { get; set; }
         public string? CoriNumFactPagoMod { get; set; }
-
     }
 }

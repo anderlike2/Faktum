@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer.Data;
 
@@ -11,9 +12,10 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240124203400_ModeloDatosRips")]
+    partial class ModeloDatosRips
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -404,98 +406,6 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CondicionVenta");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.ConsultaRips", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("CoRiCausaMotivoAtencion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiCodCups")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiCodigoDiagPrincipal")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiCodigoDiagRel1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiCodigoDiagRel2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiCodigoDiagRel3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiCodigoServicios")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiDetaBorrador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CoRiFechaCons")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CoRiFinalidadConsulta")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiGrupoServicios")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CoRiId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CoRiModGrSerAtencion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiNumAutoriza")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiNummDocMedico")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiPrestador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiTipoDiagPrincipal")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("CoRiTipoIdMedico")
-                        .HasColumnType("int");
-
-                    b.Property<string>("CoRiTipoPagoModerador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiUsuarioRips")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiValorConsulta")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoRiValorPagoModerador")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CoriNumFactPagoMod")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("FechaCreacion")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ConsultaRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ContratoSaludModel", b =>

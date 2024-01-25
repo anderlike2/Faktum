@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DomainLayer.Models
+namespace DomainLayer.Dtos
 {
-    
-      public class UsuarioSaludRips : BaseEntity
+    public class UsuarioSaludRipsDto : BaseDto
     {
         public int? UsUaId { get; set; }
         public string? UsUaEmpresa { get; set; }

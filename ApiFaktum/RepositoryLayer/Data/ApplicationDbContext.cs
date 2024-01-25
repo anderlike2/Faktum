@@ -67,24 +67,24 @@ namespace RepositoryLayer.Data
         public DbSet<EmpresasUsuarioModel> EmpresasUsuario { get; set; }
         public DbSet<OtroProductoModel> OtrosProductos { get; set; }
         public DbSet<ResolucionSucursalModel> ResolucionSucursal { get; set; }
-        public DbSet<ObjetoRaiz> ObjetoRaiz { get; set; }
+        //public DbSet<ObjetoRaiz> ObjetoRaiz { get; set; }
         public DbSet<ConsultaRips> ConsultaRips { get; set; }
-        public DbSet<EstadoRips> EstadoRips { get; set; }   
-        public DbSet<HospitalizacionRips> HospitalizacionRips { get; set; }
-        public DbSet<IncapacidadRips> IncapacidadRips { get; set; }
-        public DbSet<MedicamentosRips> MedicamentosRips { get; set; }
-        public DbSet<ModalidadAtencionRips> ModalidadAtencionRips { get; set; }
-        public DbSet<OrigenRips> OrigenRips { get; set;}
-        public DbSet<OtroServicioRips> OtroServicioRips { get; set; }
-        public DbSet<ProcedimientoRips> ProcedimientoRips { get; set; }
-        public DbSet<RecienNacidoRips> RecienNacidoRips { get; set; }
-        public DbSet<ServicioRips> ServicioRips { get; set; }
-        public DbSet<TipoDocRips> TipoDocRips { get; set; }
-        public DbSet<TipoNotaRips> TipoNotaRips { get; set; }
-        public DbSet<TipoOtroServicioRips> TipoOtroServicioRips { get; set; }
-        public DbSet<TipoUsuariosRips> TipoUsuariosRips { get; set; }
-        public DbSet<UrgenciaRips> UrgenciaRips { get; set; }
-        public DbSet<UsuarioRips> UsuarioRips { get; set; }
+        //public DbSet<EstadoRips> EstadoRips { get; set; }   
+        //public DbSet<HospitalizacionRips> HospitalizacionRips { get; set; }
+        //public DbSet<IncapacidadRips> IncapacidadRips { get; set; }
+        //public DbSet<MedicamentosRips> MedicamentosRips { get; set; }
+        //public DbSet<ModalidadAtencionRips> ModalidadAtencionRips { get; set; }
+        //public DbSet<OrigenRips> OrigenRips { get; set;}
+        //public DbSet<OtroServicioRips> OtroServicioRips { get; set; }
+        //public DbSet<ProcedimientoRips> ProcedimientoRips { get; set; }
+        //public DbSet<RecienNacidoRips> RecienNacidoRips { get; set; }
+        //public DbSet<ServicioRips> ServicioRips { get; set; }
+        //public DbSet<TipoDocRips> TipoDocRips { get; set; }
+        //public DbSet<TipoNotaRips> TipoNotaRips { get; set; }
+        //public DbSet<TipoOtroServicioRips> TipoOtroServicioRips { get; set; }
+        //public DbSet<TipoUsuariosRips> TipoUsuariosRips { get; set; }
+        //public DbSet<UrgenciaRips> UrgenciaRips { get; set; }
+        //public DbSet<UsuarioRips> UsuarioRips { get; set; }
         public DbSet<UsuarioSaludRips> UsuarioSaludRips { get; set; }
 
     }
