@@ -18,6 +18,8 @@ namespace RepositoryLayer.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
+        //Desarrollo Faktum
         public DbSet<UsuarioModel> Usuario { get; set; }
         public DbSet<RolModel> Rol { get; set; }
         public DbSet<RolUsuarioModel> RolUsuario { get; set; }

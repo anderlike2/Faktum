@@ -1,23 +1,8 @@
-export enum DocumentoEnum {
-  COMERCIAL = 'comercial',
-  SECTOR_SALUD = 'sectorSalud'
-}
-
-export interface ICreacionFactura {
-  factura: IFactura;
-  detalleFactura: IDetalleFactura[];
-}
-
-export enum DefaultOptEnum {
-  TIPO_DOC_ELECTRONICO = 'Factura',
-  MONEDA = 'COP'
-}
-
 export interface IFactura {
-  id?: number;
+  id: number;
   estado: number;
-  fechaCreacion: string;
-  fechaModificacion: string;
+  fechaCreacion?: string;
+  fechaModificacion?: string;
   factFechaTrm: string;
   factCompartidos: number;
   factContador: number;
@@ -29,8 +14,8 @@ export interface IFactura {
   factDespacho: string;
   factEstadoOperacion: number;
   factFecha: string;
-  factFechaInicio: string;
   factFechaFinal: string;
+  factFechaInicio: string;
   factFechaVence: string;
   factModalidadPago: string;
   factModeradora: number;
@@ -70,7 +55,7 @@ export interface IFactura {
 }
 
 export interface IDetalleFactura {
-  id?: number;
+  id: number;
   estado: number;
   fechaCreacion: string;
   fechaModificacion: string;
