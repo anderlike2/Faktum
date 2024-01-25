@@ -18,6 +18,8 @@ namespace RepositoryLayer.Data
 
             base.OnModelCreating(modelBuilder);
         }
+
+        //Desarrollo Faktum
         public DbSet<UsuarioModel> Usuario { get; set; }
         public DbSet<RolModel> Rol { get; set; }
         public DbSet<RolUsuarioModel> RolUsuario { get; set; }
@@ -67,7 +69,9 @@ namespace RepositoryLayer.Data
         public DbSet<EmpresasUsuarioModel> EmpresasUsuario { get; set; }
         public DbSet<OtroProductoModel> OtrosProductos { get; set; }
         public DbSet<ResolucionSucursalModel> ResolucionSucursal { get; set; }
-        public DbSet<ObjetoRaiz> ObjetoRaiz { get; set; }
+
+        //Desarrollo Rips
+        /*public DbSet<ObjetoRaiz> ObjetoRaiz { get; set; }
         public DbSet<ConsultaRips> ConsultaRips { get; set; }
         public DbSet<EstadoRips> EstadoRips { get; set; }   
         public DbSet<HospitalizacionRips> HospitalizacionRips { get; set; }
@@ -85,7 +89,7 @@ namespace RepositoryLayer.Data
         public DbSet<TipoUsuariosRips> TipoUsuariosRips { get; set; }
         public DbSet<UrgenciaRips> UrgenciaRips { get; set; }
         public DbSet<UsuarioRips> UsuarioRips { get; set; }
-        public DbSet<UsuarioSaludRips> UsuarioSaludRips { get; set; }
+        public DbSet<UsuarioSaludRips> UsuarioSaludRips { get; set; }*/
 
     }
 }

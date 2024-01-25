@@ -1,0 +1,8 @@
+
+------------------------------------------------------------------------------------
+miércoles, 24 de enero de 2024 7:05:17.08 p. m.
+One or more errors occurred. (The entity type 'ConsultaRips' requires a primary key to be defined. If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.)
+
+------------------------------------------------------------------------------------
+miércoles, 24 de enero de 2024 7:07:13.29 p. m.
+One or more errors occurred. (The entity type 'ConsultaRips' requires a primary key to be defined. If you intended to use a keyless entity type, call 'HasNoKey' in 'OnModelCreating'. For more information on keyless entity types, see https://go.microsoft.com/fwlink/?linkid=2141943.)
