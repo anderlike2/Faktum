@@ -99,6 +99,8 @@ namespace DomainLayer.Models
         public virtual ICollection<EmpresasUsuarioModel>? EmprEmpresasUsuario { get; set; }
         [Required]
         public virtual ICollection<OtroProductoModel>? EmprOtrosProductos { get; set; }
+        [Required]
+        public virtual ICollection<ListaPrecioModel>? EmprListaPrecios { get; set; }
 
         //Para creacion de datos mediante FK
         public virtual int EmprTipoClienteId { get; set; }

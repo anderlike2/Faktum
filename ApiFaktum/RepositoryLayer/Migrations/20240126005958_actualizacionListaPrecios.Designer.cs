@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer.Data;
 
@@ -11,9 +12,10 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240126005958_actualizacionListaPrecios")]
+    partial class actualizacionListaPrecios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1393,52 +1395,16 @@ namespace RepositoryLayer.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ProductoModelId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LiprEmpresaId");
 
+                    b.HasIndex("ProductoModelId");
+
                     b.ToTable("ListaPrecio");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.ListaPrecioProductoModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Estado")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("FechaCreacion")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal?>("LproDescuento")
-                        .IsRequired()
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("LproListaPrecioId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LproProductoId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("LproValor")
-                        .IsRequired()
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LproListaPrecioId");
-
-                    b.HasIndex("LproProductoId");
-
-                    b.ToTable("ListaPrecioProducto");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.LocalidadModel", b =>
@@ -2997,26 +2963,12 @@ namespace RepositoryLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("DomainLayer.Models.ProductoModel", null)
+                        .WithMany("ProdListaPrecios")
+                        .HasForeignKey("ProductoModelId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.Navigation("LiprEmpresa");
-                });
-
-            modelBuilder.Entity("DomainLayer.Models.ListaPrecioProductoModel", b =>
-                {
-                    b.HasOne("DomainLayer.Models.ListaPrecioModel", "LproListaPrecio")
-                        .WithMany()
-                        .HasForeignKey("LproListaPrecioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("DomainLayer.Models.ProductoModel", "LproProducto")
-                        .WithMany()
-                        .HasForeignKey("LproProductoId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("LproListaPrecio");
-
-                    b.Navigation("LproProducto");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.LocalidadModel", b =>
@@ -3403,6 +3355,11 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("IumProductos");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ListaPrecioModel", b =>
+                {
+                    b.Navigation("LiprListaPreciosProducto");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.ModalidadPagoModel", b =>
                 {
                     b.Navigation("MopaContratosSalud");
@@ -3431,6 +3388,13 @@ namespace RepositoryLayer.Migrations
             modelBuilder.Entity("DomainLayer.Models.PaisModel", b =>
                 {
                     b.Navigation("PaisClientes");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ProductoModel", b =>
+                {
+                    b.Navigation("ProdListaPrecios");
+
+                    b.Navigation("ProdListaPreciosProducto");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RegimenModel", b =>

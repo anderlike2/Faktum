@@ -69,6 +69,9 @@ namespace RepositoryLayer.Data
         public DbSet<EmpresasUsuarioModel> EmpresasUsuario { get; set; }
         public DbSet<OtroProductoModel> OtrosProductos { get; set; }
         public DbSet<ResolucionSucursalModel> ResolucionSucursal { get; set; }
+        public DbSet<ListaPrecioProductoModel> ListaPrecioProducto { get; set; }
+
+        //Desarrollo Rips
         //public DbSet<ObjetoRaiz> ObjetoRaiz { get; set; }
         public DbSet<ConsultaRips> ConsultaRips { get; set; }
         //public DbSet<EstadoRips> EstadoRips { get; set; }   

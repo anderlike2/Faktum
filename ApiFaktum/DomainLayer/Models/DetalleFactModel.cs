@@ -52,8 +52,6 @@ namespace DomainLayer.Models
         public virtual ImpuestoModel? DetaTipoImpuesto { get; set; }
         [Required]
         public virtual UnidadModel? DetaUnidad { get; set; }
-        [Required]
-        public virtual ListaPrecioModel? DetaListaPrecios { get; set; }
 
         //Referencias para consultas
         public virtual int DetaEmpresaId { get; set; }
@@ -61,6 +59,5 @@ namespace DomainLayer.Models
         public virtual int DetaRetefuenteId { get; set; }
         public virtual int DetaTipoImpuestoId { get; set; }
         public virtual int DetaUnidadId { get; set; }
-        public virtual int DetaListaPreciosId { get; set; }
     }
 }

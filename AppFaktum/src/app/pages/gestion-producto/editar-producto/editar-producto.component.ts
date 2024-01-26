@@ -3,17 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
-import { IListaPrecio } from 'src/app/models/lista-precio.model';
 import { IProducto, tipoConceptoEnum } from 'src/app/models/producto.model';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { CentroCostosService } from 'src/app/services/centro-costos-service/centro-costos.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { ProductoService } from 'src/app/services/producto-service/producto.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
-import { CrearListaPrecioComponent } from '../../modals/crear-lista-precio/crear-lista-precio.component';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ListaPrecioService } from 'src/app/services/lista-precio-service/lista-precio.service';
 
 @Component({
   selector: 'app-editar-producto',
@@ -22,7 +17,7 @@ import { ListaPrecioService } from 'src/app/services/lista-precio-service/lista-
 })
 export class EditarProductoComponent implements OnInit, AfterViewInit {
 
-  productoCollapsed: boolean = true;
+  productoCollapsed: boolean = false;
   edicionProducto: boolean = false;
 
   productoData: IProducto;
@@ -43,19 +38,8 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
   listaTipoRips: IListCombo[] = [];
   listaUnidad: IListCombo[] = [];
   listaOtroProducto: IListCombo[] = [];
-  listListaPrecios: IListaPrecio[] = [];
-
-  listaPrecioCollapsed: boolean = true;
-  collapseListaPrecio: boolean = true;
-  seletedListaPrecio: any;
+  
   informacionProducto: IProducto;
-
-  colsListaPreciosProducto: any[] = [
-    { field: 'liprNombre', header: 'Nombre' },
-    { field: 'liprValor', header: 'Valor' },
-    { field: 'liprDescuento', header: 'Descuento' },
-    { field: 'liprDescripcion', header: 'Descripción' }
-  ];
 
   listaOpcionesMap: { [key: string]: () => void } = {
     [tipoConceptoEnum.CUPS]: this.seleccionCups.bind(this),
@@ -90,9 +74,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
     private cargueCombosService: CargueCombosService,
     private sharedService: SharedService,
     private generalService: GeneralService,
-    private router: Router,
-    private modalService: NgbModal,
-    private listaPrecioService: ListaPrecioService
+    
   ) { }
 
   ngAfterViewInit(): void {
@@ -113,7 +95,6 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
     });
 
     this.obtenerProducto(this.informacionProducto);
-    this.cargarInformacionListaPreciosProducto(this.informacionProducto.id);
   }
 
   cargarListaCombox(): void {
@@ -429,35 +410,4 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
       }
     });
   }
-
-  verListaPrecio(value:IListaPrecio): void{
-    this.sharedService.addEditarGeneralData(value);
-    this.router.navigate(['./gestion-lista-precio/editar-lista-precio']);
-  }
-
-  abrirModalListaPrecio(): void {
-    const modalListaPrecio = this.modalService.open(
-      CrearListaPrecioComponent, {
-        size: 'xl',
-        backdrop: false
-      }
-    );
-    modalListaPrecio.componentInstance.productoID = this.informacionProducto.id;
-
-    modalListaPrecio.result.then((result) => {
-      if (result) {
-        this.cargarInformacionListaPreciosProducto(this.informacionProducto.id);
-      }
-    })
-  }
-
-  cargarInformacionListaPreciosProducto(idProducto: number): void{
-    this.listaPrecioService.obtenerListaPrecioPorProducto(idProducto)
-    .subscribe({
-      next: (response) => {
-        this.listListaPrecios = response;
-      }
-    });
-  }
-
 }

@@ -157,11 +157,11 @@ namespace RepositoryLayer.Repository
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar la lista de precios por producto
+        /// Metodo para consultar la lista de precios por empresa
         /// </summary>
-        /// <param name="idProducto"></param>
+        /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
-        public async Task<Result> ConsultarListaPrecioProducto(int idProducto)
+        public async Task<Result> ConsultarListaPrecioEmpresa(int idEmpresa)
         {
             Result oRespuesta = new Result();
             List<ListaPrecioModel>? lstResult = new List<ListaPrecioModel>();
@@ -169,7 +169,7 @@ namespace RepositoryLayer.Repository
             try
             {
                 lstResult =
-                    await objContext.ListaPrecio.Where(x => x.Estado == 1 && x.LiprProducto.Id == idProducto).ToListAsync();
+                    await objContext.ListaPrecio.Where(x => x.Estado == 1 && x.LiprEmpresa.Id == idEmpresa).ToListAsync();
 
                 oRespuesta.Success = true;
                 if (lstResult.Count > 0)

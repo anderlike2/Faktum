@@ -12,7 +12,7 @@
         public decimal ProdPorcReteFuente { get; set; }
         public decimal ProdPorcIva { get; set; }
 
-        //Referencias
+        //Referencias para consultas
         public int ProdCentroCostoId { get; set; }
         public int? ProdCumId { get; set; }
         public int? ProdCupId { get; set; }

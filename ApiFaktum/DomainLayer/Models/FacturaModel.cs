@@ -100,8 +100,6 @@ namespace DomainLayer.Models
         [Required]
         public virtual ICollection<DetalleFactModel>? FactDetFacturas { get; set; }
         [Required]
-        public virtual ListaPrecioModel? FactListaPrecios { get; set; }
-        [Required]
         public virtual NotaDebitoModel? FactNotaDebito { get; set; }
         [Required]
         public virtual NotaCreditoModel? FactNotaCredito { get; set; }
@@ -120,7 +118,6 @@ namespace DomainLayer.Models
         public virtual int FactSaludTipoId { get; set; }
         public virtual int FactTipoDescuentoId { get; set; }
         public virtual int FactTipoDocElectrId { get; set; }
-        public virtual int FactListaPreciosId { get; set; }
         public virtual int FactNotaDebitoId { get; set; }
         public virtual int FactNotaCreditoId { get; set; }
         public virtual int FactClienteId { get; set; }

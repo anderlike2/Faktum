@@ -38,6 +38,5 @@ namespace DomainLayer.Dtos
         public int DetaRetefuenteId { get; set; }
         public int DetaTipoImpuestoId { get; set; }
         public int DetaUnidadId { get; set; }
-        public int DetaListaPreciosId { get; set; }
     }
 }
