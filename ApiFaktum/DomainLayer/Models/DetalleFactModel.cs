@@ -7,7 +7,7 @@ namespace DomainLayer.Models
     {
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaCantidad { get; set; }
+        public decimal? DetaCantidad { get; set; }
         [Required]
         public long DetaCentroCostos { get; set; }
         [Required]
@@ -33,13 +33,13 @@ namespace DomainLayer.Models
         public long DetaProducto { get; set; }
         public string? DetaRemision { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValor { get; set; }
+        public decimal? DetaValor { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValorUnitario { get; set; }
+        public decimal? DetaValorUnitario { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValReteIca { get; set; }
+        public decimal? DetaValReteIca { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValRf { get; set; }
+        public decimal? DetaValRf { get; set; }
 
         //Referencias
         [Required]

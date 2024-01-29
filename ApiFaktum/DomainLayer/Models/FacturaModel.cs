@@ -19,7 +19,7 @@ namespace DomainLayer.Models
         public decimal? FactCuotaRecupera { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactDescGlobal{ get; set; }
+        public decimal? FactDescGlobal{ get; set; }
         [Required]
         public string? FactDespacho { get; set; }
         [Required]
@@ -43,34 +43,37 @@ namespace DomainLayer.Models
         public string? FactOrden { get; set; }
         public string? FactPoliza { get; set; }
         [Required]
-        public string? FactPorcIva { get; set; }
+        [Column(TypeName = "decimal(18,2)")]        
+        public decimal? FactPorcIva { get; set; }
         [Required]
         public string? FactRecepcion { get; set; }
         [Required]
         public string? FactRemision { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactSubtotal { get; set; }
+        public decimal? FactSubtotal { get; set; }
         [Required]
         public string? FactSucursal { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactTotalIva { get; set; }
+        public decimal? FactTotalIva { get; set; }
         [Required]
-        public string? FactTotalReteIca { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? FactTotalReteIca { get; set; }
         [Required]
         public string? FactTrm { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactValAnticipo { get; set; }
+        public decimal? FactValAnticipo { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactValor { get; set; }
+        public decimal? FactValor { get; set; }
         [Required]
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactValorDescuento { get; set; }
+        public decimal? FactValorDescuento { get; set; }
         [Required]
-        public string? FactValTotRetefuente { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? FactValTotRetefuente { get; set; }
         [Required]
         public string? FactVendedor{ get; set; }
 
@@ -99,9 +102,7 @@ namespace DomainLayer.Models
         public virtual TipoDocElectrModel? FactTipoDocElectr { get; set; }
         [Required]
         public virtual ICollection<DetalleFactModel>? FactDetFacturas { get; set; }
-        [Required]
         public virtual NotaDebitoModel? FactNotaDebito { get; set; }
-        [Required]
         public virtual NotaCreditoModel? FactNotaCredito { get; set; }
         [Required]
         public virtual ClienteModel? FactCliente { get; set; }
@@ -118,8 +119,8 @@ namespace DomainLayer.Models
         public virtual int FactSaludTipoId { get; set; }
         public virtual int FactTipoDescuentoId { get; set; }
         public virtual int FactTipoDocElectrId { get; set; }
-        public virtual int FactNotaDebitoId { get; set; }
-        public virtual int FactNotaCreditoId { get; set; }
+        public virtual int? FactNotaDebitoId { get; set; }
+        public virtual int? FactNotaCreditoId { get; set; }
         public virtual int FactClienteId { get; set; }
 
     }

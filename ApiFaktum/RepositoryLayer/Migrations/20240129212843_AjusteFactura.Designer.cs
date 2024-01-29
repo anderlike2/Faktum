@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RepositoryLayer.Data;
 
@@ -11,9 +12,10 @@ using RepositoryLayer.Data;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240129212843_AjusteFactura")]
+    partial class AjusteFactura
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1097,10 +1099,10 @@ namespace RepositoryLayer.Migrations
                     b.Property<int>("FactMonedaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FactNotaCreditoId")
+                    b.Property<int>("FactNotaCreditoId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("FactNotaDebitoId")
+                    b.Property<int>("FactNotaDebitoId")
                         .HasColumnType("int");
 
                     b.Property<string>("FactNumero")
@@ -2929,12 +2931,14 @@ namespace RepositoryLayer.Migrations
                     b.HasOne("DomainLayer.Models.NotaCreditoModel", "FactNotaCredito")
                         .WithMany("NocrFacturas")
                         .HasForeignKey("FactNotaCreditoId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("DomainLayer.Models.NotaDebitoModel", "FactNotaDebito")
                         .WithMany("NodbFacturas")
                         .HasForeignKey("FactNotaDebitoId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("DomainLayer.Models.FactSaludTipoModel", "FactSaludTipo")
                         .WithMany("FasaFacturas")
