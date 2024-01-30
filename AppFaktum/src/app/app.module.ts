@@ -55,6 +55,7 @@ import { DocumentoOpcionesComponent } from './pages/modals/documento-opciones/do
 import { CustomDatepickerI18n } from './shared/Internationalization/datepicker/custom-datepicker-i18n';
 import { AgregarProductoComponent } from './pages/modals/agregar-producto/agregar-producto.component';
 import { CustomDateParserFormatter } from './shared/datepicker/custom-date-parser-formatter';
+import { ConfirmacionComponent } from './pages/modals/confirmacion/confirmacion.component';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
@@ -91,7 +92,8 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
     CrearResolucionComponent,
     AsociarResolucionSucursalComponent,
     DocumentoOpcionesComponent,
-    AgregarProductoComponent
+    AgregarProductoComponent,
+    ConfirmacionComponent
   ],
   imports: [
     BrowserModule,

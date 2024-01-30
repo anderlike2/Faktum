@@ -81,6 +81,7 @@ namespace DependencyInjection
             services.AddScoped(typeof(IResolucionSucursalRepository), typeof(ResolucionSucursalRepository));
             services.AddScoped(typeof(IUsuarioSaludRipsRepository), typeof(UsuarioSaludRipsRepository));
             services.AddScoped(typeof(IConsultaRipsRepository), typeof(ConsultaRipsRepository));
+            services.AddScoped(typeof(IListaPrecioProductoRepository), typeof(ListaPrecioProductoRepository));
 
             services.AddScoped(typeof(IUsuarioService), typeof(UsuarioService));
             services.AddScoped(typeof(IMaestrasService), typeof(MaestrasService));
@@ -100,6 +101,7 @@ namespace DependencyInjection
             services.AddScoped(typeof(IResolucionSucursalService), typeof(ResolucionSucursalService));
             services.AddScoped(typeof(IUsuarioSaludRipsService), typeof(UsuarioSaludRipsService));
             services.AddScoped(typeof(IConsultaRipsService), typeof(ConsultaRipsService));
+            services.AddScoped(typeof(IListaPrecioProductoService), typeof(ListaPrecioProductoService));
 
             services.AddTransient<IAuthToken, AuthToken>();
 

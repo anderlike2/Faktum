@@ -1,4 +1,6 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
     public class ListaPrecioProductoDto : BaseDto
     {
@@ -10,5 +12,10 @@
         //Referencias para consultas
         public int LproListaPrecioId { get; set; }
         public int LproProductoId { get; set; }
+
+        public static explicit operator ListaPrecioProductoDto(ListaPrecioProductoModel? v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
