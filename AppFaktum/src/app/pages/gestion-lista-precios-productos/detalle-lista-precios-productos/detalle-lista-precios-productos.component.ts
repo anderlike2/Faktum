@@ -32,9 +32,9 @@ export class DetalleListaPreciosProductosComponent implements OnInit {
   listProductosListaPrecioObs: Observable<IListaPrecioProducto[]>;
 
   colsProductosListaPrecio: any[] = [
-    { field: 'lproProducto.prodNombreTecnico', header: 'Nombre' },
-    { field: 'lproProducto.prodMarca', header: 'Marca' },
-    { field: 'lproProducto.prodValor', header: 'Valor Original' },
+    { field: 'lproProducto', child: 'prodNombreTecnico', header: 'Nombre' },
+    { field: 'lproProducto', child: 'prodMarca', header: 'Marca' },
+    { field: 'lproProducto', child: 'prodValor', header: 'Valor Original' },
     { field: 'lproValor', header: 'Valor Lista Precio' },
     { field: 'lproDescuento', header: 'Descuento' }
   ];
@@ -67,7 +67,7 @@ export class DetalleListaPreciosProductosComponent implements OnInit {
       this.listaPrecioProductoService.obtenerProductosPorListaPrecio(idListaPrecio);
   }
 
-  eliminarProducto(idEliminar: number): void{
+  eliminarProducto(listaPrecio: IListaPrecioProducto): void{
     const modalConfirmacion = this.modalService.open(
       ConfirmacionComponent, {
         size: 'xl',
@@ -77,7 +77,16 @@ export class DetalleListaPreciosProductosComponent implements OnInit {
 
     modalConfirmacion.result.then((result) => {
       if (result) {
-        
+        this.listaPrecioProductoService.eliminarListaPrecio(listaPrecio).subscribe({
+          next: (response: any) => {
+            if (!response?.success) {
+              this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+            }else{
+              this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+              this.cargarProductos(this.listaPrecioFormGroup.controls['lproListaPrecioId'].value);
+            }
+          }
+        });
       }
     })
   }

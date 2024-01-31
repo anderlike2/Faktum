@@ -3,7 +3,7 @@
 </div>
 <div class="modal-body">
     <div class="table-style">
-        <p-table [columns]="colsProductos" [value]="listProductoObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
+        <p-table [columns]="colsProductos" [value]="listProductos" selectionMode="single" [scrollable]="true" [rows]="10">
             <ng-template pTemplate="header" let-columns>
                 <tr>
                     <th *ngFor="let col of columns">
@@ -21,17 +21,17 @@
                   </td>
                   <td>
                     <div class="form-group">
-                        <input [(ngModel)]="rowData.prodValorLista" type="text" class="form-control">
+                        <input [(ngModel)]="rowData.prodValorLista" type="text" class="form-control" [disabled]="!rowData.prodSeleccionado">
                     </div>
                   </td>
                   <td>
                     <div class="form-group">
-                        <input [(ngModel)]="rowData.prodValorDescuento" type="text" class="form-control">
+                        <input [(ngModel)]="rowData.prodValorDescuento" type="text" class="form-control" [disabled]="!rowData.prodSeleccionado">
                     </div>
                   </td>
                   <td>
                     <div>
-                        <input [(ngModel)]="rowData.prodSeleccionado" type="checkbox" (change)="seleccionarProducto(rowData)" class="form-control check-style">
+                        <input [(ngModel)]="rowData.prodSeleccionado" type="checkbox" class="form-control check-style">
                     </div>
                   </td>
                 </tr>

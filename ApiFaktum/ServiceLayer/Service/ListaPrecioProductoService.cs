@@ -33,7 +33,7 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> CrearListaPrecioProducto(List<ListaPrecioProductoDto> objModel)
+        public async Task<Result> CrearListaPrecioProducto(List<ListaPrecioProductoDto> objModel)
         {
             Result oRespuesta = new Result();
 
@@ -43,13 +43,13 @@ namespace ServiceLayer.Service
                 ListaPrecioProductoDto? listaProductoCompleto = (ListaPrecioProductoDto)informacionListaProducto.Result.Data;
                 if (listaProductoCompleto == null)
                 {
-                    objListaPrecioProductoRepository.CrearListaPrecioProducto(item);
+                    await objListaPrecioProductoRepository.CrearListaPrecioProducto(item);
                 }
             }
 
-            oRespuesta.Success = false;
+            oRespuesta.Success = true;
             oRespuesta.Message = Constantes.msjRegGuardado;
-            return Task.FromResult(oRespuesta);
+            return oRespuesta;
         }
 
         /// <summary>

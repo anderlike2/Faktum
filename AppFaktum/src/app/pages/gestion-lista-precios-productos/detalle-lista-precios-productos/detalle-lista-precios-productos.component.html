@@ -45,7 +45,13 @@
                             <ng-template pTemplate="body" let-rowData let-columns="columns">
                             <tr style="height:34px" [pSelectableRow]="rowData">
                               <td *ngFor="let col of columns">
+                                <ng-container *ngIf="col.child">
+                                  {{rowData[col.field][col.child]}}
+                                </ng-container>
+                                <ng-container *ngIf="!col.child">
                                   {{rowData[col.field]}}
+                                </ng-container>
+                                  
                               </td>
                               <td class="text-center">
                                 <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Editar Producto" tooltipPosition="left" (click)="abrirModalEditarListaPrecioProducto(rowData.id)">
@@ -53,7 +59,7 @@
                                 </button>
                               </td>
                               <td class="td-style">
-                                <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar producto" tooltipPosition="left" (click)="eliminarProducto(rowData.id)">
+                                <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar producto" tooltipPosition="left" (click)="eliminarProducto(rowData)">
                                     <i class="fa fa-trash"></i>
                                 </button>  
                               </td>
