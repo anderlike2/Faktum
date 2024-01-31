@@ -6,6 +6,7 @@ export interface IListaPrecioProducto{
     lproValor: number;
     lproDescuento: number;
     lproListaPrecioId: number;
+    lproListaPrecioAnteriorId: number;
     lproProductoId: number;
     lproProducto: IProducto,
     lproListaPrecio: IListaPrecio,

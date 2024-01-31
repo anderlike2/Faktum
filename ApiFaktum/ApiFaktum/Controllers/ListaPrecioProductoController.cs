@@ -42,7 +42,7 @@ namespace ApiFaktum.Controllers
         /// <returns>Task<Result></returns>
         [HttpPost]
         [Route("CrearListaPrecioProducto")]
-        public async Task<IActionResult> CrearListaPrecioProducto([FromBody] ListaPrecioProductoDto objModel)
+        public async Task<IActionResult> CrearListaPrecioProducto([FromBody] List<ListaPrecioProductoDto> objModel)
         {
             Result oRespuesta = new();
 
@@ -139,6 +139,36 @@ namespace ApiFaktum.Controllers
             try
             {
                 var vRespuesta = await objService.EliminarListaPrecioProducto(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los productos por id
+        /// </summary>
+        /// <param name="idListaPrecioProducto"></param>
+        /// <returns>Task<Result></returns>
+        [HttpGet]
+        [Route("ConsultarListaPrecioProductoPorId")]
+        public async Task<IActionResult> ConsultarListaPrecioProductoPorId(int idListaPrecioProducto)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarListaPrecioProductoPorId(idListaPrecioProducto);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

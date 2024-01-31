@@ -9,6 +9,10 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 import { ListaPrecioProductoService } from 'src/app/services/lista-precio-producto-service/lista-precio-producto.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmacionComponent } from '../../modals/confirmacion/confirmacion.component';
+import { CrearListaPrecioProductoComponent } from '../../modals/crear-lista-precio-producto/crear-lista-precio-producto.component';
+import { GeneralService } from 'src/app/services/general-service/general.service';
+import { GeneralesEnum, Mensajes, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { EditarListaPreciosProductosComponent } from '../../modals/editar-lista-precios-productos/editar-lista-precios-productos.component';
 
 @Component({
   selector: 'app-detalle-lista-precios-productos',
@@ -36,7 +40,7 @@ export class DetalleListaPreciosProductosComponent implements OnInit {
   ];
 
   constructor(private listaPrecioService: ListaPrecioService, private storageService: StorageService, private listaPrecioProductoService: ListaPrecioProductoService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal, private generalService: GeneralService) { }
 
   ngOnInit(): void {
     this.dataEmpresa = this.storageService.getEmpresaActivaStorage();
@@ -76,6 +80,46 @@ export class DetalleListaPreciosProductosComponent implements OnInit {
         
       }
     })
+  }
+
+  abrirModalListaPrecioProducto(): void {
+    let valorListaPrecio = this.listaPrecioFormGroup.controls['lproListaPrecioId'].value;
+    if(valorListaPrecio == undefined || valorListaPrecio == ''){
+      this.generalService.mostrarMensajeAlerta(Mensajes.MSG_SELECCIONA_LISTA_PRECIO, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+      return;
+    }
+
+    const modalListaPrecioProducto = this.modalService.open(
+      CrearListaPrecioProductoComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+    modalListaPrecioProducto.componentInstance.listaPrecioID = this.listaPrecioFormGroup.controls['lproListaPrecioId'].value;
+
+    modalListaPrecioProducto.result.then((result) => {
+      if (result) {
+        this.cargarProductos(this.listaPrecioFormGroup.controls['lproListaPrecioId'].value);
+      }
+    });
+  }
+
+  abrirModalEditarListaPrecioProducto(id: number): void {
+
+    const modalListaPrecioProducto = this.modalService.open(
+      EditarListaPreciosProductosComponent, {
+        size: 'xl',
+        backdrop: false
+      }
+    );
+    modalListaPrecioProducto.componentInstance.listaPrecioProductoID = id;
+    modalListaPrecioProducto.componentInstance.listaPrecioID = this.listaPrecioFormGroup.controls['lproListaPrecioId'].value;
+
+    modalListaPrecioProducto.result.then((result) => {
+      if (result) {
+        this.cargarProductos(this.listaPrecioFormGroup.controls['lproListaPrecioId'].value);
+      }
+    });
   }
 
 }

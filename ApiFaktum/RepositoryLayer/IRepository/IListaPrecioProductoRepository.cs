@@ -53,5 +53,14 @@ namespace RepositoryLayer.IRepository
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarListaPrecioProducto(ListaPrecioProductoDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los productos por id
+        /// </summary>
+        /// <param name="idListaPrecioProducto"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarListaPrecioProductoPorId(int idListaPrecioProducto);
     }
 }

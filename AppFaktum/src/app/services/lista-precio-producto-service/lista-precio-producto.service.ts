@@ -51,4 +51,10 @@ export class ListaPrecioProductoService {
     )
   }
 
+  obtenerListaPrecioProductoPorId(idListaPrecioProducto: number): Observable<IResponse<IListaPrecioProducto>> {
+    const url = `${this.environment.faktumUrl}/ListaPrecioProducto/ConsultarListaPrecioProductoPorId?idListaPrecioProducto=${idListaPrecioProducto}`;
+    return this.httpClient.get<IResponse<IListaPrecioProducto>>(
+      url
+    )
+  }
 }

@@ -33,22 +33,23 @@ namespace ServiceLayer.Service
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        public Task<Result> CrearListaPrecioProducto(ListaPrecioProductoDto objModel)
+        public Task<Result> CrearListaPrecioProducto(List<ListaPrecioProductoDto> objModel)
         {
             Result oRespuesta = new Result();
 
-            Task<Result> informacionListaProducto = objListaPrecioProductoRepository.ConsultarListaPrecioProductoPorFiltros(objModel);
-            ListaPrecioProductoDto? listaProductoCompleto = (ListaPrecioProductoDto)informacionListaProducto.Result.Data;
-            if (listaProductoCompleto == null)
+            foreach (ListaPrecioProductoDto item in objModel)
             {
-                return objListaPrecioProductoRepository.CrearListaPrecioProducto(objModel);
+                Task<Result> informacionListaProducto = objListaPrecioProductoRepository.ConsultarListaPrecioProductoPorFiltros(item);
+                ListaPrecioProductoDto? listaProductoCompleto = (ListaPrecioProductoDto)informacionListaProducto.Result.Data;
+                if (listaProductoCompleto == null)
+                {
+                    objListaPrecioProductoRepository.CrearListaPrecioProducto(item);
+                }
             }
-            else
-            {
-                oRespuesta.Success = false;
-                oRespuesta.Message = Constantes.msjListaPrecioProductoExiste;
-                return Task.FromResult(oRespuesta);
-            }  
+
+            oRespuesta.Success = false;
+            oRespuesta.Message = Constantes.msjRegGuardado;
+            return Task.FromResult(oRespuesta);
         }
 
         /// <summary>
@@ -62,18 +63,25 @@ namespace ServiceLayer.Service
         {
             Result oRespuesta = new Result();
 
-            Task<Result> informacionListaProducto = objListaPrecioProductoRepository.ConsultarListaPrecioProductoPorFiltros(objModel);
-            ListaPrecioProductoDto? listaProductoCompleto = (ListaPrecioProductoDto)informacionListaProducto.Result.Data;
-            if (listaProductoCompleto == null)
+            if (objModel.LproListaPrecioId.Equals(objModel.LproListaPrecioAnteriorId))
             {
                 return objListaPrecioProductoRepository.ActualizarListaPrecioProducto(objModel);
             }
             else
             {
-                oRespuesta.Success = false;
-                oRespuesta.Message = Constantes.msjListaPrecioProductoExiste;
-                return Task.FromResult(oRespuesta);
-            }
+                Task<Result> informacionListaProducto = objListaPrecioProductoRepository.ConsultarListaPrecioProductoPorFiltros(objModel);
+                ListaPrecioProductoDto? listaProductoCompleto = (ListaPrecioProductoDto)informacionListaProducto.Result.Data;
+                if (listaProductoCompleto == null)
+                {
+                    return objListaPrecioProductoRepository.ActualizarListaPrecioProducto(objModel);
+                }
+                else
+                {
+                    oRespuesta.Success = false;
+                    oRespuesta.Message = Constantes.msjListaPrecioProductoExiste;
+                    return Task.FromResult(oRespuesta);
+                }
+            }            
         }
 
         /// <summary>
@@ -98,6 +106,18 @@ namespace ServiceLayer.Service
         public Task<Result> EliminarListaPrecioProducto(ListaPrecioProductoDto objModel)
         {
             return objListaPrecioProductoRepository.EliminarListaPrecioProducto(objModel);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los productos por id
+        /// </summary>
+        /// <param name="idListaPrecioProducto"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarListaPrecioProductoPorId(int idListaPrecioProducto)
+        {
+            return objListaPrecioProductoRepository.ConsultarListaPrecioProductoPorId(idListaPrecioProducto);
         }
     }
 }

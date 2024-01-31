@@ -16,7 +16,7 @@ namespace ServiceLayer.IService
         /// </summary>
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> CrearListaPrecioProducto(ListaPrecioProductoDto objModel);
+        Task<Result> CrearListaPrecioProducto(List<ListaPrecioProductoDto> objModel);
 
         /// <summary>
         /// Katary
@@ -44,5 +44,14 @@ namespace ServiceLayer.IService
         /// <param name="objModel"></param>
         /// <returns>Task<Result></returns>
         Task<Result> EliminarListaPrecioProducto(ListaPrecioProductoDto objModel);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar los productos por id
+        /// </summary>
+        /// <param name="idListaPrecioProducto"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarListaPrecioProductoPorId(int idListaPrecioProducto);
     }
 }

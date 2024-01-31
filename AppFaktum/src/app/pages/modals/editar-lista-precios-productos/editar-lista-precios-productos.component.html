@@ -1,0 +1,74 @@
+<div class="modal-header">
+    <h5 class="modal-title">Editar productos y lista de precios</h5>
+</div>
+<div class="modal-body">
+    <form [formGroup]="listaPrecioProductoFormGroup">
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="">Lista de precio</label>
+                        <select formControlName="lproListaPrecioId" class="form-control"
+                            [ngClass]="{
+                            'is-invalid':
+                            listaPrecioProductoFormGroup.controls.lproListaPrecioId.invalid &&
+                            listaPrecioProductoFormGroup.controls.lproListaPrecioId.touched
+                            }">
+                            <ng-container *ngFor="let item of listListaPrecios">
+                                <option [value]="item.id">{{item.liprNombre}} ({{item.liprDescripcion}})</option>
+                              </ng-container>
+                        </select>
+                        <div class="invalid-feedback"> {{ lproListaPrecioIdErrorMensaje }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Valor</label>
+                        <input
+                            formControlName="lproValor"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            listaPrecioProductoFormGroup.controls.lproValor.invalid &&
+                            listaPrecioProductoFormGroup.controls.lproValor.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ lproValorErrorMensaje }} </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="">Descuento</label>
+                        <input
+                            formControlName="lproDescuento"
+                            type="text"
+                            [ngClass]="{
+                            'is-invalid':
+                            listaPrecioProductoFormGroup.controls.lproDescuento.invalid &&
+                            listaPrecioProductoFormGroup.controls.lproDescuento.touched
+                            }"
+                            class="form-control">
+                        <div class="invalid-feedback"> {{ lproDescuentoErrorMensaje }} </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Actualizar producto" (click)="actualizarProducto()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>

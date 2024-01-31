@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h5 class="modal-title">Asociar productos</h5>
+</div>
+<div class="modal-body">
+    <div class="table-style">
+        <p-table [columns]="colsProductos" [value]="listProductoObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <th style="text-align: center;">Valor Lista</th>
+                    <th style="text-align: center;">Descuento</th>
+                    <th style="text-align: center;">Seleccionar</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr style="height:34px" [pSelectableRow]="rowData">
+                  <td *ngFor="let col of columns">
+                      {{rowData[col.field]}}
+                  </td>
+                  <td>
+                    <div class="form-group">
+                        <input [(ngModel)]="rowData.prodValorLista" type="text" class="form-control">
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                        <input [(ngModel)]="rowData.prodValorDescuento" type="text" class="form-control">
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                        <input [(ngModel)]="rowData.prodSeleccionado" type="checkbox" (change)="seleccionarProducto(rowData)" class="form-control check-style">
+                    </div>
+                  </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Guardar productos" (click)="guardarProductos()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>

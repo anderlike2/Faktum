@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { IEnvironment } from 'src/app/models/environment.model';
 import { IResponse } from 'src/app/models/general.model';
 import { IProducto } from 'src/app/models/producto.model';
+import { IProductoLista } from 'src/app/models/producto-lista.model';
 
 @Injectable({
   providedIn: 'root'

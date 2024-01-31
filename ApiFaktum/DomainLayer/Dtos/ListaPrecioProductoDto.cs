@@ -12,10 +12,6 @@ namespace DomainLayer.Dtos
         //Referencias para consultas
         public int LproListaPrecioId { get; set; }
         public int LproProductoId { get; set; }
-
-        public static explicit operator ListaPrecioProductoDto(ListaPrecioProductoModel? v)
-        {
-            throw new NotImplementedException();
-        }
+        public int LproListaPrecioAnteriorId { get; set; }
     }
 }

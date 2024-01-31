@@ -23,44 +23,44 @@
                         </div>
                       </div>
                 </form>
-            </div>
-            <br>
-            <span>Productos Asignados</span>
-            <div class="table-style">
-                <div class="d-flex justify-content-end m-2">
-                    <button class="btn btn-icon btn-primary" pTooltip="Asociar Productos" tooltipPosition="left">
-                      <i class="fa fa-plus"></i>
-                    </button>
-                </div>
-                <p-table [columns]="colsProductosListaPrecio" [value]="listProductosListaPrecioObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th *ngFor="let col of columns">
-                                {{col.header}}
-                            </th>
-                            <th></th>
-                            <th></th>
-                        </tr>
+                <br>
+                <span>Productos Asignados</span>
+                <div class="table-style">
+                    <div class="d-flex justify-content-end m-2">
+                        <button class="btn btn-icon btn-primary" pTooltip="Asociar Productos" tooltipPosition="left" (click)="abrirModalListaPrecioProducto()">
+                          <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                    <p-table [columns]="colsProductosListaPrecio" [value]="listProductosListaPrecioObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th *ngFor="let col of columns">
+                                    {{col.header}}
+                                </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </ng-template>
+            
+                            <ng-template pTemplate="body" let-rowData let-columns="columns">
+                            <tr style="height:34px" [pSelectableRow]="rowData">
+                              <td *ngFor="let col of columns">
+                                  {{rowData[col.field]}}
+                              </td>
+                              <td class="text-center">
+                                <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Editar Producto" tooltipPosition="left" (click)="abrirModalEditarListaPrecioProducto(rowData.id)">
+                                  <i class="fa fa-edit"></i>
+                                </button>
+                              </td>
+                              <td class="td-style">
+                                <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar producto" tooltipPosition="left" (click)="eliminarProducto(rowData.id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>  
+                              </td>
+                            </tr>
                         </ng-template>
-        
-                        <ng-template pTemplate="body" let-rowData let-columns="columns">
-                        <tr style="height:34px" [pSelectableRow]="rowData">
-                          <td *ngFor="let col of columns">
-                              {{rowData[col.field]}}
-                          </td>
-                          <td class="text-center">
-                            <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Editar Producto" tooltipPosition="left">
-                              <i class="fa fa-edit"></i>
-                            </button>
-                          </td>
-                          <td class="td-style">
-                            <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar producto" tooltipPosition="left" (click)="eliminarProducto(rowData.id)">
-                                <i class="fa fa-trash"></i>
-                            </button>  
-                          </td>
-                        </tr>
-                    </ng-template>
-                  </p-table>
+                      </p-table>
+                </div>
             </div>
         </app-card>
     </div>
