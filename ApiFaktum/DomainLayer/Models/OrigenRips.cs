@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class OrigenRips
+    public class OrigenRips : BaseEntity
     {
-        public int? OrRiId { get; set; }
         public string? OrRiNombre { get; set; }
 
     }

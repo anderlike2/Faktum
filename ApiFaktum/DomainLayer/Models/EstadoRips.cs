@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class EstadoRips
+    public class EstadoRips : BaseEntity
     {
-        public int? EsRiId { get; set; }
         public string? EsRiNombre { get; set; }
 
     }

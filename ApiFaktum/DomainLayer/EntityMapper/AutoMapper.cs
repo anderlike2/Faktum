@@ -160,6 +160,21 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<ConsultaRips, ConsultaRipsDto>().ReverseMap();
             CreateMap<ConsultaRipsDto, ConsultaRips>();
+
+            CreateMap<ProcedimientoRips, ProcedimientoRipsDto>().ReverseMap();
+            CreateMap<ProcedimientoRipsDto, ProcedimientoRips>();
+
+            CreateMap<MedicamentosRips, MedicamentosRipsDto>().ReverseMap();
+            CreateMap<MedicamentosRipsDto, MedicamentosRips>();
+
+            CreateMap<UrgenciaRips, UrgenciaRipsDto>().ReverseMap();
+            CreateMap<UrgenciaRipsDto, UrgenciaRips>();
+
+            CreateMap<HospitalizacionRips, HospitalizacionRipsDto>().ReverseMap();
+            CreateMap<HospitalizacionRipsDto, HospitalizacionRips>();
+
+            CreateMap<RecienNacidoRips, RecienNacidoRipsDto>().ReverseMap();
+            CreateMap<RecienNacidoRipsDto, RecienNacidoRips>();
         }
     }
 }

@@ -19,7 +19,7 @@ namespace ServiceLayer.Service
         /// Anderson Benavides
         /// Constructor por defecto
         /// </summary>
-        /// <param name="_objClienteRepository"></param>
+        /// <param name="_objConsultaRipsRepository"></param>
         /// <returns></returns>
         public ConsultaRipsService(IConsultaRipsRepository _objConsultaRipsRepository)
         {

@@ -447,9 +447,6 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("CoRiGrupoServicios")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CoRiId")
-                        .HasColumnType("int");
-
                     b.Property<string>("CoRiModGrSerAtencion")
                         .HasColumnType("nvarchar(max)");
 
@@ -977,6 +974,32 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("EstadoDianFactura");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.EstadoRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("EsRiNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EstadoRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.FactSaludTipoModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1294,6 +1317,68 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("FormatoImpresion");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.HospitalizacionRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HoRiCausaMotivoAtencion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiCodComplicacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiCodigoDiagPrincipal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiCodigoDiagRel1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiCodigoDiagRel2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiCodigoDiagRel3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiConDestUsuarioOe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("HoRiFechaInicioAtencion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("HoRiNumAutoriza")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiUsuariosRips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HoRiViaIngreso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCodDiagMuerte")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UrRiFechaEgreso")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("HospitalizacionRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.ImpuestoModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1334,6 +1419,35 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Impuesto");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.IncapacidadRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("InRiCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InRiNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("IncapacidadRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.IumModel", b =>
@@ -1455,6 +1569,127 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("LocaDeptoId");
 
                     b.ToTable("Localidad");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.MedicamentosRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MeRiCantidadDisp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiCodigoDiagPrincipal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiCodigoDiagRel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiConcentracion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiDetaBorrador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("MeRiDisp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MeRiFormaFarmaceutica")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiMiPresid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiNombreMedicamento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiNumAutoriza")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiNumDias")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiNumDocMedico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiNumFactPagoMod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiPrestador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("MeRiTipoIdMedico")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MeRiTipoMed")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiTipoPagoModerador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiUnidad")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiUnidadMinimaDisp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiUsuariosRips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiValUnitario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiValorPagoModerador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MeRiValorServicio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MedicamentosRips");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ModalidadAtencionRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MoAtCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MoAtNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ModalidadAtencionRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ModalidadPagoModel", b =>
@@ -1617,6 +1852,126 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("NotaDebito");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ObjetoRaiz", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EstadoRipsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FacturaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ObRaBorrador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ObRaEmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ObRaEstadoRipsId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ObRaFacturaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ObRaGenerado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ObRaJsOn")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ObRaNumBorrador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ObRaNumNc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ObRaNumNd")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ObRaOperador")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ObRaOrigenRipsId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ObRaTerminado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ObRaTipoNotaRipsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrigenRipsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoNotaRipsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.HasIndex("EstadoRipsId");
+
+                    b.HasIndex("FacturaId");
+
+                    b.HasIndex("OrigenRipsId");
+
+                    b.HasIndex("TipoNotaRipsId");
+
+                    b.ToTable("ObjetoRaiz");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.OrigenRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OrRiNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OrigenRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.OtroProductoModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1653,6 +2008,74 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("OtrosProductos");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.OtroServicioRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("OtRiCodCups")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiDetaBorrador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("OtRiFechaServicio")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("OtRiIdMiPres")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OtRiNumAutoriza")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiNumDocMedico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiNumFactPagoMod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiPrestador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("OtRiTipoIdMedico")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OtRiTipoOtro")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiTipoPagoModerador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiUsuarioRips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiVUnitario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiValorPagoModerador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OtRiValorServicio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("OtroServicioRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.PaisModel", b =>
                 {
                     b.Property<int>("Id")
@@ -1682,6 +2105,92 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Pais");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.ProcedimientoRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PrRiCodCups")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiCodigoDiagPrincipal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiCodigoDiagRel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiCodigoServicios")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiComplicacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiDetaBorrador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("PrRiFechaCons")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PrRiFinalidadConsulta")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiGrupoServicios")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PrRiIdMPres")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PrRiModGrServAtencion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiNUmAutoriza")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiNumDocMedico")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiNumFactPagoMod")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiPrestador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("PrRiTipoIdMedico")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PrRiTipoPagoModerador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiValorPagoModerador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiValorProcedimiento")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrRiViaIngresoUsuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PriUsuarioRips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProcedimientoRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.ProductoModel", b =>
@@ -1788,6 +2297,65 @@ namespace RepositoryLayer.Migrations
                     b.HasIndex("ProdUnidadId");
 
                     b.ToTable("Producto");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.RecienNacidoRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RnRiCodDiagMuerte")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiCodigoDiagPrincipal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiConDestUsuarioE")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiEdadGestacional")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiFechaEgreso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("RnRiFechaNac")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RnRiPeso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiPrestador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiRoConsPreNatal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiSexo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnRiTipoRNid")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RnUsuarioRips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RecienNacidoRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.RegimenModel", b =>
@@ -2084,6 +2652,35 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("RolUsuario");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ServicioRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SeRiCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SeRiNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ServicioRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.SucursalModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2345,6 +2942,35 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("TipoDocElectr");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.TipoDocRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TiDrCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TiDrNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoDocRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.TipoIdModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2374,6 +3000,93 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TipoId");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.TipoNotaRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TiNrCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TiNrNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoNotaRips");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.TipoOtroServicioRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TiOtCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TiOtNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoOtroServicioRips");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.TipoUsuariosRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TiRiCodigo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TiRiNombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoUsuariosRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.UnidadModel", b =>
@@ -2417,6 +3130,65 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Unidad");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.UrgenciaRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("URiCodigoDiagPrincipalE")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCausaMotivoAtencio")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCodigoDiagPrincipal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCodigoDiagRel1")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCodigoDiagRel2")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCodigoDiagRel3")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiConDestUsuarioE")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiCondDiagMuerte")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UrRiFechaCons")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UrRiFechaEgreso")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiPrestador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrRiUsuarioRips")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UrgenciaRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.UsuarioModel", b =>
                 {
                     b.Property<int>("Id")
@@ -2452,7 +3224,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("Usuario");
                 });
 
-            modelBuilder.Entity("DomainLayer.Models.UsuarioSaludRips", b =>
+            modelBuilder.Entity("DomainLayer.Models.UsuarioRips", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -2470,6 +3242,44 @@ namespace RepositoryLayer.Migrations
                     b.Property<DateTime?>("FechaModificacion")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UsRiObjetoRaiz")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UsRiUsuario")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UsuarioRips");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.UsuarioSaludRips", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("EmpresaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Estado")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FechaCreacion")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TipoDocRipsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TipoUsuariosRipsId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UsUaATelefono")
                         .HasColumnType("nvarchar(max)");
 
@@ -2482,14 +3292,11 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("UsUaDireccion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsUaEmpresa")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UsUaEmpresaId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UsUaFechaNac")
                         .HasColumnType("datetime2");
-
-                    b.Property<int?>("UsUaId")
-                        .HasColumnType("int");
 
                     b.Property<string>("UsUaNumeroDoc")
                         .HasColumnType("nvarchar(max)");
@@ -2515,16 +3322,22 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("UsUaSexo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UsUaTipoDocRips")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UsUaTipoDocRipsId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("UsUaTipoUsuario")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("UsUaTipoUsuarioRips")
+                        .HasColumnType("int");
 
                     b.Property<string>("UsUaZonaTerritorial")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmpresaId");
+
+                    b.HasIndex("TipoDocRipsId");
+
+                    b.HasIndex("TipoUsuariosRipsId");
 
                     b.ToTable("UsuarioSaludRips");
                 });
@@ -3048,6 +3861,49 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("NodbEmpresa");
                 });
 
+            modelBuilder.Entity("DomainLayer.Models.ObjetoRaiz", b =>
+                {
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.EstadoRips", "EstadoRips")
+                        .WithMany()
+                        .HasForeignKey("EstadoRipsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.FacturaModel", "Factura")
+                        .WithMany()
+                        .HasForeignKey("FacturaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.OrigenRips", "OrigenRips")
+                        .WithMany()
+                        .HasForeignKey("OrigenRipsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.TipoNotaRips", "TipoNotaRips")
+                        .WithMany()
+                        .HasForeignKey("TipoNotaRipsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+
+                    b.Navigation("EstadoRips");
+
+                    b.Navigation("Factura");
+
+                    b.Navigation("OrigenRips");
+
+                    b.Navigation("TipoNotaRips");
+                });
+
             modelBuilder.Entity("DomainLayer.Models.OtroProductoModel", b =>
                 {
                     b.HasOne("DomainLayer.Models.EmpresaModel", "OtprEmpresa")
@@ -3223,6 +4079,33 @@ namespace RepositoryLayer.Migrations
                         .IsRequired();
 
                     b.Navigation("UnidEmpresa");
+                });
+
+            modelBuilder.Entity("DomainLayer.Models.UsuarioSaludRips", b =>
+                {
+                    b.HasOne("DomainLayer.Models.EmpresaModel", "Empresa")
+                        .WithMany()
+                        .HasForeignKey("EmpresaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.TipoDocRips", "TipoDocRips")
+                        .WithMany()
+                        .HasForeignKey("TipoDocRipsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("DomainLayer.Models.TipoUsuariosRips", "TipoUsuariosRips")
+                        .WithMany()
+                        .HasForeignKey("TipoUsuariosRipsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Empresa");
+
+                    b.Navigation("TipoDocRips");
+
+                    b.Navigation("TipoUsuariosRips");
                 });
 
             modelBuilder.Entity("DomainLayer.Models.VendedorModel", b =>

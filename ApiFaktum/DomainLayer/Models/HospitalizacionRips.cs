@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class HospitalizacionRips
+    public class HospitalizacionRips : BaseEntity
     {
-        public int? HoRiId { get; set; }
         public string? HoRiUsuariosRips { get; set; }
         public string? HoRiViaIngreso { get; set; }
         public DateTime? HoRiFechaInicioAtencion { get; set; }
