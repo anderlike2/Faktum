@@ -59,8 +59,6 @@ export class EditarListaPrecioComponent implements OnInit {
     const formControls: { [key: string]: any } = {
       liprNombre: [ { value: '', disabled: false }, [ Validators.required ] ],
       liprDescripcion: [ { value: '', disabled: false }, [ Validators.required ] ],
-      liprDescuento: [ { value: '', disabled: false }, [ Validators.required ] ],
-      liprValor: [ { value: '', disabled: false }, [ Validators.required ] ],
       liprEstadoOperacion: [ { value: '', disabled: false }, [ Validators.required ] ]
     };
 
@@ -75,18 +73,6 @@ export class EditarListaPrecioComponent implements OnInit {
 
   get liprDescripcionErrorMensaje(): string {
     const form: AbstractControl = this.listaFormatoFormGroup.get('liprDescripcion') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-  get liprDescuentoErrorMensaje(): string {
-    const form: AbstractControl = this.listaFormatoFormGroup.get('liprDescuento') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-  get liprValorErrorMensaje(): string {
-    const form: AbstractControl = this.listaFormatoFormGroup.get('liprValor') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
@@ -124,7 +110,7 @@ export class EditarListaPrecioComponent implements OnInit {
 
     dataBody.id = this.listaPrecioData.id;
     dataBody.estado = this.listaPrecioData.estado;
-    dataBody.liprProductoId = this.listaPrecioData.liprProductoId;
+    dataBody.liprEmpresaId = this.listaPrecioData.liprEmpresaId;
     dataBody.fechaCreacion = this.listaPrecioData.fechaCreacion;
     dataBody.fechaModificacion = this.listaPrecioData.fechaModificacion;
 

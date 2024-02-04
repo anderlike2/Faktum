@@ -70,6 +70,7 @@ namespace RepositoryLayer.Data
         public DbSet<OtroProductoModel> OtrosProductos { get; set; }
         public DbSet<ResolucionSucursalModel> ResolucionSucursal { get; set; }
         public DbSet<ObjetoRaiz> ObjetoRaiz { get; set; }
+        public DbSet<ListaPrecioProductoModel> ListaPrecioProducto { get; set; }
         public DbSet<ConsultaRips> ConsultaRips { get; set; }
         public DbSet<EstadoRips> EstadoRips { get; set; }   
         public DbSet<HospitalizacionRips> HospitalizacionRips { get; set; }

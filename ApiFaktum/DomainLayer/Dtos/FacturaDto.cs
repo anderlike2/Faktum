@@ -9,12 +9,12 @@ namespace DomainLayer.Dtos
         public long FactContador { get; set; }
         public string? FactContrato { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactCopago { get; set; }
+        public decimal? FactCopago { get; set; }
         public string? FactCufe { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactCuotaRecupera { get; set; }
+        public decimal? FactCuotaRecupera { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactDescGlobal { get; set; }
+        public decimal? FactDescGlobal { get; set; }
         public string? FactDespacho { get; set; }
         public int FactEstadoOperacion { get; set; }
         public DateTime? FactFecha { get; set; }
@@ -27,24 +27,24 @@ namespace DomainLayer.Dtos
         public string? FactObservaciones { get; set; }
         public string? FactOperador { get; set; }
         public string? FactOrden { get; set; }
-        public string? FactPoliza { get; set; }
-        public string? FactPorcIva { get; set; }
+        public decimal? FactPoliza { get; set; }
+        public decimal? FactPorcIva { get; set; }
         public string? FactRecepcion { get; set; }
         public string? FactRemision { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactSubtotal { get; set; }
+        public decimal? FactSubtotal { get; set; }
         public string? FactSucursal { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactTotalIva { get; set; }
-        public string? FactTotalReteIca { get; set; }
+        public decimal? FactTotalIva { get; set; }
+        public decimal? FactTotalReteIca { get; set; }
         public string? FactTrm { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactValAnticipo { get; set; }
+        public decimal? FactValAnticipo { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactValor { get; set; }
+        public decimal? FactValor { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal FactValorDescuento { get; set; }
-        public string? FactValTotRetefuente { get; set; }
+        public decimal? FactValorDescuento { get; set; }
+        public decimal? FactValTotRetefuente { get; set; }
         public string? FactVendedor { get; set; }
 
         //Referencias para consultas
@@ -59,7 +59,6 @@ namespace DomainLayer.Dtos
         public int FactSaludTipoId { get; set; }
         public int FactTipoDescuentoId { get; set; }
         public int FactTipoDocElectrId { get; set; }
-        public int FactListaPreciosId { get; set; }
         public int FactNotaDebitoId { get; set; }
         public int FactNotaCreditoId { get; set; }
         public int FactClienteId { get; set; }

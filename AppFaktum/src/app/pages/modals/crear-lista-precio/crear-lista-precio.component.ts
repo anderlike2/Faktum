@@ -1,10 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { map } from 'rxjs/operators';
 import { IEmpresa } from 'src/app/models/empresa.model';
 import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
-import { IListCombo } from 'src/app/models/general.model';
 import { IListaPrecio } from 'src/app/models/lista-precio.model';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { ListaPrecioService } from 'src/app/services/lista-precio-service/lista-precio.service';
@@ -18,7 +16,7 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 })
 export class CrearListaPrecioComponent implements OnInit {
 
-  @Input() productoID: number;
+  @Input() empresaID: number;
 
   listaPrecioFormGroup: FormGroup;
   fb = new FormBuilder();
@@ -44,8 +42,6 @@ export class CrearListaPrecioComponent implements OnInit {
     const formControls: { [key: string]: any } = {
       liprNombre: [ { value: '', disabled: false }, [ Validators.required ] ],
       liprDescripcion: [ { value: '', disabled: false }, [ Validators.required ] ],
-      liprDescuento: [ { value: '', disabled: false }, [ Validators.required ] ],
-      liprValor: [ { value: '', disabled: false }, [ Validators.required ] ],
       liprEstadoOperacion: [ { value: '', disabled: false }, [ Validators.required ] ]
     };
 
@@ -60,18 +56,6 @@ export class CrearListaPrecioComponent implements OnInit {
 
   get liprDescripcionErrorMensaje(): string {
     const form: AbstractControl = this.listaPrecioFormGroup.get('liprDescripcion') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-  get liprDescuentoErrorMensaje(): string {
-    const form: AbstractControl = this.listaPrecioFormGroup.get('liprDescuento') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-
-  get liprValorErrorMensaje(): string {
-    const form: AbstractControl = this.listaPrecioFormGroup.get('liprValor') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
@@ -92,21 +76,21 @@ export class CrearListaPrecioComponent implements OnInit {
 
     dataBody.id = 0;
     dataBody.estado = 1;
-    dataBody.liprProductoId = this.productoID;
+    dataBody.liprEmpresaId = this.empresaID;
 
     this.listaPrecioService.crearListaPrecio(dataBody).subscribe({
       next: (response: any) => {
         if (!response?.success) {
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
         }else{
-           this.cerrarModal();
+           this.cerrarModal(true);
            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
       }
     });
   }
 
-  cerrarModal() {
-    this.modalRef.close();
+  cerrarModal(info?: any) {
+    this.modalRef.close(info);
   }
 }

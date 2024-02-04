@@ -158,17 +158,17 @@ namespace ApiFaktum.Controllers
         /// Anderson Benavides
         /// Metodo para consultar la lista de precios por di
         /// </summary>
-        /// <param name="idProducto"></param>
+        /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
         [HttpGet]
-        [Route("ConsultarListaPrecioProducto")]
-        public async Task<IActionResult> ConsultarListaPrecioProducto(int idProducto)
+        [Route("ConsultarListaPrecioEmpresa")]
+        public async Task<IActionResult> ConsultarListaPrecioEmpresa(int idEmpresa)
         {
             Result oRespuesta = new();
 
             try
             {
-                var vRespuesta = await objService.ConsultarListaPrecioProducto(idProducto);
+                var vRespuesta = await objService.ConsultarListaPrecioEmpresa(idEmpresa);
 
                 oRespuesta.Success = vRespuesta.Success;
                 oRespuesta.Message = vRespuesta.Message;

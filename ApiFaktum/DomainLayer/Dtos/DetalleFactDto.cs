@@ -5,32 +5,32 @@ namespace DomainLayer.Dtos
     public class DetalleFactDto : BaseDto
     {
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaCantidad { get; set; }
+        public decimal? DetaCantidad { get; set; }
         public long DetaCentroCostos { get; set; }
         public string? DetaDescripcion { get; set; }
         public string? DetaFactCodigo { get; set; }
         public DateTime? DetaFechaDespacho { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaIva { get; set; }
+        public decimal? DetaIva { get; set; }
         public int DetaLinea { get; set; }
         public string? DetaListaPrecio { get; set; }
         public string? DetaOrdenCompra { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaPorDescuento { get; set; }
+        public decimal? DetaPorDescuento { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaPorcIva { get; set; }
+        public decimal? DetaPorcIva { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaPorcCrf { get; set; }
+        public decimal? DetaPorcCrf { get; set; }
         public long DetaProducto { get; set; }
         public string? DetaRemision { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValor { get; set; }
+        public decimal? DetaValor { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValorUnitario { get; set; }
+        public decimal? DetaValorUnitario { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValReteIca { get; set; }
+        public decimal? DetaValReteIca { get; set; }
         [Column(TypeName = "decimal(18,2)")]
-        public decimal DetaValRf { get; set; }
+        public decimal? DetaValRf { get; set; }
 
         //Referencias para consultas
         public int DetaEmpresaId { get; set; }
@@ -38,6 +38,5 @@ namespace DomainLayer.Dtos
         public int DetaRetefuenteId { get; set; }
         public int DetaTipoImpuestoId { get; set; }
         public int DetaUnidadId { get; set; }
-        public int DetaListaPreciosId { get; set; }
     }
 }

@@ -32,3 +32,8 @@ export enum GeneralesEnum {
   BTN_ACEPTAR = 'Aceptar'
 }
 
+export enum Mensajes{
+  MSG_SELECCIONA_LISTA_PRECIO = 'Por favor seleccionar una lista de precios.',
+  MSG_VALORES_OBLIGATORIOS = 'Debe diligenciar el Valor lista y Descuento de los productos seleccionados.'
+}
+

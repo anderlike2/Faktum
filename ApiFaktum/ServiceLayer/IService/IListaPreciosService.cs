@@ -48,10 +48,10 @@ namespace ServiceLayer.IService
         /// <summary>
         /// Katary
         /// Anderson Benavides
-        /// Metodo para consultar la lista de precios por producto
+        /// Metodo para consultar la lista de precios por empresa
         /// </summary>
-        /// <param name="idProducto"></param>
+        /// <param name="idEmpresa"></param>
         /// <returns>Task<Result></returns>
-        Task<Result> ConsultarListaPrecioProducto(int idProducto);
+        Task<Result> ConsultarListaPrecioEmpresa(int idEmpresa);
     }
 }

@@ -101,6 +101,11 @@ const routes: Routes = [
         canActivate: [LoginGuard]
       },
       {
+        path: RoutePathEnum.GESTION_LISTA_PRECIOS_PRODUCTO,
+        loadChildren: () => import('./pages/gestion-lista-precios-productos/gestion-lista-precios-productos.module').then(m => m.GestionListaPreciosProductosModule),
+        canActivate: [LoginGuard]
+      },
+      {
         path: 'home',
         component: HomeComponent,
         canActivate: [LoginGuard]

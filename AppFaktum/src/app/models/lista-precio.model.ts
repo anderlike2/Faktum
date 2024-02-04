@@ -1,11 +1,9 @@
 export interface IListaPrecio {
     id?: number;
-    liprDescripcion: string;
-    liprDescuento: number;
+    liprDescripcion: string;    
     liprEstadoOperacion: number;
     liprNombre: string;
-    liprValor: number;
-    liprProductoId: number;
+    liprEmpresaId: number;
     estado: number;
     fechaCreacion: string;
     fechaModificacion: string | null;

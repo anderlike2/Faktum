@@ -39,8 +39,8 @@ export class ListaPrecioService {
     )
   }
 
-  obtenerListaPrecioPorProducto(idProducto: number): Observable<IListaPrecio[]> {
-    const url = `${this.environment.faktumUrl}/ListaPrecio/ConsultarListaPrecioProducto?idProducto=${idProducto}`;
+  obtenerListaPrecioPorEmpresa(idEmpresa: number): Observable<IListaPrecio[]> {
+    const url = `${this.environment.faktumUrl}/ListaPrecio/ConsultarListaPrecioEmpresa?idEmpresa=${idEmpresa}`;
     return this.httpClient.get<IResponse<IListaPrecio[]>>(
       url
     ).pipe(

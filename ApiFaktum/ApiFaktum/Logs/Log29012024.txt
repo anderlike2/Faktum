@@ -1,0 +1,36 @@
+
+------------------------------------------------------------------------------------
+lunes, 29 de enero de 2024 5:18:33.89 p. m.
+Missing type map configuration or unsupported mapping.
+
+Mapping types:
+ListaPrecioProductoDto -> ListaPrecioProductoModel
+DomainLayer.Dtos.ListaPrecioProductoDto -> DomainLayer.Models.ListaPrecioProductoModel
+
+------------------------------------------------------------------------------------
+lunes, 29 de enero de 2024 5:19:47.25 p. m.
+An error occurred while saving the entity changes. See the inner exception for details.
+
+------------------------------------------------------------------------------------
+lunes, 29 de enero de 2024 5:29:40.39 p. m.
+Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> ListaPrecioProductoDto
+System.Collections.Generic.List`1[[DomainLayer.Models.ListaPrecioProductoModel, DomainLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> DomainLayer.Dtos.ListaPrecioProductoDto
+
+------------------------------------------------------------------------------------
+lunes, 29 de enero de 2024 5:31:38.45 p. m.
+Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> ListaPrecioProductoDto
+System.Collections.Generic.List`1[[DomainLayer.Models.ListaPrecioProductoModel, DomainLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> DomainLayer.Dtos.ListaPrecioProductoDto
+
+------------------------------------------------------------------------------------
+lunes, 29 de enero de 2024 6:55:53.59 p. m.
+Missing type map configuration or unsupported mapping.
+
+Mapping types:
+List`1 -> ListaPrecioProductoDto
+System.Collections.Generic.List`1[[DomainLayer.Models.ListaPrecioProductoModel, DomainLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]] -> DomainLayer.Dtos.ListaPrecioProductoDto

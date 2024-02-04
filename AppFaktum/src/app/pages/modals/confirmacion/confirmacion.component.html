@@ -1,0 +1,20 @@
+<div class="modal-header">
+    <h5 class="modal-title informacion-title">¡Importante!</h5>
+</div>
+
+<div class="modal-body">
+    <form class="d-flex flex-column">
+        <span>¿Está seguro de realizar la operación seleccionada?</span>
+    </form>
+</div>
+
+<div class="modal-footer">
+    <div class="d-flex justify-content-end m-2">
+      <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Cerrar modal" (click)="cerrarModal()">
+        <i class="fa fa-ban"></i>
+      </button>
+      <button class="btn btn-icon btn-primary ml-3" [placement]="'top'" ngbTooltip="Aceptar operación" (click)="guardar()">
+        <i class="fa fa-save"></i>
+      </button>
+    </div>
+</div>

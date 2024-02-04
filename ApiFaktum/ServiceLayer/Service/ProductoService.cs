@@ -98,10 +98,11 @@ namespace ServiceLayer.Service
         public Task<Result> ConsultarListasPreciosProducto(int idProducto)
         {
             Result oRespuesta = new Result();
+            List<ListaPrecioProductoDto> lstResultado = new List<ListaPrecioProductoDto>();
 
             try
             {
-                List<ListaPrecioProducto> lstResultado = new List<ListaPrecioProducto>();
+                /*
                 Task<Result> informacionUsuario = objProductoRepository.ConsultarProductoId(idProducto);
                 ProductoDto? infoProducto = (ProductoDto)informacionUsuario.Result.Data;
                 lstResultado.Add(new ListaPrecioProducto
@@ -115,12 +116,12 @@ namespace ServiceLayer.Service
                     PorcIva = infoProducto.ProdPorcIva,
                     Descuento = 0,
                     EsListaPrecio = false
-                });
+                });*/
 
-                Task<Result> informacionListaPrecios = objListaPreciosRepository.ConsultarListaPrecioProducto(idProducto);
-                List<ListaPrecioDto>? infoListaPrecios = (List<ListaPrecioDto>)informacionListaPrecios.Result.Data;
+                //Task<Result> informacionListaPrecios = objListaPreciosRepository.ConsultarListaPrecioProducto(idProducto);
+                //List<ListaPrecioDto>? infoListaPrecios = (List<ListaPrecioDto>)informacionListaPrecios.Result.Data;
 
-                foreach (ListaPrecioDto item in infoListaPrecios)
+                /*foreach (ListaPrecioDto item in infoListaPrecios)
                 {
                     lstResultado.Add(new ListaPrecioProducto
                     {
@@ -128,13 +129,11 @@ namespace ServiceLayer.Service
                         Marca = string.Empty,
                         Modelo = string.Empty,
                         Nombre = item.LiprNombre,
-                        Valor = item.LiprValor,
                         PorcReteFuente = 0,
                         PorcIva = 0,
-                        Descuento = item.LiprDescuento,
                         EsListaPrecio = true
                     });
-                }
+                }*/
 
                 oRespuesta.Success = true;
                 oRespuesta.Message = Constantes.msjConsultaExitosa;

@@ -1,0 +1,24 @@
+
+------------------------------------------------------------------------------------
+miércoles, 31 de enero de 2024 5:41:44.36 p. m.
+One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+
+------------------------------------------------------------------------------------
+miércoles, 31 de enero de 2024 5:48:28.87 p. m.
+One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+
+------------------------------------------------------------------------------------
+miércoles, 31 de enero de 2024 5:50:12.30 p. m.
+One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+
+------------------------------------------------------------------------------------
+miércoles, 31 de enero de 2024 5:51:20.23 p. m.
+One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+
+------------------------------------------------------------------------------------
+miércoles, 31 de enero de 2024 5:51:59.11 p. m.
+One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)
+
+------------------------------------------------------------------------------------
+miércoles, 31 de enero de 2024 5:52:24.81 p. m.
+One or more errors occurred. (A second operation was started on this context instance before a previous operation completed. This is usually caused by different threads concurrently using the same instance of DbContext. For more information on how to avoid threading issues with DbContext, see https://go.microsoft.com/fwlink/?linkid=2097913.)

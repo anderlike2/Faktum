@@ -7,6 +7,7 @@ import { FormatosImpresionComponent } from '../formatos-impresion/formatos-impre
 import { UnidadesComponent } from '../unidades/unidades.component';
 import { OtrosProductosComponent } from '../otros-productos/otros-productos.component';
 import { ResolucionesComponent } from '../resoluciones/resoluciones.component';
+import { ListasPreciosComponent } from '../listas-precios/listas-precios.component';
 
 const gestionEmpresaRoutes: Routes = [
   {
@@ -36,7 +37,11 @@ const gestionEmpresaRoutes: Routes = [
   {
     path: 'resoluciones',
     component: ResolucionesComponent
-  }
+  },
+  {
+    path: 'listas-precios',
+    component: ListasPreciosComponent
+  },
 ];
 
 @NgModule({

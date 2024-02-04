@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-sm-12">
+
+        <app-card [hidHeader]="true" [options]="false">
+            <div class="d-flex align-items-center justify-content-between" role="button">
+              <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="listaPrecioCollapsed = !listaPrecioCollapsed" [attr.aria-expanded]="!listaPrecioCollapsed" aria-controls="collapseListaPrecio">
+                <h5 class="font-weight-bold mb-0">Lista Precios</h5>
+                <i class="fa" [ngClass]="{'fa-chevron-up': listaPrecioCollapsed, 'fa-chevron-down': !listaPrecioCollapsed }"></i>
+              </div>
+            </div>
+            <hr>
+            <div id="collapseContratos" [ngbCollapse]="listaPrecioCollapsed">
+              <div class="d-flex justify-content-end m-2">
+                <button class="btn btn-icon btn-primary" pTooltip="Crear lista precio" tooltipPosition="left" (click)="abrirModalListaPrecio()">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+              <p-table [columns]="colsListaPreciosProducto" [value]="listListaPrecios" selectionMode="single" [(selection)]="seletedListaPrecio" [scrollable]="true" [rows]="10">
+                <ng-template pTemplate="header" let-columns>
+                    <tr>
+                        <th *ngFor="let col of columns">
+                            {{col.header}}
+                        </th>
+                        <th [style.width.rem]="5"></th>
+                    </tr>
+                    </ng-template>
+      
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                    <tr style="height:34px" [pSelectableRow]="rowData">
+                        <td *ngFor="let col of columns">
+                            {{rowData[col.field]}}
+                        </td>
+                        <td [style.width.rem]="5" class="text-center">
+                          <button class="btn btn-icon btn-dark icon-detail-style" pTooltip="Ver lista precio" tooltipPosition="left" (click)="verListaPrecio(rowData)">
+                            <i class="fa fa-search"></i>
+                          </button>
+                        </td>
+                        <td [style.width.rem]="5" class="text-center">
+                          <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar lista precio" tooltipPosition="left">
+                            <i class="fa fa-trash"></i>
+                          </button>                   
+                        </td>
+                    </tr>
+                </ng-template>
+              </p-table>
+            </div>
+          </app-card>
+
+    </div>
+</div>

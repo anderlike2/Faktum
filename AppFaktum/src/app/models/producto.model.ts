@@ -22,6 +22,10 @@ export interface IProducto {
   prodOtroProductoId: number;
   fechaCreacion: string;
   fechaModificacion: string | null;
+
+  prodValorLista?: number;
+  prodValorDescuento?: number;
+  prodSeleccionado?: boolean | false;
 }
 
 export enum tipoConceptoEnum {

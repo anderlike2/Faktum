@@ -81,12 +81,15 @@ namespace DependencyInjection
             services.AddScoped(typeof(IResolucionSucursalRepository), typeof(ResolucionSucursalRepository));
             services.AddScoped(typeof(IUsuarioSaludRipsRepository), typeof(UsuarioSaludRipsRepository));
             services.AddScoped(typeof(IConsultaRipsRepository), typeof(ConsultaRipsRepository));
+
             services.AddScoped(typeof(IProcedimientoRipsRepository), typeof(ProcedimientoRipsRepository));
             services.AddScoped(typeof(IMedicamentosRipsRepository), typeof(MedicamentosRipsRepository));
             services.AddScoped(typeof(IUrgenciaRipsRepository), typeof(UrgenciaRipsRepositoy));
             services.AddScoped(typeof(IHospitalizacionRipsRepository), typeof(HospitalizacionRipsRepository));
             services.AddScoped(typeof(IRecienNacidoRipsRepository), typeof(RecienNacidoRipsRepository));
             services.AddScoped(typeof(IOtroServicioRipsRepository), typeof(OtroServicioRipsRepository));
+            services.AddScoped(typeof(IListaPrecioProductoRepository), typeof(ListaPrecioProductoRepository));
+
 
             services.AddScoped(typeof(IUsuarioService), typeof(UsuarioService));
             services.AddScoped(typeof(IMaestrasService), typeof(MaestrasService));
@@ -112,6 +115,9 @@ namespace DependencyInjection
             services.AddScoped(typeof(IHospitalizacionRipsService), typeof(HospitalizacionRipsService));
             services.AddScoped(typeof(IRecienNacidoRipsService), typeof(RecienNacidoRipsService));
             services.AddScoped(typeof(IOtroServicioRipsService), typeof(OtroServicioRipsService));
+
+            services.AddScoped(typeof(IListaPrecioProductoService), typeof(ListaPrecioProductoService));
+
 
             services.AddTransient<IAuthToken, AuthToken>();
 

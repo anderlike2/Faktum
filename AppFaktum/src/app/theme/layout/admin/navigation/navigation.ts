@@ -102,6 +102,13 @@ const NavigationItems = [
             url: '/gestion-empresa/resoluciones',
             external: false
           },
+          {
+            id: 'listas-precios',
+            title: 'Listas precios',
+            type: 'item',
+            url: '/gestion-empresa/listas-precios',
+            external: false
+          },
         ]
       },
       {
@@ -145,6 +152,13 @@ const NavigationItems = [
             title: 'Ver detalle',
             type: 'item',
             url: '/gestion-producto/detalle-producto',
+            external: false
+          },
+          {
+            id: 'detalle-lista-precios-productos',
+            title: 'Asociar lista precios',
+            type: 'item',
+            url: '/gestion-lista-precios-productos/detalle-lista-precios-productos',
             external: false
           }
         ]

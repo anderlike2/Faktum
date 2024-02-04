@@ -175,6 +175,9 @@ namespace DomainLayer.EntityMapper
 
             CreateMap<RecienNacidoRips, RecienNacidoRipsDto>().ReverseMap();
             CreateMap<RecienNacidoRipsDto, RecienNacidoRips>();
+
+            CreateMap<ListaPrecioProductoModel, ListaPrecioProductoDto>().ReverseMap();
+            CreateMap<ListaPrecioProductoDto, ListaPrecioProductoModel>();
         }
     }
 }
