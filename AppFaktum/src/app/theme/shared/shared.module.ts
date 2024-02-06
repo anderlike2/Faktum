@@ -17,6 +17,7 @@ import {ToastService} from './components/toast/toast.service';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import {LightboxModule} from 'ngx-lightbox';
 import { LoaderFaktumComponent } from './components/loader-faktum/loader-faktum.component';
+import { PercentInputDirective } from 'src/app/shared/percent-input-directive/percent-input.directive';
 
 /*import 'hammerjs';
 import 'mousetrap';
@@ -56,7 +57,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ApexChartComponent,
     GalleryComponent,
     ToastComponent,
-    LoaderFaktumComponent
+    LoaderFaktumComponent,
+    PercentInputDirective
   ],
   declarations: [
     DataFilterPipe,
@@ -66,7 +68,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ApexChartComponent,
     ToastComponent,
     GalleryComponent,
-    LoaderFaktumComponent
+    LoaderFaktumComponent,
+    PercentInputDirective
   ],
   providers: [
     {

@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class ServicioRips
+    public class ServicioRips : BaseEntity
     {
-        public int? SeRiId { get; set; }
         public string? SeRiCodigo { get; set; }
         public string? SeRiNombre { get; set; }
 

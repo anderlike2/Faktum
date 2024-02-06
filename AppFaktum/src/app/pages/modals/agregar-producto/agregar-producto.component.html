@@ -20,8 +20,13 @@
               [inputFormatter]="formatterInput"
               [resultFormatter]="formatterResult"
               [editable]="false"
-              (blur)="onBlurFormat()"
+              (blur)="onBlurFormat()" [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaDescripcion.invalid &&
+                  productoFormGroup.controls.detaDescripcion.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaDescripcionErrorMensaje }} </div>
           </div>
         </div>
 
@@ -32,7 +37,13 @@
               type="text"
               class="form-control"
               formControlName="detaFactCodigo"
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaFactCodigo.invalid &&
+                  productoFormGroup.controls.detaFactCodigo.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaFactCodigoErrorMensaje }} </div>
           </div>
         </div>
 
@@ -91,11 +102,16 @@
         <div class="col-4">
           <div class="form-group">
             <label>Unidad medida</label>
-            <select class="form-control" formControlName="detaUnidadId" >
+            <select class="form-control" formControlName="detaUnidadId" [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.detaUnidadId.invalid &&
+                productoFormGroup.controls.detaUnidadId.touched
+              }">
               <ng-container *ngFor="let item of listaUnidadMedida">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ detaUnidadIdErrorMensaje }} </div>
           </div>
         </div>
 
@@ -106,7 +122,14 @@
               type="text"
               class="form-control"
               formControlName="detaCantidad"
+              mask="0*"
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaCantidad.invalid &&
+                  productoFormGroup.controls.detaCantidad.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaCantidadErrorMensaje }} </div>
           </div>
         </div>
 
@@ -117,7 +140,14 @@
               type="text"
               class="form-control"
               formControlName="detaValorUnitario"
+              prefix="$ " mask="separator.2" thousandSeparator=","
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaValorUnitario.invalid &&
+                  productoFormGroup.controls.detaValorUnitario.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaValorUnitarioErrorMensaje }} </div>
           </div>
         </div>
 
@@ -132,7 +162,14 @@
               type="text"
               class="form-control"
               formControlName="detaPorDescuento"
+              percentInput
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaPorDescuento.invalid &&
+                  productoFormGroup.controls.detaPorDescuento.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaPorDescuentoErrorMensaje }} </div>
           </div>
         </div>
 
@@ -143,7 +180,14 @@
               type="text"
               class="form-control"
               formControlName="detaPorcIva"
+              percentInput
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaPorcIva.invalid &&
+                  productoFormGroup.controls.detaPorcIva.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaPorcIvaErrorMensaje }} </div>
           </div>
         </div>
 
@@ -154,7 +198,14 @@
               type="text"
               class="form-control"
               formControlName="detaIva"
+              prefix="$ " mask="separator.2" thousandSeparator=","
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaIva.invalid &&
+                  productoFormGroup.controls.detaIva.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaIvaErrorMensaje }} </div>
           </div>
         </div>
 
@@ -169,7 +220,14 @@
               type="text"
               class="form-control"
               formControlName="detaPorcCrf"
+              percentInput
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaPorcCrf.invalid &&
+                  productoFormGroup.controls.detaPorcCrf.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaPorcCrfErrorMensaje }} </div>
           </div>
         </div>
 
@@ -180,7 +238,14 @@
               type="text"
               class="form-control"
               formControlName="detaValRf"
+              prefix="$ " mask="separator.2" thousandSeparator=","
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaValRf.invalid &&
+                  productoFormGroup.controls.detaValRf.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaValRfErrorMensaje }} </div>
           </div>
         </div>
 
@@ -191,7 +256,14 @@
               type="text"
               class="form-control"
               formControlName="detaValReteIca"
+              prefix="$ " mask="separator.2" thousandSeparator=","
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaValReteIca.invalid &&
+                  productoFormGroup.controls.detaValReteIca.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaValReteIcaErrorMensaje }} </div>
           </div>
         </div>
 
@@ -201,23 +273,34 @@
 
         <div class="col-4">
           <div class="form-group">
-            <label>Lista precio</label>
-            <select class="form-control" formControlName="detaListaPreciosId" >
-              <ng-container *ngFor="let item of listaPrecioLista">
-                <option [value]="item.valor">{{item.nombre}}</option>
-              </ng-container>
-            </select>
+            <label>Linea</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="detaLinea"
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaLinea.invalid &&
+                  productoFormGroup.controls.detaLinea.touched
+                }"
+            />
+            <div class="invalid-feedback"> {{ detaLineaErrorMensaje }} </div>
           </div>
         </div>
 
         <div class="col-4">
           <div class="form-group">
             <label>Tipo impuesto</label>
-            <select class="form-control" formControlName="detaTipoImpuestoId" >
+            <select class="form-control" formControlName="detaTipoImpuestoId" [ngClass]="{
+              'is-invalid':
+                productoFormGroup.controls.detaTipoImpuestoId.invalid &&
+                productoFormGroup.controls.detaTipoImpuestoId.touched
+              }">
               <ng-container *ngFor="let item of listaTipoImpuesto">
                 <option [value]="item.valor">{{item.nombre}}</option>
               </ng-container>
             </select>
+            <div class="invalid-feedback"> {{ detaTipoImpuestoIdErrorMensaje }} </div>
           </div>
         </div>
 
@@ -228,7 +311,14 @@
               type="text"
               class="form-control"
               formControlName="detaValor"
+              prefix="$ " mask="separator.2" thousandSeparator=","
+              [ngClass]="{
+                'is-invalid':
+                  productoFormGroup.controls.detaValor.invalid &&
+                  productoFormGroup.controls.detaValor.touched
+                }"
             />
+            <div class="invalid-feedback"> {{ detaValorErrorMensaje }} </div>
           </div>
         </div>
 
@@ -245,7 +335,7 @@
     <button class="btn btn-icon btn-danger" pTooltip="Cerrar modal" tooltipPosition="top" (click)="cerrarModal()">
       <i class="fa fa-ban"></i>
     </button>
-    <button class="btn btn-icon btn-primary ml-3" pTooltip="Agregar producto" tooltipPosition="top" >
+    <button class="btn btn-icon btn-primary ml-3" pTooltip="Agregar producto" tooltipPosition="top" (click)="adicionarProducto()" >
       <i class="fa fa-save"></i>
     </button>
   </div>

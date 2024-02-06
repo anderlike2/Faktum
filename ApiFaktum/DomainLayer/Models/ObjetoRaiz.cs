@@ -8,23 +8,43 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class ObjetoRaiz
+    public class ObjetoRaiz : BaseEntity
     {
-        public int? ObRaId { get; set; }
-        public string? ObRaEmpresa { get; set; }
+        [Required]
+        [MaxLength(9)]
         public string? ObRaNit { get; set; }
-        public string? ObRaNumFactura { get; set; }
-        public string? ObRaBorrador { get; set; }
-        public string? ObRaNumBorrador { get; set; }
-        public string? ObRaTipoNotaRips { get; set; }
-        public string? ObRaNumNc {  get; set; }
-        public string? ObRaNumNd { get; set; }
-        public string? ObRaOrigenRips { get; set; }
+        [Required]
+        [MaxLength(20)]
+        public string? ObRaNumNota {  get; set; }
         public string? ObRaJsOn { get; set; }
-        public string? ObRaEstadoRips { get; set; }
-        public string? ObRaTerminado { get; set; }
-        public string? ObRaGenerado { get; set; }
+        [Required]
+        public bool ObRaTerminado { get; set; }
+        [Required]
+        public bool ObRaGenerado { get; set; }
+        [Required]
         public string? ObRaOperador { get; set; }
+        [Required]
+        public virtual int ObRaEmpresaId { get; set; }
+        [Required]
+        public virtual int ObRaFacturaId { get; set; }
+        [Required]
+        public virtual int ObRaTipoNotaRipsId { get; set; }
+        [Required]
+        public virtual int ObRaOrigenRipsId { get; set; }
+        [Required]
+        public virtual int? ObRaEstadoRipsId { get; set; }
+
+
+        [Required]
+        public virtual EmpresaModel? ObRaEmpresa { get; set; }
+        [Required]
+        public virtual FacturaModel? ObRaFactura { get; set; }
+        [Required]
+        public virtual TipoNotaRips? ObRaTipoNotaRips { get; set; }
+        [Required]
+        public virtual OrigenRips? ObRaOrigenRips { get; set; }
+        [Required]
+        public virtual EstadoRips? ObRaEstadoRips { get; set; }
 
     }
 }

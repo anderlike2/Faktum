@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class IncapacidadRips
+    public class IncapacidadRips : BaseEntity
     {
-        public int? InRiId { get; set; }
         public string? InRiCodigo { get; set; }
         public string? InRiNombre { get; set; }
 

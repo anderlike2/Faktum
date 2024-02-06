@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class TipoOtroServicioRips
+    public class TipoOtroServicioRips : BaseEntity
     {
-        public int? TiOtId { get; set; }
         public string? TiOtCodigo { get; set; }
         public string? TiOtNombre { get; set; }
     }
