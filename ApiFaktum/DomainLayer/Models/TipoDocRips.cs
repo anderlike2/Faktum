@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DomainLayer.Models
 {
-    public class TipoDocRips
+    public class TipoDocRips : BaseEntity
     {
-        public int? TiDrId { get; set; }
+        [Required]
+        [MaxLength(2)]
         public string? TiDrCodigo { get; set; }
+        [Required]
         public string? TiDrNombre { get; set; }
 
     }
