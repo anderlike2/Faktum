@@ -11,7 +11,7 @@ import { IEmpresa } from 'src/app/models/empresa.model';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
-import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { AgregarProductoComponent } from '../../modals/agregar-producto/agregar-producto.component';
 import { CustomDateParserFormatter } from 'src/app/shared/datepicker/custom-date-parser-formatter';
 import { ICliente } from 'src/app/models/cliente.model';
@@ -157,7 +157,7 @@ export class CrearFacturaComponent implements OnInit {
     modalProducto.componentInstance.facturaData = {
       empresaId: this.dataEmpresa.id,
       listaPreciosId: this.listaPrecioId,
-      facturaId: 0
+      facturaId: this.facturaId
     };
 
     modalProducto.result.then((result) => {
@@ -871,9 +871,105 @@ export class CrearFacturaComponent implements OnInit {
 
     this.facturacionService.crearFactura(body).subscribe({
       next: (response) => {
-        console.log(response);
+        this.facturaId = response.data;
         this.verDetalleFactura = true;
       }
+    });
+
+  }
+
+  guardarFactura(): void {
+    if (this.encabezadoFormGroup.invalid && this.totalFacturaFormGroup.invalid) {
+      this.encabezadoFormGroup.markAllAsTouched();
+      this.totalFacturaFormGroup.markAllAsTouched();
+      return;
+    }
+
+    const formData = this.encabezadoFormGroup.getRawValue();
+    const totalFormData = this.totalFacturaFormGroup.getRawValue();
+
+    const dtalleFacturaBody = this.detalleFactura;
+
+    const body: IFactura = {
+      id: this.facturaId,
+      estado: 1,
+      fechaCreacion: null,
+      fechaModificacion: null,
+      factCuotaRecupera: formData.factCuotaRecupera,
+      factOperador: formData.factOperador,
+      factFechaInicio: formData.factFechaInicio ? moment(formData.factFechaInicio, 'DD/MM/YYYY').toDate() : null,
+      factFechaFinal: formData.factFechaFinal ? moment(formData.factFechaFinal, 'DD/MM/YYYY').toDate() : null,
+      factNumero: formData.factNumero,
+      factContador: formData.factContador,
+      factCompartidos: formData.factCompartidos,
+      factCufe: formData.factCufe,
+      factContrato: formData.factContrato,
+      factDespacho: formData.factDespacho,
+      factEstadoOperacion: formData.factEstadoOperacion,
+      factFechaTrm: moment(formData.factFechaTrm, 'DD/MM/YYYY').toDate(),
+      factCopago: formData.factCopago,
+      factDescGlobal: totalFormData.factDescGlobal,
+      factFecha: moment(formData.factFecha, 'DD/MM/YYYY').toDate(),
+      factFechaVence: moment(formData.factFechaVence, 'DD/MM/YYYY').toDate(),
+      factModalidadPago: formData.factModalidadPago,
+      factModeradora: formData.factModeradora,
+      factObservaciones: formData.factObservaciones,
+      factOrden: formData.factOrden,
+      factPoliza: formData.factPoliza,
+      factPorcIva: totalFormData.factPorcIva,
+      factRecepcion: formData.factRecepcion,
+      factRemision: formData.factRemision,
+      factSubtotal: totalFormData.factSubtotal,
+      factSucursal: formData.factSucursal,
+      factTotalIva: totalFormData.factTotalIva,
+      factTotalReteIca: totalFormData.factTotalReteIca,
+      factTrm: formData.factTrm,
+      factValAnticipo: totalFormData.factValAnticipo,
+      factValor: totalFormData.factValor,
+      factValorDescuento: totalFormData.factValorDescuento,
+      factValTotRetefuente: totalFormData.factValTotRetefuente,
+      factVendedor: formData.factVendedor,
+      factClaseFacturaId: formData.factClaseFacturaId,
+      factCoberturaId: formData.factCoberturaId,
+      factCondicionVentaId: formData.factCondicionVentaId,
+      factEmpresaId: this.dataEmpresa.id,
+      factEstadoDianId: formData.factEstadoDianId,
+      factFormaPagoId: formData.factFormaPagoId,
+      factFormatoImpresionId: formData.factFormatoImpresionId,
+      factMonedaId: formData.factMonedaId,
+      factSaludTipoId: formData.factSaludTipoId,
+      factTipoDescuentoId: formData.factTipoDescuentoId,
+      factTipoDocElectrId: formData.factTipoDocElectrId,
+      factListaPreciosId: formData.factListaPreciosId,
+      factNotaDebitoId: formData.factNotaDebitoId,
+      factNotaCreditoId: formData.factNotaCreditoId,
+      factClienteId: this.clienteEmpresa.id
+    }
+
+    Object.keys(body).forEach(key => {
+      if (body[key] === null) {
+        delete body[key];
+      }
+    });
+
+    this.listaPrecioId = formData.factListaPreciosId;
+
+    this.facturacionService.crearDetalleFactura(dtalleFacturaBody).subscribe({
+        next: (response: any) => {
+          if (!response?.success) {
+            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+          }
+        }
+    });
+
+    this.facturacionService.actualizarFactura(body).subscribe({
+        next: (response: any) => {
+          if (!response?.success) {
+            this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+          }else{
+             this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+          }
+        }
     });
 
   }

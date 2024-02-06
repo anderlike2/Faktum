@@ -616,7 +616,7 @@
     </app-card>
 
 
-    <ng-container *ngIf="verDetalleFactura">
+    <ng-container *ngIf="!verDetalleFactura">
 
       <app-card [hidHeader]="true" [options]="false">
 
@@ -791,6 +791,17 @@
           </div>
 
         </form>
+
+        <hr />
+
+        <div class="d-flex justify-content-end">
+          <!-- <button class="btn btn-icon btn-danger" [placement]="'top'" ngbTooltip="Guardar info" (click)="cancelarEdicion()">
+            <i class="fa fa-ban"></i>
+          </button> -->
+          <button class="btn btn-icon btn-primary ml-3" pTooltip="Guardar factura" tooltipPosition="left" (click)="guardarFactura()">
+            <i class="fa fa-save"></i>
+          </button>
+        </div>
 
       </app-card>
 
