@@ -59,8 +59,8 @@ namespace DomainLayer.Dtos
         public int FactSaludTipoId { get; set; }
         public int FactTipoDescuentoId { get; set; }
         public int FactTipoDocElectrId { get; set; }
-        public int FactNotaDebitoId { get; set; }
-        public int FactNotaCreditoId { get; set; }
+        public int? FactNotaDebitoId { get; set; }
+        public int? FactNotaCreditoId { get; set; }
         public int FactClienteId { get; set; }
     }
 }
