@@ -61,14 +61,24 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="">Operador</label>
-                <input type="text" class="form-control" formControlName="factOperador">
+                <input type="text" class="form-control" formControlName="factOperador" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factOperador.invalid &&
+                    encabezadoFormGroup.controls.factOperador.touched
+                   }">
+                <div class="invalid-feedback"> {{ factOperadorErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Fecha inicio</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" formControlName="factFechaInicio" ngbDatepicker #ds="ngbDatepicker">
+                  <input type="text" class="form-control" #fechaInicioInput id="factFechaInicio" formControlName="factFechaInicio" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factFechaInicio.invalid &&
+                      encabezadoFormGroup.controls.factFechaInicio.touched
+                     }">
+                  <input type="hidden" (dateSelect)="onDateSelect($event, 'factFechaInicio')" ngbDatepicker #ds="ngbDatepicker" [positionTarget]="fechaInicioInput">
                   <div class="input-group-append">
                     <button class="btn btn-secondary calendar" (click)="ds.toggle()"
                       [disabled]="encabezadoFormGroup.get('factFechaInicio').disabled"
@@ -77,13 +87,19 @@
                     </button>
                   </div>
                 </div>
+                <div class="invalid-feedback"> {{ factFechaInicioErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Fecha final</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" formControlName="factFechaFinal" ngbDatepicker #de="ngbDatepicker">
+                  <input type="text" class="form-control" #fechaFinalInput id="factFechaFinal" formControlName="factFechaFinal" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factFechaFinal.invalid &&
+                      encabezadoFormGroup.controls.factFechaFinal.touched
+                     }">
+                  <input type="hidden" (dateSelect)="onDateSelect($event, 'factFechaFinal')" ngbDatepicker #de="ngbDatepicker" [positionTarget]="fechaFinalInput">
                   <div class="input-group-append">
                     <button class="btn btn-secondary calendar" (click)="de.toggle()"
                       [disabled]="encabezadoFormGroup.get('factFechaFinal').disabled"
@@ -92,169 +108,275 @@
                     </button>
                   </div>
                 </div>
+                <div class="invalid-feedback"> {{ factFechaFinalErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Número</label>
-                <input type="text" class="form-control" formControlName="factNumero">
+                <input type="text" class="form-control" formControlName="factNumero" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factNumero.invalid &&
+                    encabezadoFormGroup.controls.factNumero.touched
+                   }">
+                <div class="invalid-feedback"> {{ factNumeroErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Sucursal</label>
-                <input type="text" class="form-control" formControlName="factSucursal">
+                <input type="text" class="form-control" formControlName="factSucursal" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factSucursal.invalid &&
+                    encabezadoFormGroup.controls.factSucursal.touched
+                   }" >
+                <div class="invalid-feedback"> {{ factSucursalErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Cufe</label>
-                <input type="text" class="form-control" formControlName="factCufe">
+                <input type="text" class="form-control" formControlName="factCufe" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factCufe.invalid &&
+                    encabezadoFormGroup.controls.factCufe.touched
+                   }" >
+                <div class="invalid-feedback"> {{ factCufeErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Tipo</label>
-                <select class="form-control" formControlName="factTipoDocElectrId">
+                <select class="form-control" formControlName="factTipoDocElectrId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factTipoDocElectrId.invalid &&
+                    encabezadoFormGroup.controls.factTipoDocElectrId.touched
+                   }">
                   <option selected></option>
                   <ng-container *ngFor="let item of listaTipoDocElectr">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factTipoDocElectrIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Formato impresión</label>
-                <select class="form-control" formControlName="factFormatoImpresionId">
+                <select class="form-control" formControlName="factFormatoImpresionId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factFormatoImpresionId.invalid &&
+                    encabezadoFormGroup.controls.factFormatoImpresionId.touched
+                   }">
                   <option selected></option>
                   <ng-container *ngFor="let item of listaFormatoImpresion">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factFormatoImpresionIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Orden</label>
-                <input type="text" class="form-control" formControlName="factOrden">
+                <input type="text" class="form-control" formControlName="factOrden" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factOrden.invalid &&
+                    encabezadoFormGroup.controls.factOrden.touched
+                   }">
+                <div class="invalid-feedback"> {{ factOrdenErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">fecha</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" formControlName="factFecha" ngbDatepicker #df="ngbDatepicker">
+                <div class="input-group" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factFecha.invalid &&
+                    encabezadoFormGroup.controls.factFecha.touched
+                   }">
+                  <input type="text" class="form-control" #fechaInput id="factFecha" formControlName="factFecha" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factFecha.invalid &&
+                      encabezadoFormGroup.controls.factFecha.touched
+                     }">
+                  <input type="hidden" (dateSelect)="onDateSelect($event, 'factFecha')" ngbDatepicker #df="ngbDatepicker" [positionTarget]="fechaInput">
                   <div class="input-group-append">
                     <button class="btn btn-secondary calendar" (click)="df.toggle()">
                       <i class="far fa-calendar"></i>
                     </button>
                   </div>
                 </div>
+                <div class="invalid-feedback"> {{ factFechaErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Fecha vence</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" formControlName="factFechaVence" ngbDatepicker #dv="ngbDatepicker">
+                <div class="input-group" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factFechaVence.invalid &&
+                    encabezadoFormGroup.controls.factFechaVence.touched
+                   }">
+                  <input type="text" class="form-control" #fechaVenceInput id="factFechaVence" formControlName="factFechaVence" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factFechaVence.invalid &&
+                      encabezadoFormGroup.controls.factFechaVence.touched
+                     }">
+                  <input type="hidden" (dateSelect)="onDateSelect($event, 'factFechaVence')" ngbDatepicker #dv="ngbDatepicker" [positionTarget]="fechaVenceInput">
                   <div class="input-group-append">
                     <button class="btn btn-secondary calendar" (click)="dv.toggle()">
                       <i class="far fa-calendar"></i>
                     </button>
                   </div>
                 </div>
+                <div class="invalid-feedback"> {{ factFechaVenceErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Recepción</label>
-                <input type="text" class="form-control" formControlName="factRecepcion">
+                <input type="text" class="form-control" formControlName="factRecepcion" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factRecepcion.invalid &&
+                    encabezadoFormGroup.controls.factRecepcion.touched
+                   }">
+                <div class="invalid-feedback"> {{ factRecepcionErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Remisión</label>
-                <input type="text" class="form-control" formControlName="factRemision">
+                <input type="text" class="form-control" formControlName="factRemision" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factRemision.invalid &&
+                    encabezadoFormGroup.controls.factRemision.touched
+                   }">
+                  <div class="invalid-feedback"> {{ factRemisionErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Despacho</label>
-                <input type="text" class="form-control" formControlName="factDespacho">
+                <input type="text" class="form-control" formControlName="factDespacho" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factDespacho.invalid &&
+                    encabezadoFormGroup.controls.factDespacho.touched
+                   }">
+                <div class="invalid-feedback"> {{ factDespachoErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Estado</label>
-                <input type="text" class="form-control" formControlName="factEstadoOperacion">
+                <input type="text" class="form-control" formControlName="factEstadoOperacion" mask="0*" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factEstadoOperacion.invalid &&
+                    encabezadoFormGroup.controls.factEstadoOperacion.touched
+                   }">
+                <div class="invalid-feedback"> {{ factEstadoOperacionErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Moneda</label>
-                <select class="form-control" formControlName="factMonedaId">
+                <select class="form-control" formControlName="factMonedaId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factMonedaId.invalid &&
+                    encabezadoFormGroup.controls.factMonedaId.touched
+                   }">
                   <ng-container *ngFor="let item of listaMoneda">
                     <option [value]="item.valor">{{item.codigo}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factMonedaIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Fecha TRM</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" formControlName="factFechaTrm" ngbDatepicker #dt="ngbDatepicker">
+                <div class="input-group" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factFechaTrm.invalid &&
+                    encabezadoFormGroup.controls.factFechaTrm.touched
+                   }">
+                  <input type="text" class="form-control" #fechaTrmInput id="factFechaTrm" formControlName="factFechaTrm" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factFechaTrm.invalid &&
+                      encabezadoFormGroup.controls.factFechaTrm.touched
+                     }">
+                  <input type="hidden" (dateSelect)="onDateSelect($event, 'factFechaTrm')" ngbDatepicker #dt="ngbDatepicker" [positionTarget]="fechaTrmInput">
                   <div class="input-group-append">
                     <button class="btn btn-secondary calendar" (click)="dt.toggle()">
                       <i class="far fa-calendar"></i>
                     </button>
                   </div>
                 </div>
+                <div class="invalid-feedback"> {{ factFechaTrmErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">TRM</label>
-                <input type="text" class="form-control" formControlName="factTrm">
+                <input type="text" class="form-control" formControlName="factTrm" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factTrm.invalid &&
+                    encabezadoFormGroup.controls.factTrm.touched
+                   }">
+                <div class="invalid-feedback"> {{ factTrmErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Condición de venta</label>
-                <select class="form-control" formControlName="factCondicionVentaId">
+                <select class="form-control" formControlName="factCondicionVentaId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factCondicionVentaId.invalid &&
+                    encabezadoFormGroup.controls.factCondicionVentaId.touched
+                   }">
                   <ng-container *ngFor="let item of listaCondicionVenta">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factCondicionVentaIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Forma pago</label>
-                <select class="form-control" formControlName="factFormaPagoId">
+                <select class="form-control" formControlName="factFormaPagoId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factFormaPagoId.invalid &&
+                    encabezadoFormGroup.controls.factFormaPagoId.touched
+                   }">
                   <ng-container *ngFor="let item of listaFormaPago">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factFormaPagoIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Lista precios</label>
-                <select class="form-control" formControlName="factListaPreciosId">
-                  <option value="0" selected>0 - Genérica</option>
-                  <ng-container *ngFor="let item of []">
+                <select class="form-control" formControlName="factListaPreciosId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factListaPreciosId.invalid &&
+                    encabezadoFormGroup.controls.factListaPreciosId.touched
+                   }">
+                  <!-- <option value="0" selected>0 - Genérica</option> -->
+                  <ng-container *ngFor="let item of listaPreciosLista">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factListaPreciosIdErrorMensaje }} </div>
               </div>
             </div>
 
@@ -269,14 +391,24 @@
                   [inputFormatter]="formatterInput"
                   [resultFormatter]="formatterResult"
                   [editable]="false"
-                  (blur)="onBlurFormat()"
+                  (blur)="onBlurFormat()" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factClienteId.invalid &&
+                      encabezadoFormGroup.controls.factClienteId.touched
+                     }"
                 />
+                <div class="invalid-feedback"> {{ factClienteIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Vendedor</label>
-                <input type="text" class="form-control" formControlName="factVendedor">
+                <input type="text" class="form-control" formControlName="factVendedor" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factVendedor.invalid &&
+                    encabezadoFormGroup.controls.factVendedor.touched
+                   }">
+                <div class="invalid-feedback"> {{ factVendedorErrorMensaje }} </div>
               </div>
             </div>
 
@@ -284,7 +416,12 @@
               <div class="col-4">
                 <div class="form-group">
                   <label for="">Contrato</label>
-                  <input type="text" class="form-control" formControlName="factContrato">
+                  <input type="text" class="form-control" formControlName="factContrato" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factContrato.invalid &&
+                      encabezadoFormGroup.controls.factContrato.touched
+                     }">
+                  <div class="invalid-feedback"> {{ factContratoErrorMensaje }} </div>
                 </div>
               </div>
             </ng-container>
@@ -293,7 +430,12 @@
               <div class="col-4">
                 <div class="form-group">
                   <label for="">Poliza</label>
-                  <input type="text" class="form-control" formControlName="factPoliza">
+                  <input type="text" class="form-control" formControlName="factPoliza" [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factPoliza.invalid &&
+                      encabezadoFormGroup.controls.factPoliza.touched
+                     }">
+                  <div class="invalid-feedback"> {{ factPolizaErrorMensaje }} </div>
                 </div>
               </div>
             </ng-container>
@@ -302,20 +444,35 @@
               <div class="col-4">
                 <div class="form-group">
                   <label for="">Total cuota moderadora</label>
-                  <input type="text" class="form-control" formControlName="factModeradora">
+                  <input type="text" class="form-control" formControlName="factModeradora" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factModeradora.invalid &&
+                      encabezadoFormGroup.controls.factModeradora.touched
+                     }">
+                  <div class="invalid-feedback"> {{ factModeradoraErrorMensaje }} </div>
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
                   <label for="">Total cuota recuperación</label>
-                  <input type="text" class="form-control" formControlName="factCuotaRecupera">
+                  <input type="text" class="form-control" formControlName="factCuotaRecupera" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factCuotaRecupera.invalid &&
+                      encabezadoFormGroup.controls.factCuotaRecupera.touched
+                     }">
+                  <div class="invalid-feedback"> {{ factCuotaRecuperaErrorMensaje }} </div>
                 </div>
               </div>
 
               <div class="col-4">
                 <div class="form-group">
                   <label for="">Total pago compartido</label>
-                  <input type="text" class="form-control" formControlName="factCompartidos">
+                  <input type="text" class="form-control" formControlName="factCompartidos" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                    'is-invalid':
+                      encabezadoFormGroup.controls.factCompartidos.invalid &&
+                      encabezadoFormGroup.controls.factCompartidos.touched
+                     }">
+                  <div class="invalid-feedback"> {{ factCompartidosErrorMensaje }} </div>
                 </div>
               </div>
             </ng-container>
@@ -323,28 +480,103 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="">Tipo salud</label>
-                <select class="form-control">
+                <select class="form-control" formControlName="factSaludTipoId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factSaludTipoId.invalid &&
+                    encabezadoFormGroup.controls.factSaludTipoId.touched
+                   }">
                   <ng-container *ngFor="let item of listaSaludTipo">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factSaludTipoIdErrorMensaje }} </div>
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
                 <label for="">Clase factura</label>
-                <select class="form-control">
+                <select class="form-control" formControlName="factClaseFacturaId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factClaseFacturaId.invalid &&
+                    encabezadoFormGroup.controls.factClaseFacturaId.touched
+                   }">
                   <ng-container *ngFor="let item of listaClaseFactura">
                     <option [value]="item.valor">{{item.nombre}}</option>
                   </ng-container>
                 </select>
+                <div class="invalid-feedback"> {{ factClaseFacturaIdErrorMensaje }} </div>
               </div>
             </div>
 
             <div class="col-4">
               <div class="form-group">
                 <label for="">Contador</label>
-                <input type="text" class="form-control" formControlName="factContador">
+                <input type="text" class="form-control" formControlName="factContador" mask="0*" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factContador.invalid &&
+                    encabezadoFormGroup.controls.factContador.touched
+                   }">
+                <div class="invalid-feedback"> {{ factContadorErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Estado Dian</label>
+                <select class="form-control" formControlName="factEstadoDianId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factEstadoDianId.invalid &&
+                    encabezadoFormGroup.controls.factEstadoDianId.touched
+                   }">
+                  <ng-container *ngFor="let item of listaEstadoDian">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+                <div class="invalid-feedback"> {{ factEstadoDianIdErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Cobertura</label>
+                <select class="form-control" formControlName="factCoberturaId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factCoberturaId.invalid &&
+                    encabezadoFormGroup.controls.factCoberturaId.touched
+                   }">
+                  <ng-container *ngFor="let item of listaCobertura">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+                <div class="invalid-feedback"> {{ factCoberturaIdErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Modalidad pago</label>
+                <input type="text" class="form-control" formControlName="factModalidadPago" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factModalidadPago.invalid &&
+                    encabezadoFormGroup.controls.factModalidadPago.touched
+                   }">
+                <div class="invalid-feedback"> {{ factModalidadPagoErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Tipo descuento</label>
+                <select class="form-control" formControlName="factTipoDescuentoId" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factTipoDescuentoId.invalid &&
+                    encabezadoFormGroup.controls.factTipoDescuentoId.touched
+                   }">
+                  <ng-container *ngFor="let item of listaTipoDescuento">
+                    <option [value]="item.valor">{{item.nombre}}</option>
+                  </ng-container>
+                </select>
+                <div class="invalid-feedback"> {{ factTipoDescuentoIdErrorMensaje }} </div>
               </div>
             </div>
 
@@ -355,7 +587,12 @@
             <div class="col-12">
               <div class="form-group">
                 <label for="">Observación</label>
-                <textarea class="form-control" rows="3" formControlName="factObservaciones"></textarea>
+                <textarea class="form-control" rows="3" formControlName="factObservaciones" [ngClass]="{
+                  'is-invalid':
+                    encabezadoFormGroup.controls.factObservaciones.invalid &&
+                    encabezadoFormGroup.controls.factObservaciones.touched
+                   }"></textarea>
+                <div class="invalid-feedback"> {{ factObservacionesErrorMensaje }} </div>
               </div>
             </div>
 
@@ -379,128 +616,185 @@
     </app-card>
 
 
-    <app-card [hidHeader]="true" [options]="false">
+    <ng-container *ngIf="verDetalleFactura">
 
-      <div class="d-flex align-items-center justify-content-between" role="button">
-        <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="detalleFacturaCollapsed = !detalleFacturaCollapsed" [attr.aria-expanded]="!detalleFacturaCollapsed" aria-controls="collapseDetalleFactura">
-          <h5 class="font-weight-bold mb-0">Detalle factura</h5>
-          <i class="fa" [ngClass]="{'fa-chevron-up': detalleFacturaCollapsed, 'fa-chevron-down': !detalleFacturaCollapsed }"></i>
-        </div>
+      <app-card [hidHeader]="true" [options]="false">
 
-      </div>
-
-      <hr>
-
-      <div id="collapseDetalleFactura" [ngbCollapse]="detalleFacturaCollapsed">
-
-        <div class="d-flex justify-content-start m-2">
-          <button class="btn btn-icon btn-primary" pTooltip="Agregar producto" tooltipPosition="right" (click)="agregarProducto()" >
-            <i class="fa fa-plus"></i>
-          </button>
-        </div>
-
-        <p-table [columns]="colsDetalleFactura" [value]="detalleFacturaObs | async" selectionMode="single" [scrollable]="true" [rows]="10">
-          <ng-template pTemplate="header" let-columns>
-              <tr>
-                  <th *ngFor="let col of columns">
-                      {{col.header}}
-                  </th>
-                  <!-- <th></th> -->
-              </tr>
-              </ng-template>
-
-              <ng-template pTemplate="body" let-rowData let-columns="columns">
-              <tr style="height:34px" [pSelectableRow]="rowData">
-                <td *ngFor="let col of columns">
-                    {{rowData[col.field]}}
-                </td>
-                <!-- <td>
-                  <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver producto" (click)="verProducto(rowData)">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </td> -->
-              </tr>
-          </ng-template>
-        </p-table>
-
-      </div>
-
-    </app-card>
-
-    <app-card [hidHeader]="true" [options]="false">
-
-      <form>
-
-        <div class="row">
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Subtotal</label>
-              <input type="text" class="form-control" formControlName="factSubtotal">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Descuento</label>
-              <input type="text" class="form-control" formControlName="factDescGlobal">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Valor descuento</label>
-              <input type="text" class="form-control" formControlName="factValorDescuento">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">% IVA</label>
-              <input type="text" class="form-control" formControlName="factPorcIva">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Valor IVA</label>
-              <input type="text" class="form-control" formControlName="factTotalIva">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Total rete. ICA</label>
-              <input type="text" class="form-control" formControlName="factTotalReteIca">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Total rete. Fuente</label>
-              <input type="text" class="form-control" formControlName="factValTotRetefuente">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Valor anticipo</label>
-              <input type="text" class="form-control" formControlName="factValAnticipo">
-            </div>
-          </div>
-
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Total a pagar</label>
-              <input type="text" class="form-control" formControlName="factValor">
-            </div>
+        <div class="d-flex align-items-center justify-content-between" role="button">
+          <div class="d-flex flex-row align-items-center justify-content-between w-100" (click)="detalleFacturaCollapsed = !detalleFacturaCollapsed" [attr.aria-expanded]="!detalleFacturaCollapsed" aria-controls="collapseDetalleFactura">
+            <h5 class="font-weight-bold mb-0">Detalle factura</h5>
+            <i class="fa" [ngClass]="{'fa-chevron-up': detalleFacturaCollapsed, 'fa-chevron-down': !detalleFacturaCollapsed }"></i>
           </div>
 
         </div>
 
-      </form>
+        <hr>
 
-    </app-card>
+        <div id="collapseDetalleFactura" [ngbCollapse]="detalleFacturaCollapsed">
+
+          <div class="d-flex justify-content-start m-2">
+            <button class="btn btn-icon btn-primary" pTooltip="Agregar producto" tooltipPosition="right" (click)="agregarProducto()" >
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+
+          <p-table [columns]="colsDetalleFactura" [value]="detalleFactura" selectionMode="single" [scrollable]="true" [rows]="10">
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th *ngFor="let col of columns">
+                        {{col.header}}
+                    </th>
+                    <!-- <th></th> -->
+                </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-rowData let-columns="columns">
+                <tr style="height:34px" [pSelectableRow]="rowData">
+                  <td *ngFor="let col of columns">
+
+                    <ng-container *ngIf="!col.currency">
+                      {{rowData[col.field]}}
+                    </ng-container>
+
+                    <ng-container *ngIf="col.currency">
+                      {{rowData[col.field] | currency:'$ ':'symbol':'1.0-0'}}
+                    </ng-container>
+
+                  </td>
+                  <!-- <td>
+                    <button class="btn btn-icon btn-dark icon-detail-style" [placement]="end" ngbTooltip="Ver producto" (click)="verProducto(rowData)">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </td> -->
+                </tr>
+            </ng-template>
+          </p-table>
+
+        </div>
+
+      </app-card>
+
+      <app-card [hidHeader]="true" [options]="false">
+
+        <form [formGroup]="totalFacturaFormGroup">
+
+          <div class="row">
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Subtotal</label>
+                <input type="text" class="form-control" formControlName="factSubtotal" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factSubtotal.invalid &&
+                    totalFacturaFormGroup.controls.factSubtotal.touched
+                   }">
+                <div class="invalid-feedback"> {{ factSubtotalErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Descuento</label>
+                <input type="text" class="form-control" formControlName="factDescGlobal" percentInput [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factDescGlobal.invalid &&
+                    totalFacturaFormGroup.controls.factDescGlobal.touched
+                   }" >
+                <div class="invalid-feedback"> {{ factDescGlobalErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor descuento</label>
+                <input type="text" class="form-control" formControlName="factValorDescuento" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factValorDescuento.invalid &&
+                    totalFacturaFormGroup.controls.factValorDescuento.touched
+                   }">
+                <div class="invalid-feedback"> {{ factValorDescuentoErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">% IVA</label>
+                <input type="text" class="form-control" formControlName="factPorcIva" percentInput [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factPorcIva.invalid &&
+                    totalFacturaFormGroup.controls.factPorcIva.touched
+                   }" >
+                <div class="invalid-feedback"> {{ factPorcIvaErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor IVA</label>
+                <input type="text" class="form-control" formControlName="factTotalIva" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factTotalIva.invalid &&
+                    totalFacturaFormGroup.controls.factTotalIva.touched
+                   }">
+                <div class="invalid-feedback"> {{ factTotalIvaErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total rete. ICA</label>
+                <input type="text" class="form-control" formControlName="factTotalReteIca" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factTotalReteIca.invalid &&
+                    totalFacturaFormGroup.controls.factTotalReteIca.touched
+                   }">
+                <div class="invalid-feedback"> {{ factTotalReteIcaErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total rete. Fuente</label>
+                <input type="text" class="form-control" formControlName="factValTotRetefuente" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factValTotRetefuente.invalid &&
+                    totalFacturaFormGroup.controls.factValTotRetefuente.touched
+                   }">
+                <div class="invalid-feedback"> {{ factValTotRetefuenteErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Valor anticipo</label>
+                <input type="text" class="form-control" formControlName="factValAnticipo" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factValAnticipo.invalid &&
+                    totalFacturaFormGroup.controls.factValAnticipo.touched
+                   }">
+                <div class="invalid-feedback"> {{ factValAnticipoErrorMensaje }} </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Total a pagar</label>
+                <input type="text" class="form-control" formControlName="factValor" prefix="$ " mask="separator.2" thousandSeparator="," [ngClass]="{
+                  'is-invalid':
+                    totalFacturaFormGroup.controls.factValor.invalid &&
+                    totalFacturaFormGroup.controls.factValor.touched
+                   }">
+                <div class="invalid-feedback"> {{ factValorErrorMensaje }} </div>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+
+      </app-card>
+
+    </ng-container>
 
   </div>
 </div>

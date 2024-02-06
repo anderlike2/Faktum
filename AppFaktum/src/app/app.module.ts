@@ -58,6 +58,7 @@ import { CustomDateParserFormatter } from './shared/datepicker/custom-date-parse
 import { ConfirmacionComponent } from './pages/modals/confirmacion/confirmacion.component';
 import { CrearListaPrecioProductoComponent } from './pages/modals/crear-lista-precio-producto/crear-lista-precio-producto.component';
 import { EditarListaPreciosProductosComponent } from './pages/modals/editar-lista-precios-productos/editar-lista-precios-productos.component';
+import { PercentInputDirective } from './shared/percent-input-directive/percent-input.directive';
 
 export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 

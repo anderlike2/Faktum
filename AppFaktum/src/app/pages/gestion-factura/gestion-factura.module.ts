@@ -6,16 +6,23 @@ import { NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TableModule } from 'primeng/table';
 import { CrearFacturaComponent } from './crear-factura/crear-factura.component';
 import { TooltipModule } from 'primeng/tooltip';
+import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { PercentInputDirective } from 'src/app/shared/percent-input-directive/percent-input.directive';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = null;
 
 @NgModule({
-  declarations: [CrearFacturaComponent],
+  declarations: [
+    CrearFacturaComponent
+  ],
   imports: [
     CommonModule,
     GestionFacturaRoutingModule,
     SharedModule,
     NgbModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    NgxMaskModule.forRoot()
   ]
 })
 export class GestionFacturaModule { }

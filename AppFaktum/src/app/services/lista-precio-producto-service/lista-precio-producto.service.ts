@@ -15,7 +15,7 @@ export class ListaPrecioProductoService {
     @Inject('environment') private environment: IEnvironment,
     private httpClient: HttpClient
   ) { }
-  
+
   crearListaPrecio(data: IListaPrecioProducto[]): Observable<any> {
     const url = `${this.environment.faktumUrl}/ListaPrecioProducto/CrearListaPrecioProducto`;
     return this.httpClient.post(

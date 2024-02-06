@@ -18,7 +18,7 @@ export interface IFactura {
   estado: number;
   fechaCreacion: string;
   fechaModificacion: string;
-  factFechaTrm: string;
+  factFechaTrm: Date;
   factCompartidos: number;
   factContador: number;
   factContrato: string;
@@ -28,10 +28,10 @@ export interface IFactura {
   factDescGlobal: number;
   factDespacho: string;
   factEstadoOperacion: number;
-  factFecha: string;
-  factFechaInicio: string;
-  factFechaFinal: string;
-  factFechaVence: string;
+  factFecha: Date;
+  factFechaInicio: Date;
+  factFechaFinal: Date;
+  factFechaVence: Date;
   factModalidadPago: string;
   factModeradora: number;
   factNumero: string;
@@ -72,8 +72,8 @@ export interface IFactura {
 export interface IDetalleFactura {
   id?: number;
   estado: number;
-  fechaCreacion: string;
-  fechaModificacion: string;
+  fechaCreacion?: string;
+  fechaModificacion?: string;
   detaCantidad: number;
   detaCentroCostos: number;
   detaDescripcion: string;
@@ -98,4 +98,5 @@ export interface IDetalleFactura {
   detaTipoImpuestoId: number;
   detaUnidadId: number;
   detaListaPreciosId: number;
+  subtotal?: number;
 }
