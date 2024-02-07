@@ -128,7 +128,8 @@ namespace RepositoryLayer.Repository
                                        EmprRespTributId = emp.EmprRespTributId,
                                        EmprRegimenId = emp.EmprRegimenId,
                                        EmprRespFiscalId = emp.EmprRespFiscalId,
-                                       EmprClasJuridicaId = emp.EmprClasJuridicaId
+                                       EmprClasJuridicaId = emp.EmprClasJuridicaId,
+                                       EmprLogo = emp.EmprLogo
                                    }).ToListAsync();
 
                 oRespuesta.Success = true;

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RepositoryLayer.Migrations
 {
-    public partial class inidatabase : Migration
+    public partial class migracionFinal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -167,6 +167,22 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "EstadoRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EsRiNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EstadoRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "FactSaludTipo",
                 columns: table => new
                 {
@@ -201,6 +217,34 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HospitalizacionRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HoRiUsuariosRips = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiViaIngreso = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiFechaInicioAtencion = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    HoRiNumAutoriza = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiCausaMotivoAtencion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiCodigoDiagPrincipal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiCodigoDiagRel1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiCodigoDiagRel2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiCodigoDiagRel3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiCodComplicacion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    HoRiConDestUsuarioOe = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UrRiCodDiagMuerte = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UrRiFechaEgreso = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HospitalizacionRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Impuesto",
                 columns: table => new
                 {
@@ -221,6 +265,23 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "IncapacidadRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    InRiCodigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InRiNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IncapacidadRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ium",
                 columns: table => new
                 {
@@ -236,6 +297,61 @@ namespace RepositoryLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Ium", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MedicamentosRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MeRiPrestador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiUsuariosRips = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiNumAutoriza = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiMiPresid = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiDisp = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    MeRiCodigoDiagPrincipal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiCodigoDiagRel = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiTipoMed = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiDetaBorrador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiNombreMedicamento = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiConcentracion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiUnidad = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiFormaFarmaceutica = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiUnidadMinimaDisp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiCantidadDisp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiNumDias = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiTipoIdMedico = table.Column<int>(type: "int", nullable: true),
+                    MeRiNumDocMedico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiValUnitario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiValorServicio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiTipoPagoModerador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiValorPagoModerador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MeRiNumFactPagoMod = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MedicamentosRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ModalidadAtencionRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    MoAtCodigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MoAtNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ModalidadAtencionRips", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -273,6 +389,52 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "OrigenRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OrRiNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrigenRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OtroServicioRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OtRiPrestador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiUsuarioRips = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiNumAutoriza = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiIdMiPres = table.Column<int>(type: "int", nullable: true),
+                    OtRiFechaServicio = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    OtRiTipoOtro = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiDetaBorrador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiTipoIdMedico = table.Column<int>(type: "int", nullable: true),
+                    OtRiNumDocMedico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiCodCups = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiVUnitario = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiValorServicio = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiTipoPagoModerador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiValorPagoModerador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OtRiNumFactPagoMod = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OtroServicioRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Pais",
                 columns: table => new
                 {
@@ -287,6 +449,33 @@ namespace RepositoryLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Pais", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RecienNacidoRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RnRiPrestador = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnUsuarioRips = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiTipoRNid = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiFechaNac = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    RnRiEdadGestacional = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiRoConsPreNatal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiSexo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiPeso = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiCodigoDiagPrincipal = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiConDestUsuarioE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiCodDiagMuerte = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RnRiFechaEgreso = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RecienNacidoRips", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -377,6 +566,23 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ServicioRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SeRiCodigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SeRiNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServicioRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipoArchivoRips",
                 columns: table => new
                 {
@@ -462,6 +668,23 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TipoDocRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TiDrCodigo = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    TiDrNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoDocRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TipoId",
                 columns: table => new
                 {
@@ -476,6 +699,84 @@ namespace RepositoryLayer.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_TipoId", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoNotaRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TiNrCodigo = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    TiNrNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoNotaRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoOtroServicioRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TiOtCodigo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TiOtNombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoOtroServicioRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoUsuariosRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TiRiCodigo = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    TiRiNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoUsuariosRips", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UrgenciaRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UrRiPrestador = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    UrRiFechaConsulta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UrRiCausaMotivoAtencio = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    UrRiCodigoDiagPrincipal = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    URiCodigoDiagPrincipalE = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    UrRiCodigoDiagRel1 = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    UrRiCodigoDiagRel2 = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    UrRiCodigoDiagRel3 = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    UrRiConDestUsuarioE = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    UrRiCondDiagMuerte = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    UrRiFechaEgreso = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UrRiConsutivo = table.Column<int>(type: "int", maxLength: 7, nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UrgenciaRips", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -676,6 +977,62 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UsuarioSaludRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UsUaNumeroDoc = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    UsUaFechaNac = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UsUaSexo = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
+                    UsUaPrimerNombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UsUaSegundoNombre = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    UsUaPrimerApellido = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    UsUaSegundoApellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UsUaZonaTerritorial = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    UsUaIncapacidad = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    UsUaTelefono = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    UsUaDireccion = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    UsUaTipoDocRipsId = table.Column<int>(type: "int", nullable: false),
+                    UsUaTipoUsuarioRips = table.Column<int>(type: "int", nullable: false),
+                    UsUaCiudadResidenciaId = table.Column<int>(type: "int", nullable: false),
+                    UsUaPaisNacimientoId = table.Column<int>(type: "int", nullable: false),
+                    UsUaTipoUsuariosRipsId = table.Column<int>(type: "int", nullable: false),
+                    UsUaCiudadResicenciaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuarioSaludRips", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsuarioSaludRips_Ciudad_UsUaCiudadResicenciaId",
+                        column: x => x.UsUaCiudadResicenciaId,
+                        principalTable: "Ciudad",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UsuarioSaludRips_Ciudad_UsUaPaisNacimientoId",
+                        column: x => x.UsUaPaisNacimientoId,
+                        principalTable: "Ciudad",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UsuarioSaludRips_TipoDocRips_UsUaTipoDocRipsId",
+                        column: x => x.UsUaTipoDocRipsId,
+                        principalTable: "TipoDocRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UsuarioSaludRips_TipoUsuariosRips_UsUaTipoUsuariosRipsId",
+                        column: x => x.UsUaTipoUsuariosRipsId,
+                        principalTable: "TipoUsuariosRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "CentroCosto",
                 columns: table => new
                 {
@@ -854,6 +1211,31 @@ namespace RepositoryLayer.Migrations
                     table.ForeignKey(
                         name: "FK_FormatoImpresion_Empresa_FormEmpresaId",
                         column: x => x.FormEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListaPrecio",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LiprDescripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LiprEstadoOperacion = table.Column<int>(type: "int", nullable: false),
+                    LiprNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LiprEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListaPrecio", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ListaPrecio_Empresa_LiprEmpresaId",
+                        column: x => x.LiprEmpresaId,
                         principalTable: "Empresa",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -1041,6 +1423,87 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ConsultaRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CoRiPrestador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CoRiFechaConsulta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CoRiNumAutorizacion = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    CoRiCodCups = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    CoRiModGrSerAtencion = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CoRiGrupoServicios = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CoRiCodigoServicios = table.Column<short>(type: "smallint", maxLength: 4, nullable: false),
+                    CoRiFinalidadConsulta = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CoRiCausaMotivoAtencion = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CoRiCodigoDiagPrincipal = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    CoRiCodigoDiagRel1 = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    CoRiCodigoDiagRel2 = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    CoRiCodigoDiagRel3 = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    CoRiTipoDiagPrincipal = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CoRiValorConsulta = table.Column<int>(type: "int", maxLength: 10, nullable: true),
+                    CoRiTipoPagoModerador = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    CoRiValorPagoModerador = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    CoriNumFactPagoMod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CoRiConsecutivo = table.Column<int>(type: "int", maxLength: 7, nullable: false),
+                    CoRiUsuarioSaludRipsId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConsultaRips", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ConsultaRips_UsuarioSaludRips_CoRiUsuarioSaludRipsId",
+                        column: x => x.CoRiUsuarioSaludRipsId,
+                        principalTable: "UsuarioSaludRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProcedimientoRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PrRiPrestador = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    PrRiFechaConsulta = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    PrRiIdMPres = table.Column<int>(type: "int", maxLength: 15, nullable: false),
+                    PrRiNumAutorizacion = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    PrRiCodCups = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
+                    PrRiViaIngresoUsuario = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    PrRiModGrServAtencion = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    PrRiGrupoServicios = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    PrRiCodigoServicios = table.Column<short>(type: "smallint", maxLength: 4, nullable: false),
+                    PrRiFinalidadConsulta = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    PrRiCodigoDiagPrincipal = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    PrRiCodigoDiagRel = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    PrRiComplicacion = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    PrRiValorProcedimiento = table.Column<int>(type: "int", maxLength: 15, nullable: false),
+                    PrRiTipoPagoModerador = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    PrRiValorPagoModerador = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    PrRiNumFactPagoMod = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PrRiConsecutivo = table.Column<int>(type: "int", nullable: false),
+                    PrRiUsuarioSaludRipsId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProcedimientoRips", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProcedimientoRips_UsuarioSaludRips_PrRiUsuarioSaludRipsId",
+                        column: x => x.PrRiUsuarioSaludRipsId,
+                        principalTable: "UsuarioSaludRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ContratoSalud",
                 columns: table => new
                 {
@@ -1129,6 +1592,153 @@ namespace RepositoryLayer.Migrations
                         name: "FK_Sucursal_FormatoImpresion_SucuFormatoImpresionId",
                         column: x => x.SucuFormatoImpresionId,
                         principalTable: "FormatoImpresion",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Factura",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FactFechaTrm = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FactCompartidos = table.Column<long>(type: "bigint", nullable: true),
+                    FactContador = table.Column<long>(type: "bigint", nullable: false),
+                    FactContrato = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FactCopago = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    FactCufe = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactCuotaRecupera = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    FactDescGlobal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactDespacho = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactEstadoOperacion = table.Column<int>(type: "int", nullable: false),
+                    FactFecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FactFechaFinal = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FactFechaInicio = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FactFechaVence = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FactModalidadPago = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactModeradora = table.Column<long>(type: "bigint", nullable: true),
+                    FactNumero = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactObservaciones = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactOperador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactOrden = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactPoliza = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FactPorcIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactRecepcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactRemision = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactSubtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactSucursal = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactTotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactTotalReteIca = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactTrm = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactValAnticipo = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactValorDescuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactValTotRetefuente = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    FactVendedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FactClaseFacturaId = table.Column<int>(type: "int", nullable: false),
+                    FactCoberturaId = table.Column<int>(type: "int", nullable: false),
+                    FactCondicionVentaId = table.Column<int>(type: "int", nullable: false),
+                    FactEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    FactEstadoDianId = table.Column<int>(type: "int", nullable: false),
+                    FactFormaPagoId = table.Column<int>(type: "int", nullable: false),
+                    FactFormatoImpresionId = table.Column<int>(type: "int", nullable: false),
+                    FactMonedaId = table.Column<int>(type: "int", nullable: false),
+                    FactSaludTipoId = table.Column<int>(type: "int", nullable: false),
+                    FactTipoDescuentoId = table.Column<int>(type: "int", nullable: false),
+                    FactTipoDocElectrId = table.Column<int>(type: "int", nullable: false),
+                    FactNotaDebitoId = table.Column<int>(type: "int", nullable: true),
+                    FactNotaCreditoId = table.Column<int>(type: "int", nullable: true),
+                    FactClienteId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Factura", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Factura_ClaseFactura_FactClaseFacturaId",
+                        column: x => x.FactClaseFacturaId,
+                        principalTable: "ClaseFactura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_Cliente_FactClienteId",
+                        column: x => x.FactClienteId,
+                        principalTable: "Cliente",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_Cobertura_FactCoberturaId",
+                        column: x => x.FactCoberturaId,
+                        principalTable: "Cobertura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_CondicionVenta_FactCondicionVentaId",
+                        column: x => x.FactCondicionVentaId,
+                        principalTable: "CondicionVenta",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_Empresa_FactEmpresaId",
+                        column: x => x.FactEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_EstadoDianFactura_FactEstadoDianId",
+                        column: x => x.FactEstadoDianId,
+                        principalTable: "EstadoDianFactura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_FactSaludTipo_FactSaludTipoId",
+                        column: x => x.FactSaludTipoId,
+                        principalTable: "FactSaludTipo",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_FormaPago_FactFormaPagoId",
+                        column: x => x.FactFormaPagoId,
+                        principalTable: "FormaPago",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_FormatoImpresion_FactFormatoImpresionId",
+                        column: x => x.FactFormatoImpresionId,
+                        principalTable: "FormatoImpresion",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_Moneda_FactMonedaId",
+                        column: x => x.FactMonedaId,
+                        principalTable: "Moneda",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_NotaCredito_FactNotaCreditoId",
+                        column: x => x.FactNotaCreditoId,
+                        principalTable: "NotaCredito",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_NotaDebito_FactNotaDebitoId",
+                        column: x => x.FactNotaDebitoId,
+                        principalTable: "NotaDebito",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_TipoDescuento_FactTipoDescuentoId",
+                        column: x => x.FactTipoDescuentoId,
+                        principalTable: "TipoDescuento",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Factura_TipoDocElectr_FactTipoDocElectrId",
+                        column: x => x.FactTipoDocElectrId,
+                        principalTable: "TipoDocElectr",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -1257,187 +1867,6 @@ namespace RepositoryLayer.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ListaPrecio",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LiprDescripcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LiprDescuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LiprEstadoOperacion = table.Column<int>(type: "int", nullable: false),
-                    LiprNombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LiprValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    LiprProductoId = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ListaPrecio", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ListaPrecio_Producto_LiprProductoId",
-                        column: x => x.LiprProductoId,
-                        principalTable: "Producto",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Factura",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FactFechaTrm = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FactCompartidos = table.Column<long>(type: "bigint", nullable: true),
-                    FactContador = table.Column<long>(type: "bigint", nullable: false),
-                    FactContrato = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FactCopago = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    FactCufe = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactCuotaRecupera = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    FactDescGlobal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FactDespacho = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactEstadoOperacion = table.Column<int>(type: "int", nullable: false),
-                    FactFecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FactFechaFinal = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FactFechaInicio = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    FactFechaVence = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FactModalidadPago = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactModeradora = table.Column<long>(type: "bigint", nullable: true),
-                    FactNumero = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactObservaciones = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactOperador = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactOrden = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactPoliza = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FactPorcIva = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactRecepcion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactRemision = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactSubtotal = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FactSucursal = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactTotalIva = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FactTotalReteIca = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactTrm = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactValAnticipo = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FactValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FactValorDescuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    FactValTotRetefuente = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactVendedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FactClaseFacturaId = table.Column<int>(type: "int", nullable: false),
-                    FactCoberturaId = table.Column<int>(type: "int", nullable: false),
-                    FactCondicionVentaId = table.Column<int>(type: "int", nullable: false),
-                    FactEmpresaId = table.Column<int>(type: "int", nullable: false),
-                    FactEstadoDianId = table.Column<int>(type: "int", nullable: false),
-                    FactFormaPagoId = table.Column<int>(type: "int", nullable: false),
-                    FactFormatoImpresionId = table.Column<int>(type: "int", nullable: false),
-                    FactMonedaId = table.Column<int>(type: "int", nullable: false),
-                    FactSaludTipoId = table.Column<int>(type: "int", nullable: false),
-                    FactTipoDescuentoId = table.Column<int>(type: "int", nullable: false),
-                    FactTipoDocElectrId = table.Column<int>(type: "int", nullable: false),
-                    FactListaPreciosId = table.Column<int>(type: "int", nullable: false),
-                    FactNotaDebitoId = table.Column<int>(type: "int", nullable: false),
-                    FactNotaCreditoId = table.Column<int>(type: "int", nullable: false),
-                    FactClienteId = table.Column<int>(type: "int", nullable: false),
-                    Estado = table.Column<int>(type: "int", nullable: false),
-                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Factura", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Factura_ClaseFactura_FactClaseFacturaId",
-                        column: x => x.FactClaseFacturaId,
-                        principalTable: "ClaseFactura",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_Cliente_FactClienteId",
-                        column: x => x.FactClienteId,
-                        principalTable: "Cliente",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_Cobertura_FactCoberturaId",
-                        column: x => x.FactCoberturaId,
-                        principalTable: "Cobertura",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_CondicionVenta_FactCondicionVentaId",
-                        column: x => x.FactCondicionVentaId,
-                        principalTable: "CondicionVenta",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_Empresa_FactEmpresaId",
-                        column: x => x.FactEmpresaId,
-                        principalTable: "Empresa",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_EstadoDianFactura_FactEstadoDianId",
-                        column: x => x.FactEstadoDianId,
-                        principalTable: "EstadoDianFactura",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_FactSaludTipo_FactSaludTipoId",
-                        column: x => x.FactSaludTipoId,
-                        principalTable: "FactSaludTipo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_FormaPago_FactFormaPagoId",
-                        column: x => x.FactFormaPagoId,
-                        principalTable: "FormaPago",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_FormatoImpresion_FactFormatoImpresionId",
-                        column: x => x.FactFormatoImpresionId,
-                        principalTable: "FormatoImpresion",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_ListaPrecio_FactListaPreciosId",
-                        column: x => x.FactListaPreciosId,
-                        principalTable: "ListaPrecio",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_Moneda_FactMonedaId",
-                        column: x => x.FactMonedaId,
-                        principalTable: "Moneda",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_NotaCredito_FactNotaCreditoId",
-                        column: x => x.FactNotaCreditoId,
-                        principalTable: "NotaCredito",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_NotaDebito_FactNotaDebitoId",
-                        column: x => x.FactNotaDebitoId,
-                        principalTable: "NotaDebito",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_TipoDescuento_FactTipoDescuentoId",
-                        column: x => x.FactTipoDescuentoId,
-                        principalTable: "TipoDescuento",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Factura_TipoDocElectr_FactTipoDocElectrId",
-                        column: x => x.FactTipoDocElectrId,
-                        principalTable: "TipoDocElectr",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DetalleFact",
                 columns: table => new
                 {
@@ -1457,16 +1886,15 @@ namespace RepositoryLayer.Migrations
                     DetaPorcCrf = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     DetaProducto = table.Column<long>(type: "bigint", nullable: false),
                     DetaRemision = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DetaValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DetaValorUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DetaValReteIca = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    DetaValRf = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    DetaValor = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DetaValorUnitario = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DetaValReteIca = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    DetaValRf = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     DetaEmpresaId = table.Column<int>(type: "int", nullable: false),
                     DetaFacturaId = table.Column<int>(type: "int", nullable: false),
                     DetaRetefuenteId = table.Column<int>(type: "int", nullable: false),
                     DetaTipoImpuestoId = table.Column<int>(type: "int", nullable: false),
                     DetaUnidadId = table.Column<int>(type: "int", nullable: false),
-                    DetaListaPreciosId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<int>(type: "int", nullable: false),
                     FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
                     FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
@@ -1493,12 +1921,6 @@ namespace RepositoryLayer.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_DetalleFact_ListaPrecio_DetaListaPreciosId",
-                        column: x => x.DetaListaPreciosId,
-                        principalTable: "ListaPrecio",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
                         name: "FK_DetalleFact_ReteFuente_DetaRetefuenteId",
                         column: x => x.DetaRetefuenteId,
                         principalTable: "ReteFuente",
@@ -1508,6 +1930,122 @@ namespace RepositoryLayer.Migrations
                         name: "FK_DetalleFact_Unidad_DetaUnidadId",
                         column: x => x.DetaUnidadId,
                         principalTable: "Unidad",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ObjetoRaiz",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ObRaNit = table.Column<string>(type: "nvarchar(9)", maxLength: 9, nullable: false),
+                    ObRaNumNota = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    ObRaJsOn = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ObRaTerminado = table.Column<bool>(type: "bit", nullable: false),
+                    ObRaGenerado = table.Column<bool>(type: "bit", nullable: false),
+                    ObRaOperador = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ObRaEmpresaId = table.Column<int>(type: "int", nullable: false),
+                    ObRaFacturaId = table.Column<int>(type: "int", nullable: false),
+                    ObRaTipoNotaRipsId = table.Column<int>(type: "int", nullable: false),
+                    ObRaOrigenRipsId = table.Column<int>(type: "int", nullable: false),
+                    ObRaEstadoRipsId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ObjetoRaiz", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ObjetoRaiz_Empresa_ObRaEmpresaId",
+                        column: x => x.ObRaEmpresaId,
+                        principalTable: "Empresa",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ObjetoRaiz_EstadoRips_ObRaEstadoRipsId",
+                        column: x => x.ObRaEstadoRipsId,
+                        principalTable: "EstadoRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ObjetoRaiz_Factura_ObRaFacturaId",
+                        column: x => x.ObRaFacturaId,
+                        principalTable: "Factura",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ObjetoRaiz_OrigenRips_ObRaOrigenRipsId",
+                        column: x => x.ObRaOrigenRipsId,
+                        principalTable: "OrigenRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ObjetoRaiz_TipoNotaRips_ObRaTipoNotaRipsId",
+                        column: x => x.ObRaTipoNotaRipsId,
+                        principalTable: "TipoNotaRips",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ListaPrecioProducto",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LproValor = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LproDescuento = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LproListaPrecioId = table.Column<int>(type: "int", nullable: false),
+                    LproProductoId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ListaPrecioProducto", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ListaPrecioProducto_ListaPrecio_LproListaPrecioId",
+                        column: x => x.LproListaPrecioId,
+                        principalTable: "ListaPrecio",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ListaPrecioProducto_Producto_LproProductoId",
+                        column: x => x.LproProductoId,
+                        principalTable: "Producto",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "UsuarioRips",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ObRaUsUaUsuarioId = table.Column<int>(type: "int", nullable: false),
+                    ObRaUsUaObjetoRaizId = table.Column<int>(type: "int", nullable: false),
+                    Estado = table.Column<int>(type: "int", nullable: false),
+                    FechaCreacion = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FechaModificacion = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UsuarioRips", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UsuarioRips_ObjetoRaiz_ObRaUsUaObjetoRaizId",
+                        column: x => x.ObRaUsUaObjetoRaizId,
+                        principalTable: "ObjetoRaiz",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_UsuarioRips_UsuarioSaludRips_ObRaUsUaUsuarioId",
+                        column: x => x.ObRaUsUaUsuarioId,
+                        principalTable: "UsuarioSaludRips",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -1573,6 +2111,11 @@ namespace RepositoryLayer.Migrations
                 column: "ClieTipoIdId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ConsultaRips_CoRiUsuarioSaludRipsId",
+                table: "ConsultaRips",
+                column: "CoRiUsuarioSaludRipsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_ContratoSalud_CosaClieId",
                 table: "ContratoSalud",
                 column: "CosaClieId");
@@ -1601,11 +2144,6 @@ namespace RepositoryLayer.Migrations
                 name: "IX_DetalleFact_DetaFacturaId",
                 table: "DetalleFact",
                 column: "DetaFacturaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_DetalleFact_DetaListaPreciosId",
-                table: "DetalleFact",
-                column: "DetaListaPreciosId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_DetalleFact_DetaRetefuenteId",
@@ -1713,11 +2251,6 @@ namespace RepositoryLayer.Migrations
                 column: "FactFormatoImpresionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Factura_FactListaPreciosId",
-                table: "Factura",
-                column: "FactListaPreciosId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Factura_FactMonedaId",
                 table: "Factura",
                 column: "FactMonedaId");
@@ -1753,9 +2286,19 @@ namespace RepositoryLayer.Migrations
                 column: "FormEmpresaId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ListaPrecio_LiprProductoId",
+                name: "IX_ListaPrecio_LiprEmpresaId",
                 table: "ListaPrecio",
-                column: "LiprProductoId");
+                column: "LiprEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListaPrecioProducto_LproListaPrecioId",
+                table: "ListaPrecioProducto",
+                column: "LproListaPrecioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ListaPrecioProducto_LproProductoId",
+                table: "ListaPrecioProducto",
+                column: "LproProductoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Localidad_LocaCiudadId",
@@ -1788,9 +2331,39 @@ namespace RepositoryLayer.Migrations
                 column: "NodbEmpresaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ObjetoRaiz_ObRaEmpresaId",
+                table: "ObjetoRaiz",
+                column: "ObRaEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ObjetoRaiz_ObRaEstadoRipsId",
+                table: "ObjetoRaiz",
+                column: "ObRaEstadoRipsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ObjetoRaiz_ObRaFacturaId",
+                table: "ObjetoRaiz",
+                column: "ObRaFacturaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ObjetoRaiz_ObRaOrigenRipsId",
+                table: "ObjetoRaiz",
+                column: "ObRaOrigenRipsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ObjetoRaiz_ObRaTipoNotaRipsId",
+                table: "ObjetoRaiz",
+                column: "ObRaTipoNotaRipsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_OtrosProductos_OtprEmpresaId",
                 table: "OtrosProductos",
                 column: "OtprEmpresaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProcedimientoRips_PrRiUsuarioSaludRipsId",
+                table: "ProcedimientoRips",
+                column: "PrRiUsuarioSaludRipsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Producto_ProdCentroCostoId",
@@ -1888,6 +2461,36 @@ namespace RepositoryLayer.Migrations
                 column: "UnidEmpresaId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_UsuarioRips_ObRaUsUaObjetoRaizId",
+                table: "UsuarioRips",
+                column: "ObRaUsUaObjetoRaizId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuarioRips_ObRaUsUaUsuarioId",
+                table: "UsuarioRips",
+                column: "ObRaUsUaUsuarioId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuarioSaludRips_UsUaCiudadResicenciaId",
+                table: "UsuarioSaludRips",
+                column: "UsUaCiudadResicenciaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuarioSaludRips_UsUaPaisNacimientoId",
+                table: "UsuarioSaludRips",
+                column: "UsUaPaisNacimientoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuarioSaludRips_UsUaTipoDocRipsId",
+                table: "UsuarioSaludRips",
+                column: "UsUaTipoDocRipsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UsuarioSaludRips_UsUaTipoUsuariosRipsId",
+                table: "UsuarioSaludRips",
+                column: "UsUaTipoUsuariosRipsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Vendedor_VendEmpresaId",
                 table: "Vendedor",
                 column: "VendEmpresaId");
@@ -1895,6 +2498,9 @@ namespace RepositoryLayer.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ConsultaRips");
+
             migrationBuilder.DropTable(
                 name: "ContratoSalud");
 
@@ -1905,7 +2511,31 @@ namespace RepositoryLayer.Migrations
                 name: "EmpresasUsuario");
 
             migrationBuilder.DropTable(
+                name: "HospitalizacionRips");
+
+            migrationBuilder.DropTable(
+                name: "IncapacidadRips");
+
+            migrationBuilder.DropTable(
+                name: "ListaPrecioProducto");
+
+            migrationBuilder.DropTable(
                 name: "Localidad");
+
+            migrationBuilder.DropTable(
+                name: "MedicamentosRips");
+
+            migrationBuilder.DropTable(
+                name: "ModalidadAtencionRips");
+
+            migrationBuilder.DropTable(
+                name: "OtroServicioRips");
+
+            migrationBuilder.DropTable(
+                name: "ProcedimientoRips");
+
+            migrationBuilder.DropTable(
+                name: "RecienNacidoRips");
 
             migrationBuilder.DropTable(
                 name: "ResolucionSucursal");
@@ -1914,16 +2544,31 @@ namespace RepositoryLayer.Migrations
                 name: "RolUsuario");
 
             migrationBuilder.DropTable(
+                name: "ServicioRips");
+
+            migrationBuilder.DropTable(
+                name: "TipoOtroServicioRips");
+
+            migrationBuilder.DropTable(
+                name: "UrgenciaRips");
+
+            migrationBuilder.DropTable(
+                name: "UsuarioRips");
+
+            migrationBuilder.DropTable(
                 name: "Vendedor");
 
             migrationBuilder.DropTable(
                 name: "ModalidadPago");
 
             migrationBuilder.DropTable(
-                name: "Factura");
+                name: "ReteFuente");
 
             migrationBuilder.DropTable(
-                name: "ReteFuente");
+                name: "ListaPrecio");
+
+            migrationBuilder.DropTable(
+                name: "Producto");
 
             migrationBuilder.DropTable(
                 name: "Resolucion");
@@ -1938,55 +2583,10 @@ namespace RepositoryLayer.Migrations
                 name: "Usuario");
 
             migrationBuilder.DropTable(
-                name: "ClaseFactura");
+                name: "ObjetoRaiz");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
-
-            migrationBuilder.DropTable(
-                name: "Cobertura");
-
-            migrationBuilder.DropTable(
-                name: "CondicionVenta");
-
-            migrationBuilder.DropTable(
-                name: "EstadoDianFactura");
-
-            migrationBuilder.DropTable(
-                name: "FactSaludTipo");
-
-            migrationBuilder.DropTable(
-                name: "FormaPago");
-
-            migrationBuilder.DropTable(
-                name: "ListaPrecio");
-
-            migrationBuilder.DropTable(
-                name: "Moneda");
-
-            migrationBuilder.DropTable(
-                name: "NotaCredito");
-
-            migrationBuilder.DropTable(
-                name: "NotaDebito");
-
-            migrationBuilder.DropTable(
-                name: "TipoDescuento");
-
-            migrationBuilder.DropTable(
-                name: "TipoDocElectr");
-
-            migrationBuilder.DropTable(
-                name: "FormatoImpresion");
-
-            migrationBuilder.DropTable(
-                name: "Pais");
-
-            migrationBuilder.DropTable(
-                name: "Producto");
-
-            migrationBuilder.DropTable(
-                name: "ConceptoNota");
+                name: "UsuarioSaludRips");
 
             migrationBuilder.DropTable(
                 name: "CentroCosto");
@@ -2014,6 +2614,69 @@ namespace RepositoryLayer.Migrations
 
             migrationBuilder.DropTable(
                 name: "Unidad");
+
+            migrationBuilder.DropTable(
+                name: "EstadoRips");
+
+            migrationBuilder.DropTable(
+                name: "Factura");
+
+            migrationBuilder.DropTable(
+                name: "OrigenRips");
+
+            migrationBuilder.DropTable(
+                name: "TipoNotaRips");
+
+            migrationBuilder.DropTable(
+                name: "TipoDocRips");
+
+            migrationBuilder.DropTable(
+                name: "TipoUsuariosRips");
+
+            migrationBuilder.DropTable(
+                name: "ClaseFactura");
+
+            migrationBuilder.DropTable(
+                name: "Cliente");
+
+            migrationBuilder.DropTable(
+                name: "Cobertura");
+
+            migrationBuilder.DropTable(
+                name: "CondicionVenta");
+
+            migrationBuilder.DropTable(
+                name: "EstadoDianFactura");
+
+            migrationBuilder.DropTable(
+                name: "FactSaludTipo");
+
+            migrationBuilder.DropTable(
+                name: "FormaPago");
+
+            migrationBuilder.DropTable(
+                name: "FormatoImpresion");
+
+            migrationBuilder.DropTable(
+                name: "Moneda");
+
+            migrationBuilder.DropTable(
+                name: "NotaCredito");
+
+            migrationBuilder.DropTable(
+                name: "NotaDebito");
+
+            migrationBuilder.DropTable(
+                name: "TipoDescuento");
+
+            migrationBuilder.DropTable(
+                name: "TipoDocElectr");
+
+            migrationBuilder.DropTable(
+                name: "Pais");
+
+            migrationBuilder.DropTable(
+                name: "ConceptoNota");
 
             migrationBuilder.DropTable(
                 name: "Empresa");

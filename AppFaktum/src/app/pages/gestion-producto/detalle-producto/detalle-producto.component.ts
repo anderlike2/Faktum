@@ -60,6 +60,11 @@ export class DetalleProductoComponent implements OnInit {
     );
 
     modalProducto.componentInstance.empresaID = this.dataEmpresa.id;
+    modalProducto.result.then((result) => {
+      if (result) {
+        this.cargarTablas();
+      }
+    });
   }
 
   verProducto(value: IProducto): void {

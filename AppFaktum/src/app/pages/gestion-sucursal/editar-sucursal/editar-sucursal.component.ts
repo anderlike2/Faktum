@@ -381,7 +381,7 @@ export class EditarSucursalComponent implements OnInit {
   }
 
   verResolucionSucursal(value:IResolucion): void{
-    this.sharedService.addResolucionSucursalData(value);
+    this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['./gestion-resolucion-sucursal/editar-resolucion-sucursal']);
   }
 

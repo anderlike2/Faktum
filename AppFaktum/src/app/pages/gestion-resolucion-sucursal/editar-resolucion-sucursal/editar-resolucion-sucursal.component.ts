@@ -41,7 +41,7 @@ export class EditarResolucionSucursalComponent implements OnInit {
   }
 
   init(): void {
-    this.sharedService.resolucionSucursalListener$.subscribe(this.obtenerResolucionSucursal.bind(this));
+    this.sharedService.editarGeneralDataListener$.subscribe(this.obtenerResolucionSucursal.bind(this));
     this.initForm();
     this.dataEmpresa = this.storageService.getEmpresaActivaStorage();
     this.cargarListasCombobox();

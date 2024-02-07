@@ -58,6 +58,11 @@ export class DetalleSucursalComponent implements OnInit {
     );
 
     modalSucursal.componentInstance.empresaID = this.dataEmpresa.id;
+    modalSucursal.result.then((result) => {
+      if (result) {
+        this.cargarTabla();
+      }
+    });
   }
 
   verSucursal(value: ISucursal): void {

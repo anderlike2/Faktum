@@ -96,7 +96,7 @@ export class EditarContratoClienteComponent implements OnInit {
       next: (response) => {
         if(response?.success) {
           this.contratoClienteData = response.data;
-          this.cargarInformacionCliente(data?.cosaClieId);
+          this.cargarInformacionCliente(response.data.cosaClieId);
           this.cargarDataForm(response.data);
         }
       }

@@ -11,23 +11,11 @@ import swal from 'sweetalert2';
 import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
 import { ISucursalEmpresa } from 'src/app/models/sucursal-empresa.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CrearSucursalComponent } from '../../modals/crear-sucursal/crear-sucursal.component';
 import { Router } from '@angular/router';
-import { ISucursal } from 'src/app/models/sucursal.model';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
-import { LoaderService } from 'src/app/services/loader-service/loader.service';
-import { CrearClienteComponent } from '../../modals/crear-cliente/crear-cliente.component';
-import { ICentroCostos } from 'src/app/models/centro-costos.model';
-import { CrearCentroCostosComponent } from '../../modals/crear-centro-costos/crear-centro-costos.component';
 import { CentroCostosService } from 'src/app/services/centro-costos-service/centro-costos.service';
-import { CrearFormatoImpresionComponent } from '../../modals/crear-formato-impresion/crear-formato-impresion.component';
-import { IFormatoImpresion } from 'src/app/models/formato-impresion.model';
 import { FormatoImpresionService } from 'src/app/services/formato-impresion-service/formato-impresion.service';
-import { IUnidad } from 'src/app/models/unidad.model';
-import { UnidadService } from 'src/app/services/unidad-service/unidad.service';
-import { CrearUnidadComponent } from '../../modals/crear-unidad/crear-unidad.component';
-import { IProducto } from 'src/app/models/producto.model';
-import { CrearProductoComponent } from '../../modals/crear-producto/crear-producto.component';
+import { UnidadService } from 'src/app/services/unidad-service/unidad.service';;
 import { ProductoService } from 'src/app/services/producto-service/producto.service';
 
 @Component({
@@ -57,14 +45,7 @@ export class DetalleEmpresaComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
-    private detalleEmpresaService: DetalleEmpresaService,
-    private centroCostosService: CentroCostosService,
-    private sharedService: SharedService,
-    private modalService: NgbModal,
-    private router: Router,
-    private formatoImpresionService: FormatoImpresionService,
-    private unidadService: UnidadService,
-    private productoService: ProductoService
+    private detalleEmpresaService: DetalleEmpresaService
   ) { }
 
   ngOnInit(): void {
