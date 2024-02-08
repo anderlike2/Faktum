@@ -16,5 +16,14 @@ namespace RepositoryLayer.IRepository
         /// </summary>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarTabla();
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla ium por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarIumPorCoincidencia(string filtro);
     }
 }

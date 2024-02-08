@@ -56,6 +56,7 @@ namespace DependencyInjection
             services.AddScoped(typeof(IMaestrasRepository), typeof(MaestrasRepository));
             services.AddScoped(typeof(IReteFuenteRepository), typeof(ReteFuenteRepository));
             services.AddScoped(typeof(ICumRepository), typeof(CumRepository));
+            services.AddScoped(typeof(ICupRepository), typeof(CupRepository));
             services.AddScoped(typeof(IRegimenRepository), typeof(RegimenRepository));
             services.AddScoped(typeof(IIumRepository), typeof(IumRepository));
             services.AddScoped(typeof(IClasJuridicaRepository), typeof(ClasJuridicaRepository));

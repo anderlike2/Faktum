@@ -19,6 +19,7 @@ namespace ServiceLayer.Service
         private readonly IImpuestoRepository objImpuestoRepository;
         private readonly ICiudadRepository objCiudadRepository;
         private readonly IDeptoRepository objDeptoRepository;
+        private readonly ICupRepository objCupRepository;
 
         /// <summary>
         /// Katary
@@ -33,13 +34,13 @@ namespace ServiceLayer.Service
         /// <param name="_objClasJuridicaRepository"></param>
         /// <param name="_objImpuestoRepository"></param>
         /// <param name="_objCiudadRepository"></param>
-        /// <param name="_objNumeracionResolucionRepository"></param>
+        /// <param name="_objCupRepository"></param>
         /// <param name="_obDeptoRepository"></param>
         /// <returns></returns>
         public MaestrasService(IMaestrasRepository _objMaestrasRepository, IReteFuenteRepository _objReteFuenteRepository, ICumRepository _objCumRepository, 
             IRegimenRepository _objRegimenRepository, IIumRepository _objIumRepository, IClasJuridicaRepository _objClasJuridicaRepository, 
             IImpuestoRepository _objImpuestoRepository, ICiudadRepository _objCiudadRepository,
-            IDeptoRepository _obDeptoRepository)
+            IDeptoRepository _obDeptoRepository, ICupRepository _objCupRepository)
         {
             this.objMaestrasRepository = _objMaestrasRepository;
             this.objReteFuenteRepository = _objReteFuenteRepository;
@@ -50,6 +51,7 @@ namespace ServiceLayer.Service
             this.objImpuestoRepository = _objImpuestoRepository;
             this.objCiudadRepository = _objCiudadRepository;
             this.objDeptoRepository = _obDeptoRepository;
+            this.objCupRepository = _objCupRepository;
         }
 
         /// <summary>
@@ -150,6 +152,42 @@ namespace ServiceLayer.Service
         public Task<Result> ConsultarTablaDepto()
         {
             return objDeptoRepository.ConsultarTabla();
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cum por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarCumPorCoincidencia(string filtro)
+        {
+            return objCumRepository.ConsultarCumPorCoincidencia(filtro);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cum por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarIumPorCoincidencia(string filtro)
+        {
+            return objIumRepository.ConsultarIumPorCoincidencia(filtro);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cup por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> ConsultarCupPorCoincidencia(string filtro)
+        {
+            return objCupRepository.ConsultarCupPorCoincidencia(filtro);
         }
     }
 }

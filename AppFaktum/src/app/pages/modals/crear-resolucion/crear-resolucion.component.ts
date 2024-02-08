@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbDate, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { IResolucion } from 'src/app/models/resolucion.model';
@@ -23,7 +24,7 @@ export class CrearResolucionComponent implements OnInit {
   listaTipoDocs: IListCombo[] = [];
 
   constructor(private cargueCombosService: CargueCombosService, private resolucionService: ResolucionService,
-    private generalService: GeneralService, private modalRef: NgbActiveModal) { }
+    private generalService: GeneralService, private modalRef: NgbActiveModal, private dateAdapter: NgbDateAdapter<any>) { }
 
   ngOnInit(): void {
     this.init();
@@ -115,6 +116,18 @@ export class CrearResolucionComponent implements OnInit {
       ? 'Campo obligatorio' : '';
   }
 
+  get resoFechaExpideErrorMensaje(): string {
+    const form: AbstractControl = this.resolucionFormGroup.get('resoFechaExpide') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
+  get resoVigenciaErrorMensaje(): string {
+    const form: AbstractControl = this.resolucionFormGroup.get('resoVigencia') as AbstractControl;
+    return form.hasError('required')
+      ? 'Campo obligatorio' : '';
+  }
+
   guardarResolucion(): void {
     if (this.resolucionFormGroup.invalid) {
       this.resolucionFormGroup.markAllAsTouched();
@@ -122,10 +135,12 @@ export class CrearResolucionComponent implements OnInit {
     }
 
     const dataBody: IResolucion = this.resolucionFormGroup.getRawValue();
-
+    debugger
     dataBody.id = 0;
     dataBody.estado = 1;
     dataBody.resoEmpresaId = this.empresaID;
+    dataBody.resoFechaExpide = moment(dataBody.resoFechaExpide, 'DD/MM/YYYY').toDate(),
+    dataBody.resoVigencia = moment(dataBody.resoVigencia, 'DD/MM/YYYY').toDate(),
 
     this.resolucionService.crearResolucion(dataBody).subscribe({
       next: (response: any) => {
@@ -141,6 +156,21 @@ export class CrearResolucionComponent implements OnInit {
 
   cerrarModal(info?: any) {
     this.modalRef.close(info);
+  }
+
+  onDateSelect(date: NgbDate, key: string): void {
+    const formControl: any = {};
+    formControl[key] = this.dateAdapter.toModel(date);
+    formControl[key] = `${this.padNumber(date.day)}/${this.padNumber(date.month)}/${date.year}`;
+    this.resolucionFormGroup.patchValue(formControl);
+  }
+
+  padNumber = (value: number) => {
+    if (typeof value === 'number') {
+      return `0${value}`.slice(-2);
+    } else {
+      return '';
+    }
   }
 
 }

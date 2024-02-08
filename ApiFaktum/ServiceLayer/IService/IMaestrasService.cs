@@ -80,5 +80,32 @@ namespace ServiceLayer.IService
         /// </summary>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarTablaDepto();
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cum por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarCumPorCoincidencia(string filtro);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla ium por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarIumPorCoincidencia(string filtro);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cup por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> ConsultarCupPorCoincidencia(string filtro);
     }
 }

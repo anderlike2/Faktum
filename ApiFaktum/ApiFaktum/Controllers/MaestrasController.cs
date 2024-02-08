@@ -295,5 +295,95 @@ namespace ApiFaktum.Controllers
             }
             return Ok(oRespuesta);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cum por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ConsultarCumPorCoincidencia")]
+        public async Task<IActionResult> ConsultarCumPorCoincidencia([FromBody] FiltroCoincidenciaDto filtro)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarCumPorCoincidencia(filtro.Texto);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla ium por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ConsultarIumPorCoincidencia")]
+        public async Task<IActionResult> ConsultarIumPorCoincidencia([FromBody] FiltroCoincidenciaDto filtro)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarIumPorCoincidencia(filtro.Texto);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cup por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("ConsultarCupPorCoincidencia")]
+        public async Task<IActionResult> ConsultarCupPorCoincidencia([FromBody] FiltroCoincidenciaDto filtro)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.ConsultarCupPorCoincidencia(filtro.Texto);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
     }
 }

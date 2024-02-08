@@ -66,5 +66,42 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla ium por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarIumPorCoincidencia(string filtro)
+        {
+            Result oRespuesta = new Result();
+            List<IumModel>? lstResult = new List<IumModel>();
+
+            try
+            {
+                lstResult = await objContext.Ium.Where(x => x.Estado == 1 && !string.IsNullOrEmpty(x.IumNombre) && x.IumNombre.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
+
+                oRespuesta.Success = true;
+                if (lstResult.Count > 0)
+                {
+
+                    oRespuesta.Data = mapper.Map<List<IumDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<IumDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

@@ -160,27 +160,47 @@
                 <div class="col-4">
                     <div class="form-group">
                         <label for="">Fecha expide</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" formControlName="resoFechaExpide">
+                        <div class="input-group" [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoFechaExpide.invalid &&
+                            resolucionFormGroup.controls.resoFechaExpide.touched
+                             }">
+                            <input type="text" class="form-control" #fechaExpideInput id="resoFechaExpide" formControlName="resoFechaExpide" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                              'is-invalid':
+                              resolucionFormGroup.controls.resoFechaExpide.invalid &&
+                              resolucionFormGroup.controls.resoFechaExpide.touched
+                               }">
+                            <input type="hidden" (dateSelect)="onDateSelect($event, 'resoFechaExpide')" ngbDatepicker #df="ngbDatepicker" [positionTarget]="fechaExpideInput">
                             <div class="input-group-append">
-                              <button class="btn btn-secondary calendar">
+                              <button class="btn btn-secondary calendar" (click)="df.toggle()">
                                 <i class="far fa-calendar"></i>
                               </button>
                             </div>
-                        </div>
+                          </div>
+                          <div class="invalid-feedback"> {{ resoFechaExpideErrorMensaje }} </div>
                     </div>
                 </div>
                 <div class="col-4">
                     <div class="form-group">
                         <label for="">Fecha vigencia</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" formControlName="resoVigencia">
+                        <div class="input-group" [ngClass]="{
+                            'is-invalid':
+                            resolucionFormGroup.controls.resoVigencia.invalid &&
+                            resolucionFormGroup.controls.resoVigencia.touched
+                             }">
+                            <input type="text" class="form-control" #fechaVigenciaInput id="resoVigencia" formControlName="resoVigencia" mask="d0/M0/0000" [leadZeroDateTime]="true" placeholder="dd/mm/aaaa" [ngClass]="{
+                              'is-invalid':
+                              resolucionFormGroup.controls.resoVigencia.invalid &&
+                              resolucionFormGroup.controls.resoVigencia.touched
+                               }">
+                            <input type="hidden" (dateSelect)="onDateSelect($event, 'resoVigencia')" ngbDatepicker #dv="ngbDatepicker" [positionTarget]="fechaVigenciaInput">
                             <div class="input-group-append">
-                              <button class="btn btn-secondary calendar">
+                              <button class="btn btn-secondary calendar" (click)="dv.toggle()">
                                 <i class="far fa-calendar"></i>
                               </button>
                             </div>
-                        </div>
+                          </div>
+                          <div class="invalid-feedback"> {{ resoVigenciaErrorMensaje }} </div>
                     </div>
                 </div>
             </div>

@@ -66,5 +66,42 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para consultar la tabla cum por coincidencia
+        /// </summary>
+        /// <param name="filtro"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> ConsultarCumPorCoincidencia(string filtro)
+        {
+            Result oRespuesta = new Result();
+            List<CumModel>? lstResult = new List<CumModel>();
+
+            try
+            {
+                lstResult = await objContext.Cum.Where(x => x.Estado == 1 && !string.IsNullOrEmpty(x.CumsNombre) && x.CumsNombre.ToUpper().Contains(filtro.ToUpper())).ToListAsync();
+
+                oRespuesta.Success = true;
+                if (lstResult.Count > 0)
+                {
+
+                    oRespuesta.Data = mapper.Map<List<CumDto>>(lstResult);
+                    oRespuesta.Message = Constantes.msjConsultaExitosa;
+                }
+                else
+                {
+                    oRespuesta.Data = new List<CumDto>();
+                    oRespuesta.Message = Constantes.msjNoHayRegistros;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }
