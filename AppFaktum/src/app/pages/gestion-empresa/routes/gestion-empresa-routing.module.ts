@@ -8,6 +8,7 @@ import { UnidadesComponent } from '../unidades/unidades.component';
 import { OtrosProductosComponent } from '../otros-productos/otros-productos.component';
 import { ResolucionesComponent } from '../resoluciones/resoluciones.component';
 import { ListasPreciosComponent } from '../listas-precios/listas-precios.component';
+import { HasRoleGuard } from 'src/app/shared/has-role-guard/has-role.guard';
 
 const gestionEmpresaRoutes: Routes = [
   {
@@ -16,7 +17,11 @@ const gestionEmpresaRoutes: Routes = [
   },
   {
     path: 'crear-empresa',
-    component: CrearEmpresaPageComponent
+    component: CrearEmpresaPageComponent,
+    canActivate: [HasRoleGuard],
+    data: {
+      allowedRoles: ['ROL_ADMINISTRADOR']
+    }
   },
   {
     path: 'centro-costos',

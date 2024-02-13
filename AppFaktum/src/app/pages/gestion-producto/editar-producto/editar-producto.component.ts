@@ -1,6 +1,8 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { map } from 'rxjs/operators';
+import { NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, OperatorFunction, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
 import { IProducto, tipoConceptoEnum } from 'src/app/models/producto.model';
@@ -16,6 +18,10 @@ import { SharedService } from 'src/app/services/shared-service/shared.service';
   styleUrls: ['./editar-producto.component.scss']
 })
 export class EditarProductoComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('inputCupsElement') inputCupsElement: ElementRef;
+  @ViewChild('inputCumsElement') inputCumsElement: ElementRef;
+  @ViewChild('inputIumsElement') inputIumsElement: ElementRef;
 
   productoCollapsed: boolean = false;
   edicionProducto: boolean = false;
@@ -38,7 +44,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
   listaTipoRips: IListCombo[] = [];
   listaUnidad: IListCombo[] = [];
   listaOtroProducto: IListCombo[] = [];
-  
+
   informacionProducto: IProducto;
 
   listaOpcionesMap: { [key: string]: () => void } = {
@@ -74,7 +80,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
     private cargueCombosService: CargueCombosService,
     private sharedService: SharedService,
     private generalService: GeneralService,
-    
+
   ) { }
 
   ngAfterViewInit(): void {
@@ -255,6 +261,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
     this.edicionProducto = false;
     this.productoFormGroup.get('concepto').setValue(this.conceptoInicial);
     this.productoFormGroup.disable();
+    console.log(data);
     this.productoFormGroup.patchValue(
       data
     );
@@ -410,4 +417,67 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
       }
     });
   }
+
+  formatterInput = (result: { id: number; nombre: string }) => result.nombre;
+
+  searchCups: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+     text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      filter((term) => term.length > 2),
+      switchMap((term) => this.productoService.consultarCupPorTexto(term).pipe(
+        map((response) => response.data?.map((item) => ({
+          id: item?.id,
+          nombre: item?.cupsNombre
+        }))),
+        catchError(() => of([]))
+      ))
+    );
+
+
+    searchCums: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      filter((term) => term.length > 2),
+      switchMap((term) => this.productoService.consultarCumPorTexto(term).pipe(
+        map((response) => response.data?.map((item) => ({
+          id: item?.id,
+          nombre: item?.cumsNombre
+        }))),
+        catchError(() => of([]))
+      ))
+    );
+
+    searchIums: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      filter((term) => term.length > 2),
+      switchMap((term) => this.productoService.consultarIumPorTexto(term).pipe(
+        map((response) => response.data?.map((item) => ({
+          id: item?.id,
+          nombre: item?.iumNombre
+        }))),
+        catchError(() => of([]))
+      ))
+    );
+
+    onselectitemCups(event: NgbTypeaheadSelectItemEvent): void {
+      event.preventDefault();
+      this.productoFormGroup.get('prodCupId').patchValue(event.item.id);
+      this.inputCupsElement.nativeElement.value = event.item.nombre;
+    }
+
+    onselectitemCums(event: NgbTypeaheadSelectItemEvent): void {
+      event.preventDefault();
+      this.productoFormGroup.get('prodCumId').patchValue(event.item.id);
+      this.inputCumsElement.nativeElement.value = event.item.nombre;
+    }
+
+    onselectitemIums(event: NgbTypeaheadSelectItemEvent): void {
+      event.preventDefault();
+      this.productoFormGroup.get('prodIumId').patchValue(event.item.id);
+      this.inputIumsElement.nativeElement.value = event.item.nombre;
+    }
 }

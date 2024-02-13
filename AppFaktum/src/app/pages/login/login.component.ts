@@ -101,10 +101,9 @@ export class LoginComponent implements OnInit {
         const info: ILoginResponse = response?.data;
 
         const usuario: IUsuario = info;
-        console.log(info);
 
         this.storageService.setEmpresaStorage(info.usuEmpresas);
-        this.storageService.setUserRolesStorage(info.usuRoles);
+        this.storageService.setUserRolesStorage(info.usuaRoles);
         this.storageService.setUserStorage( usuario );
 
         this.router.navigateByUrl('/');

@@ -8,5 +8,5 @@ export interface ILogin {
 
 export interface ILoginResponse extends IUsuario {
   usuEmpresas: IEmpresa[];
-  usuRoles: IUsuarioRol[];
+  usuaRoles: IUsuarioRol[];
 }

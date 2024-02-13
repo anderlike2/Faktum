@@ -21,7 +21,8 @@ export interface ISucursal {
   sucuPrincipal: number;
   sucuReteIca: number;
   sucuTelefono: string;
-  sucuCentroCostosId: number;
+  sucuCentroCostosId?: number;
+  sucuCentroCosto?: string;
   sucuEmpresaId: number;
   sucuFormatoImpresionId: number;
 }

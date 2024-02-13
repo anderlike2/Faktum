@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IEmpresa } from 'src/app/models/empresa.model';
+import { IEmpresa, ILogoTablaEmpresa } from 'src/app/models/empresa.model';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { CargueCombosService } from 'src/app/services/cargue-combos-service/cargue-combos.service';
 import { Observable } from 'rxjs';
 import { IListCombo } from 'src/app/models/general.model';
-import { TipoListEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { DetalleEmpresaService } from 'src/app/services/detalle-empresa-service/detalle-empresa.service';
 import swal from 'sweetalert2';
 import { IClienteEmpresa } from 'src/app/models/cliente-empresa.model';
@@ -17,6 +17,8 @@ import { CentroCostosService } from 'src/app/services/centro-costos-service/cent
 import { FormatoImpresionService } from 'src/app/services/formato-impresion-service/formato-impresion.service';
 import { UnidadService } from 'src/app/services/unidad-service/unidad.service';;
 import { ProductoService } from 'src/app/services/producto-service/producto.service';
+import { GeneralService } from 'src/app/services/general-service/general.service';
+import { NgxFileDropEntry } from 'ngx-file-drop';
 
 @Component({
   selector: 'app-detalle-empresa',
@@ -39,13 +41,21 @@ export class DetalleEmpresaComponent implements OnInit {
   edicionEmpresa: boolean = false;
 
   dataEmpresa: IEmpresa;
+  imagenEmpresa: ILogoTablaEmpresa[] = [];
+
+  fileNameUpload = '';
+  capturedImage;
+
+  maxBytes = 300 * 1024;
+  maxSignature = 45 * 1024;
 
   empresaCollapsed: boolean = false;
 
   constructor(
     private storageService: StorageService,
     private cargueCombosService: CargueCombosService,
-    private detalleEmpresaService: DetalleEmpresaService
+    private detalleEmpresaService: DetalleEmpresaService,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -160,6 +170,18 @@ export class DetalleEmpresaComponent implements OnInit {
 
       this.empresaFormGroup.disable();
       this.edicionEmpresa = false;
+
+      console.log(this.dataEmpresa);
+
+
+      const logoEmpresa: ILogoTablaEmpresa = {
+        imagen: this.dataEmpresa.emprLogo,
+        nombre: '',
+        tamano: this.dataEmpresa.emprLogo ? this.getSizeImg(this.dataEmpresa.emprLogo) : null
+      }
+
+
+      this.imagenEmpresa = [logoEmpresa];
 
     }
 
@@ -580,6 +602,15 @@ export class DetalleEmpresaComponent implements OnInit {
       return;
     }
 
+    if (this.imagenEmpresa.length === 0) {
+      this.generalService.mostrarMensajeAlerta(
+        `La carga de la imagen es requerida.`,
+        TiposMensajeEnum.ERROR,
+        GeneralesEnum.BTN_ACEPTAR
+      );
+      return;
+    }
+
     const formData = this.empresaFormGroup.getRawValue();
 
     const dataBody: IEmpresa = {
@@ -617,7 +648,8 @@ export class DetalleEmpresaComponent implements OnInit {
       emprDiasPago: formData.emprDiasPago,
       estado: this.dataEmpresa.estado,
       fechaCreacion: this.dataEmpresa.fechaCreacion,
-      fechaModificacion: this.dataEmpresa.fechaModificacion
+      fechaModificacion: this.dataEmpresa.fechaModificacion,
+      emprLogo: this.imagenEmpresa[0].imagen as string
     };
 
     this.detalleEmpresaService.actualizarEmpresa(dataBody)
@@ -636,6 +668,67 @@ export class DetalleEmpresaComponent implements OnInit {
       next: (response) => {
         this.listCiudades = response;
       }})
+  }
+
+  getExtension(name: string): string {
+    const arr = name.split('.');
+    return arr[arr.length - 1].toLowerCase();
+  }
+
+  dropped(files: NgxFileDropEntry[]) {
+    const droppedFile = files[0];
+      if (droppedFile.fileEntry.isFile) {
+          const fileEntry = droppedFile.fileEntry as any;
+          fileEntry.file((file: File) => {
+              const reader = new FileReader();
+              const extension = this.getExtension(file.name);
+              if (extension === 'png' || extension === 'jpg' || extension === 'jpeg') {
+                  reader.readAsDataURL(file);
+                  this.fileNameUpload = file.name;
+                  reader.onload = () => {
+                      if (file.size > this.maxBytes) {
+                        this.generalService.mostrarMensajeAlerta(
+                          `El logo ${file.name} supera el tamaño máximo permitido`,
+                          TiposMensajeEnum.ERROR,
+                          GeneralesEnum.BTN_ACEPTAR
+                          );
+                      } else {
+                          this.capturedImage = reader.result;
+
+                          const logoEmpresa: ILogoTablaEmpresa = {
+                            imagen: reader.result,
+                            nombre: file.name,
+                            tamano: file.size
+                          }
+
+                          this.imagenEmpresa = [logoEmpresa];
+                          // this.uploadImageAsset = reader.result;
+                          // this.uploadImage[0].setAttribute('style', 'background-image: url(' + this.uploadImageAsset + '); background-size: contain;');
+                      }
+                  };
+              }
+              else {
+                this.generalService.mostrarMensajeAlerta(
+                  `El tipo de archivo ${this.getExtension(file.name)} no es permitido.`,
+                  TiposMensajeEnum.ERROR,
+                  GeneralesEnum.BTN_ACEPTAR
+                  );
+              }
+          });
+      }
+    }
+
+    getSizeImg(imageBase64: string): number {
+      console.log(imageBase64);
+      const decodeBytes = window.atob(imageBase64.replace(/^data:image\/(png|jpeg);base64,/, ''));
+      const byteSize = decodeBytes.length;
+      const megabytes = byteSize / (1024 * 1024);
+      return +megabytes?.toFixed(2);
+    }
+
+  borrarImagen(fila: any): void {
+    this.imagenEmpresa = [];
+    this.capturedImage = '';
   }
 
 }

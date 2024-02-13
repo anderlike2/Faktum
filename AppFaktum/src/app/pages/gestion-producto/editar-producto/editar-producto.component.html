@@ -131,21 +131,49 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">CUPS</label>
-                    <select formControlName="prodCupId" class="form-control">
-                      <ng-container *ngFor="let item of listaCups">
-                        <option [value]="item.valor">{{item.nombre}}</option>
-                      </ng-container>
-                    </select>
+                    <input
+                      #inputCupsElement
+                      type="text"
+                      class="form-control"
+                      formControlName="prodCupId"
+                      [ngbTypeahead]="searchCups"
+                      [resultTemplate]="rcup"
+                      (selectItem)="onselectitemCups($event)"
+                      [editable]="false"
+
+                      [ngClass]="{
+                        'is-invalid':
+                          productoFormGroup.controls.prodCupId.invalid &&
+                          productoFormGroup.controls.prodCupId.touched
+                      }"
+
+                    />
+                    <ng-template #rcup let-r="result" let-t="term">
+                      {{ r.nombre }}
+                    </ng-template>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">CUMS</label>
-                    <select formControlName="prodCumId" class="form-control">
-                      <ng-container *ngFor="let item of listaCums">
-                        <option [value]="item.valor">{{item.nombre}}</option>
-                      </ng-container>
-                    </select>
+                    <input
+                      #inputCumsElement
+                      type="text"
+                      class="form-control"
+                      formControlName="prodCumId"
+                      [ngbTypeahead]="searchCums"
+                      [resultTemplate]="rcum"
+                      (selectItem)="onselectitemCums($event)"
+                      [editable]="false"
+                      [ngClass]="{
+                        'is-invalid':
+                          productoFormGroup.controls.prodCumId.invalid &&
+                          productoFormGroup.controls.prodCumId.touched
+                      }"
+                    />
+                    <ng-template #rcum let-r="result" let-t="term">
+                      {{ r.nombre }}
+                    </ng-template>
                   </div>
                 </div>
               </div>
@@ -154,11 +182,24 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="">IUM</label>
-                    <select formControlName="prodIumId" class="form-control">
-                      <ng-container *ngFor="let item of listaIums">
-                        <option [value]="item.valor">{{item.nombre}}</option>
-                      </ng-container>
-                    </select>
+                    <input
+                      #inputIumsElement
+                      type="text"
+                      class="form-control"
+                      formControlName="prodIumId"
+                      [ngbTypeahead]="searchIums"
+                      [resultTemplate]="rium"
+                      (selectItem)="onselectitemIums($event)"
+                      [editable]="false"
+                      [ngClass]="{
+                        'is-invalid':
+                          productoFormGroup.controls.prodIumId.invalid &&
+                          productoFormGroup.controls.prodIumId.touched
+                      }"
+                    />
+                    <ng-template #rium let-r="result" let-t="term">
+                      {{ r.nombre }}
+                    </ng-template>
                   </div>
                 </div>
                 <div class="col-6">

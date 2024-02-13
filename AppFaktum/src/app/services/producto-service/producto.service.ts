@@ -51,4 +51,44 @@ export class ProductoService {
       data
     );
   }
+
+  consultarCumPorTexto(texto: string): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Maestras/ConsultarCumPorCoincidencia`;
+
+    const data = {
+      texto: texto
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
+
+  consultarCupPorTexto(texto: string | any[]): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Maestras/ConsultarCupPorCoincidencia`;
+
+    const data = {
+      texto: texto
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
+
+  consultarIumPorTexto(texto: string): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Maestras/ConsultarIumPorCoincidencia`;
+
+    const data = {
+      texto: texto
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    );
+  }
+
 }

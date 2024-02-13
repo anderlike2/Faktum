@@ -1,7 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { map } from 'rxjs/operators';
+import { NgbActiveModal, NgbTypeaheadSelectItemEvent } from '@ng-bootstrap/ng-bootstrap';
+import { Observable, OperatorFunction, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, filter, map, switchMap, tap } from 'rxjs/operators';
 import { ICentroCostos } from 'src/app/models/centro-costos.model';
 import { GeneralesEnum, TipoListEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 import { IListCombo } from 'src/app/models/general.model';
@@ -19,6 +20,10 @@ import { ProductoService } from 'src/app/services/producto-service/producto.serv
 export class CrearProductoComponent implements OnInit {
 
   @Input() empresaID: number;
+
+  @ViewChild('inputCupsElement') inputCupsElement: ElementRef;
+  @ViewChild('inputCumsElement') inputCumsElement: ElementRef;
+  @ViewChild('inputIumsElement') inputIumsElement: ElementRef;
 
   productoFormGroup: FormGroup;
   fb = new FormBuilder();
@@ -348,6 +353,7 @@ export class CrearProductoComponent implements OnInit {
   }
 
   guardarProducto(): void {
+    console.log(this.productoFormGroup.get('prodCupId'));
     if (this.productoFormGroup.invalid) {
       this.productoFormGroup.markAllAsTouched();
       return;
@@ -371,6 +377,68 @@ export class CrearProductoComponent implements OnInit {
       }
     });
   }
+
+  formatterInput = (result: { id: number; nombre: string }) => result.nombre;
+
+  searchCups: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      filter((term) => term.length > 2),
+      switchMap((term) => this.productoService.consultarCupPorTexto(term).pipe(
+        map((response) => response.data?.map((item) => ({
+          id: item?.id,
+          nombre: item?.cupsNombre
+        }))),
+        catchError(() => of([]))
+      ))
+    );
+
+    searchCums: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      filter((term) => term.length > 2),
+      switchMap((term) => this.productoService.consultarCumPorTexto(term).pipe(
+        map((response) => response.data?.map((item) => ({
+          id: item?.id,
+          nombre: item?.cumsNombre
+        }))),
+        catchError(() => of([]))
+      ))
+    );
+
+    searchIums: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) =>
+    text$.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      filter((term) => term.length > 2),
+      switchMap((term) => this.productoService.consultarIumPorTexto(term).pipe(
+        map((response) => response.data?.map((item) => ({
+          id: item?.id,
+          nombre: item?.iumNombre
+        }))),
+        catchError(() => of([]))
+      ))
+    );
+
+    onselectitemCups(event: NgbTypeaheadSelectItemEvent): void {
+      event.preventDefault();
+      this.productoFormGroup.get('prodCupId').patchValue(event.item.id);
+      this.inputCupsElement.nativeElement.value = event.item.nombre;
+    }
+
+    onselectitemCums(event: NgbTypeaheadSelectItemEvent): void {
+      event.preventDefault();
+      this.productoFormGroup.get('prodCumId').patchValue(event.item.id);
+      this.inputCumsElement.nativeElement.value = event.item.nombre;
+    }
+
+    onselectitemIums(event: NgbTypeaheadSelectItemEvent): void {
+      event.preventDefault();
+      this.productoFormGroup.get('prodIumId').patchValue(event.item.id);
+      this.inputIumsElement.nativeElement.value = event.item.nombre;
+    }
 
   cerrarModal(info?: any) {
     this.modalRef.close(info);

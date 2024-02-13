@@ -193,17 +193,17 @@
         <div class="col-6">
           <div class="form-group">
             <label for="">Centro de costos</label>
-            <select formControlName="sucuCentroCostosId" class="form-control"
+            <select formControlName="sucuCentroCosto" class="form-control"
             [ngClass]="{
               'is-invalid':
-                sucursalFormGroup.controls.sucuCentroCostosId.invalid &&
-                sucursalFormGroup.controls.sucuCentroCostosId.touched
+                sucursalFormGroup.controls.sucuCentroCosto.invalid &&
+                sucursalFormGroup.controls.sucuCentroCosto.touched
             }">
               <ng-container *ngFor="let item of listCentroCostos">
                 <option [value]="item.valor">{{ item.nombre }}</option>
               </ng-container>
             </select>
-            <div class="invalid-feedback"> {{ sucuCentroCostosIdErrorMensaje }} </div>
+            <div class="invalid-feedback"> {{ sucuCentroCostoErrorMensaje }} </div>
           </div>
         </div>
       </div>

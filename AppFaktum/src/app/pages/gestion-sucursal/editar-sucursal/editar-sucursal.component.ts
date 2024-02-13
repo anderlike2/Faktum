@@ -189,7 +189,7 @@ export class EditarSucursalComponent implements OnInit {
         Validators.required
       ]
     ],
-      sucuCentroCostosId: [ { value: '', disabled: false }, [
+      sucuCentroCosto: [ { value: '', disabled: false }, [
         Validators.required
       ]
     ],
@@ -304,8 +304,8 @@ export class EditarSucursalComponent implements OnInit {
       ? 'Campo obligatorio' : '';
   }
 
-  get sucuCentroCostosIdErrorMensaje(): string {
-    const form: AbstractControl = this.sucursalFormGroup.get('sucuCentroCostosId') as AbstractControl;
+  get sucuCentroCostoErrorMensaje(): string {
+    const form: AbstractControl = this.sucursalFormGroup.get('sucuCentroCosto') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }

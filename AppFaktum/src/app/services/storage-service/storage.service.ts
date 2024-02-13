@@ -51,6 +51,15 @@ export class StorageService {
     sessionStorage.setItem('rolesInfo', JSON.stringify(rolesInfo));
   }
 
+  getUserRolesStorage(): any {
+    const roles = sessionStorage.getItem('rolesInfo');
+    if (roles) {
+      return JSON.parse(roles);
+    } else {
+      return [];
+    }
+  }
+
   clearUserStorage(): void {
     sessionStorage.removeItem('userInfo');
     this.loadUserInfo(undefined);
