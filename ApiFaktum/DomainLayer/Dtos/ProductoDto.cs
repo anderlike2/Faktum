@@ -1,4 +1,6 @@
-﻿namespace DomainLayer.Dtos
+﻿using DomainLayer.Models;
+
+namespace DomainLayer.Dtos
 {
     public class ProductoDto : BaseDto
     {
@@ -11,6 +13,12 @@
         public decimal ProdValor { get; set; }
         public decimal ProdPorcReteFuente { get; set; }
         public decimal ProdPorcIva { get; set; }
+
+        //Referencias
+        public CumDto? ProdCum { get; set; }
+        public CupDto? ProdCup { get; set; }
+        public IumDto? ProdIum { get; set; }
+        public OtroProductoDto? ProdOtroProducto { get; set; }
 
         //Referencias para consultas
         public int ProdCentroCostoId { get; set; }

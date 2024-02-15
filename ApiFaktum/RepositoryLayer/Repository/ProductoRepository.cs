@@ -168,7 +168,7 @@ namespace RepositoryLayer.Repository
             try
             {
                 result =
-                    await objContext.Producto.FirstOrDefaultAsync(x => x.Id.Equals(idProducto));
+                    await objContext.Producto.Where(x => x.Id.Equals(idProducto)).Include(z => z.ProdCup).Include(z => z.ProdCum).Include(z => z.ProdIum).Include(z => z.ProdOtroProducto).FirstOrDefaultAsync();
 
                 oRespuesta.Success = true;
                 if (result != null)
