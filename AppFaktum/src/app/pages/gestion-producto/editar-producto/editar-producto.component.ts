@@ -86,6 +86,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.cargarListaCombox();
     this.iniConcepto();
+    this.initEvent();
   }
 
   ngOnInit(): void {
@@ -154,6 +155,32 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
         }
       }
     });
+  }
+
+  initEvent(): void {
+    this.productoFormGroup.get('prodCupId').valueChanges.subscribe({
+      next: (result) => {
+        if (result) {
+          this.inputCupsElement.nativeElement.value = this.productoData.prodCup?.cupsNombre;
+        }
+      }
+    });
+
+    this.productoFormGroup.get('prodCumId').valueChanges.subscribe({
+      next: (result) => {
+        if (result) {
+          this.inputCumsElement.nativeElement.value = this.productoData.prodCum?.cumsNombre;
+        }
+      }
+    });
+
+    this.productoFormGroup.get('prodIumId').valueChanges.subscribe({
+      next: (result) => {
+        if (result) {
+          this.inputIumsElement.nativeElement.value = this.productoData.prodIum?.iumNombre;
+        }
+      }
+    });;
   }
 
   seleccionCups(): void {
@@ -411,6 +438,7 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
           this.productoData.fechaModificacion = dataBody.fechaModificacion;
           setTimeout(() => {
             this.cancelarEdicion();
+            this.obtenerProducto(this.informacionProducto);
           });
           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
         }
@@ -465,19 +493,19 @@ export class EditarProductoComponent implements OnInit, AfterViewInit {
 
     onselectitemCups(event: NgbTypeaheadSelectItemEvent): void {
       event.preventDefault();
-      this.productoFormGroup.get('prodCupId').patchValue(event.item.id);
+      this.productoFormGroup.get('prodCupId').patchValue(event.item.id, { emitEvent: false });
       this.inputCupsElement.nativeElement.value = event.item.nombre;
     }
 
     onselectitemCums(event: NgbTypeaheadSelectItemEvent): void {
       event.preventDefault();
-      this.productoFormGroup.get('prodCumId').patchValue(event.item.id);
+      this.productoFormGroup.get('prodCumId').patchValue(event.item.id, { emitEvent: false });
       this.inputCumsElement.nativeElement.value = event.item.nombre;
     }
 
     onselectitemIums(event: NgbTypeaheadSelectItemEvent): void {
       event.preventDefault();
-      this.productoFormGroup.get('prodIumId').patchValue(event.item.id);
+      this.productoFormGroup.get('prodIumId').patchValue(event.item.id, { emitEvent: false });
       this.inputIumsElement.nativeElement.value = event.item.nombre;
     }
 }

@@ -12,9 +12,12 @@ export interface IProducto {
   prodCentroCostoId: number;
   prodCodReteFuenteId: number;
   prodCumId: number;
+  prodCum: any;
   prodCupId: number;
+  prodCup: any;
   prodEmpresaId: number;
   prodIumId: number;
+  prodIum: any;
   prodTipoCupId: number;
   prodTipoImpuestoId: number;
   prodTipoRipsId: number;
