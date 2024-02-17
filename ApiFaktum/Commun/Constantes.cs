@@ -29,6 +29,11 @@
         public const string msjFacturaNoInsertada = "No fue posible guardar la factura, por favor comuníquese con el Adminstrador del sistema.";
         public const string msjResolucionSucursalExiste = "La resolución ya se encuentra asociada a la sucursal seleccionada";
         public const string msjListaPrecioProductoExiste = "El producto seleccionado ya se encuentra agregado a la lista de precios.";
+        public const string msjDependenciaProducto = "El registro no se puede eliminar porque se encuentra ligado a un Producto";
+        public const string msjDependenciaSucursal = "El registro no se puede eliminar porque se encuentra ligado a una Sucursal";
+        public const string msjDependenciaResolucionSucursal = "El registro no se puede eliminar porque se encuentra ligado a una Resolución Sucursal";
+        public const string msjDependenciaListaPrecioProducto = "El registro no se puede eliminar porque se encuentra ligado a una Lista de Precio Producto";
+        public const string msjDependenciaContratoSalud = "El registro no se puede eliminar porque se encuentra ligado a un Contrado de Salud";
 
         //TIPOS DE CLASE MAESTRO
         public const string claseFactura = "claseFactura";
@@ -55,5 +60,12 @@
 
         //ESTADOS
         public const string estadoActivo = "1";
+
+        //FK Validaciones
+        public const string fkProducto = "FK_Producto";
+        public const string fkSucursal = "FK_Sucursal"; 
+        public const string fkResolucionSucursal = "FK_ResolucionSucursal";
+        public const string fkListaPrecioProducto = "FK_ListaPrecioProducto";
+        public const string fkContratoSalud = "FK_ContratoSalud"; 
     }
 }

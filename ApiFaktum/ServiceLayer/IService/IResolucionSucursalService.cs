@@ -35,5 +35,14 @@ namespace ServiceLayer.IService
         /// <param name="idResolucionSucursal"></param>
         /// <returns>Task<Result></returns>
         Task<Result> ConsultarResolucionSucursalId(int idResolucionSucursal);
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para borrar una resolucion sucursal
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        Task<Result> EliminarResolucionSucursal(ResolucionSucursalDto objModel);
     }
 }

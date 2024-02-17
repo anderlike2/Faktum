@@ -17,6 +17,7 @@ namespace ApiFaktum.Controllers
     {
         private readonly ICreateLogger createLogger;
         private readonly IResolucionSucursalService objService;
+        private readonly IValidacionesService objValidacionesService;
 
         /// <summary>
         /// Katary
@@ -25,11 +26,13 @@ namespace ApiFaktum.Controllers
         /// </summary>
         /// <param name="_objService"></param>
         /// <param name="_createLogger"></param>
+        /// <param name="_objValidacionesService"></param>
         /// <returns></returns>
-        public ResolucionSucursalController(IResolucionSucursalService _objService, ICreateLogger _createLogger)
+        public ResolucionSucursalController(IResolucionSucursalService _objService, ICreateLogger _createLogger, IValidacionesService _objValidacionesService)
         {
             this.objService = _objService;
             this.createLogger = _createLogger;
+            this.objValidacionesService = _objValidacionesService;
         }
 
         /// <summary>
@@ -118,6 +121,36 @@ namespace ApiFaktum.Controllers
                 createLogger.LogWriteExcepcion(ex.Message);
                 oRespuesta.Success = false;
                 oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+            }
+            return Ok(oRespuesta);
+        }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para eliminar una resolucion sucursal
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        [HttpPost]
+        [Route("EliminarResolucionSucursal")]
+        public async Task<IActionResult> EliminarResolucionSucursal([FromBody] ResolucionSucursalDto objModel)
+        {
+            Result oRespuesta = new();
+
+            try
+            {
+                var vRespuesta = await objService.EliminarResolucionSucursal(objModel);
+
+                oRespuesta.Success = vRespuesta.Success;
+                oRespuesta.Message = vRespuesta.Message;
+                oRespuesta.Data = vRespuesta.Data;
+            }
+            catch (Exception ex)
+            {
+                createLogger.LogWriteExcepcion(ex.Message);
+                oRespuesta.Success = false;
+                oRespuesta.Message = objValidacionesService.ValidarEliminacionRegistro(ex);
             }
             return Ok(oRespuesta);
         }

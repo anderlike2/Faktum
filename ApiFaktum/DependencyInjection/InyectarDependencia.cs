@@ -116,6 +116,7 @@ namespace DependencyInjection
             services.AddScoped(typeof(IHospitalizacionRipsService), typeof(HospitalizacionRipsService));
             services.AddScoped(typeof(IRecienNacidoRipsService), typeof(RecienNacidoRipsService));
             services.AddScoped(typeof(IOtroServicioRipsService), typeof(OtroServicioRipsService));
+            services.AddScoped(typeof(IValidacionesService), typeof(ValidacionesService));
 
             services.AddScoped(typeof(IListaPrecioProductoService), typeof(ListaPrecioProductoService));
 

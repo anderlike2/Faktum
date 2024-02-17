@@ -87,5 +87,17 @@ namespace ServiceLayer.Service
         {
             return resolucionSucursalRepository.ConsultarResolucionSucursalId(idResolucionSucursal);
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para borrar una resolucion sucursal
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public Task<Result> EliminarResolucionSucursal(ResolucionSucursalDto objModel)
+        {
+            return resolucionSucursalRepository.EliminarResolucionSucursal(objModel);
+        }
     }
 }

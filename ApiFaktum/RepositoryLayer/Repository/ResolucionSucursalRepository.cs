@@ -161,5 +161,32 @@ namespace RepositoryLayer.Repository
 
             return oRespuesta;
         }
+
+        /// <summary>
+        /// Katary
+        /// Anderson Benavides
+        /// Metodo para borrar una resolucion sucursal
+        /// </summary>
+        /// <param name="objModel"></param>
+        /// <returns>Task<Result></returns>
+        public async Task<Result> EliminarResolucionSucursal(ResolucionSucursalDto objModel)
+        {
+            Result oRespuesta = new Result();
+
+            try
+            {
+                objContext.ResolucionSucursal.Remove(mapper.Map<ResolucionSucursalModel>(objModel));
+                await objContext.SaveChangesAsync();
+
+                oRespuesta.Success = true;
+                oRespuesta.Message = Constantes.msjRegEliminado;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return oRespuesta;
+        }
     }
 }

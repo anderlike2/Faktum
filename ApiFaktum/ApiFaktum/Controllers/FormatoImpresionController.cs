@@ -17,6 +17,7 @@ namespace ApiFaktum.Controllers
     {
         private readonly ICreateLogger createLogger;
         private readonly IFormatoImpresionService objService;
+        private readonly IValidacionesService objValidacionesService;
 
         /// <summary>
         /// Katary
@@ -25,11 +26,13 @@ namespace ApiFaktum.Controllers
         /// </summary>
         /// <param name="_objService"></param>
         /// <param name="_createLogger"></param>
+        /// <param name="_objValidacionesService"></param>
         /// <returns></returns>
-        public FormatoImpresionController(IFormatoImpresionService _objService, ICreateLogger _createLogger)
+        public FormatoImpresionController(IFormatoImpresionService _objService, ICreateLogger _createLogger, IValidacionesService _objValidacionesService)
         {
             this.objService = _objService;
             this.createLogger = _createLogger;
+            this.objValidacionesService = _objValidacionesService;
         }
 
         /// <summary>
@@ -147,7 +150,7 @@ namespace ApiFaktum.Controllers
             {
                 createLogger.LogWriteExcepcion(ex.Message);
                 oRespuesta.Success = false;
-                oRespuesta.Message = ex.Message + " - Inner: " + ex.InnerException;
+                oRespuesta.Message = objValidacionesService.ValidarEliminacionRegistro(ex);
             }
             return Ok(oRespuesta);
         }
