@@ -60,4 +60,31 @@ export class ResolucionService {
       )
     );
   }
+
+  eliminarResolucion(resolucionId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Resolucion/EliminarResolucion`;
+
+    const data = {
+      id: resolucionId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
+
+  eliminarResolucionSucursal(resolucionSucursalId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/ResolucionSucursal/EliminarResolucionSucursal`;
+
+    const data = {
+      id: resolucionSucursalId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
+
 }

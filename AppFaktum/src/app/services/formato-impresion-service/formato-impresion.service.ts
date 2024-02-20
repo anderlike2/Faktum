@@ -49,4 +49,17 @@ export class FormatoImpresionService {
       data
     )
   }
+
+  eliminarFormatoImpresion(formatoImpresionId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/FormatoImpresion/EliminarFormatoImpresion`;
+
+    const data = {
+      id: formatoImpresionId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
 }

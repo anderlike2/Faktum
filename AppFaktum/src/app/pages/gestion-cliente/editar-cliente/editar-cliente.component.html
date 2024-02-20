@@ -494,9 +494,9 @@
                           </button>
                         </td>
                         <td [style.width.rem]="5" class="text-center">
-                          <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar contrato cliente" tooltipPosition="left">
+                          <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar contrato cliente" tooltipPosition="left" (click)="alertaEliminarContratoCliente(rowData)">
                             <i class="fa fa-trash"></i>
-                          </button>                   
+                          </button>
                         </td>
                     </tr>
                 </ng-template>

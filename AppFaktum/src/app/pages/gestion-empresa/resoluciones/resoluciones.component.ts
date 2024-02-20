@@ -8,6 +8,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CrearResolucionComponent } from '../../modals/crear-resolucion/crear-resolucion.component';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-resoluciones',
@@ -31,8 +34,14 @@ export class ResolucionesComponent implements OnInit {
     { field: 'resoNumeracionActual', header: 'Numeración Actual' }
   ];
 
-  constructor(private storageService: StorageService, private resolucionService: ResolucionService,
-    private modalService: NgbModal, private sharedService: SharedService, private router: Router) { }
+  constructor(
+    private storageService: StorageService,
+    private resolucionService: ResolucionService,
+    private modalService: NgbModal,
+    private sharedService: SharedService,
+    private router: Router,
+    private generalService: GeneralService
+  ) { }
 
   ngOnInit(): void {
     this.init();
@@ -68,6 +77,34 @@ export class ResolucionesComponent implements OnInit {
   verResolucion(value: IResolucion): void {
     this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-resolucion/editar-resolucion']);
+  }
+
+  alertaEliminarResolucion(value: IResolucion): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarResolucion(value);
+      }
+    });
+  }
+
+  eliminarResolucion(value: IResolucion): void {
+    this.resolucionService.eliminarResolucion(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTablas();
+        }
+      }
+    });
   }
 
 }

@@ -8,6 +8,9 @@ import { CrearUnidadComponent } from '../../modals/crear-unidad/crear-unidad.com
 import { UnidadService } from 'src/app/services/unidad-service/unidad.service';
 import { IUnidad } from 'src/app/models/unidad.model';
 import { Observable } from 'rxjs';
+import swal from 'sweetalert2';
+import { GeneralService } from 'src/app/services/general-service/general.service';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
 
 @Component({
   selector: 'app-unidades',
@@ -32,7 +35,8 @@ export class UnidadesComponent implements OnInit {
     private storageService: StorageService,
     private sharedService: SharedService,
     private router: Router,
-    private unidadService: UnidadService
+    private unidadService: UnidadService,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -69,6 +73,34 @@ export class UnidadesComponent implements OnInit {
   verUnidad(value: IUnidad): void {
     this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-unidad/editar-unidad']);
+  }
+
+  alertaEliminarUnidad(value: IUnidad): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarUnidad(value);
+      }
+    });
+  }
+
+  eliminarUnidad(value: IUnidad): void {
+    this.unidadService.eliminarUnidad(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTablas();
+        }
+      }
+    });
   }
 
 }

@@ -9,6 +9,10 @@ import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { CrearClienteComponent } from '../../modals/crear-cliente/crear-cliente.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import swal from 'sweetalert2';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralService } from 'src/app/services/general-service/general.service';
+
 @Component({
   selector: 'app-detalle-cliente',
   templateUrl: './detalle-cliente.component.html',
@@ -34,7 +38,8 @@ export class DetalleClienteComponent implements OnInit {
     private sharedService: SharedService,
     private storageService: StorageService,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -67,5 +72,33 @@ export class DetalleClienteComponent implements OnInit {
   verCliente(value: IClienteEmpresa): void {
     this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['./gestion-cliente/editar-cliente']);
+  }
+
+  alertaEliminarCliente(value: IClienteEmpresa): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarCliente(value);
+      }
+    });
+  }
+
+  eliminarCliente(value: IClienteEmpresa): void {
+    this.detalleEmpresaService.eliminarCliente(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTabla();
+        }
+      }
+    });
   }
 }

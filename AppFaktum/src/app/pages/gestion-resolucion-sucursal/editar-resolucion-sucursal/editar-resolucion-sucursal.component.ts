@@ -10,6 +10,7 @@ import { ResolucionSucursalService } from 'src/app/services/resolucion-sucursal-
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { StorageService } from 'src/app/services/storage-service/storage.service';
 import { SucursalService } from 'src/app/services/sucursal-service/sucursal.service';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-resolucion-sucursal',

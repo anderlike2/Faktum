@@ -49,4 +49,17 @@ export class OtroProductoService {
       data
     )
   }
+
+  eliminarOtroProducto(otroProductoId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/OtroProducto/EliminarOtroProducto`;
+
+    const data = {
+      id: otroProductoId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
 }

@@ -51,4 +51,17 @@ export class CentroCostosService {
       data
     )
   }
+
+  eliminarCentroCostos(centroCostoId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/CentroCosto/EliminarCentroCosto`;
+
+    const data = {
+      id: centroCostoId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
 }

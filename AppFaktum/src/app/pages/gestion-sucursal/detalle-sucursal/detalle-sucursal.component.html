@@ -39,9 +39,9 @@
                   </button>
                 </td>
                 <td [style.width.rem]="5" class="text-center">
-                  <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar sucursal" tooltipPosition="left">
+                  <button class="btn btn-icon btn-dark icon-detail-style"  pTooltip="Eliminar sucursal" tooltipPosition="left" (click)="alertaEliminarSucursal(rowData)">
                     <i class="fa fa-trash"></i>
-                  </button>                   
+                  </button>
                 </td>
             </tr>
         </ng-template>

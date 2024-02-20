@@ -49,4 +49,17 @@ export class UnidadService {
       data
     )
   }
+
+  eliminarUnidad(unidadId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Unidad/EliminarUnidad`;
+
+    const data = {
+      id: unidadId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
 }

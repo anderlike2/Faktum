@@ -15,7 +15,7 @@ export class ClienteService {
     @Inject('environment') private environment: IEnvironment,
     private httpClient: HttpClient
   ) { }
-  
+
   obtenerInformacionClienteId(idCliente: number): Observable<ICliente> {
     return this.httpClient.get<any>(
       `${this.environment.faktumUrl}/Cliente/ConsultarClienteId?idCliente=${idCliente}`
@@ -63,6 +63,19 @@ export class ClienteService {
       url,
       data
     );
+  }
+
+  eliminarContratoSalud(contratoSaludId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/ContratoSalud/EliminarContratoSalud`;
+
+    const data = {
+      id: contratoSaludId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
   }
 
 }

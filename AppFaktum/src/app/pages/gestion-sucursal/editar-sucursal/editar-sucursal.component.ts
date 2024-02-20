@@ -385,4 +385,32 @@ export class EditarSucursalComponent implements OnInit {
     this.router.navigate(['./gestion-resolucion-sucursal/editar-resolucion-sucursal']);
   }
 
+  alertaEliminarResolucionSucursal(value: IResolucion): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarResolucionSucursal(value);
+      }
+    });
+  }
+
+  eliminarResolucionSucursal(value: IResolucion): void {
+    this.resolucionService.eliminarResolucionSucursal(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarInformacionResolucionesSucursal(this.sucursalData.id);
+        }
+      }
+    });
+  }
+
 }
