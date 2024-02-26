@@ -68,4 +68,30 @@ export class DetalleEmpresaService {
       data
     );
   }
+
+  eliminarSucursal(sucursalId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Sucursal/EliminarSucursal`;
+
+    const data = {
+      id: sucursalId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
+
+  eliminarCliente(clienteId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Cliente/EliminarCliente`;
+
+    const data = {
+      id: clienteId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
 }

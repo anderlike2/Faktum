@@ -9,6 +9,9 @@ import { CrearProductoComponent } from '../../modals/crear-producto/crear-produc
 import { IProducto } from 'src/app/models/producto.model';
 import { Observable } from 'rxjs';
 import { MostrarInformacionComponent } from '../../modals/mostrar-informacion/mostrar-informacion.component';
+import swal from 'sweetalert2';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -34,7 +37,8 @@ export class DetalleProductoComponent implements OnInit {
     private storageService: StorageService,
     private sharedService: SharedService,
     private router: Router,
-    private productoService: ProductoService
+    private productoService: ProductoService,
+    private generalService: GeneralService
   ) { }
 
   ngOnInit(): void {
@@ -85,6 +89,34 @@ export class DetalleProductoComponent implements OnInit {
 
   obtenerNombreConcepto(value: IProducto){
     return value.prodCupId != null ? 'CUPS' : (value.prodOtroProductoId != null ? 'OTROS PRODUCTOS' : 'MEDICAMENTOS');
+  }
+
+  alertaEliminarProducto(value: IProducto): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarProducto(value);
+      }
+    });
+  }
+
+  eliminarProducto(value: IProducto): void {
+    this.productoService.eliminarProduto(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTablas();
+        }
+      }
+    });
   }
 
 }

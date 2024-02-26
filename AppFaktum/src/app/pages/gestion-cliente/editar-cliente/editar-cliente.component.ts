@@ -12,6 +12,7 @@ import { ClienteService } from 'src/app/services/cliente-service/cliente.service
 import { GeneralService } from 'src/app/services/general-service/general.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { CrearContratoClienteComponent } from '../../modals/crear-contrato-cliente/crear-contrato-cliente.component';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-cliente',
@@ -48,9 +49,14 @@ export class EditarClienteComponent implements OnInit {
   ];
   seletedContratoCliente: any;
 
-  constructor(private cargueCombosService: CargueCombosService, private clienteService: ClienteService,
-    private sharedService: SharedService, private generalService: GeneralService, private router: Router,
-    private modalService: NgbModal) { }
+  constructor(
+    private cargueCombosService: CargueCombosService,
+    private clienteService: ClienteService,
+    private sharedService: SharedService,
+    private generalService: GeneralService,
+    private router: Router,
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
     this.init();
@@ -549,6 +555,34 @@ export class EditarClienteComponent implements OnInit {
         this.cargarInformacionContratosCliente(this.informacionCliente.id);
       }
     })
+  }
+
+  alertaEliminarContratoCliente(value: IContratoCliente): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarContratoCliente(value);
+      }
+    });
+  }
+
+  eliminarContratoCliente(value: IContratoCliente): void {
+    this.clienteService.eliminarContratoSalud(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarInformacionContratosCliente(this.informacionCliente.id);
+        }
+      }
+    });
   }
 
 }

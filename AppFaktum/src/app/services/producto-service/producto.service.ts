@@ -91,4 +91,17 @@ export class ProductoService {
     );
   }
 
+  eliminarProduto(productoId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/Producto/EliminarProducto`;
+
+    const data = {
+      id: productoId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
+
 }

@@ -7,6 +7,9 @@ import { StorageService } from 'src/app/services/storage-service/storage.service
 import { IListaPrecio } from 'src/app/models/lista-precio.model';
 import { ListaPrecioService } from 'src/app/services/lista-precio-service/lista-precio.service';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-listas-precios',
@@ -27,8 +30,14 @@ export class ListasPreciosComponent implements OnInit {
     { field: 'liprDescripcion', header: 'Descripción' }
   ];
 
-  constructor(private modalService: NgbModal, private sharedService: SharedService, private storageService: StorageService,
-    private listaPrecioService: ListaPrecioService, private router: Router) { }
+  constructor(
+    private modalService: NgbModal,
+    private sharedService: SharedService,
+    private storageService: StorageService,
+    private listaPrecioService: ListaPrecioService,
+    private router: Router,
+    private generalService: GeneralService
+    ) { }
 
   ngOnInit(): void {
     this.init();
@@ -67,6 +76,34 @@ export class ListasPreciosComponent implements OnInit {
   verListaPrecio(value:IListaPrecio): void{
     this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['./gestion-lista-precio/editar-lista-precio']);
+  }
+
+  alertaEliminarListaPrecio(value: IListaPrecio): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarListaPrecios(value);
+      }
+    });
+  }
+
+  eliminarListaPrecios(value: IListaPrecio): void {
+    this.listaPrecioService.eliminarListaPrecio(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTablas();
+        }
+      }
+    });
   }
 
 }

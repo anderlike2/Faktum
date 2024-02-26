@@ -492,21 +492,6 @@
                 <div class="invalid-feedback"> {{ factSaludTipoIdErrorMensaje }} </div>
               </div>
             </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Clase factura</label>
-                <select class="form-control" formControlName="factClaseFacturaId" [ngClass]="{
-                  'is-invalid':
-                    encabezadoFormGroup.controls.factClaseFacturaId.invalid &&
-                    encabezadoFormGroup.controls.factClaseFacturaId.touched
-                   }">
-                  <ng-container *ngFor="let item of listaClaseFactura">
-                    <option [value]="item.valor">{{item.nombre}}</option>
-                  </ng-container>
-                </select>
-                <div class="invalid-feedback"> {{ factClaseFacturaIdErrorMensaje }} </div>
-              </div>
-            </div>
 
             <div class="col-4">
               <div class="form-group">

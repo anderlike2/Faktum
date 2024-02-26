@@ -49,4 +49,17 @@ export class ListaPrecioService {
       )
     );
   }
+
+  eliminarListaPrecio(listaPrecioId: number): Observable<any> {
+    const url = `${this.environment.faktumUrl}/ListaPrecio/EliminarListaPrecio`;
+
+    const data = {
+      id: listaPrecioId
+    }
+
+    return this.httpClient.post(
+      url,
+      data
+    )
+  }
 }

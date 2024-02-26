@@ -34,6 +34,7 @@ export class CrearFacturaComponent implements OnInit {
   detalleFacturaCollapsed: boolean = false;
 
   tipoDocumento: string = '';
+  tipoDocumentoId: number;
 
   verDetalleFactura: boolean = false;
 
@@ -115,10 +116,21 @@ export class CrearFacturaComponent implements OnInit {
       centered: true
     });
 
-    opcionModal.result.then((response: string) => {
+    opcionModal.result.then((response: any) => {
       if (response) {
-        this.tipoDocumento = response;
-        this.iniciarFacturacion(response);
+
+        if (response?.codigo === 'comercial' || response?.codigo === 'sectorSalud') {
+          this.tipoDocumento = response?.codigo;
+          this.tipoDocumentoId = response?.id;
+          this.iniciarFacturacion(response);
+        } else {
+          this.iniciarDocumentoOpcion();
+          this.generalService.mostrarMensajeAlerta(
+            `La clase factura ${response?.nombre} no se ha implementado.`,
+            TiposMensajeEnum.ERROR,
+            GeneralesEnum.BTN_ACEPTAR
+          );
+        }
       } else {
         this.router.navigate(['/']);
       }
@@ -366,7 +378,7 @@ export class CrearFacturaComponent implements OnInit {
       }
     })
 
-    this.totalFacturaFormGroup.get('factListaPreciosId').valueChanges.subscribe({
+    this.totalFacturaFormGroup.get('factListaPreciosId')?.valueChanges.subscribe({
       next: (value) => {
         if (value) {
           this.listaPrecioId = value;
@@ -506,10 +518,6 @@ export class CrearFacturaComponent implements OnInit {
           Validators.required
         ]
       ],
-      factClaseFacturaId: [ { value: null, disabled: false }, [
-          Validators.required
-        ]
-      ],
       factCoberturaId: [ { value: null, disabled: false }, [
           Validators.required
         ]
@@ -639,11 +647,6 @@ export class CrearFacturaComponent implements OnInit {
   }
   get factVendedorErrorMensaje(): string {
     const form: AbstractControl = this.encabezadoFormGroup.get('factVendedor') as AbstractControl;
-    return form.hasError('required')
-      ? 'Campo obligatorio' : '';
-  }
-  get factClaseFacturaIdErrorMensaje(): string {
-    const form: AbstractControl = this.encabezadoFormGroup.get('factClaseFacturaId') as AbstractControl;
     return form.hasError('required')
       ? 'Campo obligatorio' : '';
   }
@@ -844,7 +847,7 @@ export class CrearFacturaComponent implements OnInit {
       factValorDescuento: 0,
       factValTotRetefuente: '0',
       factVendedor: formData.factVendedor,
-      factClaseFacturaId: formData.factClaseFacturaId,
+      factClaseFacturaId: this.tipoDocumentoId,
       factCoberturaId: formData.factCoberturaId,
       factCondicionVentaId: formData.factCondicionVentaId,
       factEmpresaId: this.dataEmpresa.id,
@@ -929,7 +932,7 @@ export class CrearFacturaComponent implements OnInit {
       factValorDescuento: totalFormData.factValorDescuento,
       factValTotRetefuente: totalFormData.factValTotRetefuente,
       factVendedor: formData.factVendedor,
-      factClaseFacturaId: formData.factClaseFacturaId,
+      factClaseFacturaId: this.tipoDocumentoId,
       factCoberturaId: formData.factCoberturaId,
       factCondicionVentaId: formData.factCondicionVentaId,
       factEmpresaId: this.dataEmpresa.id,

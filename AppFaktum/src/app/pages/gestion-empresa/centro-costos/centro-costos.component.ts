@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 import { CentroCostosService } from 'src/app/services/centro-costos-service/centro-costos.service';
 import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { Router } from '@angular/router';
+import { GeneralService } from 'src/app/services/general-service/general.service';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-centro-costos',
@@ -31,6 +34,7 @@ export class CentroCostosComponent implements OnInit {
     private storageService: StorageService,
     private centroCostosService: CentroCostosService,
     private sharedService: SharedService,
+    private generalService: GeneralService,
     private router: Router
   ) { }
 
@@ -68,6 +72,34 @@ export class CentroCostosComponent implements OnInit {
   verCentroCostos(value: ICentroCostos): void {
     this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-centro-costos/editar-centro-costos']);
+  }
+
+  alertaEliminarCentroCostos(value: ICentroCostos): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarCentroCostos(value);
+      }
+    });
+  }
+
+  eliminarCentroCostos(value: ICentroCostos): void {
+    this.centroCostosService.eliminarCentroCostos(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTablas();
+        }
+      }
+    });
   }
 
 }

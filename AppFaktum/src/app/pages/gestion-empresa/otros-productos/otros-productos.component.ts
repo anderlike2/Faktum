@@ -8,6 +8,9 @@ import { SharedService } from 'src/app/services/shared-service/shared.service';
 import { Router } from '@angular/router';
 import { CrearOtroProductoComponent } from '../../modals/crear-otro-producto/crear-otro-producto.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import swal from 'sweetalert2';
+import { GeneralesEnum, TiposMensajeEnum } from 'src/app/models/enums-aplicacion.model';
+import { GeneralService } from 'src/app/services/general-service/general.service';
 
 @Component({
   selector: 'app-otros-productos',
@@ -26,8 +29,14 @@ export class OtrosProductosComponent implements OnInit {
     { field: 'otprCodigo', header: 'Código' }
   ];
 
-  constructor(private storageService: StorageService, private otroProductoService: OtroProductoService,
-    private sharedService: SharedService, private router: Router, private modalService: NgbModal) { }
+  constructor(
+    private storageService: StorageService,
+    private otroProductoService: OtroProductoService,
+    private sharedService: SharedService,
+    private router: Router,
+    private modalService: NgbModal,
+    private generalService: GeneralService
+  ) { }
 
   ngOnInit(): void {
     this.init();
@@ -63,6 +72,34 @@ export class OtrosProductosComponent implements OnInit {
   verOtroProducto(value: IOtroProducto): void {
     this.sharedService.addEditarGeneralData(value);
     this.router.navigate(['/gestion-otro-producto/editar-otro-producto']);
+  }
+
+  alertaEliminarOtroProducto(value: IOtroProducto): void {
+    swal.fire({
+      title: "¿Esta seguro que desea eliminar estre registro?",
+      text: "Este registro se eliminara de forma permanente",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonText: 'Cancelar',
+      confirmButtonText: "¡Si, Eliminar!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarOtroProducto(value);
+      }
+    });
+  }
+
+  eliminarOtroProducto(value: IOtroProducto): void {
+    this.otroProductoService.eliminarOtroProducto(value.id).subscribe({
+      next: (response) => {
+        if (!response?.success) {
+          this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.WARNINNG, GeneralesEnum.BTN_ACEPTAR);
+        } else {
+           this.generalService.mostrarMensajeAlerta(response?.message, TiposMensajeEnum.SUCCESS, GeneralesEnum.BTN_ACEPTAR);
+           this.cargarTablas();
+        }
+      }
+    });
   }
 
 }
