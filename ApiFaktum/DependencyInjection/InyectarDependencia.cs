@@ -20,7 +20,13 @@ namespace DependencyInjection
         public static void ConexionDataBases(this IServiceCollection services, IConfiguration Configuration)
         {
             string dbConnectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer(dbConnectionString));
+            services.AddDbContext<ApplicationDbContext>(opt => 
+                opt.UseMySql
+                (
+                    dbConnectionString, 
+                    new MySqlServerVersion(new Version(8, 0, 11))
+                )
+            );
 
             services.AddScoped<DbInitializer>();
         }
